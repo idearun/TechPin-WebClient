@@ -1,0 +1,22 @@
+.add-overlay {
+  z-index: 1200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.add-modal {
+  z-index: 1201;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+.chip-wrapper {
+  max-width: 256px;
+}
+@media screen and (max-width: 375px) {
+  div.chip-wrapper {
+    min-height: 50px;
+  }
+}

@@ -1,0 +1,107 @@
+.all-entries-toolbar {
+  background-color: #2962FF !important;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2)
+}
+.all-entries-toolbar > div:first-of-type {
+  margin-left: 0 !important
+}
+.all-entries-toolbar span {
+  color: 'white' !important;
+}
+.all-entries-wrapper {
+  padding: 50px 0px 50px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  position: relative;
+}
+.startup-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 40px 30px;
+  width: auto;
+}
+.startup-row {
+  border-bottom: 1px solid #ddd;
+}
+.startup-row > *{
+  margin: 15px;
+}
+.char-symbol {
+  width: auto;
+  text-align: center;
+}
+.row-wrapper {
+  display: flex;
+}
+.row-wrapper > * {
+  flex: 1;
+}
+.char-symbol {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 250px;
+  font-family: 'Raleway';
+  text-transform: uppercase;
+  font-size: 70px;
+  color: #555;
+  padding-top: 40px;
+}
+div.fixed {
+  position: fixed !important;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+#search {
+  transition: all 0.5s ease-in-out;
+  height: 60%;
+  border: none;
+  width: 50%;
+  border-radius: 50px;
+  padding: 0 20px;
+  color: #888;
+  font-size: 20px;
+}
+#search:focus{
+  color: black;
+  outline: 0;
+  width: 100%;
+}
+.search-box-wrapper {
+  justify-content: flex-end !important;
+}
+#spinner {
+  margin: 0 auto;
+  position: reletive;
+  top: 200px;
+}
+#spinner > div {
+  padding: 0 !important;
+}
+@media screen and (max-width: 880px) {
+  .row-wrapper {
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+  .startup-row {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .all-entries-toolbar > div:first-of-type > span {
+    display: none
+  }
+  .all-entries-toolbar > div:last-of-type,
+  .all-entries-toolbar > div:last-of-type > input {
+    width: 100% !important;
+  }
+  /*.startup-row {
+    padding: 40px 10px;
+  }*/
+}

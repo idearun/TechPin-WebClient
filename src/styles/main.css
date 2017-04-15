@@ -1,0 +1,29 @@
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.main-content {
+  flex: 1 0 auto;
+  min-height: 70vh;
+}
+div.app-bar  {
+  align-items: center;
+}
+div.app-bar > div:last-child > div > [type="button"] {
+  color: white !important;
+}
+div.app-bar > div:last-child {
+  margin: 0 !important;
+}
+body {
+  overflow-x: hidden;
+}
+@media screen and (min-width: 900px) {
+  .app-wrapper > span {
+    width: 100%;
+  }
+  .app-wrapper > span > div.about-page {
+    margin: 50px auto;
+    width: 60%;
+  }
+}

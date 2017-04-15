@@ -1,0 +1,58 @@
+.login-signup-modal {
+  z-index: 1201;
+  background-color: white;
+  border-radius: 10px;
+}
+.ReactModal__Body--open, .ReactModal__Overlay, .ReactModalPortal {
+    overflow: hidden;
+}
+ 
+.login-singnup-overlay {
+  z-index: 1200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  border-radius: 10px;
+}
+.login-form h3{
+  font-family: 'Rubik';
+  font-size: 18px;
+}
+.google-login-button {
+  transition: all 0.4s;
+  height: 36px;
+  width: 175px;
+  border: 0;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.google-login-button:hover {
+  background-color: #7a0000;
+}
+.google-login-button > div {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+}
+.google-login-button > div > i {
+  font-size: 28px;
+  
+}
+.google-login-button > div > span {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+}

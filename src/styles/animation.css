@@ -1,0 +1,17 @@
+.main-enter {
+  opacity: 0.01;
+
+}
+
+.main-enter.main-enter-active {
+  opacity: 1;
+  transition: opacity 350ms ease-in;
+}
+
+.main-leave {
+  display: none;
+}
+
+.main-leave.main-leave-active {
+  display: none;
+}
