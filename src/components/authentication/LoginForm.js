@@ -1,18 +1,11 @@
 import React, {PropTypes} from 'react';
 import GoogleLogin from 'react-google-login';
-// import googleClientId from '../../settings'
-const googleClientId = '' 
+import googleClientId from '../../settings'
 
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import {PulseLoader} from 'halogen';
-
-// const styles = {
-//   googleSigninDisabled: {
-//     cursor: 'wait',
-//   }
-// }
 
 export default class LoginForm extends React.Component {
   constructor () {
