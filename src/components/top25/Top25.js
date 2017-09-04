@@ -12,9 +12,26 @@ import ContentAdd from "material-ui/svg-icons/content/add";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 import Snackbar from "material-ui/Snackbar";
 
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+    var context = this,
+      args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
 function generateListItem(product, i) {
   return <StartUpWidget product={product} key={product.name_en} i={i} />;
 }
+
 const modalStyle = {
   overlay: {
     position: "fixed",
@@ -85,7 +102,37 @@ export default class Top25 extends React.Component {
       });
     }
   };
-  
+
+  componentDidMount = () => {
+    const floatingButton = document.querySelector(".floating-action-button");
+    const shortDesc = document.querySelector(".site-desc");
+
+    const offsetTopForButton =
+      shortDesc.offsetTop +
+      shortDesc.offsetHeight -
+      floatingButton.offsetHeight / 2 +
+      "px";
+
+    floatingButton.style.top = offsetTopForButton;
+
+    window.addEventListener(
+      "scroll",
+      debounce(() => {
+        console.log(window.pageYOffset);
+        if (window.pageYOffset > 0) {
+          floatingButton.style.top = "";
+          floatingButton.style.bottom = "35px";
+        } else {
+          floatingButton.style.top = offsetTopForButton;
+          floatingButton.style.bottom = "";
+        }
+      }, 25),
+      {
+        passive: true
+      }
+    );
+  };
+
   persistNewProduct = slug => {
     this.setState({
       newProductSlug: slug,
@@ -116,7 +163,7 @@ export default class Top25 extends React.Component {
         <header className="top25-header">
           <span>Top Pins</span>
           <p className="sub-header">Divided in 3 main categories</p>
-        </header> 
+        </header>
         <main className="flex-container">
           <WidgetColumn
             productList={this.state.topProducts.topRanked}
