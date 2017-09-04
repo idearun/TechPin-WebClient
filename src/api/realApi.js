@@ -1,21 +1,20 @@
-import axios from 'axios';
-import querystring from 'querystring'
+import axios from "axios";
+import querystring from "querystring";
 
-require('core-js/fn/object/values')
-require('core-js/fn/object/entries')
+require("core-js/fn/object/values");
+require("core-js/fn/object/entries");
 
-export const baseUrl = 'https://api.techpin.xyz';
-var baseApiUrl = 'https://api.techpin.xyz';
+export const baseUrl = "https://api.techpin.xyz";
+var baseApiUrl = "https://api.techpin.xyz";
 
 var config = {
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Accept': '*/*'
-  },
-}
+    "Content-Type": "application/x-www-form-urlencoded",
+    Accept: "*/*"
+  }
+};
 
 export default class techpinApi {
-
   //get methods
 
   static getTop25Products() {
@@ -51,10 +50,10 @@ export default class techpinApi {
   static getPreviousUserRates(slug, tokenId) {
     let config = {
       headers: {
-        'Accept': '*/*',
-        'Authorization': 'Token ' + tokenId,
-      },
-    }
+        Accept: "*/*",
+        Authorization: "Token " + tokenId
+      }
+    };
     return axios.get(`${baseApiUrl}/rates/${slug}`, config);
     // .then(res => console.log(res));
   }
@@ -62,16 +61,20 @@ export default class techpinApi {
   //// authentication
 
   static login(email, password) {
-    let qs =  querystring.stringify({email, password})
-    return axios.post(`${baseApiUrl}/login`, qs, config)
+    let qs = querystring.stringify({ email, password });
+    return axios.post(`${baseApiUrl}/login`, qs, config);
   }
 
   static googleLogin(tokenId) {
-    return axios.post(`${baseApiUrl}/google-login`, `idtoken=${tokenId}`, config)
+    return axios.post(
+      `${baseApiUrl}/google-login`,
+      `idtoken=${tokenId}`,
+      config
+    );
   }
 
   static signup(formData) {
-    let qs =  querystring.stringify({...formData}) 
+    let qs = querystring.stringify({ ...formData });
     return axios.post(`${baseApiUrl}/signup`, qs, config);
   }
 
@@ -80,17 +83,17 @@ export default class techpinApi {
     // .then(res => console.log(res));
   }
 
-//user interactions
+  //user interactions
 
   static postNewRate(rate, slug, tokenId) {
     let config = {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Token ' + tokenId,
-        'Accept': '*/*'
-      },
-    }
-    const qs = querystring.stringify({rate});
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: "Token " + tokenId,
+        Accept: "*/*"
+      }
+    };
+    const qs = querystring.stringify({ rate });
     return axios.post(`${baseApiUrl}/products/${slug}/rate`, qs, config);
     // .then(res => console.log(res));
   }
@@ -98,12 +101,12 @@ export default class techpinApi {
   static postNewComment(text, slug, tokenId) {
     let config = {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Token ' + tokenId,
-        'Accept': '*/*'
-      },
-    }
-    const qs = querystring.stringify({text});
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: "Token " + tokenId,
+        Accept: "*/*"
+      }
+    };
+    const qs = querystring.stringify({ text });
     return axios.post(`${baseApiUrl}/products/${slug}/comments`, qs, config);
     // .then(res => console.log(res));
   }
@@ -111,26 +114,41 @@ export default class techpinApi {
   static postNewVersion(formData, slug, tokenId) {
     let config = {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Token ' + tokenId,
-        'Accept': '*/*'
-      },
-    }
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: "Token " + tokenId,
+        Accept: "*/*"
+      }
+    };
     // const qs = querystring.stringify(newVersionFields);
-    return axios.patch(`${baseApiUrl}/products/${slug}/versions/add`, formData, config)
+    return axios.patch(
+      `${baseApiUrl}/products/${slug}/versions/add`,
+      formData,
+      config
+    );
     // .then(res => console.log(res));
   }
 
   static postNewProduct(formData) {
     const qs = querystring.stringify(formData);
-    return axios.post(`${baseApiUrl}/products/add`, qs, config)
+    return axios.post(`${baseApiUrl}/products/add`, qs, config);
   }
 
   static postFirstVersion(formData, slug) {
     // const qs = querystring.stringify(newVersionFields);
-    return axios.patch(`${baseApiUrl}/products/${slug}/versions/add`, formData, config);
+    return axios.patch(
+      `${baseApiUrl}/products/${slug}/versions/add`,
+      formData,
+      config
+    );
     // .then(res => console.log(res));
   }
 
-
+  static submitContactUsForm(formData) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+    });
+    // return axios.post(`${baseApiUrl}/`, formData, config);
+  }
 }

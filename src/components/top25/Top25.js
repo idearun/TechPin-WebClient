@@ -6,7 +6,7 @@ import EditInfo from "../singlePage/EditInfo";
 import WidgetColumn from "./WidgetColumn";
 import sort from "../../helpers/helpers";
 import SiteDesc from "./SiteDesc";
-
+import DueDiligence from "./DueDiligence";
 import StartUpWidget from "./StartUpWidget";
 import ContentAdd from "material-ui/svg-icons/content/add";
 import FloatingActionButton from "material-ui/FloatingActionButton";
@@ -85,6 +85,7 @@ export default class Top25 extends React.Component {
       });
     }
   };
+  
   persistNewProduct = slug => {
     this.setState({
       newProductSlug: slug,
@@ -130,6 +131,7 @@ export default class Top25 extends React.Component {
             title="New Pins"
           />
         </main>
+        <DueDiligence />
         <FloatingActionButton
           secondary={true}
           className="floating-action-button"

@@ -6,6 +6,7 @@ const SiteDesc = () => (
     <div>
       <img src={Logo} alt="techpin logo" />
     </div>
+    <div className="vert-divider" />
     <div>
       <h1>Dynamic list of startups and accelerators in Iran</h1>
       <div>
