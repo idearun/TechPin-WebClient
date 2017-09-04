@@ -1,56 +1,86 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actionTypes from "../actions/actionTypes";
 
 export default function topProducts(state = [], action) {
+  switch (action.type) {
+    case actionTypes.INITIAL_TOP25_LOAD:
+      return {
+        topNew: action.topNew,
+        plus10Million: action.plus10Million,
+        between1And10Million: action.between1And10Million
+      };
+      break;
 
-    switch (action.type) {
-  
-        case actionTypes.INITIAL_TOP25_LOAD:
-          return {
-            topNew: action.topNew,
-            topRanked: action.topRanked,
-            randomProducts: action.randomProducts
-          };
-          break;
+    case actionTypes.SUCCESSFUL_NEW_RATE_SUBMIT:
+      //there are duplicate items in different categories
+      const indexInNew =
+        state.topNew &&
+        state.topNew.findIndex(product => product.slug === action.slug);
+      const indexInPlus10Million =
+        state.plus10Million &&
+        state.plus10Million.findIndex(product => product.slug === action.slug);
+      const indexInBetween1And10Million =
+        state.between1And10Million &&
+        state.between1And10Million.findIndex(
+          product => product.slug === action.slug
+        );
 
-          case actionTypes.SUCCESSFUL_NEW_RATE_SUBMIT:
-         //there are duplicate items in different categories
-          const indexInNew = state.topNew && state.topNew.findIndex(product => product.slug === action.slug);
-          const indexInTopRanked = state.topRanked && state.topRanked.findIndex(product => product.slug === action.slug);
-          const indexInRandomProducts = state.randomProducts && state.randomProducts.findIndex(product => product.slug === action.slug);
-
-          var startupToMutateInNew, startupToMutateInTopRanked, startupToMutateInRandomProducts,
-              newRandomProducts, newTopNew, newTopRanked
-          if(Object.keys(state).length > 0) {
-            if(indexInNew && indexInNew !== -1) {
-              startupToMutateInNew = state.topNew[indexInNew]
-              startupToMutateInNew.rate_count = action.newRateCount
-              startupToMutateInNew.average_p_rate = action.newRating
-              newTopNew = [...state.topNew.slice(0, indexInNew), startupToMutateInNew, ...state.topNew.slice(indexInNew + 1)]
-            }
-            if(indexInTopRanked && indexInTopRanked !== -1) {
-              startupToMutateInTopRanked = state.topRanked[indexInTopRanked]
-              startupToMutateInTopRanked.rate_count = action.newRateCount
-              startupToMutateInTopRanked.average_p_rate = action.newRating
-              newTopRanked = [...state.topRanked.slice(0, indexInTopRanked), startupToMutateInTopRanked, ...state.topRanked.slice(indexInTopRanked + 1)]
-            }
-            if(indexInRandomProducts && indexInRandomProducts !== -1) {
-              startupToMutateInRandomProducts = state.randomProducts[indexInRandomProducts]
-              startupToMutateInRandomProducts.rate_count = action.newRateCount
-              startupToMutateInRandomProducts.average_p_rate = action.newRating
-              newRandomProducts = [...state.randomProducts.slice(0, indexInRandomProducts), startupToMutateInRandomProducts, ...state.randomProducts.slice(indexInRandomProducts + 1)]
-            }
-            return Object.assign({}, {topNew: newTopNew || state.topNew,
-              topRanked: newTopRanked || state.topRanked, 
-              randomProducts: newRandomProducts || state.randomProducts
-            })
-              
-          } else {
-            return state
+      var startupToMutateInNew,
+        startupToMutateInPlus10Million,
+        startupToMutateInBetween1And10Million,
+        newBetween1And10Million,
+        newTopNew,
+        newPlus10Million;
+      if (Object.keys(state).length > 0) {
+        if (indexInNew && indexInNew !== -1) {
+          startupToMutateInNew = state.topNew[indexInNew];
+          startupToMutateInNew.rate_count = action.newRateCount;
+          startupToMutateInNew.average_p_rate = action.newRating;
+          newTopNew = [
+            ...state.topNew.slice(0, indexInNew),
+            startupToMutateInNew,
+            ...state.topNew.slice(indexInNew + 1)
+          ];
+        }
+        if (indexInPlus10Million && indexInPlus10Million !== -1) {
+          startupToMutateInPlus10Million =
+            state.plus10Million[indexInPlus10Million];
+          startupToMutateInPlus10Million.rate_count = action.newRateCount;
+          startupToMutateInPlus10Million.average_p_rate = action.newRating;
+          newPlus10Million = [
+            ...state.plus10Million.slice(0, indexInPlus10Million),
+            startupToMutateInPlus10Million,
+            ...state.plus10Million.slice(indexInPlus10Million + 1)
+          ];
+        }
+        if (indexInBetween1And10Million && indexInBetween1And10Million !== -1) {
+          startupToMutateInBetween1And10Million =
+            state.between1And10Million[indexInBetween1And10Million];
+          startupToMutateInBetween1And10Million.rate_count =
+            action.newRateCount;
+          startupToMutateInBetween1And10Million.average_p_rate =
+            action.newRating;
+          newBetween1And10Million = [
+            ...state.between1And10Million.slice(0, indexInBetween1And10Million),
+            startupToMutateInBetween1And10Million,
+            ...state.between1And10Million.slice(indexInBetween1And10Million + 1)
+          ];
+        }
+        return Object.assign(
+          {},
+          {
+            topNew: newTopNew || state.topNew,
+            plus10Million: newPlus10Million || state.plus10Million,
+            between1And10Million:
+              newBetween1And10Million || state.between1And10Million
           }
-          
-        break;
+        );
+      } else {
+        return state;
+      }
 
-        default:
-            return state;
-    }
+      break;
+
+    default:
+      return state;
+  }
 }

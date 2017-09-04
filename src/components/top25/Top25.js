@@ -54,8 +54,8 @@ export default class Top25 extends React.Component {
       addVersionModalIsOpen: false,
       topProducts: {
         topNew: [],
-        topRanked: [],
-        randomProducts: []
+        plus10Million: [],
+        between1And10Million: []
       }
     };
   }
@@ -81,11 +81,9 @@ export default class Top25 extends React.Component {
       const topProducts = this.props.topProducts;
       this.setState({
         topProducts: {
-          //topNew: sort(topProducts.topNew, 'nps'),
-          //topNew will be in timely order form server
           topNew: topProducts.topNew,
-          topRanked: sort(topProducts.topRanked, "nps"),
-          randomProducts: sort(topProducts.randomProducts, "nps")
+          plus10Million: sort(topProducts.plus10Million, "nps"),
+          between1And10Million: sort(topProducts.between1And10Million, "nps")
         }
       });
     }
@@ -96,8 +94,11 @@ export default class Top25 extends React.Component {
       this.setState({
         topProducts: {
           topNew: nextProps.topProducts.topNew,
-          topRanked: sort(nextProps.topProducts.topRanked, "nps"),
-          randomProducts: sort(nextProps.topProducts.randomProducts, "nps")
+          plus10Million: sort(nextProps.topProducts.plus10Million, "nps"),
+          between1And10Million: sort(
+            nextProps.topProducts.between1And10Million,
+            "nps"
+          )
         }
       });
     }
@@ -118,7 +119,6 @@ export default class Top25 extends React.Component {
     window.addEventListener(
       "scroll",
       debounce(() => {
-        console.log(window.pageYOffset);
         if (window.pageYOffset > 0) {
           floatingButton.style.top = "";
           floatingButton.style.bottom = "35px";
@@ -166,16 +166,16 @@ export default class Top25 extends React.Component {
         </header>
         <main className="flex-container">
           <WidgetColumn
-            productList={this.state.topProducts.topRanked}
-            title="Rated By Poeple"
+            productList={this.state.topProducts.plus10Million}
+            title="$10 Million+"
           />
           <WidgetColumn
-            productList={this.state.topProducts.randomProducts}
-            title="Random"
+            productList={this.state.topProducts.between1And10Million}
+            title="From $1 To $10 Million"
           />
           <WidgetColumn
             productList={this.state.topProducts.topNew}
-            title="New Pins"
+            title="New"
           />
         </main>
         <DueDiligence />

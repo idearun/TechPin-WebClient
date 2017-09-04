@@ -18,7 +18,10 @@ class DueDiligence extends Component {
   }
 
   handleRequestClose = () => {
-    this.setState({ notificationIsOpen: false });
+    this.setState({
+      notificationIsOpen: false,
+      notificationMessage: ""
+    });
   };
 
   updateFormData = (value, fieldName) => {

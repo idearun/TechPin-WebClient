@@ -37,8 +37,8 @@ function initialLoadTop25ActionCreator(response) {
   return {
     type: actionTypes.INITIAL_TOP25_LOAD,
     topNew: response.top_new,
-    topRanked: response.top_ranked,
-    randomProducts: response.random_products
+    plus10Million: response.top_ranked,
+    between1And10Million: response.random_products
   };
 }
 
