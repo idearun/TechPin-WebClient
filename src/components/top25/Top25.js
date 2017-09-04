@@ -115,8 +115,8 @@ export default class Top25 extends React.Component {
         <SiteDesc />
         <header className="top25-header">
           <span>Top Pins</span>
-          <p className="sub-header">Dynamic list of startups & accelerators</p>
-        </header>
+          <p className="sub-header">Divided in 3 main categories</p>
+        </header> 
         <main className="flex-container">
           <WidgetColumn
             productList={this.state.topProducts.topRanked}

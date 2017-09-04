@@ -7,7 +7,7 @@
   margin-bottom: 55px;
   display: flex;
   justify-content: space-between;
-  padding: 0 34px;
+  padding: 20px 34px 0 34px;
 }
 
 .column {
@@ -87,11 +87,12 @@
   text-align: center;
   width: 100%;
   padding: 30px 0;
+  margin-top: 20px;
 }
 
 .top25-header span {
   color: #555;
-  font-size: 24px;
+  font-size: 1.7em;
   font-family: "Raleway";
   font-weight: 600;
 }
