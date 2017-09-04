@@ -19,6 +19,7 @@ class AllProducts extends React.Component {
       aSyncCall: false,
     }
   }
+  
   componentDidMount = () => {
     if (Object.keys(this.props.allProducts).length === 0) {
       this.setState({aSyncCall: true})
