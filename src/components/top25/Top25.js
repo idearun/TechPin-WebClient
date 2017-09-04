@@ -108,13 +108,10 @@ export default class Top25 extends React.Component {
     const floatingButton = document.querySelector(".floating-action-button");
     const shortDesc = document.querySelector(".site-desc");
 
-    const offsetTopForButton =
-      shortDesc.offsetTop +
-      shortDesc.offsetHeight -
+    floatingButton.style.top =
+      shortDesc.getBoundingClientRect().bottom -
       floatingButton.offsetHeight / 2 +
       "px";
-
-    floatingButton.style.top = offsetTopForButton;
 
     window.addEventListener(
       "scroll",
@@ -123,7 +120,10 @@ export default class Top25 extends React.Component {
           floatingButton.style.top = "";
           floatingButton.style.bottom = "35px";
         } else {
-          floatingButton.style.top = offsetTopForButton;
+          floatingButton.style.top =
+            shortDesc.getBoundingClientRect().bottom -
+            floatingButton.offsetHeight / 2 +
+            "px";
           floatingButton.style.bottom = "";
         }
       }, 25),

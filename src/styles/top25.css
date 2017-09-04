@@ -34,7 +34,7 @@
 
 .site-desc {
   background-color: #54c0fe;
-  min-height: 200px;
+  height: 400px;
   padding: 7.5%;
   display: flex;
   justify-content: center;
