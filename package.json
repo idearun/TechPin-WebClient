@@ -66,6 +66,7 @@
     "react-dom": "^15.4.2",
     "react-favicon": "0.0.5",
     "react-google-login": "^2.8.2",
+    "react-lazy-load": "^3.0.12",
     "react-modal": "^1.6.5",
     "react-redux": "^5.0.2",
     "react-router": "3.0.2",

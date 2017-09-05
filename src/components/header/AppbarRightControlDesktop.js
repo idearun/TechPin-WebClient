@@ -1,35 +1,35 @@
 /* eslint react/prop-types: 0 */
-import React, {PropTypes} from 'react';
-import {browserHistory} from 'react-router';
-import FlatButton from 'material-ui/FlatButton';
+import React, { PropTypes } from "react";
+import { browserHistory } from "react-router";
+import FlatButton from "material-ui/FlatButton";
 
-const AppbarRightControlDesktop = ({authenticated, openModal, LogOut, handleDrawerToggle}) => {
+const AppbarRightControlDesktop = ({
+  authenticated,
+  openModal,
+  LogOut,
+  handleDrawerToggle
+}) => {
   return (
     <div>
       <FlatButton
-        label={authenticated ? 'logout' : 'login'}
+        label={authenticated ? "logout" : "login"}
         onClick={() => {
-            if(!authenticated) {
-              openModal()
-            }
-            else {
-              LogOut();
-            }
-          }}
+          if (!authenticated) {
+            openModal();
+          } else {
+            LogOut();
+          }
+        }}
       />
       <FlatButton
-        label="categories"
-        onTouchTap={handleDrawerToggle}
+        label="All Products"
+        onTouchTap={() => browserHistory.push("/all-entries")}
       />
-      <FlatButton
-        label="A~Z"
-        onTouchTap={() => browserHistory.push('/all-entries')}
-      />
+      <FlatButton label="categories" onTouchTap={handleDrawerToggle} />
     </div>
   );
-}
-
-AppbarRightControlDesktop.propTypes = {
 };
 
-export default AppbarRightControlDesktop
+AppbarRightControlDesktop.propTypes = {};
+
+export default AppbarRightControlDesktop;

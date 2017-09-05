@@ -66,7 +66,5 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-Main.propTypes = {
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

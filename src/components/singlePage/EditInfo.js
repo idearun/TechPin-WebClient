@@ -278,6 +278,17 @@ class EditInfo extends React.Component {
                 </IconButton>
               </div>
             </div>
+            <div className="submit-edit">
+              <RaisedButton
+                label="Submit for review"
+                primary={true}
+                onClick={this.handleSubmit}
+              >
+                {this.state.aSyncCall && (
+                  <PulseLoader color="#FFFFFF" size="6px" />
+                )}
+              </RaisedButton>
+            </div>
           </form>
           <div className="submit-edit">
             <RaisedButton
