@@ -68,8 +68,8 @@ div#paper-short-desc {
   color: #555;
 }
 .category-image {
-  height: 100px;
-  width: 100%;
+  width: 130px;
+  min-height: 100px;
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: contain;
