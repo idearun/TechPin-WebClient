@@ -72,6 +72,9 @@
 .detailed-info {
   padding: 0 30px;
 }
+.react-swipeable-view-container {
+  max-height: 250px;
+}
 .single-about span {
   font-size: 20px;
   font-family: "Rubik";
@@ -161,8 +164,7 @@ div.comments > span {
   font-family: "Rubik";
 }
 .contact-info {
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 .contact-info-row {
   display: flex;
@@ -310,13 +312,15 @@ div.single-page-visual-widget:hover {
   background-color: #0d47a1;
   color: white;
 }
+.investment-row {
+  padding: 5px 0;
+}
+
 /*.rate-box.not-selected:hover {
   background-color: #e8e8e8;
   color: #0D47A1;
   transform: none;
 }*/
-
-
 
 @media screen and (max-width: 920px) {
   .single-page {

@@ -9,6 +9,7 @@ import StartupWidgetMoreInfo from "./StartupWidgetMoreInfo";
 import SocialNetworks from "./SocialNetworks";
 import ContactInfo from "./ContactInfo";
 import Rate from "./Rate";
+import AboutAndInvestmentRecords from "./AboutAndInvestmentRecords";
 
 import Paper from "material-ui/Paper";
 import Snackbar from "material-ui/Snackbar";
@@ -29,8 +30,7 @@ class SinglePageMain extends React.Component {
       username: "",
       commentAsyncCall: false,
       snackBarIsOpen: false,
-      snackBarText: "",
-     
+      snackBarText: ""
     };
   }
 
@@ -100,7 +100,6 @@ class SinglePageMain extends React.Component {
     });
   };
 
- 
   render() {
     if (this.state.product) {
       var name = this.state.product.name_en || "";
@@ -125,7 +124,9 @@ class SinglePageMain extends React.Component {
       website: this.state.product.website
     };
 
-    
+    const investedOn = this.state.product.investments_received || [];
+
+    const investmentsDone = this.state.product.investments_done || [];
 
     return (
       <div id="single-page-main-container">
@@ -157,16 +158,18 @@ class SinglePageMain extends React.Component {
             />
           </div>
           <div className="detailed-info">
-            <div className="single-about">
-              <span>{`About ${name}`}</span>
-              <p>{desc}</p>
-            </div>
-          </div>
-          <div className="single-socials">
-            {this.state.product && <SocialNetworks socialData={socialData} />}
+            <AboutAndInvestmentRecords
+              name={name}
+              desc={desc}
+              investedOn={investedOn}
+              investmentsDone={investmentsDone}
+            />
           </div>
           <div className="contact-info">
             <ContactInfo contactData={contactData} />
+          </div>
+          <div className="single-socials">
+            {this.state.product && <SocialNetworks socialData={socialData} />}
           </div>
           <div className="comments">
             <span className="comment-title">Comments</span>
@@ -180,7 +183,7 @@ class SinglePageMain extends React.Component {
             ))}
           </div>
         </Paper>
-       
+
         <Snackbar
           open={this.state.snackBarIsOpen}
           message={this.state.snackBarText}

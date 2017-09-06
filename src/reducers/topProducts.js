@@ -6,7 +6,8 @@ export default function topProducts(state = [], action) {
       return {
         topNew: action.topNew,
         plus10Million: action.plus10Million,
-        between1And10Million: action.between1And10Million
+        between1And10Million: action.between1And10Million,
+        plus100Million: action.plus100Million
       };
       break;
 

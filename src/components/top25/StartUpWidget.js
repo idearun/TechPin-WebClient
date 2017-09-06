@@ -30,17 +30,21 @@ const generateShortDesc = desc => {
 };
 
 const LzLoImage = ({ img }) => (
-  <LazyLoad width={85} offsetVertical={50}>
+  <LazyLoad width={85} offsetVertical={300}>
     <img src={img} alt="logo" style={styles.logo} />
   </LazyLoad>
 );
 
 const StartUpWidget = ({ product, i }) => {
-  const { name_en, average_p_rate, details, slug } = product;
-
+  const { name_en, average_p_rate, details, slug, categories } = product;
+  const is100MillionPlus = categories.indexOf("100m") !== -1;
   return (
-    <div style={styles.container}>
+    <div
+      style={styles.container}
+      className={is100MillionPlus ? "plus-100-million" : ""}
+    >
       <Link to={`${slug}`}>
+        {is100MillionPlus && <span className="ribbon">$100 M+</span>}
         <div className="widget">
           <LzLoImage img={baseUrl + details.logo} />
           <div>

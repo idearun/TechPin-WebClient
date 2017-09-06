@@ -28,7 +28,8 @@ class SinglePage extends React.Component {
       autoCompleteSelection: null,
       proofDocument: null,
       notificationMessage: "",
-      notificationIsOpen: false
+      notificationIsOpen: false,
+      allProductsNameOnly: []
     };
   }
 
@@ -59,7 +60,10 @@ class SinglePage extends React.Component {
     }
     // load all products to use in autocomplete
     this.props.getAllProductsSlimVersion().then(allProducts => {
-      this.setState({ allProducts });
+      this.setState({
+        allProducts,
+        allProductsNameOnly: allProducts.map(item => item.name_en)
+      });
     });
   };
 
@@ -151,7 +155,7 @@ class SinglePage extends React.Component {
   };
 
   isValid = formData => {
-    return Boolean(formData.investor && formData.amount && formData.year);
+    return Boolean(formData.amount && formData.year);
   };
 
   render() {
@@ -186,6 +190,7 @@ class SinglePage extends React.Component {
           title="Add Investment Record"
           actions={actions}
           modal={false}
+          autoScrollBodyContent={true}
           open={this.state.invModalIsOpen}
           onRequestClose={this.closeInvRecordModal}
         >
@@ -194,7 +199,7 @@ class SinglePage extends React.Component {
               floatingLabelText="Investor (*)"
               filter={AutoComplete.caseInsensitiveFilter}
               searchText={this.state.searchText}
-              dataSource={this.state.allProducts.map(item => item.name_en)}
+              dataSource={this.state.allProductsNameOnly}
               openOnFocus={true}
               menuStyle={autoCompleteMenuStyles}
               onNewRequest={this.handleAutoCompleteSelection}

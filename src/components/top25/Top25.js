@@ -54,8 +54,9 @@ export default class Top25 extends React.Component {
       addVersionModalIsOpen: false,
       topProducts: {
         topNew: [],
+        between1And10Million: [],
         plus10Million: [],
-        between1And10Million: []
+        plus100Million: []
       }
     };
   }
@@ -82,8 +83,9 @@ export default class Top25 extends React.Component {
       this.setState({
         topProducts: {
           topNew: topProducts.topNew,
+          between1And10Million: sort(topProducts.between1And10Million, "nps"),
           plus10Million: sort(topProducts.plus10Million, "nps"),
-          between1And10Million: sort(topProducts.between1And10Million, "nps")
+          plus100Million: sort(topProducts.plus100Million, "nps")
         }
       });
     }
@@ -98,7 +100,8 @@ export default class Top25 extends React.Component {
           between1And10Million: sort(
             nextProps.topProducts.between1And10Million,
             "nps"
-          )
+          ),
+          plus100Million: sort(nextProps.topProducts.plus100Million, "nps")
         }
       });
     }
@@ -157,6 +160,10 @@ export default class Top25 extends React.Component {
   };
 
   render() {
+    const Plus10Million = [
+      ...this.state.topProducts.plus100Million,
+      ...this.state.topProducts.plus10Million
+    ];
     return (
       <div className="top25 main-content">
         <SiteDesc />
@@ -165,13 +172,10 @@ export default class Top25 extends React.Component {
           <p className="sub-header">Divided in 3 main categories</p>
         </header>
         <main className="flex-container">
-          <WidgetColumn
-            productList={this.state.topProducts.plus10Million}
-            title="$10 Million+"
-          />
+          <WidgetColumn productList={Plus10Million} title="$10 Million+" />
           <WidgetColumn
             productList={this.state.topProducts.between1And10Million}
-            title="From $1 To $10 Million"
+            title="$1 Million+"
           />
           <WidgetColumn
             productList={this.state.topProducts.topNew}
