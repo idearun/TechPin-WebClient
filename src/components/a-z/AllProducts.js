@@ -10,6 +10,16 @@ const toolbarStyles = {
   color: "white"
 };
 
+const logger = e => {
+  const searchInput = document.getElementById("search");
+  if (document.activeElement !== searchInput) {
+    const pressedKey = String.fromCharCode(e.keyCode);
+    if (/[a-zA-Z0-9-_ ]/.test(pressedKey)) {
+      searchInput.focus();
+    }
+  }
+};
+
 class AllProducts extends React.Component {
   constructor(props) {
     super(props);
@@ -52,7 +62,13 @@ class AllProducts extends React.Component {
         stuck = false;
       }
     };
+
+    window.addEventListener("keydown", logger);
   };
+
+  componentWillUnmount() {
+    window.removeEventListener("keydown", logger);
+  }
 
   searchHandler = (event, value) => {
     this.setState({
