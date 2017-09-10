@@ -1,12 +1,12 @@
 .app-wrapper {
-  background-color: #EFEFEF;
+  background-color: #efefef;
 }
 .top25 {
-  background-color: #EFEFEF;
+  background-color: #efefef;
 }
 
 .top25 .top25-header + main {
-  background-color: #EFEFEF;
+  background-color: #efefef;
 }
 
 .flex-container {
@@ -23,8 +23,8 @@
   align-content: stretch;
   transition: all 0.4s ease-out;
   flex-basis: 30%;
-  border: 1px solid #DBDBDB;
-  background-color: #DBDBDB;
+  border: 1px solid #dbdbdb;
+  background-color: #dbdbdb;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px,
     rgba(0, 0, 0, 0.117647) 0px 1px 4px;
@@ -44,7 +44,7 @@
 .site-desc {
   background-color: white;
   height: 400px;
-  padding: 0  7.5%;
+  padding: 0 7.5%;
   display: flex;
   position: relative;
   justify-content: center;
@@ -78,7 +78,7 @@
 
 .site-desc > div:nth-child(3) > h1 {
   font-family: "Raleway";
-  color: #0D47A1;
+  color: #0d47a1;
   font-size: 1.6em;
   margin-bottom: 10px;
 }
@@ -87,8 +87,14 @@
 }
 
 .site-desc > .vert-divider {
-  border-right: 1px solid #0D47A1;
+  border-right: 1px solid #0d47a1;
   height: 150px;
+}
+
+.site-desc .action-buttons-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .column:hover div.chooser-title > div {
@@ -103,7 +109,7 @@
   text-align: center;
   width: 100%;
   padding: 50px 0 30px 0;
-  background-color: #EFEFEF;
+  background-color: #efefef;
 }
 
 .top25-header span {
@@ -302,7 +308,7 @@ div.before-top25-title {
 .due-diligence {
   padding: 0 34px;
   margin-bottom: 55px;
-  background-color: #EFEFEF;
+  background-color: #efefef;
 }
 
 .due-diligence .input-row {
@@ -342,6 +348,15 @@ div.before-top25-title {
     text-align: center;
     line-height: 1.2em;
   }
+
+  .site-desc .action-buttons-container {
+    justify-content: center;
+  }
+
+  .site-desc .action-buttons-container > * {
+    margin: 10px 0;
+  }
+
   .site-desc img {
     margin-right: 0;
     padding: 0 10px 20px 10px;
@@ -381,5 +396,11 @@ div.before-top25-title {
   .site-desc > div:nth-child(3) {
     font-size: 1.3em;
     padding: 0 2.5%;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .site-desc .action-buttons-container > div:first-child {
+    margin-right: 0 !important;
   }
 }

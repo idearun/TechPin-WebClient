@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../../../images/techpin.svg";
+import RaisedButton from "material-ui/RaisedButton";
 
 const SiteDesc = () => (
   <div className="site-desc">
@@ -9,9 +10,15 @@ const SiteDesc = () => (
     <div className="vert-divider" />
     <div>
       <h1>Dynamic list of startups and accelerators in Iran</h1>
-      <p>
-        Discover the best new startups and products.
-      </p>
+      <p>Discover the best new startups and products.</p>
+      <div className="action-buttons-container">
+        <RaisedButton
+          style={{ marginRight: 20 }}
+          labelStyle={{ top: -3 }}
+          label="add new product"
+        />
+        <RaisedButton labelStyle={{ top: -3 }} label="Due Diligence service" />
+      </div>
     </div>
   </div>
 );
