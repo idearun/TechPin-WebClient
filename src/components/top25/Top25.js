@@ -161,7 +161,7 @@ export default class Top25 extends React.Component {
     ];
     return (
       <div className="top25 main-content">
-        <SiteDesc />
+        <SiteDesc openAddProductModal={this.handleAddProductModalOpen} />
         <header className="top25-header">
           <span>Top Pins</span>
           <p className="sub-header">Divided in 3 main categories</p>

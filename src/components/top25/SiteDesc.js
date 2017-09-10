@@ -1,8 +1,14 @@
 import React from "react";
 import Logo from "../../../images/techpin.svg";
 import RaisedButton from "material-ui/RaisedButton";
+import Scroll from "react-scroll";
 
-const SiteDesc = () => (
+const scrollToDueDiligence = () => {
+  let scroll = Scroll.animateScroll;
+  scroll.scrollToBottom('due-diligence');
+};
+
+const SiteDesc = ({ openAddProductModal }) => (
   <div className="site-desc">
     <div>
       <img src={Logo} alt="techpin logo" />
@@ -13,11 +19,17 @@ const SiteDesc = () => (
       <p>Discover the best new startups and products.</p>
       <div className="action-buttons-container">
         <RaisedButton
+          primary
+          onClick={openAddProductModal}
           style={{ marginRight: 20 }}
           labelStyle={{ top: -3 }}
-          label="add new product"
+          label="add new product or company"
         />
-        <RaisedButton labelStyle={{ top: -3 }} label="Due Diligence service" />
+        <RaisedButton
+          onClick={scrollToDueDiligence}
+          labelStyle={{ top: -3 }}
+          label="Due Diligence service"
+        />
       </div>
     </div>
   </div>

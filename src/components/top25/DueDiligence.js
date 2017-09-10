@@ -5,7 +5,7 @@ import TextField from "material-ui/TextField";
 import * as actions from "../../actions/actionCreators";
 import { connect } from "react-redux";
 import Snackbar from "material-ui/Snackbar";
-// import { appendToFormData } from "../../helpers/helpers";
+import { Element } from "react-scroll";
 
 class DueDiligence extends Component {
   constructor(props) {
@@ -89,46 +89,52 @@ class DueDiligence extends Component {
   render() {
     return (
       <div className="due-diligence">
-        <Card>
-          <CardTitle title="Due Diligence" subtitle="A Service From TechPin" />
-          <CardText>
-            <div className="input-row">
-              <TextField
-                value={this.state.formData.name}
-                floatingLabelText="Full Name"
-                onChange={(_, val) => this.updateFormData(val, "name")}
-              />
-              <TextField
-                value={this.state.formData.email}
-                floatingLabelText="Email"
-                type="email"
-                onChange={(_, val) => this.updateFormData(val, "email")}
-              />
-              <TextField
-                value={this.state.formData.phone_number}
-                floatingLabelText="Phone number"
-                onChange={(_, val) => this.updateFormData(val, "phone_number")}
-              />
-            </div>
-            <TextField
-              value={this.state.formData.company_description}
-              floatingLabelText="Company description"
-              fullWidth
-              multiLine
-              rows={3}
-              onChange={(_, val) =>
-                this.updateFormData(val, "company_description")}
+        <Element name="due-diligence">
+          <Card>
+            <CardTitle
+              title="Due Diligence"
+              subtitle="A Service From TechPin"
             />
-          </CardText>
-          <CardActions>
-            <RaisedButton
-              primary
-              label="Send"
-              disabled={this.state.aSyncCall}
-              onClick={this.handleSubmit}
-            />
-          </CardActions>
-        </Card>
+            <CardText>
+              <div className="input-row">
+                <TextField
+                  value={this.state.formData.name}
+                  floatingLabelText="Full Name"
+                  onChange={(_, val) => this.updateFormData(val, "name")}
+                />
+                <TextField
+                  value={this.state.formData.email}
+                  floatingLabelText="Email"
+                  type="email"
+                  onChange={(_, val) => this.updateFormData(val, "email")}
+                />
+                <TextField
+                  value={this.state.formData.phone_number}
+                  floatingLabelText="Phone number"
+                  onChange={(_, val) =>
+                    this.updateFormData(val, "phone_number")}
+                />
+              </div>
+              <TextField
+                value={this.state.formData.company_description}
+                floatingLabelText="Company description"
+                fullWidth
+                multiLine
+                rows={3}
+                onChange={(_, val) =>
+                  this.updateFormData(val, "company_description")}
+              />
+            </CardText>
+            <CardActions>
+              <RaisedButton
+                primary
+                label="Send"
+                disabled={this.state.aSyncCall}
+                onClick={this.handleSubmit}
+              />
+            </CardActions>
+          </Card>
+        </Element>
         <Snackbar
           open={this.state.notificationIsOpen}
           message={this.state.notificationMessage}
