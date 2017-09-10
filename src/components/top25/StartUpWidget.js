@@ -31,7 +31,7 @@ const generateShortDesc = desc => {
 
 const LzLoImage = ({ img }) => (
   <LazyLoad width={85} offsetVertical={300}>
-    <img src={img} alt="logo" style={styles.logo} />
+    <img src={img} style={styles.logo} />
   </LazyLoad>
 );
 

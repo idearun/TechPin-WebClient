@@ -34,7 +34,6 @@ function successfulFetchUserRates(res, slug) {
 }
 
 function initialLoadTop25ActionCreator(response) {
-  console.log(response);
   return {
     type: actionTypes.INITIAL_TOP25_LOAD,
     topNew: response.top_new,

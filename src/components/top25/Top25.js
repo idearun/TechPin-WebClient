@@ -7,7 +7,6 @@ import WidgetColumn from "./WidgetColumn";
 import sort from "../../helpers/helpers";
 import SiteDesc from "./SiteDesc";
 import DueDiligence from "./DueDiligence";
-import StartUpWidget from "./StartUpWidget";
 import ContentAdd from "material-ui/svg-icons/content/add";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 import Snackbar from "material-ui/Snackbar";
@@ -26,10 +25,6 @@ function debounce(func, wait, immediate) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
-}
-
-function generateListItem(product, i) {
-  return <StartUpWidget product={product} key={product.name_en} i={i} />;
 }
 
 const modalStyle = {
@@ -129,7 +124,7 @@ export default class Top25 extends React.Component {
             "px";
           floatingButton.style.bottom = "";
         }
-      }, 25),
+      }, 10),
       {
         passive: true
       }

@@ -1,5 +1,12 @@
+.app-wrapper {
+  background-color: #EFEFEF;
+}
 .top25 {
-  background-color: #fff;
+  background-color: #EFEFEF;
+}
+
+.top25 .top25-header + main {
+  background-color: #EFEFEF;
 }
 
 .flex-container {
@@ -16,8 +23,8 @@
   align-content: stretch;
   transition: all 0.4s ease-out;
   flex-basis: 30%;
-  border: 1px solid #e8e8e8;
-  background-color: #e8e8e8;
+  border: 1px solid #DBDBDB;
+  background-color: #DBDBDB;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px,
     rgba(0, 0, 0, 0.117647) 0px 1px 4px;
@@ -35,10 +42,11 @@
 }
 
 .site-desc {
-  background-color: #54c0fe;
+  background-color: white;
   height: 400px;
-  padding: 7.5%;
+  padding: 0  7.5%;
   display: flex;
+  position: relative;
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -53,13 +61,15 @@
 
 .site-desc > div:nth-child(1) {
   margin-right: 5%;
+  min-width: 250px;
+  flex: 0;
 }
 
 .site-desc > div:nth-child(3) {
   font-family: "Raleway";
-  flex-basis: 75%;
+  flex: 1;
   font-size: 1.4em;
-  padding: 0 7.5%;
+  padding-left: 5%;
   line-height: 1.55em;
   text-align: justify;
   color: #424242;
@@ -68,13 +78,16 @@
 
 .site-desc > div:nth-child(3) > h1 {
   font-family: "Raleway";
-  color: black;
+  color: #0D47A1;
   font-size: 1.6em;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+.site-desc > div:nth-child(3) > p {
+  color: grey;
 }
 
 .site-desc > .vert-divider {
-  border-right: 1px solid white;
+  border-right: 1px solid #0D47A1;
   height: 150px;
 }
 
@@ -89,8 +102,8 @@
 .top25-header {
   text-align: center;
   width: 100%;
-  padding: 30px 0;
-  margin-top: 20px;
+  padding: 50px 0 30px 0;
+  background-color: #EFEFEF;
 }
 
 .top25-header span {
@@ -149,7 +162,7 @@
   font-family: "Rubik";
   padding: 5px;
   font-size: 1.6;
-  color: #FFFFFF;
+  color: #ffffff;
   background: red;
   box-shadow: -1px 2px 3px rgba(0, 0, 0, 0.5);
 }
@@ -171,8 +184,8 @@
 
 .ribbon::after {
   width: 0;
-	height: 0;
-	border-top: 7.5px solid #2D2828;
+  height: 0;
+  border-top: 7.5px solid #2d2828;
   border-right: 7.5px solid transparent;
   bottom: -7.5px;
   right: -7.5px;
@@ -196,8 +209,18 @@
 
 .widget img {
   width: 85px;
-  height: 85px;
-  /* background-color: grey; */
+  height: auto;
+}
+
+.widget > .LazyLoad.is-visible {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.widget > .LazyLoad {
+  width: 85px;
+  min-width: 85px;
 }
 
 .widget:hover div.widget-title {
@@ -222,7 +245,7 @@ div.widget-title {
   margin-left: 30px;
   margin-bottom: 10px;
   color: #777;
-  height: 33px;
+  height: 40px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -279,6 +302,7 @@ div.before-top25-title {
 .due-diligence {
   padding: 0 34px;
   margin-bottom: 55px;
+  background-color: #EFEFEF;
 }
 
 .due-diligence .input-row {
@@ -302,15 +326,26 @@ div.before-top25-title {
   .site-desc {
     flex-wrap: wrap;
   }
-  .site-desc h1 {
+  .site-desc p {
     display: none;
   }
   .site-desc > div:nth-child(1) {
     padding: 0 10%;
     margin-bottom: 20px;
+    flex-basis: 30%;
+  }
+  .site-desc > div:nth-child(3) {
+    flex-basis: 100%;
+  }
+  .site-desc > div:nth-child(3) > h1 {
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.2em;
   }
   .site-desc img {
     margin-right: 0;
+    padding: 0 10px 20px 10px;
+    border-bottom: 1px solid white;
   }
   .site-desc > .vert-divider {
     display: none;
