@@ -1,15 +1,16 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from "react";
 
-import NavigationMoreVert from 'material-ui/svg-icons/navigation/more-vert';
-import IconButton from 'material-ui/IconButton';
+import NavigationMoreVert from "material-ui/svg-icons/navigation/more-vert";
+import IconButton from "material-ui/IconButton";
 
-const AppbarRightControlMobile = ({handleDrawerToggle}) => {
+const AppbarRightControlMobile = ({ handleDrawerToggle }) => {
   return (
-    <IconButton><NavigationMoreVert color='white' onClick={handleDrawerToggle}/></IconButton>
+    <IconButton onClick={handleDrawerToggle}>
+      <NavigationMoreVert color="white" />
+    </IconButton>
   );
-}
-
-AppbarRightControlMobile.propTypes = {
 };
 
-export default AppbarRightControlMobile
+AppbarRightControlMobile.propTypes = {};
+
+export default AppbarRightControlMobile;

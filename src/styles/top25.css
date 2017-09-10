@@ -399,7 +399,7 @@ div.before-top25-title {
   }
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 565px) {
   .site-desc .action-buttons-container > div:first-child {
     margin-right: 0 !important;
   }

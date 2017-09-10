@@ -22,10 +22,19 @@ const AppbarRightControlDesktop = ({
         }}
       />
       <FlatButton
-        label="All Products"
+        label="All Products / Companies"
         onTouchTap={() => browserHistory.push("/all-entries")}
       />
-      <FlatButton label="categories" onTouchTap={handleDrawerToggle} />
+      <FlatButton
+        label="categories / markets"
+        onTouchTap={handleDrawerToggle}
+      />
+      <FlatButton
+        label="Blog"
+        href="http://blog.techpin.ir"
+        target="_blank"
+        style={{ color: "white" }}
+      />
     </div>
   );
 };
