@@ -87,13 +87,16 @@ class DueDiligence extends Component {
   };
 
   render() {
+    const className = this.props.show
+      ? "due-diligence show"
+      : "due-diligence hide";
     return (
-      <div className="due-diligence">
+      <div className={className}>
         <Element name="due-diligence">
           <Card>
             <CardTitle
-              title="Due Diligence"
-              subtitle="A Service From TechPin"
+              title="Contact Us"
+              subtitle="Please fill the form"
             />
             <CardText>
               <div className="input-row">

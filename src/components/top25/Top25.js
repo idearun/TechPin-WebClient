@@ -6,26 +6,12 @@ import EditInfo from "../singlePage/EditInfo";
 import WidgetColumn from "./WidgetColumn";
 import sort from "../../helpers/helpers";
 import SiteDesc from "./SiteDesc";
-import DueDiligence from "./DueDiligence";
+
 import ContentAdd from "material-ui/svg-icons/content/add";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 import Snackbar from "material-ui/Snackbar";
-
-function debounce(func, wait, immediate) {
-  var timeout;
-  return function() {
-    var context = this,
-      args = arguments;
-    var later = function() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-}
+import DueDiligenceInfo from "./DueDiligenceInfo";
+import { debounce } from "../../helpers/helpers";
 
 const modalStyle = {
   overlay: {
@@ -177,7 +163,7 @@ export default class Top25 extends React.Component {
             title="New"
           />
         </main>
-        <DueDiligence />
+        <DueDiligenceInfo />
         <FloatingActionButton
           secondary={true}
           className="floating-action-button"

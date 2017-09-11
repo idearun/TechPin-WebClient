@@ -1,6 +1,6 @@
-export function sortByName(a,b) {
-  const nameA = a.name_en.toLowerCase()
-  const nameB = b.name_en.toLowerCase()
+export function sortByName(a, b) {
+  const nameA = a.name_en.toLowerCase();
+  const nameB = b.name_en.toLowerCase();
   if (nameA > nameB) {
     return 1;
   } else if (nameA < nameB) {
@@ -22,36 +22,36 @@ export function sortByName(a,b) {
 // }
 
 //this is temporary sort method for nps
-function sortByNps(a,b) {
-  if ((a.rate_count - b.rate_count) < 0) {
+function sortByNps(a, b) {
+  if (a.rate_count - b.rate_count < 0) {
     return 1;
-  } else if ((a.rate_count - b.rate_count) > 0) {
+  } else if (a.rate_count - b.rate_count > 0) {
     return -1;
   } else {
-    return sortByName(a,b)
+    return sortByName(a, b);
   }
 }
 
-function sortByRating(a,b) {
-  if ((a.average_p_rate - b.average_p_rate) < 0) {
+function sortByRating(a, b) {
+  if (a.average_p_rate - b.average_p_rate < 0) {
     return 1;
-  } else if ((a.average_p_rate - b.average_p_rate) > 0) {
+  } else if (a.average_p_rate - b.average_p_rate > 0) {
     return -1;
   } else {
-    return sortByName(a,b)
+    return sortByName(a, b);
   }
 }
 
 export default function sort(array, sortBy) {
   return array.sort((a, b) => {
-    if (sortBy === 'name') {
+    if (sortBy === "name") {
       return sortByName(a, b);
-    } else if (sortBy === 'nps') {
+    } else if (sortBy === "nps") {
       return sortByNps(a, b);
     } else {
       return sortByRating(a, b);
     }
-  })
+  });
 }
 
 export function appendToFormData(values) {
@@ -62,4 +62,20 @@ export function appendToFormData(values) {
     }
   }
   return formData;
+}
+
+export function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+    var context = this,
+      args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
 }

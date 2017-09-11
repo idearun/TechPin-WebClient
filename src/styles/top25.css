@@ -305,10 +305,33 @@ div.before-top25-title {
   flex-direction: column;
 }
 
-.due-diligence {
+.due-diligence-info {
   padding: 0 34px;
   margin-bottom: 55px;
   background-color: #efefef;
+  will-change: height;
+  transition: all 0.5s ease-out;
+}
+.due-diligence {
+  background-color: #efefef;
+  will-change: height;
+  transition: all 0.5s ease-out;
+}
+.due-diligence > div > div {
+  box-shadow: none !important;
+  background-color: red;
+}
+
+.due-diligence.show {
+  height: auto;
+  opacity: 1;
+  transition: all 0.5s ease-out;
+}
+
+.due-diligence.hide {
+  transition: all 0.5s ease-out;
+  height: 0;
+  opacity: 0.01;
 }
 
 .due-diligence .input-row {
@@ -321,9 +344,9 @@ div.before-top25-title {
   min-width: 150px;
 }
 
-.due-diligence > div:first-child {
+/* .due-diligence > div:first-child {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 6px, rgba(0, 0, 0, 0.2) 0px 1px 4px !important;
-}
+} */
 
 @media screen and (max-width: 1170px) {
   .widget {
