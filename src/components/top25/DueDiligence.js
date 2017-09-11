@@ -6,6 +6,16 @@ import * as actions from "../../actions/actionCreators";
 import { connect } from "react-redux";
 import Snackbar from "material-ui/Snackbar";
 import { Element } from "react-scroll";
+import DropDownMenu from "material-ui/DropDownMenu";
+import MenuItem from "material-ui/MenuItem";
+
+const selectOptionsValues = [
+  "due-diligence",
+  "project",
+  "information",
+  "consulting",
+  "feedback"
+];
 
 class DueDiligence extends Component {
   constructor(props) {
@@ -16,7 +26,8 @@ class DueDiligence extends Component {
         name: "",
         email: "",
         phone_number: "",
-        company_description: ""
+        company_description: "",
+        type: 0
       },
       notificationIsOpen: false,
       notificationMessage: ""
@@ -37,11 +48,7 @@ class DueDiligence extends Component {
 
   isValid = ({ name, email, company_description, phone_number }) => {
     return Boolean(
-      name &&
-        email &&
-        this.validateEmailAddress(email) &&
-        company_description &&
-        phone_number
+      name && email && this.validateEmailAddress(email) && company_description
     );
   };
 
@@ -53,6 +60,7 @@ class DueDiligence extends Component {
   handleSubmit = () => {
     if (this.isValid(this.state.formData)) {
       const formData = this.state.formData;
+      formData.type = selectOptionsValues[formData.type];
       this.setState({ aSyncCall: true });
       this.props
         .contactUs(formData)
@@ -62,7 +70,9 @@ class DueDiligence extends Component {
               name: "",
               email: "",
               phone_number: "",
-              company_description: ""
+              company_description: "",
+              company_name: "",
+              type: 0
             },
             aSyncCall: false,
             notificationIsOpen: true,
@@ -94,36 +104,68 @@ class DueDiligence extends Component {
       <div className={className}>
         <Element name="due-diligence">
           <Card>
-            <CardTitle
-              title="Contact Us"
-              subtitle="Please fill the form"
-            />
+            <CardTitle title="Contact Us" subtitle="Please fill the form" />
             <CardText>
+              <DropDownMenu
+                value={this.state.formData.type}
+                style={{ width: 350 }}
+                iconStyle={{ right: 0 }}
+                underlineStyle={{ margin: 0 }}
+                labelStyle={{ padding: 0, color: "rgba(0,0,0,0.3)" }}
+                onChange={(_, val) => this.updateFormData(val, "type")}
+              >
+                <MenuItem
+                  value={0}
+                  disabled
+                  primaryText="What Is This In regards To?"
+                />
+                <MenuItem value={1} primaryText="Due Diligence Service" />
+                <MenuItem value={2} primaryText="Start A Project With Us" />
+                <MenuItem
+                  value={3}
+                  primaryText="I Want To Share Information About a Start-up Or Investment"
+                />
+                <MenuItem value={4} primaryText="Consult With Us" />
+                <MenuItem value={5} primaryText="Feedback" />
+              </DropDownMenu>
               <div className="input-row">
                 <TextField
                   value={this.state.formData.name}
-                  floatingLabelText="Full Name"
+                  floatingLabelText="Your Name"
+                  style={{ width: 350 }}
                   onChange={(_, val) => this.updateFormData(val, "name")}
                 />
                 <TextField
                   value={this.state.formData.email}
-                  floatingLabelText="Email"
+                  floatingLabelText="Your Email"
+                  style={{ width: 350, marginLeft: 20 }}
                   type="email"
                   onChange={(_, val) => this.updateFormData(val, "email")}
                 />
+              </div>
+              <div className="input-row">
                 <TextField
                   value={this.state.formData.phone_number}
-                  floatingLabelText="Phone number"
+                  style={{ width: 350 }}
+                  floatingLabelText="Your Phone number"
                   onChange={(_, val) =>
                     this.updateFormData(val, "phone_number")}
+                />
+                <TextField
+                  value={this.state.formData.company_name}
+                  style={{ width: 350, marginLeft: 20 }}
+                  floatingLabelText="Company Name"
+                  onChange={(_, val) =>
+                    this.updateFormData(val, "company_name")}
                 />
               </div>
               <TextField
                 value={this.state.formData.company_description}
-                floatingLabelText="Company description"
+                floatingLabelText="Description"
                 fullWidth
                 multiLine
                 rows={3}
+                fullWidth
                 onChange={(_, val) =>
                   this.updateFormData(val, "company_description")}
               />

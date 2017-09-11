@@ -30,6 +30,10 @@ export default class techPinApi {
     // .then(res => console.log(res));
   }
 
+  static getDynamicTextContents() {
+    return axios.get(`${baseApiUrl}/site-info/list/`);
+  }
+
   static getAllProductsSlimVersion() {
     return axios.get(`${baseApiUrl}/products/names`);
   }

@@ -120,6 +120,18 @@ export function loadIntialProductTypes() {
   };
 }
 
+// dynamic text content
+export function loadDynamicTextContents() {
+  return dispatch => {
+    return techpinApi.getDynamicTextContents().then(response => {
+      dispatch({
+        type: actionTypes.LOAD_DYNAMIC_CONTENT_SUCCESS,
+        items: response.data.items
+      });
+    });
+  };
+}
+
 //third initial call
 export function initialLoadTop25() {
   return dispatch => {

@@ -9,6 +9,7 @@ import topProducts from './topProducts';
 import singleProducts from './singleProducts';
 import userRates from './userRates';
 import byCategory from './byCategory';
+import dynamicTextContents from './dynamicTextContents';
 
 const rootReducer = combineReducers({
   auth,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   productTypes,
   topProducts,
   singleProducts,
+  dynamicTextContents,
   routing: routerReducer
 });
 

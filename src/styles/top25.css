@@ -326,23 +326,20 @@ div.before-top25-title {
   height: auto;
   opacity: 1;
   transition: all 0.5s ease-out;
+  
 }
 
 .due-diligence.hide {
   transition: all 0.5s ease-out;
-  height: 0;
+  height: 0 !important; 
   opacity: 0.01;
+  visibility: hidden;
+  display: none;
 }
 
-.due-diligence .input-row {
-  display: flex;
-  justify-content: space-between;
-}
+/* .due-diligence .input-row {
+} */
 
-.due-diligence .input-row > * {
-  flex-basis: 30%;
-  min-width: 150px;
-}
 
 /* .due-diligence > div:first-child {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 6px, rgba(0, 0, 0, 0.2) 0px 1px 4px !important;

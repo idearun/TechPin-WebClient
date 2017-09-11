@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import RaisedButton from "material-ui/RaisedButton";
 import DueDiligence from "./DueDiligence";
 import { Card, CardActions, CardTitle, CardText } from "material-ui/Card";
+import { connect } from "react-redux";
 
-const InfoText = ({ title, text }) => <div />;
-
-export default class DueDiligenceInfo extends Component {
+class DueDiligenceInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,22 +16,23 @@ export default class DueDiligenceInfo extends Component {
 
   render() {
     const { showContactForm } = this.state;
+    const { title, text, button_text, sub_title } = this.props;
     return (
       <div className="due-diligence-info">
         <Card>
-          <CardTitle title="Due Diligence" subtitle="A Service From TechPin" />
-          <CardText style={{fontSize: '1.1em', color: '#555555'}}>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              eveniet deleniti, modi culpa sit quod, recusandae maxime
-              necessitatibus debitis unde quaerat porro eius doloribus facere
-              harum eum facilis. Quia, debitis.
+          <CardTitle
+            title={title}
+            subtitle={sub_title ? sub_title : "A Service From TechPin"}
+          />
+          <CardText style={{ fontSize: "1.1em", color: "#555555" }}>
+            <p style={{ fontFamily: "Rubik", whiteSpace: "pre-line" }}>
+              {text}
             </p>
           </CardText>
           <CardActions>
             {!showContactForm && (
               <RaisedButton
-                label="Contact us"
+                label={button_text || " "}
                 fullWidth={true}
                 primary
                 onClick={this.renderForm}
@@ -45,3 +45,7 @@ export default class DueDiligenceInfo extends Component {
     );
   }
 }
+
+export default connect(state => ({ ...state.dynamicTextContents.contact_us }))(
+  DueDiligenceInfo
+);

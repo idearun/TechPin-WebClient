@@ -12,6 +12,7 @@ import FloatingActionButton from "material-ui/FloatingActionButton";
 import Snackbar from "material-ui/Snackbar";
 import DueDiligenceInfo from "./DueDiligenceInfo";
 import { debounce } from "../../helpers/helpers";
+import { connect } from "react-redux";
 
 const modalStyle = {
   overlay: {
@@ -24,7 +25,7 @@ const modalStyle = {
   }
 };
 
-export default class Top25 extends React.Component {
+class Top25 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -145,12 +146,13 @@ export default class Top25 extends React.Component {
       ...this.state.topProducts.plus100Million,
       ...this.state.topProducts.plus10Million
     ];
+    const { title, text } = this.props;
     return (
       <div className="top25 main-content">
         <SiteDesc openAddProductModal={this.handleAddProductModalOpen} />
         <header className="top25-header">
-          <span>Top Pins</span>
-          <p className="sub-header">Divided in 3 main categories</p>
+          <span>{title}</span>
+          <p className="sub-header">{text}</p>
         </header>
         <main className="flex-container">
           <WidgetColumn productList={Plus10Million} title="$10 Million+" />
@@ -203,10 +205,14 @@ export default class Top25 extends React.Component {
         <Snackbar
           open={this.state.snackbarIsOpen}
           message={this.state.snackbarText}
-          autoHideDuration={4000}
+          autoHideDuration={7000}
           onRequestClose={this.handleSnackbarRequestClose}
         />
       </div>
     );
   }
 }
+
+export default connect(state => ({
+  ...state.dynamicTextContents.main_section
+}))(Top25);

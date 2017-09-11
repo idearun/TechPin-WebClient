@@ -10,6 +10,7 @@ const defaultState = {
   userRates: {},
   allProducts: {},
   categories: [],
+  dynamicTextContents: {},
   auth: {authenticated: false},
 };
 
