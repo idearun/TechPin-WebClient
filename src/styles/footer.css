@@ -45,7 +45,14 @@ section.copyright ul li a:hover{
   display: inline-block;
   margin-right: 30px;
   font-family: 'Dosis';
-
+}
+.footer .passion {
+  padding: 10px 0;
+  color: white;
+  font-family: "Rubik";
+}
+.footer .passion a {
+  color: aqua;
 }
 @media screen and (max-width: 450px) {
   .footer {

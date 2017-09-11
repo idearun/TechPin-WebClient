@@ -26,9 +26,17 @@ const Footer = props => {
             <Link to="contribute">Contribute</Link>
           </li>
           <li>
-            <a href="http://blog.techpin.ir" target='_blank'>Blog</a>
+            <a href="http://blog.techpin.ir" target="_blank">
+              Blog
+            </a>
           </li>
         </ul>
+      </section>
+      <section className='passion'>
+        Made with passion & Powered by{" "}
+        <a href="http://www.idearun.co" target="_blank">
+          Idearun Start-up Studio
+        </a>
       </section>
     </div>
   );
