@@ -30,7 +30,7 @@ const modalStyle = {
   }
 };
 
-const headerBreakPoint = 800;
+const headerBreakPoint = 860;
 
 class Header extends React.Component {
   constructor(props) {
