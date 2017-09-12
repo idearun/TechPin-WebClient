@@ -10,10 +10,32 @@ import CircularProgress from "material-ui/CircularProgress";
 import AutoComplete from "material-ui/AutoComplete";
 import Snackbar from "material-ui/Snackbar";
 import { appendToFormData } from "../../helpers/helpers";
+
 const autoCompleteMenuStyles = {
   maxHeight: "200px",
   overflowY: "auto"
 };
+
+const currentYear = new Date().getFullYear();
+const years = [];
+for (let year = 1990; year <= currentYear; year++) {
+  years.push(String(year));
+}
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
 
 class SinglePage extends React.Component {
   constructor(props) {
@@ -29,7 +51,9 @@ class SinglePage extends React.Component {
       proofDocument: null,
       notificationMessage: "",
       notificationIsOpen: false,
-      allProductsNameOnly: []
+      allProductsNameOnly: [],
+      yearSearchTerm: "",
+      monthSearchTerm: ""
     };
   }
 
@@ -64,6 +88,29 @@ class SinglePage extends React.Component {
         allProducts,
         allProductsNameOnly: allProducts.map(item => item.name_en)
       });
+    });
+  };
+
+  handleYearSelection = selectedYear => {
+    this.setState({
+      addInvRecFormData: { ...this.state.addInvRecFormData, year: selectedYear }
+    });
+  };
+
+  updateYearSearchTerm = input => {
+    this.setState({ yearSearchTerm: input });
+  };
+
+  updateMonthSearchTerm = input => {
+    this.setState({ monthSearchTerm: input });
+  };
+
+  handleMonthSelection = selectedMonth => {
+    this.setState({
+      addInvRecFormData: {
+        ...this.state.addInvRecFormData,
+        month: selectedMonth
+      }
     });
   };
 
@@ -155,7 +202,7 @@ class SinglePage extends React.Component {
   };
 
   isValid = formData => {
-    return Boolean(formData.amount && formData.year);
+    return Boolean(formData.investor);
   };
 
   render() {
@@ -200,28 +247,50 @@ class SinglePage extends React.Component {
               filter={AutoComplete.caseInsensitiveFilter}
               searchText={this.state.searchText}
               dataSource={this.state.allProductsNameOnly}
-              openOnFocus={true}
+              openOnFocus
               menuStyle={autoCompleteMenuStyles}
               onNewRequest={this.handleAutoCompleteSelection}
               fullWidth
             />
             <TextField
-              floatingLabelText="How Much Investment $ (*)"
+              floatingLabelText="How Much Investment $"
               type="number"
               fullWidth
               onChange={(_, val) => this.updateInvRecFormData(val, "amount")}
             />
-            <TextField
+            <AutoComplete
+              filter={AutoComplete.caseInsensitiveFilter}
+              floatingLabelText="Year Of Investment"
+              searchText={this.state.yearSearchTerm}
+              dataSource={years}
+              openOnFocus
+              onUpdateInput={this.updateYearSearchTerm}
+              menuStyle={autoCompleteMenuStyles}
+              onNewRequest={this.handleYearSelection}
+              fullWidth
+            />
+            {/* <TextField
               floatingLabelText="Year Of Investment (*)"
               type="number"
               fullWidth
               onChange={(_, val) => this.updateInvRecFormData(val, "year")}
-            />
-            <TextField
+            /> */}
+            {/* <TextField
               floatingLabelText="Month"
               type="number"
               fullWidth
               onChange={(_, val) => this.updateInvRecFormData(val, "month")}
+            /> */}
+            <AutoComplete
+              filter={AutoComplete.caseInsensitiveFilter}
+              floatingLabelText="Month Of Investment"
+              searchText={this.state.monthSearchTerm}
+              dataSource={months}
+              openOnFocus
+              onUpdateInput={this.updateMonthSearchTerm}
+              menuStyle={autoCompleteMenuStyles}
+              onNewRequest={this.handleMonthSelection}
+              fullWidth
             />
             <TextField
               fullWidth

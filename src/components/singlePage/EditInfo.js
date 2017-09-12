@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { browserHistory } from "react-router";
 // import * as actions from '../actions/actionCreators';
-
+import AutoComplete from "material-ui/AutoComplete";
 import SinglePageToolbar from "./SinglePageToolbar";
 import StartupWidgetMoreInfo from "./StartupWidgetMoreInfo";
 
@@ -21,6 +21,16 @@ const editFormSubmitSuccessFeedbackText =
   "Thanks, your info will be shown after approval";
 const editFormSubmitFailedFeedbackText = "Oops, please try again";
 
+const empRange = [
+  "0-5",
+  "5-10",
+  "10-20",
+  "20-50",
+  "50-200",
+  "200-1000",
+  "1000+"
+];
+
 class EditInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -29,9 +39,22 @@ class EditInfo extends React.Component {
       responseText: "",
       formData: {},
       aSyncCall: false,
-      selectedLogoFilename: null
+      selectedLogoFilename: null,
+      empRangeSearchTerm: ""
     };
   }
+
+  updateEmpRangeSearchTerm = chosenOption => {
+    this.setState({ empRangeSearchTerm: chosenOption });
+  };
+
+  setEmpRangeFormData = option => {
+    const formVals = {};
+    formVals.employees = option;
+    const prevFormData = this.state.formData;
+    const newFormData = Object.assign({}, prevFormData, formVals);
+    this.setState({ formData: newFormData });
+  };
 
   textFieldChangeHandler = (event, value) => {
     const formVals = {};
@@ -41,8 +64,10 @@ class EditInfo extends React.Component {
     this.setState({ formData: newFormData });
   };
 
-  valid = values => {
+  valid = (values, logoName) => {
     if (values.length >= 1) {
+      return true;
+    } else if (logoName !== "") {
       return true;
     }
     return false;
@@ -63,7 +88,7 @@ class EditInfo extends React.Component {
     let formData = new FormData();
     const keys = Object.keys(this.state.formData);
     const values = Object.values(this.state.formData);
-    if (this.valid(values)) {
+    if (this.valid(values, this.state.selectedLogoFilename)) {
       this.setState({ formIsValid: true, aSyncCall: true });
       for (let i = 0; i < keys.length; i++) {
         formData.append(keys[i], values[i]);
@@ -178,12 +203,27 @@ class EditInfo extends React.Component {
               type="email"
               onChange={this.textFieldChangeHandler}
             />
-            <TextField
+            {/* <TextField
               id="employees"
               defaultValue={product.product.details.employees}
               className="three-field"
               floatingLabelText="Number of Employees"
               onChange={this.textFieldChangeHandler}
+            /> */}
+            <AutoComplete
+              id="employees"
+              hintText="Type A Number"
+              floatingLabelText="Number of Employees"
+              dataSource={empRange}
+              defaultValue={product.product.details.employees}
+              filter={AutoComplete.caseInsensitiveFilter}
+              searchText={this.state.empRangeSearchTerm}
+              maxSearchResults={5}
+              style={{ width: "30%" }}
+              textFieldStyle={{ width: "auto" }}
+              onUpdateInput={this.updateEmpRangeSearchTerm}
+              onNewRequest={this.setEmpRangeFormData}
+              openOnFocus
             />
             <TextField
               id="year"
@@ -277,17 +317,6 @@ class EditInfo extends React.Component {
                   />
                 </IconButton>
               </div>
-            </div>
-            <div className="submit-edit">
-              <RaisedButton
-                label="Submit for review"
-                primary={true}
-                onClick={this.handleSubmit}
-              >
-                {this.state.aSyncCall && (
-                  <PulseLoader color="#FFFFFF" size="6px" />
-                )}
-              </RaisedButton>
             </div>
           </form>
           <div className="submit-edit">
