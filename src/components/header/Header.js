@@ -42,7 +42,9 @@ class Header extends React.Component {
       modalIsOpen: false,
       drawerIsOpen: false,
       snackBarOpen: false,
-      responseText: ""
+      responseText: "",
+      searchTerm: "",
+      searchResult: []
     };
   }
 
@@ -75,6 +77,13 @@ class Header extends React.Component {
     this.setState({ drawerIsOpen: !this.state.drawerIsOpen });
 
   handleDrawerClose = () => this.setState({ drawerIsOpen: false });
+
+  updateSearchTerm = searchTerm => {
+    console.log(searchTerm);
+    this.setState({
+      searchResult: [...Array(Math.random * 10)].map((__, i) => "result " + i)
+    });
+  };
 
   handleSignUp = formData => {
     if (this.state.view === "login") {
@@ -179,6 +188,10 @@ class Header extends React.Component {
                 openModal={this.openModal}
                 handleDrawerToggle={this.handleDrawerToggle}
                 LogOut={this.handleLogOut}
+                onSearchRequest={this.onSearchRequest}
+                onSearchTermUpdate={this.updateSearchTerm}
+                searchTerm={this.state.searchTerm}
+                searchResult={this.state.searchResult}
               />
             ) : (
               <AppbarRightControlMobile
