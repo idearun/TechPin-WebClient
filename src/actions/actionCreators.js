@@ -188,7 +188,7 @@ export function authenticate(username, password) {
             "api-token": response.data["api-token"],
             username: response.data.user.username
           };
-          sessionStorage.setItem("techpin", JSON.stringify(authData));
+          localStorage.setItem("techpin", JSON.stringify(authData));
           dispatch(successfulLogin(response.data));
         }
         console.clear();
@@ -383,7 +383,7 @@ export function OAuthLogIn(payLoad) {
           "api-token": response.data["api-token"],
           username: response.data.user.username
         };
-        sessionStorage.setItem("techpin", JSON.stringify(authData));
+        localStorage.setItem("techpin", JSON.stringify(authData));
         dispatch(successfulLogin(response.data));
         return Promise.resolve(response.data);
       },
@@ -409,7 +409,7 @@ export function contactUs(payLoad) {
 }
 
 export function logOut() {
-  sessionStorage.removeItem("techpin");
+  localStorage.removeItem("techpin");
   techpinApi.logout();
   return {
     type: actionTypes.LOG_OUT

@@ -1,10 +1,11 @@
-import React, { PropTypes } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { browserHistory } from "react-router";
 // import * as actions from '../actions/actionCreators';
 import AutoComplete from "material-ui/AutoComplete";
 import SinglePageToolbar from "./SinglePageToolbar";
 import StartupWidgetMoreInfo from "./StartupWidgetMoreInfo";
+import TagAutoCompleteInput from "../sharedComponents/TagAutoCompleteInput";
 
 require("core-js/fn/object/values");
 require("core-js/fn/object/entries");
@@ -246,6 +247,7 @@ class EditInfo extends React.Component {
               floatingLabelText="Country"
               onChange={this.textFieldChangeHandler}
             />
+            <TagAutoCompleteInput categories={this.props.categories} />
             <TextField
               id="description_en"
               defaultValue={product.product.details.description_en}
@@ -345,6 +347,9 @@ class EditInfo extends React.Component {
 EditInfo.propTypes = {};
 
 function mapStateToProps(state) {
-  return { token: state.auth.token };
+  return {
+    token: state.auth.token,
+    categories: state.categories
+  };
 }
 export default connect(mapStateToProps)(EditInfo);

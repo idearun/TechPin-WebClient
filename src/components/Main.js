@@ -18,10 +18,11 @@ class Main extends React.Component {
   }
 
   componentDidMount = () => {
-    const authed = JSON.parse(sessionStorage.getItem("techpin"));
+    debugger
+    const authed = JSON.parse(localStorage.getItem("techpin"));
     try {
       if (authed["api-token"]) {
-        this.props.actions.wasAuthed(authed);
+        this.props.wasAuthed(authed);
       }
     } catch (e) {
       // no-op
