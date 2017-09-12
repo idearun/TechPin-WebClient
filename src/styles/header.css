@@ -22,8 +22,12 @@ div.drawer>div:last-child>div>a>div:hover {
 }
 
 #search-bar-wrapper {
+  display: inline;
+}
+
+#search-bar-wrapper>div:first-child {
   display: inline-flex;
-  height: 40px;
+  justify-content: center;
   align-content: center;
   align-items: center;
 }

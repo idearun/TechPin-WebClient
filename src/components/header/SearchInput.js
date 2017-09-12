@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import ActionSearch from "material-ui/svg-icons/action/search";
 import ClickOutHandler from "react-onclickout";
-import { debounce } from "../../helpers/helpers";
+
 const styles = {
   icon: {
     cursor: "pointer",
     position: "relative",
-    top: 5
+    top: 0
   }
 };
 
@@ -48,15 +48,17 @@ export default class SearchBar extends Component {
             ref={el => {
               this.searchInput = el;
             }}
-            onChange={debounce(onChange, 30)}
+            onChange={onChange}
             type="text"
             placeholder="Search..."
             className={this.state.isOpen ? "active" : ""}
           />
           {!this.state.isOpen && (
-            <span onClick={this.open} style={styles.icon}>
-              <ActionSearch color="white" />
-            </span>
+            <ActionSearch
+              color="white"
+              onClick={this.open}
+              style={styles.icon}
+            />
           )}
         </ClickOutHandler>
       </div>

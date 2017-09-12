@@ -78,10 +78,13 @@ class Header extends React.Component {
 
   handleDrawerClose = () => this.setState({ drawerIsOpen: false });
 
-  updateSearchTerm = searchTerm => {
-    console.log(searchTerm);
+  updateSearchTerm = event => {
+    // dont forget to debounce the network calls
+    console.log(event.target.value);
     this.setState({
-      searchResult: [...Array(Math.random * 10)].map((__, i) => "result " + i)
+      searchResult: Array(parseInt(Math.random() * 10, 10)).map(
+        (__, i) => "result " + i
+      )
     });
   };
 
@@ -188,14 +191,14 @@ class Header extends React.Component {
                 openModal={this.openModal}
                 handleDrawerToggle={this.handleDrawerToggle}
                 LogOut={this.handleLogOut}
-                onSearchRequest={this.onSearchRequest}
                 onSearchTermUpdate={this.updateSearchTerm}
-                searchTerm={this.state.searchTerm}
                 searchResult={this.state.searchResult}
               />
             ) : (
               <AppbarRightControlMobile
                 handleDrawerToggle={this.handleDrawerToggle}
+                onSearchTermUpdate={this.updateSearchTerm}
+                searchResult={this.state.searchResult}
               />
             )
           }
