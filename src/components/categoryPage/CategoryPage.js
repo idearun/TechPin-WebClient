@@ -77,23 +77,26 @@ class CategoryPage extends React.Component {
   // };
 
   componentDidMount = () => {
-    const categorySlug = this.props.params.category
-    if(Object.keys(this.props.byCategory).length > 0 && this.props.byCategory[categorySlug]) {
-      this.setState({products: this.props.byCategory[categorySlug]})
+    const categorySlug = this.props.params.category;
+    if (
+      Object.keys(this.props.byCategory).length > 0 &&
+      this.props.byCategory[categorySlug]
+    ) {
+      this.setState({ products: this.props.byCategory[categorySlug] });
+    } else {
+      this.setState({ aSyncCall: true });
+      this.props
+        .getProductsByCategory(categorySlug)
+        .then(products => {
+          let filteredList = this.filterByCategory(products);
+          this.setState({
+            aSyncCall: false,
+            products: this.filterDuplicate(filteredList)
+          });
+        })
+        .catch(err => console.log(err));
     }
-    else {
-      this.setState({aSyncCall: true})
-      this.props.getProductsByCategory(categorySlug)
-       .then(products => {
-         let filteredList = this.filterByCategory(products)
-         this.setState({
-           aSyncCall: false,
-           products: this.filterDuplicate(filteredList)
-         })
-       })
-       .catch(err => console.log(err))
-    }
-    
+
     // if (Object.keys(this.props.allProducts).length === 0) {
     //   this.setState({ aSyncCall: true });
     //   this.props.getAllProducts().then(allProducts => {
@@ -111,7 +114,17 @@ class CategoryPage extends React.Component {
     // }
   };
 
+  getCategoryNameBySlug = slug => {
+    const { categories = [] } = this.props;
+    if (categories.length > 0) {
+      return categories.find(category => category.slug === slug).name_en;
+    } else {
+      return slug;
+    }
+  };
+
   render() {
+    const { category } = this.props.params;
     return (
       <div className="category-page main-content">
         <header className="category-header">
@@ -123,19 +136,21 @@ class CategoryPage extends React.Component {
             />
           </IconButton>
           <div className="category-title">
-            <span>Top Startups & Products</span>
+            <span>Top Companies, Products And Startups</span>
             <p className="sub-header">
-              {`in ${this.props.params.category} category`}
+              {`In ${this.getCategoryNameBySlug(category)} Category / Market`}
             </p>
           </div>
           <div />
         </header>
         <main className="category-flex-container">
-          {this.state.aSyncCall
-            ? <CircularProgress id="spinner" color={"#2962FF"} size={50} />
-            : this.state.products.map((product, i) => (
-                <StartupPaper key={i} product={product} />
-              ))}
+          {this.state.aSyncCall ? (
+            <CircularProgress id="spinner" color={"#2962FF"} size={50} />
+          ) : (
+            this.state.products.map((product, i) => (
+              <StartupPaper key={i} product={product} />
+            ))
+          )}
         </main>
       </div>
     );
@@ -146,7 +161,8 @@ CategoryPage.propTypes = {};
 
 function mapStateToProps(state) {
   return {
-    byCategory: state.byCategory
+    byCategory: state.byCategory,
+    categories: state.categories
   };
 }
 

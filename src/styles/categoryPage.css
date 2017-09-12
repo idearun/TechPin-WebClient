@@ -36,11 +36,11 @@ div.category-paper:hover {
   font-family: 'Raleway';
   font-weight: 600;
 }
-.category-header > div.category-title > p {
-  color: grey;
-  font-size: 16px;
+.category-header > div.category-title > p.sub-header {
+  color: #5A5A5A;
+  font-size: 18px;
   font-family: 'Raleway';
-  font-weight: 400;
+  font-weight: normal;
   line-height: 26px;
 }
 .category-paper {
