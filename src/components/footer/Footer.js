@@ -33,9 +33,9 @@ const Footer = props => {
         </ul>
       </section>
       <section className='passion'>
-        Made with passion & Powered by{" "}
+        Made With Passion & Powered By{" "}
         <a href="http://www.idearun.co" target="_blank">
-          Idearun Start-up Studio
+          Idearun Startup Studio
         </a>
       </section>
     </div>
