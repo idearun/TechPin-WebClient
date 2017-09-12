@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/actionCreators";
-
+import TagAutoCompleteInput from "../sharedComponents/TagAutoCompleteInput";
 import CircularProgress from "material-ui/CircularProgress";
 import Snackbar from "material-ui/Snackbar";
 import TextField from "material-ui/TextField";
@@ -21,10 +21,16 @@ class AddForm extends React.Component {
       addStartUpResponseText: "",
       name_en: "",
       website: "",
+      categories: [],
       aSyncCall: false,
       aSyncSuccess: false
     };
   }
+
+  handleAddTag = categories =>
+    this.setState({
+      categories: categories.map(category => category.id)
+    });
 
   handleSelectFieldChange = (event, index, selectFieldValue) =>
     this.setState({ product_type: selectFieldValue });
@@ -47,7 +53,8 @@ class AddForm extends React.Component {
     const formData = {
       name_en: this.state.name_en,
       website: this.state.website,
-      product_type: this.state.product_type
+      product_type: this.state.product_type,
+      categories: this.state.categories
     };
     const validationResult = this.validateForms(formData);
     if (validationResult.valid) {
@@ -163,9 +170,12 @@ class AddForm extends React.Component {
             ))}
           </SelectField>
         </div>
-
+        <TagAutoCompleteInput
+          categories={this.props.categories}
+          onChange={this.handleAddTag}
+          defaultValue={[]}
+        />
         <br />
-
         <div>{this.generateSubmitArea()}</div>
         <Snackbar
           open={this.state.snackBarOpen}
@@ -180,7 +190,8 @@ class AddForm extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    productTypes: state.productTypes
+    productTypes: state.productTypes,
+    categories: state.categories
   };
 }
 export default connect(mapStateToProps, actions)(AddForm);

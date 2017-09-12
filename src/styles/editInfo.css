@@ -98,10 +98,18 @@
 
 #tag-auto-complete-input {
   width: 100%;
+  max-width: 100%;
 }
 
 .chip-wrapper>* {
-  margin: 0 5px !important;
+  margin: 5px 0 !important;
+}
+
+.chip-wrapper {
+  max-width: 256px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 @media screen and (max-width: 410px) {

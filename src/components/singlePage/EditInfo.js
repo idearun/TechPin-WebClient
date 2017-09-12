@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { browserHistory } from "react-router";
-// import * as actions from '../actions/actionCreators';
+import * as actions from '../../actions/actionCreators';
 import AutoComplete from "material-ui/AutoComplete";
 import SinglePageToolbar from "./SinglePageToolbar";
 import StartupWidgetMoreInfo from "./StartupWidgetMoreInfo";
-import TagAutoCompleteInput from "../sharedComponents/TagAutoCompleteInput";
 import { appendToFormData } from "../../helpers/helpers";
+
 require("core-js/fn/object/values");
 require("core-js/fn/object/entries");
 
@@ -65,10 +65,10 @@ class EditInfo extends React.Component {
     this.setState({ formData: newFormData });
   };
 
-  valid = (values, logoName) => {
-    if (values.length >= 1) {
+  valid = (keys, logoName) => {
+    if (keys.length > 0) {
       return true;
-    } else if (logoName !== "") {
+    } else if (logoName) {
       return true;
     }
     return false;
@@ -85,16 +85,16 @@ class EditInfo extends React.Component {
     }
   };
 
-  handleAddTag = categories => {
-    const newFormData = Object.assign({}, this.state.formData, {
-      categories: categories
-    });
-    this.setState({ formData: newFormData });
-  };
+  // handleAddTag = categories => {
+  //   const newFormData = Object.assign({}, this.state.formData, {
+  //     categories: categories
+  //   });
+  //   this.setState({ formData: newFormData });
+  // };
 
   handleSubmit = () => {
-    const values = Object.values(this.state.formData);
-    if (this.valid(values, this.state.selectedLogoFilename)) {
+    const keys = Object.keys(this.state.formData);
+    if (this.valid(keys, this.state.selectedLogoFilename)) {
       this.setState({ formIsValid: true, aSyncCall: true });
 
       const formData = appendToFormData(this.state.formData);
@@ -104,7 +104,7 @@ class EditInfo extends React.Component {
         this.props.newProductSlug || this.props.params.startUpName || "";
 
       if (this.props.newProductSlug) {
-        this.props.actions.submitAddFirstVersion(formData, slug).then(
+        this.props.submitAddFirstVersion(formData, slug).then(
           response => {
             this.setState({
               snackBarOpen: true,
@@ -124,7 +124,7 @@ class EditInfo extends React.Component {
           }
         );
       } else {
-        this.props.actions.submitAddNewVersion(formData, slug).then(
+        this.props.submitAddNewVersion(formData, slug).then(
           response => {
             this.setState({
               snackBarOpen: true,
@@ -354,7 +354,6 @@ class EditInfo extends React.Component {
   }
 }
 
-EditInfo.propTypes = {};
 
 function mapStateToProps(state) {
   return {
@@ -362,4 +361,4 @@ function mapStateToProps(state) {
     categories: state.categories
   };
 }
-export default connect(mapStateToProps)(EditInfo);
+export default connect(mapStateToProps, actions)(EditInfo);
