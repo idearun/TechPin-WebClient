@@ -5,7 +5,7 @@ import Chip from "material-ui/Chip";
 const autoCompleteMenuStyles = {
   maxHeight: "200px",
   overflowY: "auto",
-  width: '100%'
+  width: "100%"
 };
 
 const chipsStyles = {
@@ -73,7 +73,7 @@ export default class TagAutoCompleteInput extends Component {
           dataSource={categories.map(item => item.name_en)}
           openOnFocus={true}
           menuStyle={autoCompleteMenuStyles}
-          textFieldStyle={{width: '100%'}}
+          textFieldStyle={{ width: "100%" }}
           onUpdateInput={this.handleUpdateInput}
           onNewRequest={tag => this.handleAddTag(tag)}
         />
