@@ -17,6 +17,7 @@ const autoCompleteMenuStyles = {
 };
 
 const currentYear = new Date().getFullYear();
+
 const years = [];
 for (let year = 1990; year <= currentYear; year++) {
   years.push(String(year));
@@ -109,7 +110,7 @@ class SinglePage extends React.Component {
     this.setState({
       addInvRecFormData: {
         ...this.state.addInvRecFormData,
-        month: selectedMonth
+        month: months.indexOf(selectedMonth)
       }
     });
   };

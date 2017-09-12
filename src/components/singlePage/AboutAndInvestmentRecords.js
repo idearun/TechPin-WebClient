@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Tabs, Tab } from "material-ui/Tabs";
-import InvestmentRow from "./InvestmentRow";
+import InvestmentRecords from "./InvestmentRecords";
+
 export default class AboutAndInvestmentRecords extends Component {
   constructor() {
     super();
@@ -43,15 +44,10 @@ export default class AboutAndInvestmentRecords extends Component {
           <div className="single-about" style={{ padding: "20px 0" }}>
             <p>{desc}</p>
           </div>
-          {[...investmentsDone, ...investedOn].length > 0 ? (
-            <div style={{ padding: "20px 0" }} className="investment-records">
-              {[...investmentsDone, ...investedOn].map((item, i) => (
-                <InvestmentRow key={i} {...item} />
-              ))}
-            </div>
-          ) : (
-            <li className="investment-row">No Records Yet.</li>
-          )}
+          <InvestmentRecords
+            investedOn={investedOn}
+            investmentsDone={investmentsDone}
+          />
         </SwipeableViews>
       </div>
     );

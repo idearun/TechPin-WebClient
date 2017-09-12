@@ -6,41 +6,50 @@
   width: 60%;
   margin: 50px auto;
 }
+
 #single-page-main-content {
   min-width: 40vw;
 }
-.single-page > div > div:first-child {
+
+.single-page>div>div:first-child {
   padding-bottom: 20px;
 }
+
 .single-body {
   display: flex;
   justify-content: center;
   padding: 30px 30px 0 30px;
 }
+
 .single-body img {
   display: inline-block;
   padding: 5px;
   border-radius: 10px;
   border: 1px solid #E8E8E8;
 }
-.single-body > div {
+
+.single-body>div {
   display: inline-block;
   max-width: 70%;
   /*margin-bottom: 29px;*/
 }
-.single-body > img {
+
+.single-body>img {
   width: 100px;
   align-self: flex-start;
 }
-.single-body > div span {
+
+.single-body>div span {
   display: block;
   margin-left: 20px;
 }
-.single-body > div span.star-rating-single {
+
+.single-body>div span.star-rating-single {
   display: inline-block;
   margin-left: 20px;
 }
-.single-body > div span.nps-score {
+
+.single-body>div span.nps-score {
   color: #666;
   font-size: 15.5px;
   font-family: "Rubik";
@@ -48,10 +57,13 @@
   display: inline-block;
   margin-left: 20px;
 }
+
+
 /*.single-page > div > div > div > div {
   border-radius: 5px 5px 0 0  !important;
 }*/
-.single-body > div span:first-child {
+
+.single-body>div span:first-child {
   margin-left: 20px;
   color: #555;
   font-size: 26px;
@@ -59,32 +71,39 @@
   font-weight: 600;
   margin-bottom: 10px;
 }
-.single-body > div div:nth-child(2) > span {
+
+.single-body>div div:nth-child(2)>span {
   color: grey;
   font-size: 20px;
   font-family: "Raleway";
   font-weight: 400;
   margin-bottom: 10px;
 }
-.single-body > div div:nth-child(2) {
+
+.single-body>div div:nth-child(2) {
   display: inline-block;
 }
+
 .detailed-info {
   padding: 0 30px;
 }
+
 .react-swipeable-view-container {
-  max-height: 250px;
+  max-height: 400px;
 }
+
 .single-about span {
   font-size: 20px;
   font-family: "Rubik";
   line-height: 30px;
 }
+
 .single-about p {
   font-size: 15px;
   font-family: "Rubik";
   text-align: justify;
 }
+
 #single-meta-info {
   font-size: 16px;
   font-family: "Raleway";
@@ -92,54 +111,67 @@
   margin-left: 10px;
   font-weight: 400;
 }
+
 .single-link {
   margin: 20px 0;
   padding: 0 30px;
   text-align: center;
 }
+
 .single-link img {
   width: 100px;
   height: 30px;
   margin-right: 15px;
 }
+
 img#linkedin,
 img#instagram {
   width: 30px;
   height: 30px;
 }
+
 .comments {
   margin: 20px 0;
   padding: 0 30px;
 }
+
 .comments-row {
   margin: 10px 0;
   box-sizing: 0 0 5px rgba(0, 0, 0, 0.3);
   font-family: "Rubik";
 }
-.comments-row > div {
+
+.comments-row>div {
   display: flex;
 }
+
 div.avatar {
   margin-right: 10px;
 }
-div.avatar + div {
+
+div.avatar+div {
   display: flex;
   flex-direction: column;
 }
+
 .comments-row div.comment-author {
   font-weight: 600;
 }
+
 .comment-date {
   font-size: 14px;
   margin-top: 10px;
   color: #808080;
 }
-div.comments > span {
+
+div.comments>span {
   margin-left: 4px;
 }
-.toolbar > div:last-of-type {
+
+.toolbar>div:last-of-type {
   margin-right: -23px;
 }
+
 .comment-box {
   margin: 10px 0 30px 0;
   border-radius: 10px;
@@ -147,30 +179,37 @@ div.comments > span {
   align-items: flex-end;
   padding-left: 10px;
 }
-.comment-box > button > div svg {
+
+.comment-box>button>div svg {
   width: 40px !important;
   height: 40px !important;
 }
-.comment-box > div:first-child {
+
+.comment-box>div:first-child {
   flex: 1 0 auto;
 }
+
 .divider {
   margin-top: 34px;
   width: 100%;
   border-bottom: 1px solid #e0e0e0;
 }
+
 .comment-title {
   font-size: 20px;
   font-family: "Rubik";
 }
+
 .contact-info {
   padding-bottom: 15px;
 }
+
 .contact-info-row {
   display: flex;
   align-content: center;
   align-content: center;
 }
+
 .contact-info-title {
   display: flex;
   align-content: center;
@@ -180,12 +219,48 @@ div.comments > span {
   font-size: 16px;
   font-weight: 500;
 }
-#signle-page-snackbar > div > div > span {
+
+#signle-page-snackbar>div>div>span {
   font-size: 20px;
 }
+
 span.single-page-summary {
   text-align: justify;
 }
+
+.investment-records-wrapper>table {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 14px;
+  color: #555555;
+  font-family: "Rubik";
+  border-collapse: collapse;
+  border: 1px solid silver;
+  text-align: center;
+  overflow-x: auto;
+}
+.investment-records-wrapper tr {
+  height: 30px;
+}
+.investment-records-wrapper th, td {
+  padding: 10px;
+  vertical-align: middle;
+  border: 1px solid silver;
+}
+
+.investment-records-wrapper>table>thead {
+  margin-top: 20px;
+  width: 100%;
+
+}
+
+.investment-records-wrapper>table>thead>tr:first-child {
+  text-align: center;
+  font-weight: 600;
+  width: 100%;
+  background-color: #DADADA
+}
+
 .visual-info {
   padding: 20px 0px;
   margin: 20px 30px 0 30px;
@@ -194,9 +269,11 @@ span.single-page-summary {
   /*border-top: 1px solid #2196F3;*/
   /*border-bottom: 1px solid #e0e0e0;*/
 }
+
 #single-page-rating {
   font-family: "Rubik";
 }
+
 div.single-page-visual-widget {
   color: #0d47a1;
   font-weight: 600;
@@ -215,15 +292,19 @@ div.single-page-visual-widget {
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   white-space: nowrap;
 }
+
 div.single-page-visual-widget:hover {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 10px, rgba(0, 0, 0, 0.3) 0px 1px 6px;
 }
-.visual-info-star > i {
+
+.visual-info-star>i {
   color: #2196f3;
 }
+
 .visual-info-star {
   font-size: 13px;
 }
+
 .visual-info-sub-span {
   position: reletive;
   top: 150px;
@@ -233,47 +314,60 @@ div.single-page-visual-widget:hover {
   align-content: center;
   align-items: center;
 }
-.visual-info-sub-span > span {
+
+.visual-info-sub-span>span {
   margin-right: 5px;
   color: #0d47a1;
 }
+
 .single-page-visual-parent {
   margin-right: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .social-disabled {
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.2;
-  filter: alpha(opacity=20); /* msie */
+  filter: alpha(opacity=20);
+  /* msie */
 }
+
 .link-disabled {
   pointer-events: none;
 }
+
 .contact-info {
   margin: 20px 30px;
 }
+
 .rating {
   margin: 0 30px 20px 30px;
   padding: 20px 0;
   border-bottom: 1px solid #e0e0e0;
 }
+
 .single-page-rate {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.single-page-rate > span {
+
+.single-page-rate>span {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
   align-items: center;
+  margin-bottom: 10px;
   font-family: "Rubik";
   font-size: 16px;
   font-weight: 600;
   align-self: center;
 }
+
 .rate-box-container {
   flex-wrap: wrap;
   display: flex;
@@ -281,6 +375,7 @@ div.single-page-visual-widget:hover {
   /*justify-content: space-between;*/
   flex: 1;
 }
+
 .rate-box {
   color: #0d47a1;
   font-family: "Rubik";
@@ -299,22 +394,28 @@ div.single-page-visual-widget:hover {
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
 .rate-box:hover {
   background-color: #0d47a1;
   color: white;
   transform: translateY(-10px);
 }
+
+
 /*.rate-box.deactive {
   pointer-events: none;
   color: white;
 }*/
+
 .rate-box.rate-selected {
   background-color: #0d47a1;
   color: white;
 }
+
 .investment-row {
   padding: 5px 0;
 }
+
 
 /*.rate-box.not-selected:hover {
   background-color: #e8e8e8;
@@ -326,12 +427,13 @@ div.single-page-visual-widget:hover {
   .single-page {
     width: 80%;
   }
-  div.single-body > img {
+  div.single-body>img {
     width: 120px;
     height: auto;
     align-items: flex-start;
   }
 }
+
 @media screen and (max-width: 650px) {
   div.single-body {
     display: flex;
@@ -347,30 +449,31 @@ div.single-page-visual-widget:hover {
     max-height: 100vh;
     overflow: scroll;
   }
-  div.single-body > img {
+  div.single-body>img {
     width: 120px;
     height: auto;
     align-items: flex-start;
   }
-  .single-page-rate > span > span {
+  .single-page-rate>span>span {
     text-align: center;
   }
 }
+
 @media screen and (max-width: 450px) {
   div.single-body {
     flex-direction: column;
     align-items: center;
   }
-  div.single-body > * {
+  div.single-body>* {
     display: block;
   }
-  div.single-body > img {
+  div.single-body>img {
     width: 120px;
     height: auto;
     margin-bottom: 30px;
     align-self: auto;
   }
-  .single-body > div {
+  .single-body>div {
     display: inline-block;
     max-width: 100%;
     margin-bottom: 0;
