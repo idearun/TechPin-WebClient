@@ -98,7 +98,7 @@ class EditInfo extends React.Component {
       this.setState({ formIsValid: true, aSyncCall: true });
 
       const formData = appendToFormData(this.state.formData);
-      
+
       formData.append("logo", document.getElementById("logo").files[0]);
       let slug =
         this.props.newProductSlug || this.props.params.startUpName || "";
@@ -253,11 +253,11 @@ class EditInfo extends React.Component {
               floatingLabelText="Country"
               onChange={this.textFieldChangeHandler}
             />
-            <TagAutoCompleteInput
+            {/*<TagAutoCompleteInput
               categories={this.props.categories}
               onChange={this.handleAddTag}
               defaultValue={product.product.categories}
-            />
+            /> */}
             <TextField
               id="description_en"
               defaultValue={product.product.details.description_en}
