@@ -4,7 +4,8 @@ import Chip from "material-ui/Chip";
 
 const autoCompleteMenuStyles = {
   maxHeight: "200px",
-  overflowY: "auto"
+  overflowY: "auto",
+  width: '100%'
 };
 
 const chipsStyles = {
@@ -18,34 +19,53 @@ export default class TagAutoCompleteInput extends Component {
     this.state = { searchText: "", chipList: [] };
   }
 
+  componentDidMount = () => {
+    if (
+      this.props.categories.length > 0 &&
+      this.props.defaultValue.length > 0
+    ) {
+      const defaults = this.props.defaultValue.map(categorySlug =>
+        this.props.categories.find(category => category.slug === categorySlug)
+      );
+      this.setState({
+        chipList: defaults
+      });
+    }
+  };
+
   handleUpdateInput = searchText => {
     this.setState({ searchText });
   };
 
   handleAddTag = tag => {
-    console.log(tag);
+    // tag is a string -> name_en of the category
+    // only 3 cats are accepted
     if (this.state.chipList.length < 3) {
-      let chipList = this.state.chipList;
-      let categoryIds = this.state.categoryIds;
-      let index = this.state.categories.findIndex(
-        item => item.name_en === this.state.searchText
+      const chipList = this.state.chipList;
+
+      const selectedCategory = this.props.categories.find(
+        item => item.name_en === tag
       );
-      categoryIds.push(this.state.categories[index].id);
-      chipList.push(this.state.searchText);
-      this.setState({ chipList, searchText: "" });
+      chipList.push(selectedCategory);
+
+      this.setState({ chipList, searchText: "" }, this.notifyParent);
     }
   };
 
   handleRequestDelete = key => {
     const chips = this.state.chipList;
     chips.splice(key, 1);
-    this.setState({ chipList: chips });
+    this.setState({ chipList: chips }, this.notifyParent);
+  };
+
+  notifyParent = () => {
+    this.props.onChange(this.state.chipList);
   };
 
   render() {
     const { categories = [] } = this.props;
     return (
-      <div>
+      <div id="tag-auto-complete-input">
         <AutoComplete
           floatingLabelText="Add Categories (use suggestions)"
           filter={AutoComplete.caseInsensitiveFilter}
@@ -53,18 +73,19 @@ export default class TagAutoCompleteInput extends Component {
           dataSource={categories.map(item => item.name_en)}
           openOnFocus={true}
           menuStyle={autoCompleteMenuStyles}
+          textFieldStyle={{width: '100%'}}
           onUpdateInput={this.handleUpdateInput}
           onNewRequest={tag => this.handleAddTag(tag)}
         />
         <br />
         <div className="chip-wrapper">
-          {this.state.chipList.map((chipName, i) => (
+          {this.state.chipList.map((category, i) => (
             <Chip
               key={i}
               onRequestDelete={() => this.handleRequestDelete(i)}
               style={chipsStyles}
             >
-              {chipName}
+              {category.name_en}
             </Chip>
           ))}
         </div>

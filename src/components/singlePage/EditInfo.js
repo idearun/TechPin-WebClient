@@ -6,7 +6,7 @@ import AutoComplete from "material-ui/AutoComplete";
 import SinglePageToolbar from "./SinglePageToolbar";
 import StartupWidgetMoreInfo from "./StartupWidgetMoreInfo";
 import TagAutoCompleteInput from "../sharedComponents/TagAutoCompleteInput";
-
+import { appendToFormData } from "../../helpers/helpers";
 require("core-js/fn/object/values");
 require("core-js/fn/object/entries");
 
@@ -85,18 +85,24 @@ class EditInfo extends React.Component {
     }
   };
 
+  handleAddTag = categories => {
+    const newFormData = Object.assign({}, this.state.formData, {
+      categories: categories
+    });
+    this.setState({ formData: newFormData });
+  };
+
   handleSubmit = () => {
-    let formData = new FormData();
-    const keys = Object.keys(this.state.formData);
     const values = Object.values(this.state.formData);
     if (this.valid(values, this.state.selectedLogoFilename)) {
       this.setState({ formIsValid: true, aSyncCall: true });
-      for (let i = 0; i < keys.length; i++) {
-        formData.append(keys[i], values[i]);
-      }
+
+      const formData = appendToFormData(this.state.formData);
+      
       formData.append("logo", document.getElementById("logo").files[0]);
       let slug =
         this.props.newProductSlug || this.props.params.startUpName || "";
+
       if (this.props.newProductSlug) {
         this.props.actions.submitAddFirstVersion(formData, slug).then(
           response => {
@@ -247,7 +253,11 @@ class EditInfo extends React.Component {
               floatingLabelText="Country"
               onChange={this.textFieldChangeHandler}
             />
-            <TagAutoCompleteInput categories={this.props.categories} />
+            <TagAutoCompleteInput
+              categories={this.props.categories}
+              onChange={this.handleAddTag}
+              defaultValue={product.product.categories}
+            />
             <TextField
               id="description_en"
               defaultValue={product.product.details.description_en}

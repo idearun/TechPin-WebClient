@@ -4,44 +4,53 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 .upload-logo-text {
   cursor: pointer;
   transition: color 0.3 ease-in;
 }
+
 .upload-logo-text:hover {
   color: #000;
 }
+
 .three-field {
   flex-basis: 30%;
   width: 30% !important;
 }
+
 .two-field {
   flex-basis: 45%;
   width: 45% !important;
 }
+
 .share-info {
   text-align: center;
 }
+
 .submit-edit {
   padding: 0 30px 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .full {
   flex-basis: 100%;
   display: flex;
   justify-content: center;
   padding-top: 30px;
 }
+
 .input-file {
   width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
 }
-.input-file + label {
+
+.input-file+label {
   width: 24px;
   height: 24px;
   /*border-radius: 50%;*/
@@ -54,6 +63,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .upload-logo-text {
   display: flex;
   justify-content: center;
@@ -61,13 +71,15 @@
   color: #bbb;
   margin-right: 5px;
 }
+
 .upload-button {
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
 }
-.upload-button > div {
+
+.upload-button>div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,17 +87,28 @@
   border-radius: 5px;
   padding: 5px;
 }
-.upload-button > button  {
+
+.upload-button>button {
   cursor: pointer;
 }
-.upload-button > button > div svg {
+
+.upload-button>button>div svg {
   cursor: pointer;
 }
+
+#tag-auto-complete-input {
+  width: 100%;
+}
+
+.chip-wrapper>* {
+  margin: 0 5px !important;
+}
+
 @media screen and (max-width: 410px) {
   .three-field {
     flex-basis: 100%;
   }
   .two-field {
-    flex-basis: ;
+    flex-basis: 50%;
   }
 }

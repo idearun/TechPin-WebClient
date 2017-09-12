@@ -12,9 +12,9 @@
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
-.chip-wrapper {
+/* .chip-wrapper {
   max-width: 256px;
-}
+} */
 @media screen and (max-width: 375px) {
   div.chip-wrapper {
     min-height: 50px;
