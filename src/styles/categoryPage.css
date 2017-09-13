@@ -39,9 +39,10 @@ div.category-paper:hover {
 .category-header > div.category-title > p.sub-header {
   color: #5A5A5A;
   font-size: 18px;
-  font-family: 'Raleway';
+  font-family: 'Rubik';
   font-weight: normal;
-  line-height: 26px;
+  line-height: 30px;
+
 }
 .category-paper {
   display: flex;

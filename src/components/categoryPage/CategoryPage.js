@@ -136,9 +136,11 @@ class CategoryPage extends React.Component {
             />
           </IconButton>
           <div className="category-title">
-            <span>Top Companies, Products And Startups</span>
+            <span>{this.getCategoryNameBySlug(category)}</span>
             <p className="sub-header">
-              {`In ${this.getCategoryNameBySlug(category)} Category / Market`}
+              {`Top Companies, Products And Startups In ${this.getCategoryNameBySlug(
+                category
+              )} Category / Market`}
             </p>
           </div>
           <div />
