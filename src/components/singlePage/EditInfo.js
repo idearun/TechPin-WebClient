@@ -278,7 +278,7 @@ class EditInfo extends React.Component {
               id="ios_app"
               defaultValue={product.product.details.ios_app}
               fullWidth={true}
-              floatingLabelText="iOs App Url"
+              floatingLabelText="iOS App Url"
               onChange={this.textFieldChangeHandler}
             />
             <TextField
