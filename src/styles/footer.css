@@ -48,11 +48,11 @@ section.copyright ul li a:hover{
 }
 .footer .passion {
   padding: 10px 0;
-  color: white;
+  color: silver;
   font-family: "Rubik";
 }
 .footer .passion a {
-  color: aqua;
+  color: white;
 }
 @media screen and (max-width: 450px) {
   .footer {

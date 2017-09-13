@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { browserHistory } from "react-router";
-import * as actions from '../../actions/actionCreators';
+import * as actions from "../../actions/actionCreators";
 import AutoComplete from "material-ui/AutoComplete";
 import SinglePageToolbar from "./SinglePageToolbar";
 import StartupWidgetMoreInfo from "./StartupWidgetMoreInfo";
@@ -217,14 +217,17 @@ class EditInfo extends React.Component {
               floatingLabelText="Number of Employees"
               onChange={this.textFieldChangeHandler}
             /> */}
+            {console.log(product.product.details.employees_count)}
             <AutoComplete
               id="employees"
               hintText="Type A Number"
               floatingLabelText="Number of Employees"
               dataSource={empRange}
-              defaultValue={product.product.details.employees}
               filter={AutoComplete.caseInsensitiveFilter}
-              searchText={this.state.empRangeSearchTerm}
+              searchText={
+                this.state.empRangeSearchTerm ||
+                product.product.details.employees_count
+              }
               maxSearchResults={5}
               style={{ width: "30%" }}
               textFieldStyle={{ width: "auto" }}
@@ -353,7 +356,6 @@ class EditInfo extends React.Component {
     );
   }
 }
-
 
 function mapStateToProps(state) {
   return {
