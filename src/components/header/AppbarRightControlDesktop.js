@@ -23,6 +23,7 @@ class AppbarRightControlDesktop extends Component {
 
   handleSearchBlur = () => {
     this.setState({ searchInputIsFocused: false });
+    this.props.onSearchFinish();
   };
 
   render() {

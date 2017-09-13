@@ -2,7 +2,8 @@ import { connect } from "react-redux";
 import React, { PropTypes } from "react";
 import { Link, browserHistory } from "react-router";
 import * as actions from "../../actions/actionCreators";
-
+import { debounce } from "../../helpers/helpers";
+import SearchResults from "./SearchResults";
 import Modal from "react-modal";
 import LoginForm from "../authentication/LoginForm";
 import SignupForm from "../authentication/SignupForm";
@@ -43,7 +44,6 @@ class Header extends React.Component {
       drawerIsOpen: false,
       snackBarOpen: false,
       responseText: "",
-      searchTerm: "",
       searchResult: []
     };
   }
@@ -79,17 +79,37 @@ class Header extends React.Component {
   handleDrawerClose = () => this.setState({ drawerIsOpen: false });
 
   updateSearchTerm = event => {
-    // dont forget to debounce the network calls
-    // 1. debounce the event
-    // 2. call the server
-    // 3. update state with results
-    // 4. clean state on blur
-    console.log(event.target.value);
-    this.setState({
-      searchResult: Array(parseInt(Math.random() * 10, 10)).map(
-        (__, i) => "result " + i
-      )
-    });
+    // this is redundant at the moment
+    this.searchRequest(event.target.value);
+  };
+
+  searchRequest = debounce(searchTerm => {
+    if (searchTerm !== "") {
+      this.props
+        .search(searchTerm)
+        .then(({ products }) => {
+          // response is an object with alphabetic keys
+          console.log(products);
+          this.setState({ searchResult: this.flattenResponse(products) });
+        })
+        .catch(error => {
+          this.setState({ searchResult: ["ارتباط با سرور امکان پذیر نیست"] });
+        });
+    }
+  }, 400);
+
+  flattenResponse = responseObject => {
+    const result = [];
+    for (let char in responseObject) {
+      if (responseObject.hasOwnProperty(char)) {
+        result.push(...responseObject[char]);
+      }
+    }
+    return result;
+  };
+
+  onSearchFinish = () => {
+    this.setState({ searchResult: [] });
   };
 
   handleSignUp = formData => {
@@ -197,12 +217,14 @@ class Header extends React.Component {
                 LogOut={this.handleLogOut}
                 onSearchTermUpdate={this.updateSearchTerm}
                 searchResult={this.state.searchResult}
+                onSearchFinish={this.onSearchFinish}
               />
             ) : (
               <AppbarRightControlMobile
                 handleDrawerToggle={this.handleDrawerToggle}
                 onSearchTermUpdate={this.updateSearchTerm}
                 searchResult={this.state.searchResult}
+                onSearchFinish={this.onSearchFinish}
               />
             )
           }
@@ -290,6 +312,7 @@ class Header extends React.Component {
           autoHideDuration={2500}
           onRequestClose={this.handleRequestSnackBarClose}
         />
+        <SearchResults results={this.state.searchResult} />
       </div>
     );
   }

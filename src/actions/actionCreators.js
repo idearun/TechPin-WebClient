@@ -179,6 +179,22 @@ export function signupUser(formData) {
   };
 }
 
+export function search(searchTerm) {
+  return dispatch => {
+    return (
+      // instead of this start a new ajax call with and send the formdata
+      techpinApi.search(searchTerm).then(
+        response => {
+          return Promise.resolve(response.data);
+        },
+        response => {
+          return Promise.reject(response.data);
+        }
+      )
+    );
+  };
+}
+
 export function authenticate(username, password) {
   return dispatch => {
     return techpinApi.login(username, password).then(

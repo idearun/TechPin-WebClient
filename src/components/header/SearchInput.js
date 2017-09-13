@@ -35,6 +35,7 @@ export default class SearchBar extends Component {
       // wait for css animation 0.2s and then notify the parent to show buttons
       setTimeout(() => {
         this.props.onBlur();
+        this.searchInput.value = ''
       }, 210);
     }
   };
@@ -48,7 +49,7 @@ export default class SearchBar extends Component {
             ref={el => {
               this.searchInput = el;
             }}
-            id='main-search'
+            id="main-search"
             onChange={onChange}
             type="text"
             placeholder="Search..."

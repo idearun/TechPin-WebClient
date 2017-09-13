@@ -119,7 +119,6 @@ export default class techPinApi {
     };
     const qs = querystring.stringify({ text });
     return axios.post(`${baseApiUrl}/products/${slug}/comments`, qs, config);
-    // .then(res => console.log(res));
   }
 
   static postNewVersion(formData, slug, tokenId) {
@@ -161,5 +160,9 @@ export default class techPinApi {
 
   static submitInvestmentRecord(formData) {
     return axios.post(`${baseApiUrl}/investments/add/`, formData, config);
+  }
+
+  static search(searchTerm) {
+    return axios.get(`${baseApiUrl}/products/?search=${searchTerm}`);
   }
 }
