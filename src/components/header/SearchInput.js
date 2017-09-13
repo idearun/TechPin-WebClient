@@ -48,6 +48,7 @@ export default class SearchBar extends Component {
             ref={el => {
               this.searchInput = el;
             }}
+            id='main-search'
             onChange={onChange}
             type="text"
             placeholder="Search..."

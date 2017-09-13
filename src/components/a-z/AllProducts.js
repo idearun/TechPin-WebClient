@@ -13,12 +13,15 @@ const toolbarStyles = {
 
 const logger = e => {
   const searchInput = document.getElementById("search");
+  const mainSearchBar = document.getElementById("main-search");
   if (document.activeElement !== searchInput) {
     const pressedKey = String.fromCharCode(e.keyCode);
     if (/[a-zA-Z0-9-_ ]/.test(pressedKey)) {
-      searchInput.focus();
-      if (window.scrollY > 64) {
-        window.scrollTo(0, 64);
+      if (document.activeElement !== mainSearchBar) {
+        searchInput.focus();
+        if (window.scrollY > 64) {
+          window.scrollTo(0, 64);
+        }
       }
     }
   }

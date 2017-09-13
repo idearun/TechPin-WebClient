@@ -80,6 +80,10 @@ class Header extends React.Component {
 
   updateSearchTerm = event => {
     // dont forget to debounce the network calls
+    // 1. debounce the event
+    // 2. call the server
+    // 3. update state with results
+    // 4. clean state on blur
     console.log(event.target.value);
     this.setState({
       searchResult: Array(parseInt(Math.random() * 10, 10)).map(
