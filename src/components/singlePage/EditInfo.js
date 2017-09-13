@@ -217,7 +217,6 @@ class EditInfo extends React.Component {
               floatingLabelText="Number of Employees"
               onChange={this.textFieldChangeHandler}
             /> */}
-            {console.log(product.product.details.employees_count)}
             <AutoComplete
               id="employees"
               hintText="Type A Number"

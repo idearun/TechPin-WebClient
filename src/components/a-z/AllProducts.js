@@ -7,7 +7,8 @@ import StartupRow from "./StartupRow";
 import CircularProgress from "material-ui/CircularProgress";
 
 const toolbarStyles = {
-  color: "white"
+  color: "#555555",
+  fontFamily: "Rubik"
 };
 
 const logger = e => {
@@ -16,6 +17,9 @@ const logger = e => {
     const pressedKey = String.fromCharCode(e.keyCode);
     if (/[a-zA-Z0-9-_ ]/.test(pressedKey)) {
       searchInput.focus();
+      if (window.scrollY > 64) {
+        window.scrollTo(0, 64);
+      }
     }
   }
 };
@@ -93,7 +97,7 @@ class AllProducts extends React.Component {
         <Toolbar className="all-entries-toolbar" id="readout">
           <ToolbarGroup firstChild={true}>
             <ToolbarTitle
-              text="Alphabetically ordered list of startups"
+              text="Alphabetically Ordered List Of Products And Startups"
               style={toolbarStyles}
             />
           </ToolbarGroup>
