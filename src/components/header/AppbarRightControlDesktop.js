@@ -43,6 +43,7 @@ class AppbarRightControlDesktop extends Component {
           onChange={onSearchTermUpdate}
           onFocus={this.handleSearchFocus}
           onBlur={this.handleSearchBlur}
+          isDesktop={true}
         />
         {!searchInputIsFocused && (
           <FlatButton

@@ -6,7 +6,8 @@ const styles = {
   icon: {
     cursor: "pointer",
     position: "relative",
-    top: 0
+    top: 0,
+    marginRight: 20
   }
 };
 
@@ -19,7 +20,7 @@ export default class SearchBar extends Component {
   }
 
   open = () => {
-    this.searchInput.style.width = window.innerWidth - 250 + "px";
+    this.searchInput.style.width = window.innerWidth - 275 + "px";
     this.searchInput.focus();
     this.props.onFocus();
     this.setState({ isOpen: true });
@@ -28,15 +29,33 @@ export default class SearchBar extends Component {
   close = () => {
     // do nothing if the input is not focused
     if (this.state.isOpen) {
-      this.searchInput.style.width = 0;
+      this.searchInput.classList.remove("active");
+      this.searchInput.removeAttribute("style")
       this.setState(state => {
         return { isOpen: false };
       });
-      // wait for css animation 0.2s and then notify the parent to show buttons
+      // wait for css animation 0.2s and then
+      // notify the parent to show buttons
       setTimeout(() => {
         this.props.onBlur();
-        this.searchInput.value = ''
+        this.searchInput.value = "";
       }, 210);
+    }
+  };
+
+  getClassName = () => {
+    if (this.props.isDesktop) {
+      if (this.state.isOpen) {
+        return "desktop active";
+      } else {
+        return "desktop";
+      }
+    } else {
+      if (this.state.isOpen) {
+        return "active";
+      } else {
+        return "";
+      }
     }
   };
 
@@ -51,11 +70,12 @@ export default class SearchBar extends Component {
             }}
             id="main-search"
             onChange={onChange}
+            onFocus={this.open}
             type="text"
             placeholder="Search..."
-            className={this.state.isOpen ? "active" : ""}
+            className={this.getClassName()}
           />
-          {!this.state.isOpen && (
+          {!this.props.isDesktop && !this.state.isOpen && (
             <ActionSearch
               color="white"
               onClick={this.open}

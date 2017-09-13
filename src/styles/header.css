@@ -45,6 +45,13 @@ div.drawer > div:last-child > div > a > div:hover {
   will-change: opacity, width;
 }
 
+#search-bar-wrapper input.desktop {
+  opacity: 1;
+  width: 200px;
+  border: 1px solid white;
+  margin-right: 5px;
+}
+
 #search-bar-wrapper input.active {
   opacity: 1;
   background-color: #487dcc;
@@ -54,10 +61,16 @@ div.drawer > div:last-child > div > a > div:hover {
   border: 1px solid white;
 }
 
-#search-bar-wrapper input.active::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
+#search-bar-wrapper input.active.desktop {
+  opacity: 1;
+  background-color: #487dcc;
   color: white;
+  font-size: 16px;
+  font-family: "Rubik";
+  border: 1px solid white;
 }
+
+
 
 #header {
   position: relative;
@@ -82,7 +95,6 @@ div.drawer > div:last-child > div > a > div:hover {
   right: 10%;
   max-height: 500px;
   overflow-y: auto;
-  color: black;
   z-index: 11;
   border-radius: 3px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -103,6 +115,11 @@ div.drawer > div:last-child > div > a > div:hover {
   transition: all 0.3s linear;
 }
 
+#search-bar-wrapper input.active::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: white;
+}
+
 #search-bar-wrapper input.active::-moz-placeholder {
   /* Chrome/Opera/Safari */
   color: white;
@@ -117,3 +134,28 @@ div.drawer > div:last-child > div > a > div:hover {
   /* Chrome/Opera/Safari */
   color: white;
 }
+
+
+#search-bar-wrapper input.desktop::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: white;
+}
+
+#search-bar-wrapper input.desktop::-moz-placeholder {
+  /* Chrome/Opera/Safari */
+  color: white;
+}
+
+#search-bar-wrapper input.desktop::-ms-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: white;
+}
+
+#search-bar-wrapper input.desktop::-moz-placeholder {
+  /* Chrome/Opera/Safari */
+  color: white;
+}
+
+
+
+
