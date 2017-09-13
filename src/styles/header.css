@@ -63,18 +63,6 @@ div.drawer > div:last-child > div > a > div:hover {
   position: relative;
 }
 
-#search-results.active {
-  /* position: absolute;
-  left: 5%;
-  right: 5%;
-  top: 100%;
-  height: 200px;
-  overflow-y: auto;
-  z-index: 10;
-  background-color: white; */
-}
-
-
 #search-results.active > div.overlay {
   position: fixed;
   top: 64px;
@@ -83,6 +71,7 @@ div.drawer > div:last-child > div > a > div:hover {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 10;
+  transition: all 0.3s linear;
 }
 
 #search-results.active > div.search-content {
@@ -101,14 +90,17 @@ div.drawer > div:last-child > div > a > div:hover {
   font-family: "Rubik";
   display: flex;
   flex-wrap: wrap;
+  transition: all 0.3s linear;
 }
 
 #search-results.active > div.search-content > * {
   margin: 10px;
+  transition: all 0.3s linear;
 }
 
 #search-results.inactive {
   display: none;
+  transition: all 0.3s linear;
 }
 
 #search-bar-wrapper input.active::-moz-placeholder {

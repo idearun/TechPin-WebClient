@@ -12,6 +12,24 @@
   font-size: 24px;
   line-height: 40px;
 }
+.footer-about  {
+  display: flex;
+  justify-content: space-between;
+}
+.footer-about .telegram-bot {
+  width: 350px;
+}
+.footer-about .telegram-bot img {
+  width: 350px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 3px #4B4BF8;
+  transition: all 0.3s linear;
+}
+.footer-about .telegram-bot img:hover {
+  /* transform: scale(1.005); */
+  box-shadow: 0 0 20px 3px #7B7BF5;
+}
 .footer-about p {
   max-width: 600px;
   text-align: justify;

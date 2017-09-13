@@ -1,15 +1,25 @@
 import React, { PropTypes } from "react";
 import { Link } from "react-router";
-
+import telegramBotBanner from "../../../images/Techpin-bot-banner.jpg";
 import { footerText } from "../../helpers/staticText";
 import gitRepo from "../../helpers/links";
 
+const TelegramBot = () => (
+  <div className="telegram-bot">
+    <a href="https://t.me/techpin_bot" target='_blank'>
+      <img src={telegramBotBanner} alt="telegram bot" />
+    </a>
+  </div>
+);
 const Footer = props => {
   return (
     <div className="footer">
       <section className="footer-about">
-        <span>TechPin, Dynamic list of startups & accelerators in Iran</span>
-        <p>{footerText}</p>
+        <div>
+          <span>TechPin, Dynamic list of startups & accelerators in Iran</span>
+          <p>{footerText}</p>
+        </div>
+        <TelegramBot />
       </section>
       <section className="copyright">
         <ul>
@@ -32,7 +42,7 @@ const Footer = props => {
           </li>
         </ul>
       </section>
-      <section className='passion'>
+      <section className="passion">
         Made With Passion & Powered By{" "}
         <a href="http://www.idearun.co" target="_blank">
           Idearun Startup Studio
