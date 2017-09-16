@@ -259,45 +259,38 @@ class SinglePage extends React.Component {
               fullWidth
               onChange={(_, val) => this.updateInvRecFormData(val, "amount")}
             />
-            <AutoComplete
-              filter={AutoComplete.caseInsensitiveFilter}
-              floatingLabelText="Year Of Investment"
-              searchText={this.state.yearSearchTerm}
-              dataSource={years}
-              openOnFocus
-              onUpdateInput={this.updateYearSearchTerm}
-              menuStyle={autoCompleteMenuStyles}
-              onNewRequest={this.handleYearSelection}
-              fullWidth
-            />
-            {/* <TextField
-              floatingLabelText="Year Of Investment (*)"
-              type="number"
-              fullWidth
-              onChange={(_, val) => this.updateInvRecFormData(val, "year")}
-            /> */}
-            {/* <TextField
-              floatingLabelText="Month"
-              type="number"
-              fullWidth
-              onChange={(_, val) => this.updateInvRecFormData(val, "month")}
-            /> */}
-            <AutoComplete
-              filter={AutoComplete.caseInsensitiveFilter}
-              floatingLabelText="Month Of Investment"
-              searchText={this.state.monthSearchTerm}
-              dataSource={months}
-              openOnFocus
-              onUpdateInput={this.updateMonthSearchTerm}
-              menuStyle={autoCompleteMenuStyles}
-              onNewRequest={this.handleMonthSelection}
-              fullWidth
-            />
+            <div className="two-columns">
+              <AutoComplete
+                filter={AutoComplete.caseInsensitiveFilter}
+                floatingLabelText="Year Of Investment"
+                searchText={this.state.yearSearchTerm}
+                dataSource={years}
+                openOnFocus
+                onUpdateInput={this.updateYearSearchTerm}
+                menuStyle={autoCompleteMenuStyles}
+                onNewRequest={this.handleYearSelection}
+              />
+              <AutoComplete
+                filter={AutoComplete.caseInsensitiveFilter}
+                floatingLabelText="Month Of Investment"
+                searchText={this.state.monthSearchTerm}
+                dataSource={months}
+                openOnFocus
+                onUpdateInput={this.updateMonthSearchTerm}
+                menuStyle={autoCompleteMenuStyles}
+                onNewRequest={this.handleMonthSelection}
+              />
+            </div>
             <TextField
               fullWidth
               floatingLabelText="Extra Information"
               multiLine
               onChange={(_, val) => this.updateInvRecFormData(val, "text")}
+            />
+            <TextField
+              fullWidth
+              floatingLabelText="Proof Link"
+              onChange={(_, val) => this.updateInvRecFormData(val, "link")}
             />
             <label htmlFor="proof">
               <span style={{ marginRight: "20px" }}>Proof Document</span>
@@ -309,11 +302,6 @@ class SinglePage extends React.Component {
                 onChange={this.handleProofDocument}
               />
             </label>
-            <TextField
-              fullWidth
-              floatingLabelText="Proof Link"
-              onChange={(_, val) => this.updateInvRecFormData(val, "link")}
-            />
           </div>
         </Dialog>
         <Snackbar
