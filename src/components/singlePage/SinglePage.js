@@ -11,7 +11,6 @@ import AutoComplete from "material-ui/AutoComplete";
 import Snackbar from "material-ui/Snackbar";
 import { appendToFormData } from "../../helpers/helpers";
 import MoneyInput from "../sharedComponents/MoneyInput";
-import VMasker from "vanilla-masker";
 
 const autoCompleteMenuStyles = {
   maxHeight: "200px",
@@ -22,7 +21,7 @@ const currentYear = new Date().getFullYear();
 
 const years = [];
 for (let year = 1990; year <= currentYear; year++) {
-  years.push(String(year));
+  years.unshift(String(year));
 }
 
 const months = [
