@@ -10,6 +10,8 @@ import CircularProgress from "material-ui/CircularProgress";
 import AutoComplete from "material-ui/AutoComplete";
 import Snackbar from "material-ui/Snackbar";
 import { appendToFormData } from "../../helpers/helpers";
+import MoneyInput from "../sharedComponents/MoneyInput";
+import VMasker from "vanilla-masker";
 
 const autoCompleteMenuStyles = {
   maxHeight: "200px",
@@ -171,6 +173,10 @@ class SinglePage extends React.Component {
       ...addInvRecFormData
     };
 
+    // data.amount = data.amount.replace(",", "");
+
+    console.log(data);
+
     if (this.isValid(data)) {
       const formData = appendToFormData(data);
       this.setState({ aSyncCall: true });
@@ -253,11 +259,13 @@ class SinglePage extends React.Component {
               onNewRequest={this.handleAutoCompleteSelection}
               fullWidth
             />
-            <TextField
+            <MoneyInput
               floatingLabelText="How Much Investment $"
-              type="number"
+              type="text"
               fullWidth
-              onChange={(_, val) => this.updateInvRecFormData(val, "amount")}
+              onChange={value =>
+                this.updateInvRecFormData(value.replace(/,/g, ""), "amount")}
+              mask="999,999,999,999,999,999"
             />
             <div className="two-columns">
               <AutoComplete
