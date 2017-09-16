@@ -3,7 +3,7 @@ import { baseUrl } from "../../api/realApi";
 
 import StarRating from "../sharedComponents/StarRating";
 import Divider from "material-ui/Divider";
-
+import ContentLink from "material-ui/svg-icons/content/link";
 import NoLogoImage from "../../../images/nologo.png";
 
 export default class StartupWidgetMoreInfo extends React.Component {
@@ -28,6 +28,7 @@ export default class StartupWidgetMoreInfo extends React.Component {
   };
 
   render() {
+    // worst piece of code i have ever written, ugly and buggy. needs refactor...
     let data = {
       website: this.state.product.website || "...",
       name_en: this.state.product.name_en || "...",
@@ -61,8 +62,13 @@ export default class StartupWidgetMoreInfo extends React.Component {
         )}
         <div>
           <span>
-            <a href={data.website} target="_blank">
+            <a
+              href={data.website}
+              target="_blank"
+              style={{ display: "inline-flex", alignContent: 'center', alignItems: 'center', color: '#0D47A1' }}
+            >
               {data.name_en}
+              <ContentLink color="#0D47A1" style={{ marginLeft: 5 }} hoverColor='aqua' />
             </a>
             <span id="single-meta-info">
               {data.city && `${data.city},${data.country}`}
