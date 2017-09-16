@@ -34,7 +34,8 @@ class AppbarRightControlDesktop extends Component {
       LogOut,
       handleDrawerToggle,
       onSearchTermUpdate,
-      searchResult
+      searchResult,
+      aSyncCall
     } = this.props;
     return (
       <div style={wrapperStyle}>
@@ -44,6 +45,7 @@ class AppbarRightControlDesktop extends Component {
           onFocus={this.handleSearchFocus}
           onBlur={this.handleSearchBlur}
           isDesktop={true}
+          aSyncCall={aSyncCall}
         />
         {!searchInputIsFocused && (
           <FlatButton

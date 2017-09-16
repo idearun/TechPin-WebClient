@@ -1,6 +1,8 @@
 import axios from "axios";
 import querystring from "querystring";
 
+const CancelToken = axios.CancelToken;
+
 require("core-js/fn/object/values");
 require("core-js/fn/object/entries");
 
@@ -163,6 +165,12 @@ export default class techPinApi {
   }
 
   static search(searchTerm) {
-    return axios.get(`${baseApiUrl}/products/?search=${searchTerm}`);
+    const searchRequest = CancelToken.source();
+    return {
+      response: axios.get(`${baseApiUrl}/products/?search=${searchTerm}`, {
+        cancelToken: searchRequest.token
+      }),
+      onCancel: searchRequest.cancel
+    };
   }
 }

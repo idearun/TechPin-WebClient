@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ActionSearch from "material-ui/svg-icons/action/search";
 import ClickOutHandler from "react-onclickout";
+import CircularProgress from "material-ui/CircularProgress";
 
 const styles = {
   icon: {
@@ -20,6 +21,7 @@ export default class SearchBar extends Component {
   }
 
   open = () => {
+    // to avoid collapsing into the logo
     this.searchInput.style.width = window.innerWidth - 275 + "px";
     this.searchInput.focus();
     this.props.onFocus();
@@ -30,7 +32,7 @@ export default class SearchBar extends Component {
     // do nothing if the input is not focused
     if (this.state.isOpen) {
       this.searchInput.classList.remove("active");
-      this.searchInput.removeAttribute("style")
+      this.searchInput.removeAttribute("style");
       this.setState(state => {
         return { isOpen: false };
       });
@@ -60,7 +62,7 @@ export default class SearchBar extends Component {
   };
 
   render() {
-    const { onChange } = this.props;
+    const { onChange, aSyncCall } = this.props;
     return (
       <div id="search-bar-wrapper">
         <ClickOutHandler onClickOut={this.close}>
@@ -75,7 +77,9 @@ export default class SearchBar extends Component {
             placeholder="Search..."
             className={this.getClassName()}
           />
-          {!this.props.isDesktop && !this.state.isOpen && (
+          {aSyncCall && <CircularProgress id="search-bar-spinner" color={"white"} size={20} />}
+          {!this.props.isDesktop &&
+          !this.state.isOpen && (
             <ActionSearch
               color="white"
               onClick={this.open}

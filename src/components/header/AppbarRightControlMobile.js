@@ -20,7 +20,12 @@ export default class extends Component {
   };
 
   render() {
-    const { handleDrawerToggle, searchResult, onSearchTermUpdate } = this.props;
+    const {
+      handleDrawerToggle,
+      searchResult,
+      onSearchTermUpdate,
+      aSyncCall
+    } = this.props;
     return (
       <div
         style={{
@@ -33,6 +38,7 @@ export default class extends Component {
           onChange={onSearchTermUpdate}
           onFocus={this.handleSearchFocus}
           onBlur={this.handleSearchBlur}
+          aSyncCall={aSyncCall}
         />
         {!this.state.searchInputIsFocused && (
           <IconButton onClick={handleDrawerToggle}>

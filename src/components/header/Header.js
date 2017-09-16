@@ -44,7 +44,8 @@ class Header extends React.Component {
       drawerIsOpen: false,
       snackBarOpen: false,
       responseText: "",
-      searchResult: []
+      searchResult: [],
+      SearchAsyncOngoing: false
     };
   }
 
@@ -85,15 +86,19 @@ class Header extends React.Component {
 
   searchRequest = debounce(searchTerm => {
     if (searchTerm !== "") {
-      this.props
-        .search(searchTerm)
+      this.setState({ SearchAsyncOngoing: true });
+      const { dataPromise, onCancel } = this.props.search(searchTerm);
+      this.setState({ cancelSearch: onCancel });
+      dataPromise
         .then(({ products }) => {
-          // response is an object with alphabetic keys
-          console.log(products);
-          this.setState({ searchResult: this.flattenResponse(products) });
+          this.setState({
+            // response is an object with alphabetic keys
+            searchResult: this.flattenResponse(products),
+            SearchAsyncOngoing: false
+          });
         })
         .catch(error => {
-          this.setState({ searchResult: ["ارتباط با سرور امکان پذیر نیست"] });
+          this.setState({ SearchAsyncOngoing: false });
         });
     }
   }, 400);
@@ -109,7 +114,10 @@ class Header extends React.Component {
   };
 
   onSearchFinish = () => {
-    this.setState({ searchResult: [] });
+    if (this.state.cancelSearch) {
+      this.state.cancelSearch();
+      this.setState({ searchResult: [] });
+    }
   };
 
   handleSignUp = formData => {
@@ -218,6 +226,7 @@ class Header extends React.Component {
                 onSearchTermUpdate={this.updateSearchTerm}
                 searchResult={this.state.searchResult}
                 onSearchFinish={this.onSearchFinish}
+                aSyncCall={this.state.SearchAsyncOngoing}
               />
             ) : (
               <AppbarRightControlMobile
@@ -225,6 +234,7 @@ class Header extends React.Component {
                 onSearchTermUpdate={this.updateSearchTerm}
                 searchResult={this.state.searchResult}
                 onSearchFinish={this.onSearchFinish}
+                aSyncCall={this.state.SearchAsyncOngoing}
               />
             )
           }
