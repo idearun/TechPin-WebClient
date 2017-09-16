@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 import StarRating from "../sharedComponents/StarRating";
-
+import FlatButton from "material-ui/FlatButton";
 import SocialPeople from "material-ui/svg-icons/social/people";
 import ActionWork from "material-ui/svg-icons/action/work";
 import ActionGrade from "material-ui/svg-icons/action/grade";
@@ -8,7 +8,7 @@ import ActionFlightTakeoff from "material-ui/svg-icons/action/flight-takeoff";
 
 const styles = {
   svgIcon: {
-    width: "20px",
+    minWidth: "20px",
     color: "#0D47A1"
   }
 };
@@ -45,7 +45,7 @@ export default class VisualInfo extends React.Component {
     // let product = this.props.product
     const editAble = this.props.editAble;
     return (
-      <div className="visual-info">
+      <div className={"visual-info " + this.props.className}>
         <div className="single-page-visual-parent">
           <div className="single-page-visual-widget">
             {`${this.props.average_p_rate.toFixed(1)}`}
@@ -93,6 +93,14 @@ export default class VisualInfo extends React.Component {
               <span>Launch</span>
               <ActionFlightTakeoff style={styles.svgIcon} />
             </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <FlatButton label="Edit Information" fullWidth />
+          </div>
+          <div>
+            <FlatButton label="Add Investment Record" fullWidth />
           </div>
         </div>
       </div>

@@ -130,59 +130,81 @@ class SinglePageMain extends React.Component {
 
     return (
       <div id="single-page-main-container">
-        <Paper id="single-page-main-content" style={styles.paper} zDepth={3}>
-          {this.props.children}
-          <StartupWidgetMoreInfo product={this.state.product || {}} />
-          <VisualInfo
-            average_p_rate={
-              this.state.rating.rating ||
-              this.props.product.product.average_p_rate
-            }
-            rate_count={
-              this.state.rating.rateCount ||
-              this.props.product.product.rate_count
-            }
-            n_p_score={this.props.product.product.n_p_score}
-            employeesCount={this.props.product.product.details.employees_count}
-            year={this.props.product.product.details.year}
-          />
-          <div className="rating">
-            <Rate
-              name={name}
-              userRate={
-                this.props.userRate ? this.props.userRate.rate : undefined
+        <div className="second-column">
+          <div id="single-page-main-content">
+            <Paper
+              className="detail-and-rating-wrapper"
+              style={styles.paper}
+              zDepth={1}
+            >
+              {/* {this.props.children} */}
+              <StartupWidgetMoreInfo product={this.state.product || {}} />
+              <div className="rating">
+                <Rate
+                  name={name}
+                  userRate={
+                    this.props.userRate ? this.props.userRate.rate : undefined
+                  }
+                  slug={this.state.product.slug}
+                  submitRate={this.handlePostRate}
+                  authenticated={this.props.authenticated}
+                />
+              </div>
+            </Paper>
+            <VisualInfo
+              average_p_rate={
+                this.state.rating.rating ||
+                this.props.product.product.average_p_rate
               }
-              slug={this.state.product.slug}
-              submitRate={this.handlePostRate}
-              authenticated={this.props.authenticated}
+              rate_count={
+                this.state.rating.rateCount ||
+                this.props.product.product.rate_count
+              }
+              n_p_score={this.props.product.product.n_p_score}
+              employeesCount={
+                this.props.product.product.details.employees_count
+              }
+              year={this.props.product.product.details.year}
             />
           </div>
-          <div className="detailed-info">
-            <AboutAndInvestmentRecords
-              name={name}
-              desc={desc}
-              investedOn={investedOn}
-              investmentsDone={investmentsDone}
-            />
+          <div style={styles.paper} className="about-inv-visual-wrapper">
+            <div className="detailed-info">
+              <AboutAndInvestmentRecords
+                name={name}
+                desc={desc}
+                investedOn={investedOn}
+                investmentsDone={investmentsDone}
+              />
+            </div>
+            <Paper
+              className="social-and-contact-wrapper"
+              style={styles.paper}
+              zDepth={1}
+            >
+              <div className="contact-info">
+                <ContactInfo contactData={contactData} />
+              </div>
+              <div className="single-socials">
+                {this.state.product && (
+                  <SocialNetworks socialData={socialData} />
+                )}
+              </div>
+            </Paper>
           </div>
-          <div className="contact-info">
-            <ContactInfo contactData={contactData} />
-          </div>
-          <div className="single-socials">
-            {this.state.product && <SocialNetworks socialData={socialData} />}
-          </div>
-          <div className="comments">
-            <span className="comment-title">Comments</span>
-            <CommentBox
-              authenticated={this.props.authenticated}
-              handlePostComment={this.handlePostComment}
-              commentAsyncCall={this.state.commentAsyncCall}
-            />
-            {comments.map((comment, i) => (
-              <CommentRow comment={comment} key={i} />
-            ))}
-          </div>
-        </Paper>
+          <Paper style={styles.paper} zDepth={1}>
+            <div className="comments">
+              <span className="comment-title">Comments</span>
+              {comments.map((comment, i) => (
+                <CommentRow comment={comment} key={i} />
+              ))}
+              <CommentBox
+                authenticated={this.props.authenticated}
+                handlePostComment={this.handlePostComment}
+                commentAsyncCall={this.state.commentAsyncCall}
+              />
+            </div>
+          </Paper>
+        </div>
 
         <Snackbar
           open={this.state.snackBarIsOpen}

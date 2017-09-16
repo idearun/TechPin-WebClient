@@ -198,6 +198,10 @@
   box-shadow: inset -1px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
+.column .react-loading-skeleton {
+  height: 140px;
+}
+
 .widget {
   display: flex;
   padding: 20px 30px;
@@ -326,12 +330,11 @@ div.before-top25-title {
   height: auto;
   opacity: 1;
   transition: all 0.5s ease-out;
-  
 }
 
 .due-diligence.hide {
   transition: all 0.5s ease-out;
-  height: 0 !important; 
+  height: 0 !important;
   opacity: 0.01;
   visibility: hidden;
   display: none;
@@ -339,7 +342,6 @@ div.before-top25-title {
 
 /* .due-diligence .input-row {
 } */
-
 
 /* .due-diligence > div:first-child {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 6px, rgba(0, 0, 0, 0.2) 0px 1px 4px !important;

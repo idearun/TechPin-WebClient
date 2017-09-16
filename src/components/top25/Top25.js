@@ -59,7 +59,7 @@ class Top25 extends React.Component {
     this.setState({ addVersionModalIsOpen: false });
   };
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     if (Object.keys(this.props.topProducts).length > 0) {
       const topProducts = this.props.topProducts;
       this.setState({

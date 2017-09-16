@@ -60,15 +60,24 @@ export default class StartupWidgetMoreInfo extends React.Component {
         ) : (
           <img src={NoLogoImage} width="100px" alt="logo" />
         )}
-        <div>
+        <div style={{ flex: 1 }}>
           <span>
             <a
               href={data.website}
               target="_blank"
-              style={{ display: "inline-flex", alignContent: 'center', alignItems: 'center', color: '#0D47A1' }}
+              style={{
+                display: "inline-flex",
+                alignContent: "center",
+                alignItems: "center",
+                color: "#0D47A1"
+              }}
             >
               {data.name_en}
-              <ContentLink color="#0D47A1" style={{ marginLeft: 5 }} hoverColor='aqua' />
+              <ContentLink
+                color="#0D47A1"
+                style={{ marginLeft: 5 }}
+                hoverColor="aqua"
+              />
             </a>
             <span id="single-meta-info">
               {data.city && `${data.city},${data.country}`}

@@ -58,6 +58,7 @@ class Main extends React.Component {
   }
 }
 
+// bad idea => move this down to Top25 Component
 function mapStateToProps(state) {
   return {
     allProducts: state.allProducts,
@@ -66,10 +67,5 @@ function mapStateToProps(state) {
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(actions, dispatch)
-//   };
-// }
 
 export default connect(mapStateToProps, actions)(Main);

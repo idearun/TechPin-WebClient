@@ -16,11 +16,18 @@
   display: flex;
   justify-content: space-between;
 }
+.footer-about >* {
+  flex-basis: 50%;
+}
 .footer-about .telegram-bot {
   width: 350px;
+  display: flex;
+  justify-content: center;
+  
 }
 .footer-about .telegram-bot img {
   width: 350px;
+  margin-top: 10px;
   height: auto;
   border-radius: 5px;
   box-shadow: 0 0 10px 3px #4B4BF8;
