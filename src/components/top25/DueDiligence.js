@@ -17,6 +17,33 @@ const selectOptionsValues = [
   "feedback"
 ];
 
+const menuItems = [
+  {
+    text: "What is this in regards to?",
+    value: 0
+  },
+  {
+    text: "Due diligence service",
+    value: 1
+  },
+  {
+    text: "start a project with us",
+    value: 2
+  },
+  {
+    text: "I want to share information about a start-up or investment",
+    value: 3
+  },
+  {
+    text: "Consult with us",
+    value: 4
+  },
+  {
+    text: "Feedback",
+    value: 5
+  }
+];
+
 class DueDiligence extends Component {
   constructor(props) {
     super(props);
@@ -96,6 +123,17 @@ class DueDiligence extends Component {
     }
   };
 
+  renderSelectMenuItems = () => {
+    return menuItems.map((item, index) => (
+      <MenuItem
+        key={item.value}
+        value={item.value}
+        disabled={index === 0}
+        primaryText={item.text}
+      />
+    ));
+  };
+
   render() {
     const className = this.props.show
       ? "due-diligence show"
@@ -114,19 +152,7 @@ class DueDiligence extends Component {
                 labelStyle={{ padding: 0, color: "rgba(0,0,0,0.3)" }}
                 onChange={(_, val) => this.updateFormData(val, "type")}
               >
-                <MenuItem
-                  value={0}
-                  disabled
-                  primaryText="What Is This In regards To?"
-                />
-                <MenuItem value={1} primaryText="Due Diligence Service" />
-                <MenuItem value={2} primaryText="Start A Project With Us" />
-                <MenuItem
-                  value={3}
-                  primaryText="I Want To Share Information About a Start-up Or Investment"
-                />
-                <MenuItem value={4} primaryText="Consult With Us" />
-                <MenuItem value={5} primaryText="Feedback" />
+                {this.renderSelectMenuItems()}
               </DropDownMenu>
               <div className="input-row">
                 <TextField

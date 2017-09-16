@@ -222,7 +222,6 @@ class EditInfo extends React.Component {
               hintText="Type A Number"
               floatingLabelText="Number of Employees"
               dataSource={empRange}
-              filter={AutoComplete.caseInsensitiveFilter}
               searchText={
                 this.state.empRangeSearchTerm ||
                 product.product.details.employees_count
