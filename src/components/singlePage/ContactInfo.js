@@ -25,18 +25,20 @@ const ContactInfo = ({ contactData }) => {
           </a>
         </span>
       </div>
-      <div className="contact-info-row">
-        <FileCloud style={styles.svgIcon} />
-        <span className="contact-info-title">
-          <a
-            href={contactData.extraUrl || ""}
-            target="_blank"
-            className={!contactData.extraUrl && "link-disabled"}
-          >
-            {contactData.extraUrl || "No extra url"}
-          </a>
-        </span>
-      </div>
+      {contactData.extraUrl && (
+        <div className="contact-info-row">
+          <FileCloud style={styles.svgIcon} />
+          <span className="contact-info-title">
+            <a
+              href={contactData.extraUrl || ""}
+              target="_blank"
+              className={!contactData.extraUrl && "link-disabled"}
+            >
+              {contactData.extraUrl || "No extra url"}
+            </a>
+          </span>
+        </div>
+      )}
       <div className="contact-info-row">
         <CommunicationEmail style={styles.svgIcon} />
         <span className="contact-info-title">
