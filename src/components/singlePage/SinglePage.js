@@ -172,9 +172,6 @@ class SinglePage extends React.Component {
       ...addInvRecFormData
     };
 
-    // data.amount = data.amount.replace(",", "");
-
-    console.log(data);
 
     if (this.isValid(data)) {
       const formData = appendToFormData(data);
