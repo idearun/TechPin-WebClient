@@ -61,7 +61,6 @@ class Top25 extends React.Component {
 
 
   componentWillReceiveProps = nextProps => {
-    console.log(nextProps);
     if (Object.keys(nextProps.topProducts).length > 0) {
       this.setState({
         topProducts: {

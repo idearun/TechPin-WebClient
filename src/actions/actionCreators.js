@@ -342,7 +342,6 @@ export function postNewInvestmentRecord(formData) {
         if (response.status === 201) {
           return Promise.resolve(response);
         } else {
-          console.log(response);
           return Promise.reject();
         }
       },

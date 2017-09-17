@@ -94,7 +94,6 @@ class CategoryPage extends React.Component {
             products: this.filterDuplicate(filteredList)
           });
         })
-        .catch(err => console.log(err));
     }
 
     // if (Object.keys(this.props.allProducts).length === 0) {
