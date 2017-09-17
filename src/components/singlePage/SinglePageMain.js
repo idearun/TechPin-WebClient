@@ -152,6 +152,9 @@ class SinglePageMain extends React.Component {
               </div>
             </Paper>
             <VisualInfo
+              slug={this.props.slug}
+              auth={this.props.auth}
+              handleInvRecAdd={this.props.handleInvRecAdd}
               average_p_rate={
                 this.state.rating.rating ||
                 this.props.product.product.average_p_rate

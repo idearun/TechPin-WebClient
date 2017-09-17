@@ -5,6 +5,8 @@ import SocialPeople from "material-ui/svg-icons/social/people";
 import ActionWork from "material-ui/svg-icons/action/work";
 import ActionGrade from "material-ui/svg-icons/action/grade";
 import ActionFlightTakeoff from "material-ui/svg-icons/action/flight-takeoff";
+import { browserHistory } from "react-router";
+import Snackbar from "material-ui/Snackbar";
 
 const styles = {
   svgIcon: {
@@ -40,16 +42,37 @@ export default class VisualInfo extends React.Component {
       });
     }
   };
+
+  checkAuthAndRedirect = () => {
+    if (!this.props.auth) {
+      this.setState({ snackBarOpen: true });
+    } else {
+      browserHistory.push(`/${this.props.slug}/edit`);
+    }
+  };
+
+  handleSnackBarClose = () => {
+    this.setState({ snackBarOpen: false });
+  };
+
   // refactor to more stateless components 😠
   render() {
     return (
       <div className="visual-info-action-button-wrapper">
         <div className="single-page-action-buttons">
           <div>
-            <FlatButton label="Edit Information" fullWidth />
+            <FlatButton
+              label="Edit Information"
+              fullWidth
+              onClick={this.checkAuthAndRedirect}
+            />
           </div>
           <div>
-            <FlatButton label="Add Investment Record" fullWidth />
+            <FlatButton
+              label="Add Investment Record"
+              fullWidth
+              onClick={this.props.handleInvRecAdd}
+            />
           </div>
         </div>
         <div className="visual-info ">
@@ -103,6 +126,12 @@ export default class VisualInfo extends React.Component {
             </div>
           </div>
         </div>
+        <Snackbar
+          open={this.state.snackBarOpen}
+          message="You are not logged in, Please log in first"
+          autoHideDuration={5000}
+          onRequestClose={this.handleSnackBarClose}
+        />
       </div>
     );
   }

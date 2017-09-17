@@ -226,14 +226,17 @@ class SinglePage extends React.Component {
           <SinglePageMain
             product={this.state.product}
             userRate={this.props.userRates[this.props.params.startUpName]}
+            slug={this.state.slug}
+            auth={this.props.authenticated}
+            handleInvRecAdd={this.handleInvRecAdd}
           >
-            <SinglePageToolbar
+            {/*<SinglePageToolbar
               editAble={true}
               showInvestmentRecord={true}
               slug={this.state.slug}
               auth={this.props.authenticated}
               handleInvRecAdd={this.handleInvRecAdd}
-            />
+            />*/}
           </SinglePageMain>
         )}
         <Dialog
