@@ -587,6 +587,19 @@
     }
   }
 
+  @media screen and (max-width: 810px) {
+    #add-investment-record-form .two-columns>* {
+      flex-basis: 100%;
+      width: 100% !important;
+    }
+    #add-investment-record-form .two-columns>*>* {
+      width: 100% !important;
+    }
+    #add-investment-record-form div.two-columns>:nth-child(2) {
+      margin-left: 0;
+    }
+  }
+
   @media screen and (max-width: 700px) {
     .detail-and-rating-wrapper {
       width: 80vw;
@@ -668,4 +681,3 @@
       margin-top: 0;
     }
   }
-  
