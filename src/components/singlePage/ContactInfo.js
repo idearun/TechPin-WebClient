@@ -20,8 +20,8 @@ const ContactInfo = ({ contactData }) => {
       <div className="contact-info-row">
         <FileCloud style={styles.svgIcon} />
         <span className="contact-info-title">
-          <a href={contactData.website || ""} target="_blank">
-            {contactData.website || ""}
+          <a href={contactData.website || "#"} target="_blank">
+            <span>{contactData.website || "No website"}</span>
           </a>
         </span>
       </div>
