@@ -16,7 +16,7 @@
 
 .social-and-contact-wrapper {
   flex-basis: 30%;
-  margin-left: 30px;
+  margin-left: 15px;
   background-color: white;
   padding: 25px;
   min-width: 270px;
@@ -44,9 +44,10 @@
   flex: 1;
   padding: 30px 30px 0 30px;
 }
+
 .about-inv-visual-wrapper {
   display: flex;
-  margin-top: 30px;
+  margin-top: 15px;
   align-content: stretch;
   align-items: stretch;
 }
@@ -162,20 +163,24 @@
 .single-link a {
   display: block;
 }
+
 .single-link div.social-media {
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex: 1;
 }
+
 .single-link a > img {
   width: auto;
   height: 50px;
   /* margin: 10px 0; */
 }
+
 .single-link div.social-media a {
   margin: 0;
 }
+
 .single-link div.social-media img {
   display: flex;
   height: 30px;
@@ -183,8 +188,22 @@
   margin: 10px;
 }
 
+.visual-info-action-button-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-page-action-buttons {
+  background-color: white;
+  max-width: 270px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  min-width: 270px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+}
+
 .comments {
-  margin: 30px 0;
+  margin: 15px 0;
   padding: 30px;
 }
 
@@ -271,14 +290,17 @@ div.comments > span {
   font-weight: 500;
   margin-left: 10px;
 }
+
 .contact-info-title a {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
+
 #signle-page-snackbar > div > div > span {
   font-size: 20px;
 }
+
 .contact-info-row svg {
   min-width: 20px;
 }
@@ -298,9 +320,11 @@ span.single-page-summary {
   text-align: center;
   overflow-x: auto;
 }
+
 .investment-records-wrapper tr {
   height: 30px;
 }
+
 .investment-records-wrapper th,
 td {
   padding: 10px;
@@ -322,7 +346,8 @@ td {
 
 .visual-info {
   flex-basis: 30%;
-  margin-left: 30px;
+  margin-left: 15px;
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -377,6 +402,7 @@ div.single-page-visual-widget:hover {
   display: flex;
   flex-wrap: wrap;
 }
+
 #add-investment-record-form div.two-columns > :nth-child(2) {
   margin-left: 50px;
 }
@@ -472,12 +498,15 @@ div.single-page-visual-widget:hover {
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
 .rate-box:first-child {
   margin-left: 0;
 }
+
 .rate-box:last-child {
   margin-left: 0;
 }
+
 .rate-box:hover {
   background-color: #0d47a1;
   color: white;

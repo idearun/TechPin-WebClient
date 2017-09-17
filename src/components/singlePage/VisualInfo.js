@@ -40,67 +40,67 @@ export default class VisualInfo extends React.Component {
       });
     }
   };
-
+  // refactor to more stateless components 😠
   render() {
-    // let product = this.props.product
-    const editAble = this.props.editAble;
     return (
-      <div className={"visual-info " + this.props.className}>
-        <div className="single-page-visual-parent">
-          <div className="single-page-visual-widget">
-            {`${this.props.average_p_rate.toFixed(1)}`}
-            <StarRating
-              rating={this.props.average_p_rate}
-              className="visual-info-star"
-              editable={false}
-            />
-          </div>
-          <div>
-            <div className="visual-info-sub-span">
-              <span>{this.props.rate_count}</span>
-              <SocialPeople style={styles.svgIcon} />
-            </div>
-          </div>
-        </div>
-        <div className="single-page-visual-parent">
-          <div className="single-page-visual-widget">
-            {this.props.n_p_score}
-          </div>
-          <div>
-            <div className="visual-info-sub-span">
-              <span>NPS</span>
-              <ActionGrade style={styles.svgIcon} />
-            </div>
-          </div>
-        </div>
-        <div className="single-page-visual-parent">
-          <div className="single-page-visual-widget">
-            {this.props.employeesCount || "?"}
-          </div>
-          <div>
-            <div className="visual-info-sub-span">
-              <span>Empl.</span>
-              <ActionWork style={styles.svgIcon} />
-            </div>
-          </div>
-        </div>
-        <div className="single-page-visual-parent">
-          <div className="single-page-visual-widget">
-            {this.props.year || "?"}
-          </div>
-          <div>
-            <div className="visual-info-sub-span">
-              <span>Launch</span>
-              <ActionFlightTakeoff style={styles.svgIcon} />
-            </div>
-          </div>
-        </div>
-        <div>
+      <div className="visual-info-action-button-wrapper">
+        <div className="single-page-action-buttons">
           <div>
             <FlatButton label="Edit Information" fullWidth />
           </div>
           <div>
             <FlatButton label="Add Investment Record" fullWidth />
+          </div>
+        </div>
+        <div className="visual-info ">
+          <div className="single-page-visual-parent">
+            <div className="single-page-visual-widget">
+              {`${this.props.average_p_rate.toFixed(1)}`}
+              <StarRating
+                rating={this.props.average_p_rate}
+                className="visual-info-star"
+                editable={false}
+              />
+            </div>
+            <div>
+              <div className="visual-info-sub-span">
+                <span>{this.props.rate_count}</span>
+                <SocialPeople style={styles.svgIcon} />
+              </div>
+            </div>
+          </div>
+          <div className="single-page-visual-parent">
+            <div className="single-page-visual-widget">
+              {this.props.n_p_score}
+            </div>
+            <div>
+              <div className="visual-info-sub-span">
+                <span>NPS</span>
+                <ActionGrade style={styles.svgIcon} />
+              </div>
+            </div>
+          </div>
+          <div className="single-page-visual-parent">
+            <div className="single-page-visual-widget">
+              {this.props.employeesCount || "?"}
+            </div>
+            <div>
+              <div className="visual-info-sub-span">
+                <span>Empl.</span>
+                <ActionWork style={styles.svgIcon} />
+              </div>
+            </div>
+          </div>
+          <div className="single-page-visual-parent">
+            <div className="single-page-visual-widget">
+              {this.props.year || "?"}
+            </div>
+            <div>
+              <div className="visual-info-sub-span">
+                <span>Launch</span>
+                <ActionFlightTakeoff style={styles.svgIcon} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
