@@ -1,0 +1,33 @@
+/* PROJECT */
+
+	Site Name:   TechPin
+	Site URL:    http://techpin.ir/
+	Created:     2016/11
+	
+/* TEAM */
+      
+Name: 	 Hamidreza Tondkaran
+Contact: htondkar [at] gmail.com
+Location: Tehran, Iran
+
+Name: 	 Hasan Noori
+Contact: hasan@idearun.co
+Location: Tehran, Iran
+
+Name: 	 S. Amir Hashemi
+Contact: amir@idearun.co
+Location: Tehran, Iran
+
+Name: 	 S. Hesam Sanei
+Contact: sanei.hesam@gmail.com
+Location: Tehran, Iran
+
+Name: 	 Farokh Shahabi Nezhad
+Contact: shahabi@idearun.co
+Location: Tehran, Iran
+
+/* THANKS */
+		
+/* SITE */
+	Last update:2017/04/15
+	Language: English
