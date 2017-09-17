@@ -17,6 +17,8 @@ import FileFileUpload from "material-ui/svg-icons/file/file-upload";
 import IconButton from "material-ui/IconButton";
 import Snackbar from "material-ui/Snackbar";
 import { PulseLoader } from "halogen";
+import SelectField from "material-ui/SelectField";
+import MenuItem from "material-ui/MenuItem";
 
 const editFormSubmitSuccessFeedbackText =
   "Thanks, your info will be shown after approval";
@@ -32,6 +34,10 @@ const empRange = [
   "1000+"
 ];
 
+const menuItems = empRange.map((item, index) => (
+  <MenuItem key={index} value={item} primaryText={item} />
+));
+
 class EditInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -40,14 +46,9 @@ class EditInfo extends React.Component {
       responseText: "",
       formData: {},
       aSyncCall: false,
-      selectedLogoFilename: null,
-      empRangeSearchTerm: ""
+      selectedLogoFilename: null
     };
   }
-
-  updateEmpRangeSearchTerm = chosenOption => {
-    this.setState({ empRangeSearchTerm: chosenOption });
-  };
 
   setEmpRangeFormData = option => {
     const formVals = {};
@@ -84,13 +85,6 @@ class EditInfo extends React.Component {
       }
     }
   };
-
-  // handleAddTag = categories => {
-  //   const newFormData = Object.assign({}, this.state.formData, {
-  //     categories: categories
-  //   });
-  //   this.setState({ formData: newFormData });
-  // };
 
   handleSubmit = () => {
     const keys = Object.keys(this.state.formData);
@@ -210,28 +204,15 @@ class EditInfo extends React.Component {
               type="email"
               onChange={this.textFieldChangeHandler}
             />
-            {/* <TextField
-              id="employees"
-              defaultValue={product.product.details.employees}
+
+            <SelectField
+              value={product.product.details.employees_count}
+              onChange={this.setEmpRangeFormData}
+              floatingLabelText="Employees"
               className="three-field"
-              floatingLabelText="Number of Employees"
-              onChange={this.textFieldChangeHandler}
-            /> */}
-            <AutoComplete
-              id="employees"
-              hintText="Type A Number"
-              floatingLabelText="Number of Employees"
-              dataSource={empRange}
-              searchText={
-                this.state.empRangeSearchTerm ||
-                product.product.details.employees_count
-              }
-              style={{ width: "30%" }}
-              textFieldStyle={{ width: "auto" }}
-              onUpdateInput={this.updateEmpRangeSearchTerm}
-              onNewRequest={this.setEmpRangeFormData}
-              openOnFocus
-            />
+            >
+              {menuItems}
+            </SelectField>
             <TextField
               id="year"
               defaultValue={product.product.details.year}
