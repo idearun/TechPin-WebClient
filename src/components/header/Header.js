@@ -45,7 +45,8 @@ class Header extends React.Component {
       snackBarOpen: false,
       responseText: "",
       searchResult: [],
-      SearchAsyncOngoing: false
+      SearchAsyncOngoing: false,
+      hideLogo: false
     };
   }
 
@@ -116,7 +117,22 @@ class Header extends React.Component {
   onSearchFinish = () => {
     if (this.state.cancelSearch) {
       this.state.cancelSearch();
-      this.setState({ searchResult: [] });
+      this.setState({ searchResult: [], hideLogo: false });
+    }
+    this.setState({ hideLogo: false }, () => {
+      document.getElementById(
+        "header-logo"
+      ).parentNode.parentNode.style.minWidth =
+        "175px";
+    });
+  };
+
+  onSearchStart = () => {
+    if (window.innerWidth <= 450) {
+      document.getElementById(
+        "header-logo"
+      ).parentNode.parentNode.style.minWidth = 0;
+      this.setState({ hideLogo: true });
     }
   };
 
@@ -211,9 +227,18 @@ class Header extends React.Component {
         <AppBar
           className={"app-bar"}
           title={
-            <Link to="/">
-              <img src={Logo} alt="logo" className="logo-img" />
-            </Link>
+            this.state.hideLogo ? (
+              <div />
+            ) : (
+              <Link to="/">
+                <img
+                  src={Logo}
+                  alt="logo"
+                  className="logo-img"
+                  id="header-logo"
+                />
+              </Link>
+            )
           }
           showMenuIconButton={false}
           iconElementRight={
@@ -234,6 +259,7 @@ class Header extends React.Component {
                 onSearchTermUpdate={this.updateSearchTerm}
                 searchResult={this.state.searchResult}
                 onSearchFinish={this.onSearchFinish}
+                onSearchStart={this.onSearchStart}
                 aSyncCall={this.state.SearchAsyncOngoing}
               />
             )

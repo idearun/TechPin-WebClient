@@ -12,6 +12,7 @@ export default class extends Component {
   }
   handleSearchFocus = () => {
     this.setState({ searchInputIsFocused: true });
+    this.props.onSearchStart()
   };
 
   handleSearchBlur = () => {

@@ -22,9 +22,16 @@ export default class SearchBar extends Component {
 
   open = () => {
     // to avoid collapsing into the logo
-    this.searchInput.style.width = window.innerWidth - 275 + "px";
+    const { innerWidth } = window;
+
+    if (innerWidth > 450) {
+      this.searchInput.style.width = innerWidth - 275 + "px";
+    } else {
+      this.searchInput.style.width = innerWidth - 50 + "px";
+    }
+
     this.searchInput.focus();
-    this.props.onFocus();
+    this.props.onFocus(); //notify parent
     this.setState({ isOpen: true });
   };
 
