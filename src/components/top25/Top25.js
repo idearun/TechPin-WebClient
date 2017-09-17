@@ -59,21 +59,9 @@ class Top25 extends React.Component {
     this.setState({ addVersionModalIsOpen: false });
   };
 
-  componentDidMount = () => {
-    if (Object.keys(this.props.topProducts).length > 0) {
-      const topProducts = this.props.topProducts;
-      this.setState({
-        topProducts: {
-          topNew: topProducts.topNew,
-          between1And10Million: sort(topProducts.between1And10Million, "nps"),
-          plus10Million: sort(topProducts.plus10Million, "nps"),
-          plus100Million: sort(topProducts.plus100Million, "nps")
-        }
-      });
-    }
-  };
 
   componentWillReceiveProps = nextProps => {
+    console.log(nextProps);
     if (Object.keys(nextProps.topProducts).length > 0) {
       this.setState({
         topProducts: {
@@ -89,15 +77,34 @@ class Top25 extends React.Component {
     }
   };
 
+  updateInitialState = () => {
+    if (Object.keys(this.props.topProducts).length > 0) {
+      const topProducts = this.props.topProducts;
+      this.setState({
+        topProducts: {
+          topNew: topProducts.topNew,
+          between1And10Million: sort(topProducts.between1And10Million, "nps"),
+          plus10Million: sort(topProducts.plus10Million, "nps"),
+          plus100Million: sort(topProducts.plus100Million, "nps")
+        }
+      });
+    }
+  };
+
   componentDidMount = () => {
+    // load state
+    this.updateInitialState();
+    // attach event listeners
+    this.attachEventListeners();
+  };
+
+  attachEventListeners() {
     const floatingButton = document.querySelector(".floating-action-button");
     const shortDesc = document.querySelector(".site-desc");
-
     floatingButton.style.top =
       shortDesc.getBoundingClientRect().bottom -
       floatingButton.offsetHeight / 2 +
       "px";
-
     window.addEventListener(
       "scroll",
       debounce(() => {
@@ -116,7 +123,7 @@ class Top25 extends React.Component {
         passive: true
       }
     );
-  };
+  }
 
   persistNewProduct = slug => {
     this.setState({

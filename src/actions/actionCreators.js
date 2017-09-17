@@ -168,11 +168,9 @@ export function signupUser(formData) {
       .signup(formData) // instead of this start a new ajax call with and send the formdata
       .then(
         response => {
-          console.clear();
           return Promise.resolve(response.data);
         },
         response => {
-          console.clear();
           return Promise.reject(response.data);
         }
       );
@@ -211,12 +209,10 @@ export function authenticate(username, password) {
           localStorage.setItem("techpin", JSON.stringify(authData));
           dispatch(successfulLogin(response.data));
         }
-        console.clear();
         return Promise.resolve(response.data);
       },
       response => {
         dispatch(failedLogin(response.data));
-        console.clear();
         return Promise.reject(response.data);
       }
     );
