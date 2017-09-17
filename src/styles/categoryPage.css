@@ -1,49 +1,59 @@
 .category-page {
   padding: 2% 10%;
 }
+
 .category-flex-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.category-flex-container > * {
+
+.category-flex-container>* {
   margin: 10px;
 }
+
 div.category-paper {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23) !important;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23) !important;
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   position: relative;
 }
+
 div.category-paper:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22) !important;
 }
+
 .category-header {
   display: flex;
+  max-width: 100%;
   justify-content: center;
   border-bottom: 1px dashed #b8b8b8;
 }
-.category-header > div:last-child{
+
+.category-header>div:last-child {
   width: 60px;
   height: 60px;
 }
-.category-header > div.category-title{
-  flex: 1 0 auto;
+
+.category-header>div.category-title {
+  flex: 1 1 auto;
   text-align: center;
 }
-.category-header > div.category-title > span{
+
+.category-header>div.category-title>div:first-of-type {
   color: #555;
   font-size: 24px;
   font-family: 'Raleway';
   font-weight: 600;
 }
-.category-header > div.category-title > p.sub-header {
+
+.category-header>div.category-title>div.sub-header {
   color: #5A5A5A;
   font-size: 18px;
   font-family: 'Rubik';
   font-weight: normal;
   line-height: 30px;
-
 }
+
 .category-paper {
   display: flex;
   flex-direction: column;
@@ -51,27 +61,41 @@ div.category-paper:hover {
   align-items: center;
   justify-content: space-between;
 }
-div#paper-short-desc > span {
+
+div#paper-short-desc>span {
   text-align: justify;
 }
-.category-paper > span > h3{
+
+.category-paper>span>h3 {
   font-size: 20px;
   font-family: 'Rubik';
 }
+
 .category-info-box {
   text-align: center;
   line-height: 20px;
   font-family: 'Raleway';
 }
+
 div#paper-short-desc {
   text-align: center;
   font-family: 'Rubik';
   color: #555;
 }
+
 .category-image {
   width: 130px;
   min-height: 100px;
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: contain;
+}
+
+@media screen and (max-width: 650px) {
+  .category-header>button {
+    display: none !important;
+  }
+  .category-header>div:last-child {
+    display: none ;
+  }
 }

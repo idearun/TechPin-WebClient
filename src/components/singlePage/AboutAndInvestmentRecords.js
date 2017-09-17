@@ -3,6 +3,8 @@ import SwipeableViews from "react-swipeable-views";
 import { Tabs, Tab } from "material-ui/Tabs";
 import InvestmentRecords from "./InvestmentRecords";
 
+const tabStyle = { color: "navy", whiteSpace: "normal" };
+
 export default class AboutAndInvestmentRecords extends Component {
   constructor() {
     super();
@@ -26,16 +28,8 @@ export default class AboutAndInvestmentRecords extends Component {
           inkBarStyle={{ backgroundColor: "navy" }}
           tabItemContainerStyle={{ backgroundColor: "#E8E8E8" }}
         >
-          <Tab
-            label={`About ${name}`}
-            value={0}
-            buttonStyle={{ color: "navy" }}
-          />
-          <Tab
-            label="Investment Records"
-            value={1}
-            buttonStyle={{ color: "navy" }}
-          />
+          <Tab label={`About ${name}`} value={0} buttonStyle={tabStyle} />
+          <Tab label="Investment Records" value={1} buttonStyle={tabStyle} />
         </Tabs>
         <SwipeableViews
           index={this.state.slideIndex}

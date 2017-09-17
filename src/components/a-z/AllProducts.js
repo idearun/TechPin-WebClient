@@ -109,7 +109,7 @@ class AllProducts extends React.Component {
               type="text"
               name="search"
               id="search"
-              placeholder="search..."
+              placeholder="Filter..."
               onChange={this.searchHandler}
             />
           </ToolbarGroup>

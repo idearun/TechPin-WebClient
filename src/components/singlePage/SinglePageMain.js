@@ -130,7 +130,7 @@ class SinglePageMain extends React.Component {
 
     return (
       <div id="single-page-main-container">
-        <div className="second-column">
+        <div>
           <div id="single-page-main-content">
             <Paper
               className="detail-and-rating-wrapper"
@@ -194,7 +194,7 @@ class SinglePageMain extends React.Component {
               </div>
             </Paper>
           </div>
-          <Paper style={styles.paper} zDepth={1}>
+          <Paper style={styles.paper} zDepth={1} className='comments-wrapper'>
             <div className="comments">
               <span className="comment-title">Comments</span>
               {comments.map((comment, i) => (

@@ -2,7 +2,6 @@ import React, { PropTypes } from "react";
 import { baseUrl } from "../../api/realApi";
 
 import StarRating from "../sharedComponents/StarRating";
-import Divider from "material-ui/Divider";
 import ContentLink from "material-ui/svg-icons/content/link";
 import NoLogoImage from "../../../images/nologo.png";
 
@@ -87,7 +86,6 @@ export default class StartupWidgetMoreInfo extends React.Component {
           {/*<span className="nps-score">{`N.P.S: ${data.n_p_score}`}</span>*/}
           <span className="single-page-summary">{data.summary}</span>
         </div>
-        <Divider />
       </div>
     );
   }

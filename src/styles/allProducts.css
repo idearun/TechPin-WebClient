@@ -2,12 +2,15 @@
   background-color: #FFFFFF !important;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2)
 }
-.all-entries-toolbar > div:first-of-type {
+
+.all-entries-toolbar>div:first-of-type {
   margin-left: 0 !important
 }
+
 .all-entries-toolbar span {
   color: 'white' !important;
 }
+
 .all-entries-wrapper {
   padding: 50px 0px 50px 0px;
   display: flex;
@@ -16,6 +19,7 @@
   justify-content: flex-start;
   position: relative;
 }
+
 .startup-row {
   display: flex;
   flex-wrap: wrap;
@@ -23,22 +27,28 @@
   padding: 40px 30px;
   width: auto;
 }
+
 .startup-row {
   border-bottom: 1px solid #ddd;
 }
-.startup-row > *{
+
+.startup-row>* {
   margin: 15px;
 }
+
 .char-symbol {
   width: auto;
   text-align: center;
 }
+
 .row-wrapper {
   display: flex;
 }
-.row-wrapper > * {
+
+.row-wrapper>* {
   flex: 1;
 }
+
 .char-symbol {
   flex: 0 0 auto;
   display: flex;
@@ -51,12 +61,14 @@
   color: #555;
   padding-top: 40px;
 }
+
 div.fixed {
   position: fixed !important;
   top: 0;
   z-index: 100;
   width: 100%;
 }
+
 #search {
   transition: all 0.05s linear;
   height: 60%;
@@ -68,24 +80,29 @@ div.fixed {
   font-size: 20px;
   border: 1px solid #E0E0E0;
 }
-#search:focus{
+
+#search:focus {
   color: black;
   outline: 0;
   width: 100%;
   border: 1px solid #0D47A1;
   box-shadow: 0 0 3px 0 #1057C2;
 }
+
 .search-box-wrapper {
   justify-content: flex-end !important;
 }
+
 #spinner {
   margin: 0 auto;
   position: reletive;
   top: 200px;
 }
-#spinner > div {
+
+#spinner>div {
   padding: 0 !important;
 }
+
 @media screen and (max-width: 880px) {
   .row-wrapper {
     flex-direction: column;
@@ -96,15 +113,13 @@ div.fixed {
     justify-content: center;
   }
 }
-@media screen and (max-width: 600px) {
-  .all-entries-toolbar > div:first-of-type > span {
+
+@media screen and (max-width: 700px) {
+  .all-entries-toolbar>div:first-of-type>span {
     display: none
   }
-  .all-entries-toolbar > div:last-of-type,
-  .all-entries-toolbar > div:last-of-type > input {
+  .all-entries-toolbar>div:last-of-type,
+  .all-entries-toolbar>div:last-of-type>input {
     width: 100% !important;
   }
-  /*.startup-row {
-    padding: 40px 10px;
-  }*/
 }

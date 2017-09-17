@@ -27,11 +27,11 @@ const menuItems = [
     value: 1
   },
   {
-    text: "start a project with us",
+    text: "Start a project with us",
     value: 2
   },
   {
-    text: "I want to share information about a start-up or investment",
+    text: "Share information about a start-up / investment",
     value: 3
   },
   {
@@ -143,7 +143,7 @@ class DueDiligence extends Component {
         <Element name="due-diligence">
           <Card>
             <CardTitle title="Contact Us" subtitle="Please fill the form" />
-            <CardText>
+            <CardText className='contact-form-inputs-wrapper'>
               <DropDownMenu
                 value={this.state.formData.type}
                 style={{ width: 350 }}
@@ -199,6 +199,7 @@ class DueDiligence extends Component {
             <CardActions>
               <RaisedButton
                 primary
+                fullWidth
                 label="Send"
                 disabled={this.state.aSyncCall}
                 onClick={this.handleSubmit}

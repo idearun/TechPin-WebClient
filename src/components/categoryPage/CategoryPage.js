@@ -1,4 +1,4 @@
-import React, { PropTypes } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { browserHistory } from "react-router";
 import * as actions from "../../actions/actionCreators";
@@ -27,16 +27,6 @@ class CategoryPage extends React.Component {
     };
   }
 
-  // extractAllProducts = products => {
-  //   let productsArr = [];
-  //   for (let char in products) {
-  //     if (products.hasOwnProperty(char)) {
-  //       productsArr = [...productsArr, ...products[char]];
-  //     }
-  //   }
-  //   return productsArr;
-  // };
-
   filterByCategory = arr => {
     return arr.filter(item => {
       return item.categories.some(
@@ -51,31 +41,6 @@ class CategoryPage extends React.Component {
     });
   };
 
-  // componentWillMount = () => {
-  //   if (Object.keys(this.props.topProducts).length > 0) {
-  //     const allTop = [
-  //       ...this.props.topProducts.topNew,
-  //       ...this.props.topProducts.topRanked,
-  //       ...this.props.topProducts.randomProducts
-  //     ];
-  //     const filteredByCategory = this.filterByCategory(allTop);
-  //     this.setState({
-  //       products: this.filterDuplicate(filteredByCategory)
-  //     });
-  //   } else {
-  //     this.props.initialLoadTop25().then(allTop => {
-  //       const filteredByCategory = this.filterByCategory([
-  //         ...allTop.topNew,
-  //         ...allTop.topRanked,
-  //         ...allTop.randomProducts
-  //       ]);
-  //       this.setState({
-  //         products: this.filterDuplicate(filteredByCategory)
-  //       });
-  //     });
-  //   }
-  // };
-
   componentDidMount = () => {
     const categorySlug = this.props.params.category;
     if (
@@ -85,32 +50,14 @@ class CategoryPage extends React.Component {
       this.setState({ products: this.props.byCategory[categorySlug] });
     } else {
       this.setState({ aSyncCall: true });
-      this.props
-        .getProductsByCategory(categorySlug)
-        .then(products => {
-          let filteredList = this.filterByCategory(products);
-          this.setState({
-            aSyncCall: false,
-            products: this.filterDuplicate(filteredList)
-          });
-        })
+      this.props.getProductsByCategory(categorySlug).then(products => {
+        let filteredList = this.filterByCategory(products);
+        this.setState({
+          aSyncCall: false,
+          products: this.filterDuplicate(filteredList)
+        });
+      });
     }
-
-    // if (Object.keys(this.props.allProducts).length === 0) {
-    //   this.setState({ aSyncCall: true });
-    //   this.props.getAllProducts().then(allProducts => {
-    //     const filteredList = this.filterByCategory(
-    //       this.extractAllProducts(allProducts)
-    //     );
-    //     this.setState({
-    //       products: this.filterDuplicate(filteredList),
-    //       aSyncCall: false
-    //     });
-    //   });
-    // } else {
-    //   const filteredList = this.filterByCategory(this.extractAllProducts(this.props.allProducts));
-    //   this.setState({ products: this.filterDuplicate(filteredList) });
-    // }
   };
 
   getCategoryNameBySlug = slug => {
@@ -135,12 +82,12 @@ class CategoryPage extends React.Component {
             />
           </IconButton>
           <div className="category-title">
-            <span>{this.getCategoryNameBySlug(category)}</span>
-            <p className="sub-header">
+            <div>{this.getCategoryNameBySlug(category)}</div>
+            <div className="sub-header">
               {`Top Companies, Products And Startups In ${this.getCategoryNameBySlug(
                 category
               )} Category / Market`}
-            </p>
+            </div>
           </div>
           <div />
         </header>
