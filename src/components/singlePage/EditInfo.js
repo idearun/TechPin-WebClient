@@ -226,7 +226,6 @@ class EditInfo extends React.Component {
                 this.state.empRangeSearchTerm ||
                 product.product.details.employees_count
               }
-              maxSearchResults={5}
               style={{ width: "30%" }}
               textFieldStyle={{ width: "auto" }}
               onUpdateInput={this.updateEmpRangeSearchTerm}

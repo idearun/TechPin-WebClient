@@ -140,73 +140,69 @@ class DueDiligence extends Component {
       : "due-diligence hide";
     return (
       <div className={className}>
-        <Element name="due-diligence">
-          <Card>
-            <CardTitle title="Contact Us" subtitle="Please fill the form" />
-            <CardText className='contact-form-inputs-wrapper'>
-              <DropDownMenu
-                value={this.state.formData.type}
-                style={{ width: 350 }}
-                iconStyle={{ right: 0 }}
-                underlineStyle={{ margin: 0 }}
-                labelStyle={{ padding: 0, color: "rgba(0,0,0,0.3)" }}
-                onChange={(_, val) => this.updateFormData(val, "type")}
-              >
-                {this.renderSelectMenuItems()}
-              </DropDownMenu>
-              <div className="input-row">
-                <TextField
-                  value={this.state.formData.name}
-                  floatingLabelText="Your Name"
-                  style={{ width: 350 }}
-                  onChange={(_, val) => this.updateFormData(val, "name")}
-                />
-                <TextField
-                  value={this.state.formData.email}
-                  floatingLabelText="Your Email"
-                  style={{ width: 350, marginLeft: 20 }}
-                  type="email"
-                  onChange={(_, val) => this.updateFormData(val, "email")}
-                />
-              </div>
-              <div className="input-row">
-                <TextField
-                  value={this.state.formData.phone_number}
-                  style={{ width: 350 }}
-                  floatingLabelText="Your Phone number"
-                  onChange={(_, val) =>
-                    this.updateFormData(val, "phone_number")}
-                />
-                <TextField
-                  value={this.state.formData.company_name}
-                  style={{ width: 350, marginLeft: 20 }}
-                  floatingLabelText="Company Name"
-                  onChange={(_, val) =>
-                    this.updateFormData(val, "company_name")}
-                />
-              </div>
+        <Card>
+          <CardTitle title="Contact Us" subtitle="Please fill the form" />
+          <CardText className="contact-form-inputs-wrapper">
+            <DropDownMenu
+              value={this.state.formData.type}
+              style={{ width: 350 }}
+              iconStyle={{ right: 0 }}
+              underlineStyle={{ margin: 0 }}
+              labelStyle={{ padding: 0, color: "rgba(0,0,0,0.3)" }}
+              onChange={(_, val) => this.updateFormData(val, "type")}
+            >
+              {this.renderSelectMenuItems()}
+            </DropDownMenu>
+            <div className="input-row">
               <TextField
-                value={this.state.formData.company_description}
-                floatingLabelText="Description"
-                fullWidth
-                multiLine
-                rows={3}
-                fullWidth
-                onChange={(_, val) =>
-                  this.updateFormData(val, "company_description")}
+                value={this.state.formData.name}
+                floatingLabelText="Your Name"
+                style={{ width: 350 }}
+                onChange={(_, val) => this.updateFormData(val, "name")}
               />
-            </CardText>
-            <CardActions>
-              <RaisedButton
-                primary
-                fullWidth
-                label="Send"
-                disabled={this.state.aSyncCall}
-                onClick={this.handleSubmit}
+              <TextField
+                value={this.state.formData.email}
+                floatingLabelText="Your Email"
+                style={{ width: 350, marginLeft: 20 }}
+                type="email"
+                onChange={(_, val) => this.updateFormData(val, "email")}
               />
-            </CardActions>
-          </Card>
-        </Element>
+            </div>
+            <div className="input-row">
+              <TextField
+                value={this.state.formData.phone_number}
+                style={{ width: 350 }}
+                floatingLabelText="Your Phone number"
+                onChange={(_, val) => this.updateFormData(val, "phone_number")}
+              />
+              <TextField
+                value={this.state.formData.company_name}
+                style={{ width: 350, marginLeft: 20 }}
+                floatingLabelText="Company Name"
+                onChange={(_, val) => this.updateFormData(val, "company_name")}
+              />
+            </div>
+            <TextField
+              value={this.state.formData.company_description}
+              floatingLabelText="Description"
+              fullWidth
+              multiLine
+              rows={3}
+              fullWidth
+              onChange={(_, val) =>
+                this.updateFormData(val, "company_description")}
+            />
+          </CardText>
+          <CardActions>
+            <RaisedButton
+              primary
+              fullWidth
+              label="Send"
+              disabled={this.state.aSyncCall}
+              onClick={this.handleSubmit}
+            />
+          </CardActions>
+        </Card>
         <Snackbar
           open={this.state.notificationIsOpen}
           message={this.state.notificationMessage}

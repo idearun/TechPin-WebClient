@@ -1,11 +1,10 @@
 import React from "react";
 import Logo from "../../../images/techpin.svg";
 import RaisedButton from "material-ui/RaisedButton";
-import Scroll from "react-scroll";
+// import scrollTo from "../../helpers/scroll";
 
 const scrollToDueDiligence = () => {
-  let scroll = Scroll.animateScroll;
-  scroll.scrollToBottom('due-diligence');
+  document.getElementById("contact-form").scrollIntoView()
 };
 
 const SiteDesc = ({ openAddProductModal }) => (

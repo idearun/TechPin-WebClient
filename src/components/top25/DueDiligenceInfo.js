@@ -18,7 +18,7 @@ class DueDiligenceInfo extends Component {
     const { showContactForm } = this.state;
     const { title, text, button_text, sub_title } = this.props;
     return (
-      <div className="due-diligence-info">
+      <div className="due-diligence-info" id="contact-form">
         <Card>
           <CardTitle
             title={title}
