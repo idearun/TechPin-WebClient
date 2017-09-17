@@ -30,6 +30,9 @@
   flex-direction: column;
   flex-basis: 70%;
   background-color: white;
+  width: 700px;
+  max-width: 700px;
+  min-width: 700px;
 }
 
 #single-page-main-container {
@@ -117,6 +120,10 @@
 .detailed-info {
   padding: 30px;
   flex: 1;
+  box-sizing: border-box;
+  width: 700px;
+  max-width: 700px;
+  min-width: 700px;
   background-color: white;
   min-height: 270px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
@@ -368,7 +375,7 @@ div.single-page-visual-widget {
   color: #0d47a1;
   font-weight: 600;
   font-size: 17px;
-  background-color: #f1f2f2;
+  /* background-color: #f1f2f2; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -376,12 +383,11 @@ div.single-page-visual-widget {
   align-items: center;
   width: 75px;
   height: 75px;
-  border-radius: 10px;
+  border-radius: 5px;
   margin-bottom: 10px;
-  border: 2px solid #e8e8e8;
-  transition: all 0.4s linear;
-  white-space: nowrap;
   border: 2px solid transparent;
+  transition: all 0.2s linear;
+  white-space: nowrap;
   font-family: "Raleway";
 }
 
