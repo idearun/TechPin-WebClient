@@ -64,8 +64,8 @@ export default class SearchBar extends Component {
   render() {
     const { onChange, aSyncCall } = this.props;
     return (
-      <div id="search-bar-wrapper">
-        <ClickOutHandler onClickOut={this.close}>
+      <ClickOutHandler onClickOut={this.close}>
+        <div id="search-bar-wrapper">
           <input
             ref={el => {
               this.searchInput = el;
@@ -77,7 +77,13 @@ export default class SearchBar extends Component {
             placeholder="Search..."
             className={this.getClassName()}
           />
-          {aSyncCall && <CircularProgress id="search-bar-spinner" color={"white"} size={20} />}
+          {aSyncCall && (
+            <CircularProgress
+              id="search-bar-spinner"
+              color={"white"}
+              size={20}
+            />
+          )}
           {!this.props.isDesktop &&
           !this.state.isOpen && (
             <ActionSearch
@@ -86,8 +92,8 @@ export default class SearchBar extends Component {
               style={styles.icon}
             />
           )}
-        </ClickOutHandler>
-      </div>
+        </div>
+      </ClickOutHandler>
     );
   }
 }

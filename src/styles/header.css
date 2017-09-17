@@ -1,10 +1,10 @@
-div.drawer > div:last-child > div > a > div > span,
-div.drawer > div:last-child > div:first-child > div span {
+div.drawer>div:last-child>div>a>div>span,
+div.drawer>div:last-child>div:first-child>div span {
   text-align: center;
   font-family: "Rubik" !important;
 }
 
-div.drawer > div:last-child > div > a > div:hover {
+div.drawer>div:last-child>div>a>div:hover {
   border-left: 5px solid #3f51b5;
   border-right: 5px solid #3f51b5;
 }
@@ -21,12 +21,40 @@ div.drawer > div:last-child > div > a > div:hover {
   box-shadow: none !important;
 }
 
-#search-bar-wrapper {
-  display: inline;
-  position: relative;
+div.app-bar {
+  align-items: center;
 }
 
-#search-bar-wrapper > div:first-child {
+div.app-bar>div:last-child>div>[type="button"] {
+  color: white !important;
+}
+
+div.app-bar>div:first-child {
+  flex: 0 !important;
+  min-width: 175px;
+}
+div.app-bar>div:last-child {
+  margin: 0 !important;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+div.app-bar>div:last-child > div{
+  flex: 1;
+  display: flex;
+}
+
+#search-bar-wrapper {
+  display: inline-flex;
+  position: relative;
+  flex: 1;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+#search-bar-wrapper>div:first-child {
   display: inline-flex;
   justify-content: center;
   align-content: center;
@@ -37,7 +65,6 @@ div.drawer > div:last-child > div > a > div:hover {
   /* height: 20px; */
   padding: 7px 7px;
   box-sizing: content-box;
-  border-radius: 2px;
   border: none;
   opacity: 0.01;
   background-color: transparent;
@@ -48,8 +75,10 @@ div.drawer > div:last-child > div > a > div:hover {
 
 #search-bar-wrapper input.desktop {
   opacity: 1;
-  width: 200px;
-  border: 1px solid white;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #BDA9FF;
   margin-right: 5px;
   text-transform: uppercase;
   font-family: "Rubik";
@@ -57,20 +86,24 @@ div.drawer > div:last-child > div > a > div:hover {
 
 #search-bar-wrapper input.active {
   opacity: 1;
-  background-color: #487dcc;
+  background-color: transparent;
   color: white;
   font-size: 16px;
   font-family: "Rubik";
-  border: 1px solid white;
+  border-bottom: 1px solid white;
+}
+#search-bar-wrapper input.active:focus {
+  box-shadow: none;
+  outline: none;
 }
 
 #search-bar-wrapper input.active.desktop {
   opacity: 1;
-  background-color: #487dcc;
+  background-color: transparent;
   color: white;
   font-size: 16px;
   font-family: "Rubik";
-  border: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 #search-bar-spinner {
@@ -79,12 +112,11 @@ div.drawer > div:last-child > div > a > div:hover {
   right: 20px;
 }
 
-
 #header {
   position: relative;
 }
 
-#search-results.active > div.overlay {
+#search-results.active>div.overlay {
   position: fixed;
   top: 64px;
   left: 0;
@@ -95,7 +127,7 @@ div.drawer > div:last-child > div > a > div:hover {
   transition: all 0.3s linear;
 }
 
-#search-results.active > div.search-content {
+#search-results.active>div.search-content {
   background-color: white;
   position: absolute;
   top: 100%;
@@ -105,7 +137,7 @@ div.drawer > div:last-child > div > a > div:hover {
   overflow-y: auto;
   z-index: 11;
   border-radius: 3px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 20px;
   font-family: "Rubik";
   display: flex;
@@ -113,7 +145,7 @@ div.drawer > div:last-child > div > a > div:hover {
   transition: all 0.3s linear;
 }
 
-#search-results.active > div.search-content > * {
+#search-results.active>div.search-content>* {
   margin: 10px;
   transition: all 0.3s linear;
 }
@@ -143,27 +175,22 @@ div.drawer > div:last-child > div > a > div:hover {
   color: white;
 }
 
-
 #search-bar-wrapper input.desktop::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: white;
+  color: #B5B9F1;
 }
 
 #search-bar-wrapper input.desktop::-moz-placeholder {
   /* Chrome/Opera/Safari */
-  color: white;
+  color: #B5B9F1;
 }
 
 #search-bar-wrapper input.desktop::-ms-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: white;
+  color: #B5B9F1;
 }
 
 #search-bar-wrapper input.desktop::-moz-placeholder {
   /* Chrome/Opera/Safari */
-  color: white;
+  color: #B5B9F1;
 }
-
-
-
-
