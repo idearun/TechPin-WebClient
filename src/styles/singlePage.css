@@ -231,7 +231,7 @@
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
 }
 .single-page-action-buttons > *:last-child {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 .comments-wrapper > .react-loading-skeleton {
@@ -332,14 +332,14 @@ div.comments > span {
   box-sizing: border-box;
 }
 
-
 #signle-page-snackbar > div > div > span {
   font-size: 20px;
 }
 
-.contact-info-row svg, .contact-info-row img {
+.contact-info-row svg,
+.contact-info-row img {
   min-width: 20px;
-  margin-right: 10px
+  margin-right: 10px;
 }
 
 span.single-page-summary {
@@ -402,6 +402,14 @@ td {
 
 #single-page-rating {
   font-family: "Rubik";
+}
+
+#add-investment-record-form .form-error {
+  margin-left: 10px;
+  color: red;
+  font-weight: normal;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 div.single-page-visual-widget {
@@ -598,7 +606,7 @@ div.single-page-visual-widget {
   .single-page-action-buttons {
     margin: 0;
   }
- 
+
   .visual-info {
     margin: 0;
   }

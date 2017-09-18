@@ -71,7 +71,7 @@ export default class VisualInfo extends React.Component {
               <RaisedButton
                 label="Edit Information"
                 fullWidth
-                labelColor="white"
+                labelColor="#FFFFFF"
                 backgroundColor="#0D47A1"
                 onClick={this.checkAuthAndRedirect}
               />

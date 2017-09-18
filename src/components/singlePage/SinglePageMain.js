@@ -13,7 +13,7 @@ import AboutAndInvestmentRecords from "./AboutAndInvestmentRecords";
 import Skeleton from "react-loading-skeleton";
 import Paper from "material-ui/Paper";
 import Snackbar from "material-ui/Snackbar";
-
+import AverageRate from "./AverageRate";
 const styles = {
   paper: {
     Width: "100%"
@@ -154,6 +154,11 @@ class SinglePageMain extends React.Component {
             >
               {/* {this.props.children} */}
               <StartupWidgetMoreInfo product={this.state.product} />
+              <AverageRate
+                isLoading={isLoading}
+                rate={this.state.product.average_p_rate}
+                raterCount={this.state.product.rate_count}
+              />
               <div className="rating">
                 <Rate
                   isLoading={isLoading}

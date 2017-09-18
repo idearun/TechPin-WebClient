@@ -56,7 +56,8 @@ class SinglePage extends React.Component {
       notificationIsOpen: false,
       allProductsNameOnly: [],
       yearSearchTerm: "",
-      monthSearchTerm: ""
+      monthSearchTerm: "",
+      addInvFormDataErrors: {}
     };
   }
 
@@ -137,7 +138,11 @@ class SinglePage extends React.Component {
   };
 
   closeInvRecordModal = () => {
-    this.setState({ invModalIsOpen: false, autoCompleteSelection: null });
+    this.setState({
+      invModalIsOpen: false,
+      autoCompleteSelection: null,
+      addInvFormDataErrors: {}
+    });
   };
 
   openInvRecordModal = () => {
@@ -174,7 +179,9 @@ class SinglePage extends React.Component {
       ...addInvRecFormData
     };
 
-    if (this.isValid(data)) {
+    const validationResult = this.isValid(data);
+
+    if (validationResult.isValid) {
       const formData = appendToFormData(data);
       this.setState({ aSyncCall: true });
       this.props
@@ -200,13 +207,29 @@ class SinglePage extends React.Component {
       this.setState({
         aSyncCall: false,
         notificationIsOpen: true,
-        notificationMessage: "please enter valid inputs"
+        notificationMessage: "please enter valid inputs",
+        addInvFormDataErrors: validationResult.errors
       });
     }
   };
 
   isValid = formData => {
-    return Boolean(formData.investor);
+    const errors = {};
+    let isValid = true;
+    const re = /^((https?):\/\/)([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+    // investor is required
+    if (!formData.investor) {
+      errors.investor = "investor is required";
+      isValid = false;
+    }
+    if (formData.link) {
+      if (!re.test(formData.link)) {
+        errors.link = "URL is not valid, it must contain http/https";
+        isValid = false;
+      }
+    }
+    // website must have http or https
+    return { errors, isValid };
   };
 
   getCheckboxLabel = () => {
@@ -270,6 +293,9 @@ class SinglePage extends React.Component {
               openOnFocus={true}
               fullWidth
             />
+            <div className="form-error">
+              {this.state.addInvFormDataErrors.investor || ""}
+            </div>
             <Checkbox
               label={this.getCheckboxLabel()}
               onCheck={(_, isChecked) =>
@@ -314,6 +340,7 @@ class SinglePage extends React.Component {
             <TextField
               fullWidth
               floatingLabelText="Proof Link"
+              errorText={this.state.addInvFormDataErrors.link}
               onChange={(_, val) => this.updateInvRecFormData(val, "link")}
             />
             <label htmlFor="proof">
