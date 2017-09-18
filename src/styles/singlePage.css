@@ -342,9 +342,40 @@ div.comments > span {
   margin-right: 10px;
 }
 
+.product-categories > div:first-child {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.product-categories > div:first-child > svg{
+  width: 20px !important;
+  margin-right: 5px;
+}
+.product-categories > div:nth-child(2) {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-categories .category-tag{
+  padding: 7.5px;
+  background-color: #E8E8E8;
+  border-radius: 3px;
+  color: #0D47A1;
+  font-size: 14px;
+  margin: 5px;
+}
+
+
 span.single-page-summary {
   text-align: justify;
   white-space: pre-line;
+  font-family: "Rubik";
+}
+
+.investment-records-wrapper {
+  max-height: 350px;
+  overflow-y: auto;
 }
 
 .investment-records-wrapper > table {
@@ -448,6 +479,10 @@ div.single-page-visual-widget {
 
 #add-investment-record-form div.two-columns > :nth-child(2) {
   margin-left: 50px;
+}
+
+.product-categories {
+  padding: 10px 30px;
 }
 
 .visual-info-sub-span {

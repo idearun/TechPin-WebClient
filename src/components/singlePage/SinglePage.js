@@ -12,6 +12,8 @@ import Snackbar from "material-ui/Snackbar";
 import { appendToFormData } from "../../helpers/helpers";
 import MoneyInput from "../sharedComponents/MoneyInput";
 import Checkbox from "material-ui/Checkbox";
+import SelectField from "material-ui/SelectField";
+import MenuItem from "material-ui/MenuItem";
 
 const autoCompleteMenuStyles = {
   maxHeight: "200px",
@@ -22,7 +24,9 @@ const currentYear = new Date().getFullYear();
 
 const years = [];
 for (let year = 1990; year <= currentYear; year++) {
-  years.unshift(String(year));
+  years.unshift(
+    <MenuItem key={year} value={String(year)} primaryText={String(year)} />
+  );
 }
 
 const months = [
@@ -96,7 +100,7 @@ class SinglePage extends React.Component {
     });
   };
 
-  handleYearSelection = selectedYear => {
+  handleYearSelection = (_, __, selectedYear) => {
     this.setState({
       addInvRecFormData: { ...this.state.addInvRecFormData, year: selectedYear }
     });
@@ -141,7 +145,8 @@ class SinglePage extends React.Component {
     this.setState({
       invModalIsOpen: false,
       autoCompleteSelection: null,
-      addInvFormDataErrors: {}
+      addInvFormDataErrors: {},
+      addInvRecFormData: {}
     });
   };
 
@@ -182,6 +187,7 @@ class SinglePage extends React.Component {
     const validationResult = this.isValid(data);
 
     if (validationResult.isValid) {
+      console.log(data);
       const formData = appendToFormData(data);
       this.setState({ aSyncCall: true });
       this.props
@@ -227,6 +233,9 @@ class SinglePage extends React.Component {
         errors.link = "URL is not valid, it must contain http/https";
         isValid = false;
       }
+    }
+    if (!formData.year) {
+      errors.year = "you must provide the investment year";
     }
     // website must have http or https
     return { errors, isValid };
@@ -310,7 +319,7 @@ class SinglePage extends React.Component {
               mask="999,999,999,999,999,999"
             />
             <div className="two-columns">
-              <AutoComplete
+              {/* <AutoComplete
                 filter={AutoComplete.caseInsensitiveFilter}
                 floatingLabelText="Year Of Investment"
                 searchText={this.state.yearSearchTerm}
@@ -319,7 +328,16 @@ class SinglePage extends React.Component {
                 onUpdateInput={this.updateYearSearchTerm}
                 menuStyle={autoCompleteMenuStyles}
                 onNewRequest={this.handleYearSelection}
-              />
+              /> */}
+              <SelectField
+                value={this.state.addInvRecFormData.year}
+                maxHeight={200}
+                floatingLabelText="Year Of Investment"
+                onChange={this.handleYearSelection}
+                errorText={this.state.addInvFormDataErrors.year}
+              >
+                {years}
+              </SelectField>
               <AutoComplete
                 filter={AutoComplete.caseInsensitiveFilter}
                 floatingLabelText="Month Of Investment"

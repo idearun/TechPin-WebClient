@@ -7,7 +7,9 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-
+.category-flex-container {
+  margin-top: 5px;
+}
 .category-flex-container>* {
   margin: 10px;
 }

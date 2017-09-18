@@ -21,6 +21,18 @@ const months = [
   "December"
 ];
 
+const getDate = (monthIndex, year) => {
+  let date = "";
+  if (monthIndex) {
+    date += months[monthIndex].substring(0, 3) + ", ";
+  }
+  if (year) {
+    date += year;
+    return date;
+  }
+  return "Undisclosed";
+};
+
 const InvestmentRow = ({
   amount,
   invested_on = {},
@@ -32,22 +44,20 @@ const InvestmentRow = ({
   type
 }) => (
   <tr className="investment-row">
-    <td colSpan="4">
-      {month ? `${months[month].substring(0, 3)}, ${year}` : "undisclosed"}
-    </td>
+    <td colSpan="4">{getDate(month, year)}</td>
     <td colSpan="2">
       {type === "investmentDone" ? invested_on ? (
         <Link to={`/${invested_on.slug}`}> {invested_on.name_en} </Link>
       ) : (
-        "undisclosed"
+        "Undisclosed"
       ) : investor ? (
         <Link to={`/${investor.slug}`}> {investor.name_en} </Link>
       ) : (
-        "undisclosed"
+        "Undisclosed"
       )}
     </td>
     <td colSpan="4">
-      {amount ? `$ ${numberWithCommas(amount)}` : "undisclosed"}
+      {amount ? `$ ${numberWithCommas(amount)}` : "Undisclosed"}
     </td>
   </tr>
 );

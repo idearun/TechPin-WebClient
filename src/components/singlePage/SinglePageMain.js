@@ -13,7 +13,7 @@ import AboutAndInvestmentRecords from "./AboutAndInvestmentRecords";
 import Skeleton from "react-loading-skeleton";
 import Paper from "material-ui/Paper";
 import Snackbar from "material-ui/Snackbar";
-import AverageRate from "./AverageRate";
+import ProductCategories from "./ProductCategories";
 const styles = {
   paper: {
     Width: "100%"
@@ -138,6 +138,14 @@ class SinglePageMain extends React.Component {
       }
     };
 
+    const getCategories = () => {
+      if (isLoading) {
+        return [];
+      } else {
+        return this.state.product.product_categories;
+      }
+    };
+
     const investedOn = isLoading ? [] : this.state.product.investments_received;
 
     const investmentsDone = isLoading
@@ -154,10 +162,9 @@ class SinglePageMain extends React.Component {
             >
               {/* {this.props.children} */}
               <StartupWidgetMoreInfo product={this.state.product} />
-              <AverageRate
+              <ProductCategories
                 isLoading={isLoading}
-                rate={this.state.product.average_p_rate}
-                raterCount={this.state.product.rate_count}
+                categories={getCategories()}
               />
               <div className="rating">
                 <Rate
