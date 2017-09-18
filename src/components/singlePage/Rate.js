@@ -1,12 +1,23 @@
 import React from "react";
 import ToggleStar from "material-ui/svg-icons/toggle/star";
 import Snackbar from "material-ui/Snackbar";
+import Skeleton from "react-loading-skeleton";
 
 const styles = {
   svgStar: {
     color: "#0D47A1"
   }
 };
+
+const NumberBox = ({ number, userRate }) => (
+  <div
+    id={number}
+    className={`rate-box ${userRate == number ? "rate-selected" : ""}`}
+  >
+    {number}
+  </div>
+);
+
 export default class Rate extends React.Component {
   constructor(props) {
     super(props);
@@ -17,12 +28,6 @@ export default class Rate extends React.Component {
       snackBarText: ""
     };
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.userRate && !this.state.userRate) {
-  //     this.setState({userRate: (nextProps.userRate)})
-  //   }
-  // }
 
   formatRateToSend = rate => {
     let rateToInt = parseInt(rate, 10);
@@ -55,108 +60,121 @@ export default class Rate extends React.Component {
   };
 
   render() {
-    return (
-      <div className="single-page-rate">
-        <span style={{ alignSelf: "flex-start" }}>
-          <span>How likely do you recommend {this.props.name} to others ?</span>
-        </span>
-        <div className="rate-box-container" onClick={this.handleRate}>
-          <div
-            id="0"
-            className={`rate-box ${this.state.userRate == 0
-              ? "rate-selected"
-              : ""}`}
-          >
-            0
-          </div>
-          <div
-            id="1"
-            className={`rate-box ${this.state.userRate == 1
-              ? "rate-selected"
-              : ""}`}
-          >
-            1
-          </div>
-          <div
-            id="2"
-            className={`rate-box ${this.state.userRate == 2
-              ? "rate-selected"
-              : ""}`}
-          >
-            2
-          </div>
-          <div
-            id="3"
-            className={`rate-box ${this.state.userRate == 3
-              ? "rate-selected"
-              : ""}`}
-          >
-            3
-          </div>
-          <div
-            id="4"
-            className={`rate-box ${this.state.userRate == 4
-              ? "rate-selected"
-              : ""}`}
-          >
-            4
-          </div>
-          <div
-            id="5"
-            className={`rate-box ${this.state.userRate == 5
-              ? "rate-selected"
-              : ""}`}
-          >
-            5
-          </div>
-          <div
-            id="6"
-            className={`rate-box ${this.state.userRate == 6
-              ? "rate-selected"
-              : ""}`}
-          >
-            6
-          </div>
-          <div
-            id="7"
-            className={`rate-box ${this.state.userRate == 7
-              ? "rate-selected"
-              : ""}`}
-          >
-            7
-          </div>
-          <div
-            id="8"
-            className={`rate-box ${this.state.userRate == 8
-              ? "rate-selected"
-              : ""}`}
-          >
-            8
-          </div>
-          <div
-            id="9"
-            className={`rate-box ${this.state.userRate == 9
-              ? "rate-selected"
-              : ""}`}
-          >
-            9
-          </div>
-          <div
-            id="10"
-            className={`rate-box ${this.state.userRate == 10
-              ? "rate-selected"
-              : ""}`}
-          >
-            10
-          </div>
+    if (this.props.isLoading) {
+      return <Skeleton className="single-page-rate" />;
+    } else {
+      return (
+        <div className="single-page-rate">
+          <span style={{ alignSelf: "flex-start" }}>
+            <span>
+              How likely do you recommend {this.props.name} to others ?
+            </span>
+          </span>
+          <div className="rate-box-container" onClick={this.handleRate}>
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(number => (
+              <NumberBox
+                key={number}
+                number={number}
+                userRate={this.state.userRate}
+              />
+            ))}
+            {/* <div
+          id="0"
+          className={`rate-box ${this.state.userRate == 0
+            ? "rate-selected"
+            : ""}`}
+        >
+          0
         </div>
-        <Snackbar
-          open={this.state.snackBarIsOpen}
-          message={this.state.snackBarText}
-          autoHideDuration={3500}
-          onRequestClose={this.handleSnackBarClose}
-        />
-      </div>
-    );
+        <div
+          id="1"
+          className={`rate-box ${this.state.userRate == 1
+            ? "rate-selected"
+            : ""}`}
+        >
+          1
+        </div>
+        <div
+          id="2"
+          className={`rate-box ${this.state.userRate == 2
+            ? "rate-selected"
+            : ""}`}
+        >
+          2
+        </div>
+        <div
+          id="3"
+          className={`rate-box ${this.state.userRate == 3
+            ? "rate-selected"
+            : ""}`}
+        >
+          3
+        </div>
+        <div
+          id="4"
+          className={`rate-box ${this.state.userRate == 4
+            ? "rate-selected"
+            : ""}`}
+        >
+          4
+        </div>
+        <div
+          id="5"
+          className={`rate-box ${this.state.userRate == 5
+            ? "rate-selected"
+            : ""}`}
+        >
+          5
+        </div>
+        <div
+          id="6"
+          className={`rate-box ${this.state.userRate == 6
+            ? "rate-selected"
+            : ""}`}
+        >
+          6
+        </div>
+        <div
+          id="7"
+          className={`rate-box ${this.state.userRate == 7
+            ? "rate-selected"
+            : ""}`}
+        >
+          7
+        </div>
+        <div
+          id="8"
+          className={`rate-box ${this.state.userRate == 8
+            ? "rate-selected"
+            : ""}`}
+        >
+          8
+        </div>
+        <div
+          id="9"
+          className={`rate-box ${this.state.userRate == 9
+            ? "rate-selected"
+            : ""}`}
+        >
+          9
+        </div>
+        <div
+          id="10"
+          className={`rate-box ${this.state.userRate == 10
+            ? "rate-selected"
+            : ""}`}
+        >
+          10
+        </div> */}
+          </div>
+          <Snackbar
+            open={this.state.snackBarIsOpen}
+            message={this.state.snackBarText}
+            autoHideDuration={3500}
+            onRequestClose={this.handleSnackBarClose}
+          />
+        </div>
+      );
+    }
   }
 }

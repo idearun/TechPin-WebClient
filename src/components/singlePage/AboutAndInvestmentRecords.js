@@ -39,6 +39,7 @@ export default class AboutAndInvestmentRecords extends Component {
             <p>{desc}</p>
           </div>
           <InvestmentRecords
+            slug={name}
             investedOn={investedOn}
             investmentsDone={investmentsDone}
           />

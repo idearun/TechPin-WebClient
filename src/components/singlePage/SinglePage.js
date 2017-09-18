@@ -81,7 +81,8 @@ class SinglePage extends React.Component {
     } else {
       this.setState({
         product: this.props.singleProducts[indexOfProductInStore],
-        slug: this.props.singleProducts[indexOfProductInStore].product.slug
+        slug: this.props.singleProducts[indexOfProductInStore].product.slug,
+        isLoading: false,
       });
     }
     // load all products to use in autocomplete
@@ -172,7 +173,6 @@ class SinglePage extends React.Component {
       ...addInvRecFormData
     };
 
-
     if (this.isValid(data)) {
       const formData = appendToFormData(data);
       this.setState({ aSyncCall: true });
@@ -220,25 +220,26 @@ class SinglePage extends React.Component {
     ];
     return (
       <div className="single-page main-content">
-        {this.state.isLoading ? (
+        {/* {this.state.isLoading ? (
           <CircularProgress id="spinner" color={"#2962FF"} size={50} />
-        ) : (
-          <SinglePageMain
-            product={this.state.product}
-            userRate={this.props.userRates[this.props.params.startUpName]}
-            slug={this.state.slug}
-            auth={this.props.authenticated}
-            handleInvRecAdd={this.handleInvRecAdd}
-          >
-            {/*<SinglePageToolbar
+        ) : ( */}
+        <SinglePageMain
+          product={this.state.product}
+          userRate={this.props.userRates[this.props.params.startUpName]}
+          slug={this.state.slug}
+          auth={this.props.authenticated}
+          handleInvRecAdd={this.handleInvRecAdd}
+          isLoading={this.state.isLoading}
+        >
+          {/*<SinglePageToolbar
               editAble={true}
               showInvestmentRecord={true}
               slug={this.state.slug}
               auth={this.props.authenticated}
               handleInvRecAdd={this.handleInvRecAdd}
             />*/}
-          </SinglePageMain>
-        )}
+        </SinglePageMain>
+        {/* )} */}
         <Dialog
           title="Add Investment Record"
           actions={actions}

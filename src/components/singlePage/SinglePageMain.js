@@ -10,7 +10,7 @@ import SocialNetworks from "./SocialNetworks";
 import ContactInfo from "./ContactInfo";
 import Rate from "./Rate";
 import AboutAndInvestmentRecords from "./AboutAndInvestmentRecords";
-
+import Skeleton from "react-loading-skeleton";
 import Paper from "material-ui/Paper";
 import Snackbar from "material-ui/Snackbar";
 
@@ -25,7 +25,7 @@ class SinglePageMain extends React.Component {
     super(props);
     this.state = {
       rating: {},
-      product: {},
+      product: { details: {} },
       comments: [],
       username: "",
       commentAsyncCall: false,
@@ -34,19 +34,20 @@ class SinglePageMain extends React.Component {
     };
   }
 
-  componentWillMount = () => {
-    this.setState({
-      product: this.props.product.product,
-      comments: this.props.product.comments
-    });
+  componentDidMount = () => {
+    if (this.props.product.product) {
+      this.setState({
+        product: this.props.product.product,
+        comments: this.props.product.comments
+      });
+    }
   };
 
   componentWillReceiveProps = nextProps => {
     if (nextProps.username) {
       this.setState({ username: nextProps.username });
     }
-
-    if (nextProps.product) {
+    if (nextProps.product.product) {
       this.setState({
         product: nextProps.product.product,
         comments: nextProps.product.comments
@@ -101,6 +102,7 @@ class SinglePageMain extends React.Component {
   };
 
   render() {
+    const { isLoading } = this.props;
     if (this.state.product) {
       var name = this.state.product.name_en || "";
       var details = this.state.product.details;
@@ -111,23 +113,36 @@ class SinglePageMain extends React.Component {
       }
     }
     const comments = this.state.comments || [];
-    const socialData = {
-      ios: this.state.product.details.ios_app,
-      android: this.state.product.details.android_app,
-      linkedin: this.state.product.details.linkedin,
-      instagram: this.state.product.details.instagram,
-      twitter: this.state.product.details.twitter
+    const getSocialData = () => {
+      if (isLoading) {
+        return {};
+      } else {
+        return {
+          ios: this.state.product.details.ios_app,
+          android: this.state.product.details.android_app,
+          linkedin: this.state.product.details.linkedin,
+          instagram: this.state.product.details.instagram,
+          twitter: this.state.product.details.twitter
+        };
+      }
     };
-    const contactData = {
-      email: this.state.product.details.email,
-      extraUrl: this.state.product.details.extra_url,
-      website: this.state.product.website
+    const getContactData = () => {
+      if (isLoading) {
+        return {};
+      } else {
+        return {
+          email: this.state.product.details.email,
+          extraUrl: this.state.product.details.extra_url,
+          website: this.state.product.website
+        };
+      }
     };
 
-    const investedOn = this.state.product.investments_received || [];
+    const investedOn = isLoading ? [] : this.state.product.investments_received;
 
-    const investmentsDone = this.state.product.investments_done || [];
-
+    const investmentsDone = isLoading
+      ? []
+      : this.state.product.investments_done;
     return (
       <div id="single-page-main-container">
         <div>
@@ -138,75 +153,85 @@ class SinglePageMain extends React.Component {
               zDepth={1}
             >
               {/* {this.props.children} */}
-              <StartupWidgetMoreInfo product={this.state.product || {}} />
+              <StartupWidgetMoreInfo product={this.state.product} />
               <div className="rating">
                 <Rate
+                  isLoading={isLoading}
                   name={name}
                   userRate={
                     this.props.userRate ? this.props.userRate.rate : undefined
                   }
-                  slug={this.state.product.slug}
+                  slug={this.state.product ? this.state.product.slug : ""}
                   submitRate={this.handlePostRate}
                   authenticated={this.props.authenticated}
                 />
               </div>
             </Paper>
             <VisualInfo
+              isLoading={isLoading}
               slug={this.props.slug}
               auth={this.props.auth}
               handleInvRecAdd={this.props.handleInvRecAdd}
               average_p_rate={
-                this.state.rating.rating ||
-                this.props.product.product.average_p_rate
+                this.state.rating.rating || this.state.product.average_p_rate
               }
               rate_count={
-                this.state.rating.rateCount ||
-                this.props.product.product.rate_count
+                this.state.rating.rateCount || this.state.product.rate_count
               }
-              n_p_score={this.props.product.product.n_p_score}
-              employeesCount={
-                this.props.product.product.details.employees_count
-              }
-              year={this.props.product.product.details.year}
+              n_p_score={this.state.product.n_p_score}
+              employeesCount={this.state.product.details.employees_count}
+              year={this.state.product.details.year}
             />
           </div>
           <div style={styles.paper} className="about-inv-visual-wrapper">
-            <div className="detailed-info">
-              <AboutAndInvestmentRecords
-                name={name}
-                desc={desc}
-                investedOn={investedOn}
-                investmentsDone={investmentsDone}
-              />
-            </div>
-            <Paper
-              className="social-and-contact-wrapper"
-              style={styles.paper}
-              zDepth={1}
-            >
-              <div className="contact-info">
-                <ContactInfo contactData={contactData} />
+            {isLoading ? (
+              <Skeleton className="detailed-info" />
+            ) : (
+              <div className="detailed-info">
+                <AboutAndInvestmentRecords
+                  name={name}
+                  desc={desc}
+                  investedOn={investedOn}
+                  investmentsDone={investmentsDone}
+                />
               </div>
-              <div className="single-socials">
-                {this.state.product && (
-                  <SocialNetworks socialData={socialData} />
-                )}
+            )}
+            {isLoading ? (
+              <Skeleton className="social-and-contact-wrapper" />
+            ) : (
+              <Paper
+                className="social-and-contact-wrapper"
+                style={styles.paper}
+                zDepth={1}
+              >
+                <div className="contact-info">
+                  <ContactInfo contactData={getContactData()} />
+                </div>
+                <div className="single-socials">
+                  {this.state.product && (
+                    <SocialNetworks socialData={getSocialData()} />
+                  )}
+                </div>
+              </Paper>
+            )}
+          </div>
+          {isLoading ? (
+            <Skeleton className="comments-wrapper" />
+          ) : (
+            <Paper style={styles.paper} zDepth={1} className="comments-wrapper">
+              <div className="comments">
+                <span className="comment-title">Comments</span>
+                {comments.map((comment, i) => (
+                  <CommentRow comment={comment} key={i} />
+                ))}
+                <CommentBox
+                  authenticated={this.props.authenticated}
+                  handlePostComment={this.handlePostComment}
+                  commentAsyncCall={this.state.commentAsyncCall}
+                />
               </div>
             </Paper>
-          </div>
-          <Paper style={styles.paper} zDepth={1} className='comments-wrapper'>
-            <div className="comments">
-              <span className="comment-title">Comments</span>
-              {comments.map((comment, i) => (
-                <CommentRow comment={comment} key={i} />
-              ))}
-              <CommentBox
-                authenticated={this.props.authenticated}
-                handlePostComment={this.handlePostComment}
-                commentAsyncCall={this.state.commentAsyncCall}
-              />
-            </div>
-          </Paper>
+          )}
         </div>
 
         <Snackbar

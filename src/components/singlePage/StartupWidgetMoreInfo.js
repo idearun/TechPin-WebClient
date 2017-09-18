@@ -1,94 +1,85 @@
 import React, { PropTypes } from "react";
 import { baseUrl } from "../../api/realApi";
-
+import Skeleton from "react-loading-skeleton";
 import StarRating from "../sharedComponents/StarRating";
 import ContentLink from "material-ui/svg-icons/content/link";
 import NoLogoImage from "../../../images/nologo.png";
+
+const isNotEmptyObject = object => {
+  if (typeof object !== "object" || Array.isArray(object)) {
+    return false;
+  } else {
+    return Object.keys(object).length > 0;
+  }
+};
 
 export default class StartupWidgetMoreInfo extends React.Component {
   constructor() {
     super();
     this.state = {
+      loading: true,
       product: {
         details: {}
       }
     };
   }
 
-  componentWillMount = () => {
-    if (Object.keys(this.props.product).length > 0) {
-      this.setState({ product: this.props.product });
+  componentDidMount = () => {
+    if (isNotEmptyObject(this.props.product.details)) {
+      this.setState({ product: this.props.product, loading: false });
     }
   };
+
   componentWillReceiveProps = nextProps => {
-    if (Object.keys(nextProps.product).length > 0) {
-      this.setState({ product: nextProps.product });
+    if (isNotEmptyObject(nextProps.product.details)) {
+      this.setState({ product: nextProps.product, loading: false });
     }
   };
 
   render() {
-    // worst piece of code i have ever written, ugly and buggy. needs refactor...
-    let data = {
-      website: this.state.product.website || "...",
-      name_en: this.state.product.name_en || "...",
-      slug: this.state.product.slug || "",
-      average_p_rate: this.state.product.average_p_rate || 0,
-      n_p_score: this.state.product.n_p_score || 0,
-      description_en: this.state.product.details
-        ? this.state.product.details.description_en
-        : "",
-      city: this.state.product.details ? this.state.product.details.city : "",
-      country: this.state.product.details
-        ? this.state.product.details.country
-        : "",
-      year: this.state.product.details
-        ? this.state.product.details.year || ""
-        : "",
-      summary: this.state.product.details
-        ? this.state.product.details.summary
-        : "",
-      logo: this.state.product.details ? this.state.product.details.logo : ""
-    };
-    if (data.summary.length === 0) {
-      data.summary = data.description_en.split(/\s+/, 30).join(" ") + "...";
-    }
-    return (
-      <div className="single-body">
-        {data.logo ? (
-          <img src={baseUrl + data.logo} width="100px" alt="logo" />
-        ) : (
-          <img src={NoLogoImage} width="100px" alt="logo" />
-        )}
-        <div style={{ flex: 1 }}>
-          <span>
-            <a
-              href={data.website}
-              target="_blank"
-              style={{
-                display: "inline-flex",
-                alignContent: "center",
-                alignItems: "center",
-                color: "#0D47A1"
-              }}
-            >
-              {data.name_en}
-              <ContentLink
-                color="#0D47A1"
-                style={{ marginLeft: 5 }}
-                hoverColor="aqua"
-              />
-            </a>
-            <span id="single-meta-info">
-              {data.city && `${data.city},${data.country}`}
+    if (this.state.loading) {
+      return <Skeleton className="single-body" />;
+    } else {
+      const { product } = this.state;
+      if (!product.summary) {
+        product.summary = product.details.description_en
+          .split(/\s+/, 30)
+          .join(" ");
+      }
+      return (
+        <div className="single-body">
+          {product.details.logo ? (
+            <img src={baseUrl + product.details.logo} width="100px" alt="logo" />
+          ) : (
+            <img src={NoLogoImage} width="100px" alt="logo" />
+          )}
+          <div style={{ flex: 1 }}>
+            <span>
+              <a
+                href={product.website}
+                target="_blank"
+                style={{
+                  display: "inline-flex",
+                  alignContent: "center",
+                  alignItems: "center",
+                  color: "#0D47A1"
+                }}
+              >
+                {product.name_en}
+                <ContentLink
+                  color="#0D47A1"
+                  style={{ marginLeft: 5 }}
+                  hoverColor="aqua"
+                />
+              </a>
+              <span id="single-meta-info">
+                {product.city && `${product.city},${product.country}`}
+              </span>
             </span>
-          </span>
-          {/*<StarRating productId={data.slug} rating={data.average_p_rate} editAble={false} className='star-rating-single' />*/}
-          {/*<span className="nps-score">{`N.P.S: ${data.n_p_score}`}</span>*/}
-          <span className="single-page-summary">{data.summary}</span>
+            <span className="single-page-summary">{product.summary}</span>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
-
-StartupWidgetMoreInfo.propTypes = {};

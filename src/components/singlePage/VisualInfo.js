@@ -7,7 +7,7 @@ import ActionGrade from "material-ui/svg-icons/action/grade";
 import ActionFlightTakeoff from "material-ui/svg-icons/action/flight-takeoff";
 import { browserHistory } from "react-router";
 import Snackbar from "material-ui/Snackbar";
-
+import Skeleton from "react-loading-skeleton";
 const styles = {
   svgIcon: {
     minWidth: "20px",
@@ -57,82 +57,90 @@ export default class VisualInfo extends React.Component {
 
   // refactor to more stateless components 😠
   render() {
-    return (
-      <div className="visual-info-action-button-wrapper">
-        <div className="single-page-action-buttons">
-          <div>
-            <FlatButton
-              label="Edit Information"
-              fullWidth
-              onClick={this.checkAuthAndRedirect}
-            />
-          </div>
-          <div>
-            <FlatButton
-              label="Add Investment Record"
-              fullWidth
-              onClick={this.props.handleInvRecAdd}
-            />
-          </div>
+    if (this.props.isLoading) {
+      return (
+        <div className="visual-info-skeleton-wrapper">
+          <Skeleton className="react-loading-skeleton" />
         </div>
-        <div className="visual-info ">
-          <div className="single-page-visual-parent">
+      );
+    } else {
+      return (
+        <div className="visual-info-action-button-wrapper">
+          <div className="single-page-action-buttons">
             <div>
-              <div className="visual-info-sub-span">
-                <SocialPeople style={styles.svgIcon} />
-                <span>Raters ({this.props.rate_count})</span>
-              </div>
+              <FlatButton
+                label="Edit Information"
+                fullWidth
+                onClick={this.checkAuthAndRedirect}
+              />
             </div>
-            <div className="single-page-visual-widget">
-              {`${this.props.average_p_rate.toFixed(1)}`}
-              <StarRating
-                rating={this.props.average_p_rate}
-                className="visual-info-star"
-                editable={false}
+            <div>
+              <FlatButton
+                label="Add Investment Record"
+                fullWidth
+                onClick={this.props.handleInvRecAdd}
               />
             </div>
           </div>
-          <div className="single-page-visual-parent">
-            <div>
-              <div className="visual-info-sub-span">
-                <ActionGrade style={styles.svgIcon} />
-                <span>NPS</span>
+          <div className="visual-info ">
+            <div className="single-page-visual-parent">
+              <div>
+                <div className="visual-info-sub-span">
+                  <SocialPeople style={styles.svgIcon} />
+                  <span>Raters ({this.props.rate_count})</span>
+                </div>
+              </div>
+              <div className="single-page-visual-widget">
+                {`${this.props.average_p_rate.toFixed(1)}`}
+                <StarRating
+                  rating={this.props.average_p_rate}
+                  className="visual-info-star"
+                  editable={false}
+                />
               </div>
             </div>
-            <div className="single-page-visual-widget">
-              {this.props.n_p_score}
-            </div>
-          </div>
-          <div className="single-page-visual-parent">
-            <div>
-              <div className="visual-info-sub-span">
-                <ActionWork style={styles.svgIcon} />
-                <span>Empl.</span>
+            <div className="single-page-visual-parent">
+              <div>
+                <div className="visual-info-sub-span">
+                  <ActionGrade style={styles.svgIcon} />
+                  <span>NPS</span>
+                </div>
+              </div>
+              <div className="single-page-visual-widget">
+                {this.props.n_p_score}
               </div>
             </div>
-            <div className="single-page-visual-widget">
-              {this.props.employeesCount || "?"}
-            </div>
-          </div>
-          <div className="single-page-visual-parent">
-            <div>
-              <div className="visual-info-sub-span">
-                <ActionFlightTakeoff style={styles.svgIcon} />
-                <span>Launch</span>
+            <div className="single-page-visual-parent">
+              <div>
+                <div className="visual-info-sub-span">
+                  <ActionWork style={styles.svgIcon} />
+                  <span>Employees</span>
+                </div>
+              </div>
+              <div className="single-page-visual-widget">
+                {this.props.employeesCount || "?"}
               </div>
             </div>
-            <div className="single-page-visual-widget">
-              {this.props.year || "?"}
+            <div className="single-page-visual-parent">
+              <div>
+                <div className="visual-info-sub-span">
+                  <ActionFlightTakeoff style={styles.svgIcon} />
+                  <span>Launch</span>
+                </div>
+              </div>
+              <div className="single-page-visual-widget">
+                {this.props.year || "?"}
+              </div>
             </div>
           </div>
+          <Snackbar
+            open={this.state.snackBarOpen}
+            message="You are not logged in, Please log in first"
+            autoHideDuration={5000}
+            onRequestClose={this.handleSnackBarClose}
+          />
         </div>
-        <Snackbar
-          open={this.state.snackBarOpen}
-          message="You are not logged in, Please log in first"
-          autoHideDuration={5000}
-          onRequestClose={this.handleSnackBarClose}
-        />
-      </div>
-    );
+      );
+    }
   }
 }

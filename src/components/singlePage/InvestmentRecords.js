@@ -52,11 +52,11 @@ const InvestmentRow = ({
   </tr>
 );
 
-const InvestmentsDone = ({ investmentsDone = [] }) => (
+const InvestmentsDone = ({ investmentsDone = [], slug }) => (
   <table>
     <thead>
       <tr>
-        <th colSpan="8">Investments Done</th>
+        <th colSpan="8">{slug} investment portfolio</th>
       </tr>
       <tr>
         <th colSpan="4">Date</th>
@@ -78,11 +78,11 @@ const InvestmentsDone = ({ investmentsDone = [] }) => (
   </table>
 );
 
-const InvestedOn = ({ investedOn = [] }) => (
+const InvestedOn = ({ investedOn = [], slug }) => (
   <table>
     <thead>
       <tr>
-        <th colSpan="8"> Investments Received</th>
+        <th colSpan="8"> Investments received by {slug}</th>
       </tr>
       <tr>
         <th colSpan="4">Date</th>
@@ -104,10 +104,10 @@ const InvestedOn = ({ investedOn = [] }) => (
   </table>
 );
 
-const InvestmentRecords = ({ investmentsDone, investedOn }) => (
+const InvestmentRecords = ({ investmentsDone, investedOn, slug }) => (
   <div className="investment-records-wrapper">
-    <InvestmentsDone investmentsDone={investmentsDone} />
-    <InvestedOn investedOn={investedOn} />
+    <InvestedOn investedOn={investedOn} slug={slug} />
+    <InvestmentsDone investmentsDone={investmentsDone} slug={slug} />
   </div>
 );
 
