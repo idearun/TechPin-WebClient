@@ -6,7 +6,8 @@ import * as actions from "../../actions/actionCreators";
 import { connect } from "react-redux";
 import Snackbar from "material-ui/Snackbar";
 import { Element } from "react-scroll";
-import DropDownMenu from "material-ui/DropDownMenu";
+// import DropDownMenu from "material-ui/DropDownMenu";
+import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
 const selectOptionsValues = [
@@ -56,6 +57,7 @@ class DueDiligence extends Component {
         company_description: "",
         type: 0
       },
+      formErrors: {},
       notificationIsOpen: false,
       notificationMessage: ""
     };
@@ -73,10 +75,34 @@ class DueDiligence extends Component {
     this.setState({ formData: { ...formData, [fieldName]: value } });
   };
 
-  isValid = ({ name, email, company_description, phone_number }) => {
-    return Boolean(
-      name && email && this.validateEmailAddress(email) && company_description
-    );
+  isValid = ({ name, email, company_description, phone_number, type }) => {
+    const errors = {};
+    let isValid = true;
+    if (!name) {
+      errors.name = "this field is required";
+      isValid = false;
+    }
+    if (!email) {
+      errors.email = "this field is required";
+      isValid = false;
+    }
+    if (!this.validateEmailAddress(email)) {
+      errors.email = "Enter a valid email";
+      isValid = false;
+    }
+    if (!company_description) {
+      errors.company_description = "this field is required";
+      isValid = false;
+    }
+    if (!phone_number) {
+      errors.phone_number = "this field is required";
+      isValid = false;
+    }
+    if (type === 0) {
+      errors.type = "Please select an option";
+      isValid = false;
+    }
+    return { errors, isValid };
   };
 
   validateEmailAddress = email => {
@@ -85,7 +111,8 @@ class DueDiligence extends Component {
   };
 
   handleSubmit = () => {
-    if (this.isValid(this.state.formData)) {
+    const validationResults = this.isValid(this.state.formData);
+    if (validationResults.isValid) {
       const formData = this.state.formData;
       formData.type = selectOptionsValues[formData.type];
       this.setState({ aSyncCall: true });
@@ -118,7 +145,8 @@ class DueDiligence extends Component {
       this.setState({
         aSyncCall: false,
         notificationIsOpen: true,
-        notificationMessage: "please enter valid inputs"
+        notificationMessage: "please enter valid inputs",
+        formErrors: validationResults.errors
       });
     }
   };
@@ -143,25 +171,34 @@ class DueDiligence extends Component {
         <Card>
           <CardTitle title="Contact Us" subtitle="Please fill the form" />
           <CardText className="contact-form-inputs-wrapper">
-            <DropDownMenu
+            {/* <DropDownMenu
               value={this.state.formData.type}
               style={{ width: 350 }}
               iconStyle={{ right: 0 }}
+              errorText={this.state.formErrors.type}
               underlineStyle={{ margin: 0 }}
               labelStyle={{ padding: 0, color: "rgba(0,0,0,0.3)" }}
               onChange={(_, val) => this.updateFormData(val, "type")}
+            > */}
+            <SelectField
+              value={this.state.formData.type}
+              style={{ width: 350 }}
+              errorText={this.state.formErrors.type}
+              onChange={(_, val) => this.updateFormData(val, "type")}
             >
               {this.renderSelectMenuItems()}
-            </DropDownMenu>
+            </SelectField>
             <div className="input-row">
               <TextField
                 value={this.state.formData.name}
+                errorText={this.state.formErrors.name}
                 floatingLabelText="Your Name"
                 style={{ width: 350 }}
                 onChange={(_, val) => this.updateFormData(val, "name")}
               />
               <TextField
                 value={this.state.formData.email}
+                errorText={this.state.formErrors.email}
                 floatingLabelText="Your Email"
                 style={{ width: 350, marginLeft: 20 }}
                 type="email"
@@ -171,12 +208,14 @@ class DueDiligence extends Component {
             <div className="input-row">
               <TextField
                 value={this.state.formData.phone_number}
+                errorText={this.state.formErrors.phone_number}
                 style={{ width: 350 }}
                 floatingLabelText="Your Phone number"
                 onChange={(_, val) => this.updateFormData(val, "phone_number")}
               />
               <TextField
                 value={this.state.formData.company_name}
+                errorText={this.state.formErrors.company_name}
                 style={{ width: 350, marginLeft: 20 }}
                 floatingLabelText="Company Name"
                 onChange={(_, val) => this.updateFormData(val, "company_name")}
@@ -184,6 +223,7 @@ class DueDiligence extends Component {
             </div>
             <TextField
               value={this.state.formData.company_description}
+              errorText={this.state.formErrors.company_description}
               floatingLabelText="Description"
               fullWidth
               multiLine

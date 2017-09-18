@@ -2,9 +2,13 @@ import React from "react";
 import Logo from "../../../images/techpin.svg";
 import RaisedButton from "material-ui/RaisedButton";
 // import scrollTo from "../../helpers/scroll";
+import scrollToComponent from "react-scroll-to-component";
 
 const scrollToDueDiligence = () => {
-  document.getElementById("contact-form").scrollIntoView()
+  scrollToComponent(document.getElementById("contact-form"), {
+    align: "top",
+    duration: 1500
+  });
 };
 
 const SiteDesc = ({ openAddProductModal }) => (
