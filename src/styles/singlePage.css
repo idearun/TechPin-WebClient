@@ -221,12 +221,17 @@
 }
 
 .single-page-action-buttons {
+  padding: 10px;
+  box-sizing: border-box;
   background-color: white;
   max-width: 270px;
   margin-left: 15px;
   margin-bottom: 15px;
   min-width: 270px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+}
+.single-page-action-buttons > *:last-child {
+  margin-top: 10px; 
 }
 
 .comments-wrapper > .react-loading-skeleton {
@@ -593,6 +598,7 @@ div.single-page-visual-widget {
   .single-page-action-buttons {
     margin: 0;
   }
+ 
   .visual-info {
     margin: 0;
   }

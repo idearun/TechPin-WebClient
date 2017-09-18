@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 import StarRating from "../sharedComponents/StarRating";
-import FlatButton from "material-ui/FlatButton";
+import RaisedButton from "material-ui/RaisedButton";
 import SocialPeople from "material-ui/svg-icons/social/people";
 import ActionWork from "material-ui/svg-icons/action/work";
 import ActionGrade from "material-ui/svg-icons/action/grade";
@@ -68,16 +68,19 @@ export default class VisualInfo extends React.Component {
         <div className="visual-info-action-button-wrapper">
           <div className="single-page-action-buttons">
             <div>
-              <FlatButton
+              <RaisedButton
                 label="Edit Information"
                 fullWidth
+                labelColor="white"
+                backgroundColor="#0D47A1"
                 onClick={this.checkAuthAndRedirect}
               />
             </div>
             <div>
-              <FlatButton
+              <RaisedButton
                 label="Add Investment Record"
                 fullWidth
+                primary
                 onClick={this.props.handleInvRecAdd}
               />
             </div>
