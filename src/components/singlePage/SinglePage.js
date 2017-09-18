@@ -137,7 +137,7 @@ class SinglePage extends React.Component {
   };
 
   closeInvRecordModal = () => {
-    this.setState({ invModalIsOpen: false });
+    this.setState({ invModalIsOpen: false, autoCompleteSelection: null });
   };
 
   openInvRecordModal = () => {
@@ -209,6 +209,16 @@ class SinglePage extends React.Component {
     return Boolean(formData.investor);
   };
 
+  getCheckboxLabel = () => {
+    const { autoCompleteSelection } = this.state;
+    const selection = this.state.allProducts.find(
+      product => product.slug === autoCompleteSelection
+    );
+    return `This is an acquisition ${selection
+      ? "by " + selection.name_en
+      : ""}`;
+  };
+
   render() {
     const actions = [
       <FlatButton label="Cancel" onClick={this.closeInvRecordModal} />,
@@ -255,18 +265,15 @@ class SinglePage extends React.Component {
               filter={AutoComplete.caseInsensitiveFilter}
               searchText={this.state.searchText}
               dataSource={this.state.allProductsNameOnly}
-              openOnFocus
               menuStyle={autoCompleteMenuStyles}
               onNewRequest={this.handleAutoCompleteSelection}
+              openOnFocus={true}
               fullWidth
             />
             <Checkbox
-              label={`This is an acquisition ${this.state
-                .autoCompleteSelection
-                ? "by " + this.state.autoCompleteSelection
-                : ""}`}
+              label={this.getCheckboxLabel()}
               onCheck={(_, isChecked) =>
-                this.updateInvRecFormData(isChecked, "isAcquisition")}
+                this.updateInvRecFormData(isChecked, "is_acquired")}
             />
             <MoneyInput
               floatingLabelText="How Much Investment $"
