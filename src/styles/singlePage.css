@@ -330,6 +330,8 @@ div.comments > span {
   font-weight: 500;
   max-width: 100%;
   box-sizing: border-box;
+  word-break: break-word;
+  
 }
 
 #signle-page-snackbar > div > div > span {

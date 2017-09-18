@@ -18,11 +18,11 @@ const ContactInfo = ({ contactData }) => {
   return (
     <div className="">
       <div className="contact-info-row">
+        <FileCloud style={styles.svgIcon} />
         <a href={contactData.website || "#"} target="_blank">
-          <FileCloud style={styles.svgIcon} />
-          <div className="contact-info-title">
+          <span className="contact-info-title">
             {contactData.website || "No website"}
-          </div>
+          </span>
         </a>
       </div>
       {contactData.extraUrl && (
