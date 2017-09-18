@@ -11,6 +11,7 @@ import AutoComplete from "material-ui/AutoComplete";
 import Snackbar from "material-ui/Snackbar";
 import { appendToFormData } from "../../helpers/helpers";
 import MoneyInput from "../sharedComponents/MoneyInput";
+import Checkbox from "material-ui/Checkbox";
 
 const autoCompleteMenuStyles = {
   maxHeight: "200px",
@@ -82,7 +83,7 @@ class SinglePage extends React.Component {
       this.setState({
         product: this.props.singleProducts[indexOfProductInStore],
         slug: this.props.singleProducts[indexOfProductInStore].product.slug,
-        isLoading: false,
+        isLoading: false
       });
     }
     // load all products to use in autocomplete
@@ -258,6 +259,14 @@ class SinglePage extends React.Component {
               menuStyle={autoCompleteMenuStyles}
               onNewRequest={this.handleAutoCompleteSelection}
               fullWidth
+            />
+            <Checkbox
+              label={`This is an acquisition ${this.state
+                .autoCompleteSelection
+                ? "by " + this.state.autoCompleteSelection
+                : ""}`}
+              onCheck={(_, isChecked) =>
+                this.updateInvRecFormData(isChecked, "isAcquisition")}
             />
             <MoneyInput
               floatingLabelText="How Much Investment $"
