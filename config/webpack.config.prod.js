@@ -7,7 +7,7 @@ var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var url = require('url');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
-
+var CompressionPlugin = require("compression-webpack-plugin");
 
 
 function ensureSlash(path, needsSlash) {
@@ -235,6 +235,13 @@ module.exports = {
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
     }),
+    new CompressionPlugin({
+			asset: "[path].gz[query]",
+			algorithm: "gzip",
+			test: /\.(js|html)$/,
+			threshold: 10240,
+			minRatio: 0.8
+		}),
     new webpack.ProvidePlugin({
        jQuery: 'jquery',
        $: 'jquery',
