@@ -74,11 +74,11 @@ class CategoryPage extends React.Component {
     return (
       <div className="category-page main-content">
         <header className="category-header">
-          <IconButton tooltip="HOME" tooltipPosition="top-center">
+          <IconButton tooltip="Back" tooltipPosition="top-center">
             <NavigationArrowBack
               style={styles.toolbarBackArrow}
               hoverColor={"#9C27B0"}
-              onClick={() => browserHistory.push('/')}
+              onClick={() => browserHistory.goBack()}
             />
           </IconButton>
           <div className="category-title">

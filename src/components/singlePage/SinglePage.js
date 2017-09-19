@@ -15,6 +15,9 @@ import Checkbox from "material-ui/Checkbox";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
+// Important note:
+// react-loading-skeleton package is modified
+
 const autoCompleteMenuStyles = {
   maxHeight: "200px",
   overflowY: "auto"
@@ -50,7 +53,7 @@ class SinglePage extends React.Component {
     this.state = {
       product: {},
       slug: "",
-      isLoading: false,
+      isLoading: true,
       invModalIsOpen: false,
       addInvRecFormData: {},
       allProducts: [],
@@ -66,14 +69,12 @@ class SinglePage extends React.Component {
   }
 
   componentDidMount = () => {
+    const productName = this.props.params.startUpName;
+    const indexOfProductInStore = this.isCached(productName);
+
     if (this.props.authenticated) {
       this.props.getPreviousUserRates(this.props.params.startUpName);
     }
-  };
-
-  componentWillMount = () => {
-    const productName = this.props.params.startUpName;
-    const indexOfProductInStore = this.isCached(productName);
 
     if (indexOfProductInStore === -1) {
       this.setState({ isLoading: true });
@@ -91,6 +92,7 @@ class SinglePage extends React.Component {
         isLoading: false
       });
     }
+
     // load all products to use in autocomplete
     this.props.getAllProductsSlimVersion().then(allProducts => {
       this.setState({
@@ -263,9 +265,6 @@ class SinglePage extends React.Component {
     ];
     return (
       <div className="single-page main-content">
-        {/* {this.state.isLoading ? (
-          <CircularProgress id="spinner" color={"#2962FF"} size={50} />
-        ) : ( */}
         <SinglePageMain
           product={this.state.product}
           userRate={this.props.userRates[this.props.params.startUpName]}
