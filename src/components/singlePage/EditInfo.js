@@ -50,9 +50,9 @@ class EditInfo extends React.Component {
     };
   }
 
-  setEmpRangeFormData = option => {
+  setEmpRangeFormData = (event, option) => {
     const formVals = {};
-    formVals.employees = option;
+    formVals.employees_count = empRange[option];
     const prevFormData = this.state.formData;
     const newFormData = Object.assign({}, prevFormData, formVals);
     this.setState({ formData: newFormData });
@@ -88,12 +88,16 @@ class EditInfo extends React.Component {
 
   handleSubmit = () => {
     const keys = Object.keys(this.state.formData);
+
     if (this.valid(keys, this.state.selectedLogoFilename)) {
       this.setState({ formIsValid: true, aSyncCall: true });
 
       const formData = appendToFormData(this.state.formData);
 
-      formData.append("logo", document.getElementById("logo").files[0]);
+      if (document.getElementById("logo").files[0]) {
+        formData.append("logo", document.getElementById("logo").files[0]);
+      }
+
       let slug =
         this.props.newProductSlug || this.props.params.startUpName || "";
 
@@ -206,7 +210,10 @@ class EditInfo extends React.Component {
             />
 
             <SelectField
-              value={product.product.details.employees_count}
+              value={
+                this.state.formData.employees_count ||
+                product.product.details.employees_count
+              }
               onChange={this.setEmpRangeFormData}
               floatingLabelText="Employees"
               className="three-field"
