@@ -1,19 +1,19 @@
-import React from "react";
-import { connect } from "react-redux";
-import * as actions from "../../actions/actionCreators";
-import Dialog from "material-ui/Dialog";
-import FlatButton from "material-ui/FlatButton";
-import SinglePageToolbar from "./SinglePageToolbar";
-import SinglePageMain from "./SinglePageMain";
-import TextField from "material-ui/TextField";
-import CircularProgress from "material-ui/CircularProgress";
-import AutoComplete from "material-ui/AutoComplete";
-import Snackbar from "material-ui/Snackbar";
-import { appendToFormData } from "../../helpers/helpers";
-import MoneyInput from "../sharedComponents/MoneyInput";
-import Checkbox from "material-ui/Checkbox";
-import SelectField from "material-ui/SelectField";
-import MenuItem from "material-ui/MenuItem";
+import React from "react"
+import { connect } from "react-redux"
+import * as actions from "../../actions/actionCreators"
+import Dialog from "material-ui/Dialog"
+import FlatButton from "material-ui/FlatButton"
+import SinglePageToolbar from "./SinglePageToolbar"
+import SinglePageMain from "./SinglePageMain"
+import TextField from "material-ui/TextField"
+import CircularProgress from "material-ui/CircularProgress"
+import AutoComplete from "material-ui/AutoComplete"
+import Snackbar from "material-ui/Snackbar"
+import { appendToFormData } from "../../helpers/helpers"
+import MoneyInput from "../sharedComponents/MoneyInput"
+import Checkbox from "material-ui/Checkbox"
+import SelectField from "material-ui/SelectField"
+import MenuItem from "material-ui/MenuItem"
 
 // Important note:
 // react-loading-skeleton package is modified
@@ -21,15 +21,15 @@ import MenuItem from "material-ui/MenuItem";
 const autoCompleteMenuStyles = {
   maxHeight: "200px",
   overflowY: "auto"
-};
+}
 
-const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear()
 
-const years = [];
+const years = []
 for (let year = 1990; year <= currentYear; year++) {
   years.unshift(
     <MenuItem key={year} value={String(year)} primaryText={String(year)} />
-  );
+  )
 }
 
 const months = [
@@ -45,11 +45,11 @@ const months = [
   "October",
   "November",
   "December"
-];
+]
 
 class SinglePage extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       product: {},
       slug: "",
@@ -65,32 +65,32 @@ class SinglePage extends React.Component {
       yearSearchTerm: "",
       monthSearchTerm: "",
       addInvFormDataErrors: {}
-    };
+    }
   }
 
   componentDidMount = () => {
-    const productName = this.props.params.startUpName;
-    const indexOfProductInStore = this.isCached(productName);
+    const productName = this.props.params.startUpName
+    const indexOfProductInStore = this.isCached(productName)
 
     if (this.props.authenticated) {
-      this.props.getPreviousUserRates(this.props.params.startUpName);
+      this.props.getPreviousUserRates(this.props.params.startUpName)
     }
 
     if (indexOfProductInStore === -1) {
-      this.setState({ isLoading: true });
+      this.setState({ isLoading: true })
       this.props.getSingleProduct(productName).then(product => {
         this.setState({
           product,
           isLoading: false,
           slug: product.product.slug
-        });
-      });
+        })
+      })
     } else {
       this.setState({
         product: this.props.singleProducts[indexOfProductInStore],
         slug: this.props.singleProducts[indexOfProductInStore].product.slug,
         isLoading: false
-      });
+      })
     }
 
     // load all products to use in autocomplete
@@ -98,23 +98,23 @@ class SinglePage extends React.Component {
       this.setState({
         allProducts,
         allProductsNameOnly: allProducts.map(item => item.name_en)
-      });
-    });
-  };
+      })
+    })
+  }
 
   handleYearSelection = (_, __, selectedYear) => {
     this.setState({
       addInvRecFormData: { ...this.state.addInvRecFormData, year: selectedYear }
-    });
-  };
+    })
+  }
 
   updateYearSearchTerm = input => {
-    this.setState({ yearSearchTerm: input });
-  };
+    this.setState({ yearSearchTerm: input })
+  }
 
   updateMonthSearchTerm = input => {
-    this.setState({ monthSearchTerm: input });
-  };
+    this.setState({ monthSearchTerm: input })
+  }
 
   handleMonthSelection = selectedMonth => {
     this.setState({
@@ -122,26 +122,26 @@ class SinglePage extends React.Component {
         ...this.state.addInvRecFormData,
         month: months.indexOf(selectedMonth)
       }
-    });
-  };
+    })
+  }
 
   isCached = productName => {
     //should check for the data in store and return the index in singleProducts
-    let temp = this.props.singleProducts || [];
-    const index = temp.findIndex(item => item.product.slug === productName);
-    return index;
-  };
+    let temp = this.props.singleProducts || []
+    const index = temp.findIndex(item => item.product.slug === productName)
+    return index
+  }
 
   updateInvRecFormData = (value, fieldName) => {
-    const { addInvRecFormData } = this.state;
+    const { addInvRecFormData } = this.state
     this.setState({
       addInvRecFormData: { ...addInvRecFormData, [fieldName]: value }
-    });
-  };
+    })
+  }
 
   handleInvRecAdd = () => {
-    this.openInvRecordModal();
-  };
+    this.openInvRecordModal()
+  }
 
   closeInvRecordModal = () => {
     this.setState({
@@ -149,27 +149,27 @@ class SinglePage extends React.Component {
       autoCompleteSelection: null,
       addInvFormDataErrors: {},
       addInvRecFormData: {}
-    });
-  };
+    })
+  }
 
   openInvRecordModal = () => {
-    this.setState({ invModalIsOpen: true });
-  };
+    this.setState({ invModalIsOpen: true })
+  }
 
   handleAutoCompleteSelection = selected => {
     const investor = this.state.allProducts.find(
       product => product.name_en === selected
-    );
-    this.setState({ autoCompleteSelection: investor.slug });
-  };
+    )
+    this.setState({ autoCompleteSelection: investor.slug })
+  }
 
   handleProofDocument = event => {
-    this.setState({ proofDocument: event.target.files[0] });
-  };
+    this.setState({ proofDocument: event.target.files[0] })
+  }
 
   handleRequestClose = () => {
-    this.setState({ notificationIsOpen: false });
-  };
+    this.setState({ notificationIsOpen: false })
+  }
 
   handleSubmit = () => {
     const {
@@ -177,21 +177,21 @@ class SinglePage extends React.Component {
       proofDocument,
       addInvRecFormData,
       slug
-    } = this.state;
+    } = this.state
 
     const data = {
       invested_on: slug,
       investor: autoCompleteSelection,
       document: proofDocument,
       ...addInvRecFormData
-    };
+    }
 
-    const validationResult = this.isValid(data);
+    const validationResult = this.isValid(data)
 
     if (validationResult.isValid) {
-      console.log(data);
-      const formData = appendToFormData(data);
-      this.setState({ aSyncCall: true });
+      console.log(data)
+      const formData = appendToFormData(data)
+      this.setState({ aSyncCall: true })
       this.props
         .postNewInvestmentRecord(formData)
         .then(() => {
@@ -202,56 +202,56 @@ class SinglePage extends React.Component {
             notificationIsOpen: true,
             notificationMessage:
               "Thanks for submitting new information, we will review it"
-          });
+          })
         })
         .catch(error => {
           this.setState({
             aSyncCall: false,
             notificationIsOpen: true,
             notificationMessage: "Unable to submit the form"
-          });
-        });
+          })
+        })
     } else {
       this.setState({
         aSyncCall: false,
         notificationIsOpen: true,
         notificationMessage: "please enter valid inputs",
         addInvFormDataErrors: validationResult.errors
-      });
+      })
     }
-  };
+  }
 
   isValid = formData => {
-    const errors = {};
-    let isValid = true;
-    const re = /^((https?):\/\/)([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+    const errors = {}
+    let isValid = true
+    const re = /^((https?):\/\/)([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/
     // investor is required
     if (!formData.investor) {
-      errors.investor = "investor is required";
-      isValid = false;
+      errors.investor = "investor is required"
+      isValid = false
     }
     if (formData.link) {
       if (!re.test(formData.link)) {
-        errors.link = "URL is not valid, it must contain http/https";
-        isValid = false;
+        errors.link = "URL is not valid, it must contain http/https"
+        isValid = false
       }
     }
     if (!formData.year) {
-      errors.year = "you must provide the investment year";
+      errors.year = "you must provide the investment year"
     }
     // website must have http or https
-    return { errors, isValid };
-  };
+    return { errors, isValid }
+  }
 
   getCheckboxLabel = () => {
-    const { autoCompleteSelection } = this.state;
+    const { autoCompleteSelection } = this.state
     const selection = this.state.allProducts.find(
       product => product.slug === autoCompleteSelection
-    );
+    )
     return `This is an acquisition ${selection
       ? "by " + selection.name_en
-      : ""}`;
-  };
+      : ""}`
+  }
 
   render() {
     const actions = [
@@ -262,7 +262,7 @@ class SinglePage extends React.Component {
         primary={true}
         onClick={this.handleSubmit}
       />
-    ];
+    ]
     return (
       <div className="single-page main-content">
         <SinglePageMain
@@ -315,7 +315,6 @@ class SinglePage extends React.Component {
               fullWidth
               onChange={value =>
                 this.updateInvRecFormData(value.replace(/,/g, ""), "amount")}
-              mask="999,999,999,999,999,999"
             />
             <div className="two-columns">
               {/* <AutoComplete
@@ -379,7 +378,7 @@ class SinglePage extends React.Component {
           onRequestClose={this.handleRequestClose}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -399,7 +398,7 @@ function mapStateToProps(state) {
     authenticated: state.auth.authenticated,
     singleProducts: state.singleProducts,
     userRates: state.userRates || {}
-  };
+  }
 }
 
-export default connect(mapStateToProps, actions)(SinglePage);
+export default connect(mapStateToProps, actions)(SinglePage)

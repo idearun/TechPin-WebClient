@@ -54,6 +54,17 @@ export default function sort(array, sortBy) {
   })
 }
 
+export function reverseString(string) {
+  if (typeof string) {
+    return string
+      .split("")
+      .reverse()
+      .join("")
+  } else {
+    throw new Error("reverseString function expects a string")
+  }
+}
+
 export function appendToFormData(values) {
   const formData = new FormData()
   for (const key in values) {
@@ -66,7 +77,7 @@ export function appendToFormData(values) {
 
 export function logFormData(formData) {
   for (let pair of formData.entries()) {
-    console.log(pair[0] + "  =>  " + pair[1]);
+    console.log(pair[0] + "  =>  " + pair[1])
   }
 }
 
