@@ -1,9 +1,9 @@
-import React from "react";
+import React from "react"
 
-import { Link } from "react-router";
+import { Link } from "react-router"
 
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
 
 const months = [
@@ -19,24 +19,25 @@ const months = [
   "October",
   "November",
   "December"
-];
+]
 
 const getDate = (monthIndex, year) => {
-  let date = "";
+  let date = ""
   if (monthIndex) {
-    date += months[monthIndex].substring(0, 3) + ", ";
+    date += months[monthIndex].substring(0, 3) + ", "
   }
   if (year) {
-    date += year;
-    return date;
+    date += year
+    return date
   }
-  return "Undisclosed";
-};
+  return "Undisclosed"
+}
 
 const InvestmentRow = ({
   amount,
   invested_on = {},
   investor = {},
+  is_acquired,
   link,
   month,
   text,
@@ -47,11 +48,15 @@ const InvestmentRow = ({
     <td colSpan="4">{getDate(month, year)}</td>
     <td colSpan="2">
       {type === "investmentDone" ? invested_on ? (
-        <Link to={`/${invested_on.slug}`}> {invested_on.name_en} </Link>
+        <Link to={`/${invested_on.slug}`}>
+          {invested_on.name_en} {is_acquired ? "(acquired)" : ""}
+        </Link>
       ) : (
         "Undisclosed"
       ) : investor ? (
-        <Link to={`/${investor.slug}`}> {investor.name_en} </Link>
+        <Link to={`/${investor.slug}`}>
+          {investor.name_en} {is_acquired ? "(acquired)" : ""}
+        </Link>
       ) : (
         "Undisclosed"
       )}
@@ -60,7 +65,7 @@ const InvestmentRow = ({
       {amount ? `$ ${numberWithCommas(amount)}` : "Undisclosed"}
     </td>
   </tr>
-);
+)
 
 const InvestmentsDone = ({ investmentsDone = [], slug }) => (
   <table>
@@ -86,7 +91,7 @@ const InvestmentsDone = ({ investmentsDone = [], slug }) => (
       )}
     </tbody>
   </table>
-);
+)
 
 const InvestedOn = ({ investedOn = [], slug }) => (
   <table>
@@ -112,13 +117,13 @@ const InvestedOn = ({ investedOn = [], slug }) => (
       )}
     </tbody>
   </table>
-);
+)
 
 const InvestmentRecords = ({ investmentsDone, investedOn, slug }) => (
   <div className="investment-records-wrapper">
     <InvestedOn investedOn={investedOn} slug={slug} />
     <InvestmentsDone investmentsDone={investmentsDone} slug={slug} />
   </div>
-);
+)
 
-export default InvestmentRecords;
+export default InvestmentRecords
