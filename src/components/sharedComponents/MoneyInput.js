@@ -24,7 +24,9 @@ class MaskedTextField extends React.Component {
 
   render() {
     const { mask, ...other } = this.props
-    delete other.defaultValue // remove default value from TextField input (see link below)
+    // remove default value from TextField input
+    // this is also a hack to make this work with material components 😒
+    delete other.defaultValue 
     other.onChange = this.onChange.bind(this, mask)
     other.value = this.state.value
     return <UI.TextField {...other} />
