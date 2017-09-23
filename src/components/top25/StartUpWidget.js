@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 import { Link } from "react-router";
-import { baseUrl } from "../../api/realApi";
+import { baseApiUrl } from "../../api/realApi";
 import LazyLoad from "react-lazy-load";
 import StarRating from "../sharedComponents/StarRating";
 
@@ -46,7 +46,7 @@ const StartUpWidget = ({ product, i }) => {
       <Link to={`${slug}`}>
         {is100MillionPlus && <span className="ribbon">$100 M+</span>}
         <div className="widget">
-          <LzLoImage img={baseUrl + details.logo} />
+          <LzLoImage img={baseApiUrl + details.logo} />
           <div>
             <div className="widget-title">{name_en}</div>
             <div className="widget-text">

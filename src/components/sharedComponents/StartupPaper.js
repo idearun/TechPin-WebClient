@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { Link } from "react-router";
 
-import { baseUrl } from "../../api/realApi";
+import { baseApiUrl } from "../../api/realApi";
 import Paper from "material-ui/Paper";
 import StarRating from "./StarRating";
 
@@ -21,7 +21,7 @@ const CategoryPaper = ({ product, WrapperClassName }) => {
       >
         <div
           className="category-image"
-          style={{ backgroundImage: `url(${baseUrl}${product.details.logo})` }}
+          style={{ backgroundImage: `url(${baseApiUrl}${product.details.logo})` }}
         />
         <span style={{ marginTop: 10, maxWidth: "100%" }}>
           <h3

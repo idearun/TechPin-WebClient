@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import { baseUrl } from "../../api/realApi";
+import { baseApiUrl } from "../../api/realApi";
 import Skeleton from "react-loading-skeleton";
 import StarRating from "../sharedComponents/StarRating";
 import ContentLink from "material-ui/svg-icons/content/link";
@@ -49,7 +49,7 @@ export default class StartupWidgetMoreInfo extends React.Component {
       return (
         <div className="single-body">
           {product.details.logo ? (
-            <img src={baseUrl + product.details.logo} width="100px" alt="logo" />
+            <img src={baseApiUrl + product.details.logo} width="100px" alt="logo" />
           ) : (
             <img src={NoLogoImage} width="100px" alt="logo" />
           )}
