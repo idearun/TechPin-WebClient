@@ -6,8 +6,8 @@ const CancelToken = axios.CancelToken;
 require("core-js/fn/object/values");
 require("core-js/fn/object/entries");
 
-export const baseUrl = "https://api.techpin.xyz";
 var baseApiUrl = "https://api.techpin.xyz";
+// const baseApiUrl = 'http://172.25.18.117:8000'
 
 var config = {
   headers: {

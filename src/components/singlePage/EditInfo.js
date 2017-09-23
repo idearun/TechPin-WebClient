@@ -1,28 +1,28 @@
-import React from "react";
-import { connect } from "react-redux";
-import { browserHistory } from "react-router";
-import * as actions from "../../actions/actionCreators";
-import AutoComplete from "material-ui/AutoComplete";
-import SinglePageToolbar from "./SinglePageToolbar";
-import StartupWidgetMoreInfo from "./StartupWidgetMoreInfo";
-import { appendToFormData } from "../../helpers/helpers";
+import React from "react"
+import { connect } from "react-redux"
+import { browserHistory } from "react-router"
+import * as actions from "../../actions/actionCreators"
+import AutoComplete from "material-ui/AutoComplete"
+import SinglePageToolbar from "./SinglePageToolbar"
+import StartupWidgetMoreInfo from "./StartupWidgetMoreInfo"
+import { appendToFormData, logFormData } from "../../helpers/helpers"
 
-require("core-js/fn/object/values");
-require("core-js/fn/object/entries");
+require("core-js/fn/object/values")
+require("core-js/fn/object/entries")
 
-import Paper from "material-ui/Paper";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
-import FileFileUpload from "material-ui/svg-icons/file/file-upload";
-import IconButton from "material-ui/IconButton";
-import Snackbar from "material-ui/Snackbar";
-import { PulseLoader } from "halogen";
-import SelectField from "material-ui/SelectField";
-import MenuItem from "material-ui/MenuItem";
+import Paper from "material-ui/Paper"
+import TextField from "material-ui/TextField"
+import RaisedButton from "material-ui/RaisedButton"
+import FileFileUpload from "material-ui/svg-icons/file/file-upload"
+import IconButton from "material-ui/IconButton"
+import Snackbar from "material-ui/Snackbar"
+import { PulseLoader } from "halogen"
+import SelectField from "material-ui/SelectField"
+import MenuItem from "material-ui/MenuItem"
 
 const editFormSubmitSuccessFeedbackText =
-  "Thanks, your info will be shown after approval";
-const editFormSubmitFailedFeedbackText = "Oops, please try again";
+  "Thanks, your info will be shown after approval"
+const editFormSubmitFailedFeedbackText = "Oops, please try again"
 
 const empRange = [
   "0-5",
@@ -32,75 +32,76 @@ const empRange = [
   "50-200",
   "200-1000",
   "1000+"
-];
+]
 
 const menuItems = empRange.map((item, index) => (
   <MenuItem key={index} value={item} primaryText={item} />
-));
+))
 
 class EditInfo extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       snackBarOpen: false,
       responseText: "",
       formData: {},
       aSyncCall: false,
       selectedLogoFilename: null
-    };
+    }
   }
 
   setEmpRangeFormData = (event, option) => {
-    const formVals = {};
-    formVals.employees_count = empRange[option];
-    const prevFormData = this.state.formData;
-    const newFormData = Object.assign({}, prevFormData, formVals);
-    this.setState({ formData: newFormData });
-  };
+    const formVals = {}
+    formVals.employees_count = empRange[option]
+    const prevFormData = this.state.formData
+    const newFormData = Object.assign({}, prevFormData, formVals)
+    this.setState({ formData: newFormData })
+  }
 
   textFieldChangeHandler = (event, value) => {
-    const formVals = {};
-    formVals[event.target.id] = value;
-    const prevFormData = this.state.formData;
-    const newFormData = Object.assign({}, prevFormData, formVals);
-    this.setState({ formData: newFormData });
-  };
+    const formVals = {}
+    formVals[event.target.id] = value
+    const prevFormData = this.state.formData
+    const newFormData = Object.assign({}, prevFormData, formVals)
+    this.setState({ formData: newFormData })
+  }
 
   valid = (keys, logoName) => {
     if (keys.length > 0) {
-      return true;
+      return true
     } else if (logoName) {
-      return true;
+      return true
     }
-    return false;
-  };
+    return false
+  }
 
   isSafari = () => {
-    let ua = navigator.userAgent.toLowerCase();
+    let ua = navigator.userAgent.toLowerCase()
     if (ua.indexOf("safari") !== -1) {
       if (ua.indexOf("chrome") > -1) {
-        return false; // Chrome
+        return false // Chrome
       } else {
-        return true; // Safari
+        return true // Safari
       }
     }
-  };
+  }
 
   handleSubmit = () => {
-    const keys = Object.keys(this.state.formData);
+    const keys = Object.keys(this.state.formData)
 
     if (this.valid(keys, this.state.selectedLogoFilename)) {
-      this.setState({ formIsValid: true, aSyncCall: true });
+      this.setState({ formIsValid: true, aSyncCall: true })
 
-      const formData = appendToFormData(this.state.formData);
-
-      if (document.getElementById("logo").files[0]) {
-        formData.append("logo", document.getElementById("logo").files[0]);
-      }
+      const formData = appendToFormData(this.state.formData)
 
       let slug =
-        this.props.newProductSlug || this.props.params.startUpName || "";
+        this.props.newProductSlug || this.props.params.startUpName || ""
 
+      if (document.getElementById("logo").files[0]) {
+        formData.append("logo", document.getElementById("logo").files[0])
+      }
+
+      // if it is the first version act differently
       if (this.props.newProductSlug) {
         this.props.submitAddFirstVersion(formData, slug).then(
           response => {
@@ -108,9 +109,9 @@ class EditInfo extends React.Component {
               snackBarOpen: true,
               aSyncCall: false,
               responseText: editFormSubmitSuccessFeedbackText
-            });
+            })
             if (this.props.newProductSlug) {
-              this.props.cleanNewProduct();
+              this.props.cleanNewProduct()
             }
           },
           response => {
@@ -118,9 +119,9 @@ class EditInfo extends React.Component {
               snackBarOpen: true,
               aSyncCall: false,
               responseText: editFormSubmitFailedFeedbackText
-            });
+            })
           }
-        );
+        )
       } else {
         this.props.submitAddNewVersion(formData, slug).then(
           response => {
@@ -128,9 +129,9 @@ class EditInfo extends React.Component {
               snackBarOpen: true,
               aSyncCall: false,
               responseText: editFormSubmitSuccessFeedbackText
-            });
+            })
             if (this.props.newProductSlug) {
-              this.props.cleanNewProduct();
+              this.props.cleanNewProduct()
             }
           },
           response => {
@@ -138,9 +139,9 @@ class EditInfo extends React.Component {
               snackBarOpen: true,
               aSyncCall: false,
               responseText: editFormSubmitFailedFeedbackText
-            });
+            })
           }
-        );
+        )
       }
     } else {
       this.setState({
@@ -148,36 +149,36 @@ class EditInfo extends React.Component {
         aSyncCall: false,
         responseText: "please fill at least 1 field",
         formIsValid: false
-      });
+      })
     }
-  };
+  }
 
   handleSnackBarClose = () => {
     if (!this.props.newProductSlug) {
       this.state.formIsValid &&
-        browserHistory.push(`/${this.props.params.startUpName}/`);
+        browserHistory.push(`/${this.props.params.startUpName}/`)
     } else {
-      this.state.formIsValid && browserHistory.push(`/`);
+      this.state.formIsValid && browserHistory.push(`/`)
     }
-  };
+  }
 
   handleLogoFile = event => {
-    const selectedLogoFilename = event.target.files[0].name;
-    this.setState(() => ({ selectedLogoFilename }));
-  };
+    const selectedLogoFilename = event.target.files[0].name
+    this.setState(() => ({ selectedLogoFilename }))
+  }
 
   render() {
     if (!this.props.newProductSlug) {
-      var productSlug = this.props.params && this.props.params.startUpName;
+      var productSlug = this.props.params && this.props.params.startUpName
       var index = this.props.singleProducts.findIndex(
         item => item.product.slug === productSlug
-      );
-      var product = this.props.singleProducts[index];
-      var name = product && product.product.name_en;
+      )
+      var product = this.props.singleProducts[index]
+      var name = product && product.product.name_en
     } else {
-      var product = {};
-      product.product = {};
-      product.product.details = {};
+      var product = {}
+      product.product = {}
+      product.product.details = {}
     }
 
     return (
@@ -338,7 +339,7 @@ class EditInfo extends React.Component {
           onRequestClose={this.handleSnackBarClose}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -346,6 +347,6 @@ function mapStateToProps(state) {
   return {
     token: state.auth.token,
     categories: state.categories
-  };
+  }
 }
-export default connect(mapStateToProps, actions)(EditInfo);
+export default connect(mapStateToProps, actions)(EditInfo)
