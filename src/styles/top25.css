@@ -67,7 +67,7 @@
 }
 
 .site-desc > div:nth-child(3) {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   flex: 1;
   font-size: 1.4em;
   padding-left: 5%;
@@ -78,7 +78,7 @@
 }
 
 .site-desc > div:nth-child(3) > h1 {
-  font-family: "Rubik";
+  font-family: 'Rubik';
   color: #0d47a1;
   font-size: 1.6em;
   margin-bottom: 10px;
@@ -117,14 +117,14 @@
 .top25-header span {
   color: #555;
   font-size: 1.7em;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 600;
 }
 
 .top25-header p {
   color: grey;
   font-size: 16px;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 400;
   line-height: 26px;
 }
@@ -141,7 +141,7 @@
 .chooser-title > div:nth-child(2) {
   flex: 1 0 auto;
   color: #4f4f4f;
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   font-weight: 600;
 }
@@ -167,7 +167,7 @@
   position: absolute;
   right: 0;
   top: 10px;
-  font-family: "Rubik";
+  font-family: 'Rubik';
   padding: 5px;
   font-size: 1.6;
   color: #ffffff;
@@ -178,7 +178,7 @@
 .ribbon::before,
 .ribbon::after {
   position: absolute;
-  content: "";
+  content: '';
   display: block;
 }
 
@@ -211,7 +211,7 @@
 }
 
 .widget-title {
-  font-family: "Rubik";
+  font-family: 'Rubik';
   font-weight: 600;
   font-size: 18px;
   margin-left: 30px;
@@ -297,7 +297,7 @@ i.fa-star-o {
 }
 
 .add-form h3 {
-  font-family: "Rubik";
+  font-family: 'Rubik';
   font-size: 18px;
 }
 
@@ -323,7 +323,7 @@ div.before-top25-title {
 }
 
 .due-diligence.hide {
-  transform: scaleY(0);    
+  transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.6s ease-out;
   max-height: 0;
@@ -387,6 +387,9 @@ div.before-top25-title {
     flex-basis: 47%;
     margin-bottom: 27px;
   }
+  .animation video {
+    width: 90% !important;
+  }
 }
 
 @media screen and (max-width: 760px) {
@@ -403,6 +406,12 @@ div.before-top25-title {
   }
   .due-diligence-info {
     padding: 0 10px;
+  }
+  .data-analysis {
+    padding: 0 10px !important;
+  }
+  .animation video {
+    width: 100% !important;
   }
   .contact-form-inputs-wrapper {
     display: flex;
@@ -426,6 +435,42 @@ div.before-top25-title {
     font-size: 1.3em;
     padding: 0 2.5%;
   }
+}
+
+.data-analysis {
+  padding: 0 34px;
+  background-color: #efefef;
+  margin-bottom: 50px;
+}
+
+.animation {
+  display: flex;
+  justify-content: center;
+}
+
+.animation video {
+  width: 65vw;
+  height: auto;
+}
+
+.data-analysis h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.data-analysis .desc,
+.data-analysis .goal {
+  text-align: justify;
+  margin: 0 5vw;
+  font-family: "Rubik";
+  font-size: 1.3em;
+  color: rgb(85, 85, 85);
+}
+
+.data-analysis .goal { 
+  margin-bottom: 20px;
+  margin-top: 30px;
 }
 
 @media screen and (max-width: 565px) {
