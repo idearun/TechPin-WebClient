@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card'
-import animation from '../../../images/Machine.webm'
+import animationWEBM from '../../../images/Machine.webm'
+import animationMP4 from '../../../images/Machine.mp4'
 const title = 'Make Smart Decisions With Data'
 
 const ourGoal =
@@ -19,7 +20,8 @@ const DataAnalysis = () => (
         <p className="desc">{desc}</p>
         <div className="animation">
           <video loop muted autoPlay>
-            <source src={animation} type="video/webm" />
+            <source src={animationWEBM} type="video/webm" />
+            <source src={animationMP4} type="video/mp4" />
           </video>
         </div>
         <p className="goal">{ourGoal}</p>
