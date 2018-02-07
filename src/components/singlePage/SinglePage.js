@@ -12,7 +12,7 @@ import MoneyInput from '../sharedComponents/MoneyInput'
 import Checkbox from 'material-ui/Checkbox'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-
+import { Helmet } from 'react-helmet'
 // Important note:
 // react-loading-skeleton package is modified
 
@@ -263,11 +263,23 @@ class SinglePage extends React.Component {
         onClick={this.handleSubmit}
       />
     ]
+
+    const startUpSlug = this.props.params.startUpName || ''
+    const startUpName = this.state.product.product
+      ? this.state.product.product.name_en
+      : ''
+
     return (
       <div className="single-page main-content">
+        {!this.state.isLoading && (
+          <Helmet>
+            <title>{`${startUpName} | ${startUpSlug}`}</title>
+          </Helmet>
+        )}
+
         <SinglePageMain
           product={this.state.product}
-          userRate={this.props.userRates[this.props.params.startUpName]}
+          userRate={this.props.userRates[startUpSlug]}
           slug={this.state.slug}
           auth={this.props.authenticated}
           handleInvRecAdd={this.handleInvRecAdd}

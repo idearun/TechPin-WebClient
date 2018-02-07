@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../../actions/actionCreators'
+import { Helmet } from 'react-helmet'
 
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar'
 import StartupRow from './StartupRow'
@@ -115,6 +116,10 @@ class AllProducts extends React.Component {
   render() {
     return (
       <div className="main-content">
+        <Helmet>
+          <title>TechPin - All Products</title>
+        </Helmet>
+
         <Toolbar className="all-entries-toolbar" id="readout">
           <ToolbarGroup firstChild={true}>
             <ToolbarTitle
@@ -122,6 +127,7 @@ class AllProducts extends React.Component {
               style={toolbarStyles}
             />
           </ToolbarGroup>
+
           <ToolbarGroup className="search-box-wrapper">
             <input
               type="text"

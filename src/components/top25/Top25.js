@@ -13,6 +13,7 @@ import DueDiligenceInfo from './DueDiligenceInfo'
 import { debounce } from '../../helpers/helpers'
 import { connect } from 'react-redux'
 import DataAnalysis from './DataAnalysis'
+import { Helmet } from 'react-helmet'
 
 const modalStyle = {
   overlay: {
@@ -37,7 +38,7 @@ const editModalStyle = {
     overflow: 'auto'
   },
   content: {
-    minHeight: 800,
+    minHeight: 800
   }
 }
 
@@ -168,8 +169,13 @@ class Top25 extends React.Component {
       ...this.state.topProducts.plus10Million
     ]
     const { title, text } = this.props
+
     return (
       <div className="top25 main-content">
+        <Helmet>
+          <title>TechPin - Discover Best and New Startups and Products In Iran</title>
+        </Helmet>
+
         <SiteDesc openAddProductModal={this.handleAddProductModalOpen} />
         <header className="top25-header">
           <span>{title}</span>
