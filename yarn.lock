@@ -5678,9 +5678,13 @@ react-favicon@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/react-favicon/-/react-favicon-0.0.5.tgz#27baf21956040fe3e8b3a88bb8e97b833ba255ba"
 
-react-google-login@^2.8.2:
-  version "2.11.3"
-  resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-2.11.3.tgz#42346abd400500ce38cef7e3f5bc2aca9fccf563"
+react-google-login-component@^0.9.2:
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/react-google-login-component/-/react-google-login-component-0.9.2.tgz#c4edf72c0dad55b4f11215e358a5e31b42e55acd"
+
+react-google-login@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-3.0.4.tgz#fe06a89047cfea0140fe086f923b77ac57b2c7fa"
   dependencies:
     "@types/react" "*"
     prop-types "^15.6.0"
