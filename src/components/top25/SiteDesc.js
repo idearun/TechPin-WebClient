@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../../images/techpin.svg";
+import Logo from "../../../images/techpin-logo.svg";
 import RaisedButton from "material-ui/RaisedButton";
 // import scrollTo from "../../helpers/scroll";
 import scrollToComponent from "react-scroll-to-component";
