@@ -41,6 +41,10 @@ class EditInfo extends React.Component {
     }
   }
 
+  componentWillUnmount = () => {
+    this.setState({ snackBarOpen: false })
+  }
+
   setEmpRangeFormData = (event, option) => {
     const formVals = {}
     formVals.employees_count = empRange[option]

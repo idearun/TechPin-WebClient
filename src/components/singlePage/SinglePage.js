@@ -100,6 +100,10 @@ class SinglePage extends React.Component {
     })
   }
 
+  componentWillUnmount = () => {
+    this.handleRequestClose()
+  }
+
   handleYearSelection = (_, __, selectedYear) => {
     this.setState({
       addInvRecFormData: { ...this.state.addInvRecFormData, year: selectedYear }

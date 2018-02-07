@@ -41,6 +41,10 @@ class AddForm extends React.Component {
     field === 'website' && this.setState({ website: value })
   }
 
+  componentWillUnmount = () => {
+    this.handleSnackBarClose()
+  }
+
   handleSnackBarClose = () => {
     //this will not do anything because when it is called the component is unmounted
     this.setState({

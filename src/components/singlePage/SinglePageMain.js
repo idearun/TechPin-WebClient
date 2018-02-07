@@ -1,38 +1,38 @@
-import React from "react";
-import { connect } from "react-redux";
-import * as actions from "../../actions/actionCreators";
+import React from 'react'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/actionCreators'
 
-import CommentRow from "./CommentRow";
-import VisualInfo from "./VisualInfo";
-import CommentBox from "./CommentBox";
-import StartupWidgetMoreInfo from "./StartupWidgetMoreInfo";
-import SocialNetworks from "./SocialNetworks";
-import ContactInfo from "./ContactInfo";
-import Rate from "./Rate";
-import AboutAndInvestmentRecords from "./AboutAndInvestmentRecords";
-import Skeleton from "react-loading-skeleton";
-import Paper from "material-ui/Paper";
-import Snackbar from "material-ui/Snackbar";
-import ProductCategories from "./ProductCategories";
+import CommentRow from './CommentRow'
+import VisualInfo from './VisualInfo'
+import CommentBox from './CommentBox'
+import StartupWidgetMoreInfo from './StartupWidgetMoreInfo'
+import SocialNetworks from './SocialNetworks'
+import ContactInfo from './ContactInfo'
+import Rate from './Rate'
+import AboutAndInvestmentRecords from './AboutAndInvestmentRecords'
+import Skeleton from 'react-loading-skeleton'
+import Paper from 'material-ui/Paper'
+import Snackbar from 'material-ui/Snackbar'
+import ProductCategories from './ProductCategories'
 
 const styles = {
   paper: {
-    Width: "100%"
+    Width: '100%'
   }
-};
+}
 
 class SinglePageMain extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       rating: {},
       product: { details: {} },
       comments: [],
-      username: "",
+      username: '',
       commentAsyncCall: false,
       snackBarIsOpen: false,
-      snackBarText: ""
-    };
+      snackBarText: ''
+    }
   }
 
   componentDidMount = () => {
@@ -40,40 +40,40 @@ class SinglePageMain extends React.Component {
       this.setState({
         product: this.props.product.product,
         comments: this.props.product.comments
-      });
+      })
     }
-  };
+  }
 
   componentWillReceiveProps = nextProps => {
     if (nextProps.username) {
-      this.setState({ username: nextProps.username });
+      this.setState({ username: nextProps.username })
     }
     if (nextProps.product.product) {
       this.setState({
         product: nextProps.product.product,
         comments: nextProps.product.comments
-      });
+      })
     }
-  };
+  }
 
   handlePostComment = commentData => {
     if (this.props.authenticated) {
       if (commentData.text.length > 1) {
-        this.setState({ commentAsyncCall: true });
+        this.setState({ commentAsyncCall: true })
         this.props
           .postNewComment(commentData, this.props.product.product.slug)
           .then(response => {
-            this.setState({ commentAsyncCall: false });
-            document.querySelector("#comment-field").value = "";
-          });
+            this.setState({ commentAsyncCall: false })
+            document.querySelector('#comment-field').value = ''
+          })
       }
     } else {
       this.setState({
         snackBarIsOpen: true,
-        snackBarText: "please login first"
-      });
+        snackBarText: 'please login first'
+      })
     }
-  };
+  }
 
   handlePostRate = (rate, slug) => {
     if (this.props.authenticated) {
@@ -84,39 +84,43 @@ class SinglePageMain extends React.Component {
             rateCount: res.data.p_rate_count
           },
           snackBarIsOpen: true,
-          snackBarText: "Successfuly submited your rate",
+          snackBarText: 'Successfuly submited your rate',
           userRated: true
-        });
-      });
+        })
+      })
     } else {
       this.setState({
         snackBarIsOpen: true,
-        snackBarText: "please login first"
-      });
+        snackBarText: 'please login first'
+      })
     }
-  };
+  }
+
+  componentWillUnmount = () => {
+    this.handleSnackBarClose()
+  }
 
   handleSnackBarClose = () => {
     this.setState({
       snackBarIsOpen: false
-    });
-  };
+    })
+  }
 
   render() {
-    const { isLoading } = this.props;
+    const { isLoading } = this.props
     if (this.state.product) {
-      var name = this.state.product.name_en || "";
-      var details = this.state.product.details;
+      var name = this.state.product.name_en || ''
+      var details = this.state.product.details
       if (details) {
-        var desc = details.description_en;
+        var desc = details.description_en
       } else {
-        desc = "";
+        desc = ''
       }
     }
-    const comments = this.state.comments || [];
+    const comments = this.state.comments || []
     const getSocialData = () => {
       if (isLoading) {
-        return {};
+        return {}
       } else {
         return {
           ios: this.state.product.details.ios_app,
@@ -124,34 +128,32 @@ class SinglePageMain extends React.Component {
           linkedin: this.state.product.details.linkedin,
           instagram: this.state.product.details.instagram,
           twitter: this.state.product.details.twitter
-        };
+        }
       }
-    };
+    }
     const getContactData = () => {
       if (isLoading) {
-        return {};
+        return {}
       } else {
         return {
           email: this.state.product.details.email,
           extraUrl: this.state.product.details.extra_url,
           website: this.state.product.website
-        };
+        }
       }
-    };
+    }
 
     const getCategories = () => {
       if (isLoading) {
-        return [];
+        return []
       } else {
-        return this.state.product.product_categories;
+        return this.state.product.product_categories
       }
-    };
+    }
 
-    const investedOn = isLoading ? [] : this.state.product.investments_received;
+    const investedOn = isLoading ? [] : this.state.product.investments_received
 
-    const investmentsDone = isLoading
-      ? []
-      : this.state.product.investments_done;
+    const investmentsDone = isLoading ? [] : this.state.product.investments_done
     return (
       <div id="single-page-main-container">
         <div>
@@ -174,7 +176,7 @@ class SinglePageMain extends React.Component {
                   userRate={
                     this.props.userRate ? this.props.userRate.rate : undefined
                   }
-                  slug={this.state.product ? this.state.product.slug : ""}
+                  slug={this.state.product ? this.state.product.slug : ''}
                   submitRate={this.handlePostRate}
                   authenticated={this.props.authenticated}
                 />
@@ -254,7 +256,7 @@ class SinglePageMain extends React.Component {
           onRequestClose={this.handleSnackBarClose}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -263,6 +265,6 @@ function mapStateToProps(state) {
     authenticated: state.auth.authenticated,
     username: state.auth.username,
     rateCount: state.topProducts
-  };
+  }
 }
-export default connect(mapStateToProps, actions)(SinglePageMain);
+export default connect(mapStateToProps, actions)(SinglePageMain)
