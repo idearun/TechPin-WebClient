@@ -36,7 +36,7 @@ const LzLoImage = ({ img }) => (
 const StartUpWidget = ({ product, i }) => {
   const { name_en, average_p_rate, details, slug, categories } = product
   const is100MillionPlus = categories.indexOf('100m') !== -1
-  return (
+  return details ? (
     <div
       style={styles.container}
       className={is100MillionPlus ? 'plus-100-million' : ''}
@@ -53,10 +53,11 @@ const StartUpWidget = ({ product, i }) => {
             <StarRating rating={average_p_rate} />
           </div>
         </div>
+
         {i < 24 ? <Divider inset={true} /> : ''}
       </Link>
     </div>
-  )
+  ) : null
 }
 
 export default StartUpWidget

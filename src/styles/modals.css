@@ -3,10 +3,21 @@
   background-color: white;
   border-radius: 10px;
 }
-.ReactModal__Body--open, .ReactModal__Overlay, .ReactModalPortal {
-    overflow: hidden;
+
+.edit-modal {
+  padding-top: 5vh;
 }
- 
+
+.edit-overlay {
+  z-index: 100;
+}
+
+.ReactModal__Body--open,
+.ReactModal__Overlay,
+.ReactModalPortal {
+  overflow: hidden;
+}
+
 .login-singnup-overlay {
   z-index: 1200;
   display: flex;
@@ -19,10 +30,10 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
   border-radius: 10px;
 }
-.login-form h3{
+.login-form h3 {
   font-family: 'Rubik';
   font-size: 18px;
 }
@@ -49,10 +60,21 @@
 }
 .google-login-button > div > i {
   font-size: 28px;
-  
 }
 .google-login-button > div > span {
   font-family: Roboto, sans-serif;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+/* @media screen and (max-width: 700px) {
+  .edit-modal {
+    padding-top: 30vh;
+  }
+} */
+
+@media screen and (max-width: 400px) {
+  .edit-modal {
+    padding-top: 10vh;
+  }
 }

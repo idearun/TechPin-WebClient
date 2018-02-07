@@ -21,7 +21,23 @@ const modalStyle = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)'
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    overflow: 'auto'
+  }
+}
+
+const editModalStyle = {
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    overflow: 'auto'
+  },
+  content: {
+    minHeight: 800,
   }
 }
 
@@ -192,9 +208,9 @@ class Top25 extends React.Component {
         <Modal
           isOpen={this.state.addVersionModalIsOpen}
           onRequestClose={this.closeAddVersionModal}
-          style={modalStyle}
-          className="add-modal"
-          overlayClassName="add-overlay"
+          style={editModalStyle}
+          className="edit-modal"
+          overlayClassName="edit-overlay"
           contentLabel="Modal"
         >
           <EditInfo
