@@ -41,6 +41,23 @@ const Footer = props => {
             </a>
           </li>
         </ul>
+        <ul>
+          <li>
+            <a href="https://twitter.com/techpinhq/" target='_blank'>
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://t.me/techpin/" target='_blank'>
+              <i class="fa fa-telegram" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/13283289/" target='_blank'>
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+          </li>
+        </ul>
       </section>
       <section className="passion">
         Made With Passion & Powered By{" "}
