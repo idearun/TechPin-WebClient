@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import aboutText from '../../helpers/aboutText';
 
 import Paper from 'material-ui/Paper';
@@ -28,7 +28,7 @@ const AboutPage = (props) => {
             <p>{aboutText.whatIsRating}</p>
             <h3>What is NPS Score?</h3>
             <p>{aboutText.NPS}</p>
-            
+
             <p><a href="http://www.medallia.com/net-promoter-score/">read more about this rating</a></p>
             <p>TechPin initial codebase was contributed by <a href="http://www.idearun.co/">idearun Startup Studio</a> in December 2016</p>
           </div>
@@ -36,8 +36,5 @@ const AboutPage = (props) => {
     </div>
   );
 }
-
-AboutPage.propTypes = {
-};
 
 export default AboutPage;

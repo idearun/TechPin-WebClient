@@ -1,4 +1,4 @@
-import React, { PropTypes } from "react";
+import React from "react";
 import { Link } from "react-router";
 import telegramBotBanner from "../../../images/Techpin-bot-banner.jpg";
 import { footerText } from "../../helpers/staticText";
@@ -51,7 +51,5 @@ const Footer = props => {
     </div>
   );
 };
-
-Footer.propTypes = {};
 
 export default Footer;

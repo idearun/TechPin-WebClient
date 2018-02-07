@@ -1,74 +1,64 @@
-import React from "react";
-import ToggleStar from "material-ui/svg-icons/toggle/star";
-import Snackbar from "material-ui/Snackbar";
-import Skeleton from "react-loading-skeleton";
+import React from 'react'
+import Snackbar from 'material-ui/Snackbar'
+import Skeleton from 'react-loading-skeleton'
 
-const styles = {
-  svgStar: {
-    color: "#0D47A1"
-  }
-};
+const int = input => parseInt(input, 10)
 
 const NumberBox = ({ number, userRate }) => (
   <div
     id={number}
-    className={`rate-box ${userRate == number ? "rate-selected" : ""}`}
+    className={`rate-box ${int(userRate) === int(number) ? 'rate-selected' : ''}`}
   >
     {number}
   </div>
-);
+)
 
 export default class Rate extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       userRate: null,
       userRated: false,
       snackBarIsOpen: false,
-      snackBarText: ""
-    };
+      snackBarText: ''
+    }
   }
 
   formatRateToSend = rate => {
-    let rateToInt = parseInt(rate, 10);
-    if (rateToInt === 0 || rateToInt === 1 || rateToInt === 2) return 1;
-    if (rateToInt === 3 || rateToInt === 4) return 2;
-    if (rateToInt === 5 || rateToInt === 6) return 3;
-    if (rateToInt === 7 || rateToInt === 8) return 4;
-    if (rateToInt === 9 || rateToInt === 10) return 5;
-  };
+    let rateToInt = parseInt(rate, 10)
+    if (rateToInt === 0 || rateToInt === 1 || rateToInt === 2) return 1
+    if (rateToInt === 3 || rateToInt === 4) return 2
+    if (rateToInt === 5 || rateToInt === 6) return 3
+    if (rateToInt === 7 || rateToInt === 8) return 4
+    if (rateToInt === 9 || rateToInt === 10) return 5
+  }
 
   handleRate = event => {
     if (this.props.authenticated) {
-      this.setState({ userRate: event.target.id });
-      this.props.submitRate(
-        this.formatRateToSend(event.target.id),
-        this.props.slug
-      );
+      this.setState({ userRate: event.target.id })
+      this.props.submitRate(this.formatRateToSend(event.target.id), this.props.slug)
     } else {
       this.setState({
         snackBarIsOpen: true,
-        snackBarText: "Please login"
-      });
+        snackBarText: 'Please login'
+      })
     }
-  };
+  }
 
   handleSnackBarClose = () => {
     this.setState({
       snackBarIsOpen: false
-    });
-  };
+    })
+  }
 
   render() {
     if (this.props.isLoading) {
-      return <Skeleton className="single-page-rate" />;
+      return <Skeleton className="single-page-rate" />
     } else {
       return (
         <div className="single-page-rate">
-          <span style={{ alignSelf: "flex-start" }}>
-            <span>
-              How likely do you recommend {this.props.name} to others ?
-            </span>
+          <span style={{ alignSelf: 'flex-start' }}>
+            <span>How likely do you recommend {this.props.name} to others ?</span>
           </span>
           <div className="rate-box-container" onClick={this.handleRate}>
             {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(number => (
@@ -174,7 +164,7 @@ export default class Rate extends React.Component {
             onRequestClose={this.handleSnackBarClose}
           />
         </div>
-      );
+      )
     }
   }
 }

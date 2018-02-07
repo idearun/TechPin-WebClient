@@ -1,26 +1,24 @@
-import React from "react"
-import { connect } from "react-redux"
-import * as actions from "../../actions/actionCreators"
-import Dialog from "material-ui/Dialog"
-import FlatButton from "material-ui/FlatButton"
-import SinglePageToolbar from "./SinglePageToolbar"
-import SinglePageMain from "./SinglePageMain"
-import TextField from "material-ui/TextField"
-import CircularProgress from "material-ui/CircularProgress"
-import AutoComplete from "material-ui/AutoComplete"
-import Snackbar from "material-ui/Snackbar"
-import { appendToFormData } from "../../helpers/helpers"
-import MoneyInput from "../sharedComponents/MoneyInput"
-import Checkbox from "material-ui/Checkbox"
-import SelectField from "material-ui/SelectField"
-import MenuItem from "material-ui/MenuItem"
+import React from 'react'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/actionCreators'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
+import SinglePageMain from './SinglePageMain'
+import TextField from 'material-ui/TextField'
+import AutoComplete from 'material-ui/AutoComplete'
+import Snackbar from 'material-ui/Snackbar'
+import { appendToFormData } from '../../helpers/helpers'
+import MoneyInput from '../sharedComponents/MoneyInput'
+import Checkbox from 'material-ui/Checkbox'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 
 // Important note:
 // react-loading-skeleton package is modified
 
 const autoCompleteMenuStyles = {
-  maxHeight: "200px",
-  overflowY: "auto"
+  maxHeight: '200px',
+  overflowY: 'auto'
 }
 
 const currentYear = new Date().getFullYear()
@@ -33,18 +31,18 @@ for (let year = 1990; year <= currentYear; year++) {
 }
 
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
 ]
 
 class SinglePage extends React.Component {
@@ -52,18 +50,18 @@ class SinglePage extends React.Component {
     super(props)
     this.state = {
       product: {},
-      slug: "",
+      slug: '',
       isLoading: true,
       invModalIsOpen: false,
       addInvRecFormData: {},
       allProducts: [],
       autoCompleteSelection: null,
       proofDocument: null,
-      notificationMessage: "",
+      notificationMessage: '',
       notificationIsOpen: false,
       allProductsNameOnly: [],
-      yearSearchTerm: "",
-      monthSearchTerm: "",
+      yearSearchTerm: '',
+      monthSearchTerm: '',
       addInvFormDataErrors: {}
     }
   }
@@ -201,21 +199,21 @@ class SinglePage extends React.Component {
             invModalIsOpen: false,
             notificationIsOpen: true,
             notificationMessage:
-              "Thanks for submitting new information, we will review it"
+              'Thanks for submitting new information, we will review it'
           })
         })
         .catch(error => {
           this.setState({
             aSyncCall: false,
             notificationIsOpen: true,
-            notificationMessage: "Unable to submit the form"
+            notificationMessage: 'Unable to submit the form'
           })
         })
     } else {
       this.setState({
         aSyncCall: false,
         notificationIsOpen: true,
-        notificationMessage: "please enter valid inputs",
+        notificationMessage: 'please enter valid inputs',
         addInvFormDataErrors: validationResult.errors
       })
     }
@@ -224,20 +222,20 @@ class SinglePage extends React.Component {
   isValid = formData => {
     const errors = {}
     let isValid = true
-    const re = /^((https?):\/\/)([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/
+    const re = /^((https?):\/\/)([w|W]{3}\.)+[a-zA-Z0-9\-.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/
     // investor is required
     if (!formData.investor) {
-      errors.investor = "investor is required"
+      errors.investor = 'investor is required'
       isValid = false
     }
     if (formData.link) {
       if (!re.test(formData.link)) {
-        errors.link = "URL is not valid, it must contain http/https"
+        errors.link = 'URL is not valid, it must contain http/https'
         isValid = false
       }
     }
     if (!formData.year) {
-      errors.year = "you must provide the investment year"
+      errors.year = 'you must provide the investment year'
     }
     // website must have http or https
     return { errors, isValid }
@@ -248,9 +246,7 @@ class SinglePage extends React.Component {
     const selection = this.state.allProducts.find(
       product => product.slug === autoCompleteSelection
     )
-    return `This is an acquisition ${selection
-      ? "by " + selection.name_en
-      : ""}`
+    return `This is an acquisition ${selection ? 'by ' + selection.name_en : ''}`
   }
 
   render() {
@@ -302,19 +298,21 @@ class SinglePage extends React.Component {
               fullWidth
             />
             <div className="form-error">
-              {this.state.addInvFormDataErrors.investor || ""}
+              {this.state.addInvFormDataErrors.investor || ''}
             </div>
             <Checkbox
               label={this.getCheckboxLabel()}
               onCheck={(_, isChecked) =>
-                this.updateInvRecFormData(isChecked, "is_acquired")}
+                this.updateInvRecFormData(isChecked, 'is_acquired')
+              }
             />
             <MoneyInput
               floatingLabelText="How Much Investment $"
               type="text"
               fullWidth
               onChange={value =>
-                this.updateInvRecFormData(value.replace(/,/g, ""), "amount")}
+                this.updateInvRecFormData(value.replace(/,/g, ''), 'amount')
+              }
             />
             <div className="two-columns">
               {/* <AutoComplete
@@ -351,21 +349,21 @@ class SinglePage extends React.Component {
               fullWidth
               floatingLabelText="Extra Information"
               multiLine
-              onChange={(_, val) => this.updateInvRecFormData(val, "text")}
+              onChange={(_, val) => this.updateInvRecFormData(val, 'text')}
             />
             <TextField
               fullWidth
               floatingLabelText="Proof Link"
               errorText={this.state.addInvFormDataErrors.link}
-              onChange={(_, val) => this.updateInvRecFormData(val, "link")}
+              onChange={(_, val) => this.updateInvRecFormData(val, 'link')}
             />
             <label htmlFor="proof">
-              <span style={{ marginRight: "20px" }}>Proof Document</span>
+              <span style={{ marginRight: '20px' }}>Proof Document</span>
               <input
                 type="file"
                 name="proof"
                 id="proof"
-                style={{ marginTop: "20px" }}
+                style={{ marginTop: '20px' }}
                 onChange={this.handleProofDocument}
               />
             </label>

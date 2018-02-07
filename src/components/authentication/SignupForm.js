@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
@@ -68,6 +68,3 @@ export default class SignupForm extends React.Component {
     </div>);
   }
 }
-
-SignupForm.propTypes = {
-};

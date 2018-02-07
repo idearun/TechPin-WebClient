@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import GoogleLogin from 'react-google-login';
 import googleClientId from '../../settings'
 
@@ -64,6 +64,3 @@ export default class LoginForm extends React.Component {
     </div>);
   }
 }
-
-LoginForm.propTypes = {
-};

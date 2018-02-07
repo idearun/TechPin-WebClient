@@ -1,34 +1,31 @@
-import React, { PropTypes } from "react";
-import { Link } from "react-router";
+import React from 'react'
+import { Link } from 'react-router'
 
-import { baseApiUrl } from "../../api/realApi";
-import Paper from "material-ui/Paper";
-import StarRating from "./StarRating";
+import { baseApiUrl } from '../../api/realApi'
+import Paper from 'material-ui/Paper'
 
 const styles = {
   paper: {
-    width: "150px",
-    minHeight: "150px",
-    padding: "10px 10px"
+    width: '150px',
+    minHeight: '150px',
+    padding: '10px 10px'
   }
-};
+}
+
 const CategoryPaper = ({ product, WrapperClassName }) => {
   return (
     <Link to={`/${product.slug}`}>
-      <Paper
-        style={styles.paper}
-        className={`category-paper ${WrapperClassName}`}
-      >
+      <Paper style={styles.paper} className={`category-paper ${WrapperClassName}`}>
         <div
           className="category-image"
           style={{ backgroundImage: `url(${baseApiUrl}${product.details.logo})` }}
         />
-        <span style={{ marginTop: 10, maxWidth: "100%" }}>
+        <span style={{ marginTop: 10, maxWidth: '100%' }}>
           <h3
             style={{
-              whiteSpace: "nowrap",
-              textOverflow: "ellipsis",
-              overflow: "hidden"
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              overflow: 'hidden'
             }}
           >
             {product.name_en}
@@ -44,9 +41,7 @@ const CategoryPaper = ({ product, WrapperClassName }) => {
           </div> */}
       </Paper>
     </Link>
-  );
-};
+  )
+}
 
-CategoryPaper.propTypes = {};
-
-export default CategoryPaper;
+export default CategoryPaper

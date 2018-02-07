@@ -1,36 +1,35 @@
-import React, { PropTypes } from "react";
-import injectTapEventPlugin from "react-tap-event-plugin";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import React from 'react'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+import { connect } from 'react-redux'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import * as actions from "../actions/actionCreators";
-import Header from "./header/Header";
-import Footer from "./footer/Footer";
+import * as actions from '../actions/actionCreators'
+import Header from './header/Header'
+import Footer from './footer/Footer'
 
-import TechpinFavIcon from "../../images/favicon.png";
-import Favicon from "react-favicon";
+import TechpinFavIcon from '../../images/favicon.png'
+import Favicon from 'react-favicon'
 
 class Main extends React.Component {
   constructor() {
-    super();
-    injectTapEventPlugin();
+    super()
+    injectTapEventPlugin()
   }
 
   componentDidMount = () => {
-    const authed = JSON.parse(localStorage.getItem("techpin"));
+    const authed = JSON.parse(localStorage.getItem('techpin'))
     try {
-      if (authed["api-token"]) {
-        this.props.wasAuthed(authed);
+      if (authed['api-token']) {
+        this.props.wasAuthed(authed)
       }
     } catch (e) {
       // no-op
     }
-  };
+  }
 
   componentWillMount = () => {
-    this.props.loadDynamicTextContents();
-  };
+    this.props.loadDynamicTextContents()
+  }
 
   render() {
     return (
@@ -54,7 +53,7 @@ class Main extends React.Component {
           <Footer />
         </div>
       </main>
-    );
+    )
   }
 }
 
@@ -64,9 +63,7 @@ function mapStateToProps(state) {
     allProducts: state.allProducts,
     singleProducts: state.singleProducts,
     topProducts: state.topProducts
-  };
+  }
 }
 
-
-
-export default connect(mapStateToProps, actions)(Main);
+export default connect(mapStateToProps, actions)(Main)

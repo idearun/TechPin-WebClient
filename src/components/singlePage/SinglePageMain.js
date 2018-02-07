@@ -1,4 +1,4 @@
-import React, { PropTypes } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/actionCreators";
 
@@ -14,6 +14,7 @@ import Skeleton from "react-loading-skeleton";
 import Paper from "material-ui/Paper";
 import Snackbar from "material-ui/Snackbar";
 import ProductCategories from "./ProductCategories";
+
 const styles = {
   paper: {
     Width: "100%"

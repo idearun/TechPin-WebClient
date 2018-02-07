@@ -1,11 +1,7 @@
-import React, { PropTypes } from "react";
+import React from "react";
 
 import CommunicationEmail from "material-ui/svg-icons/communication/email";
 import FileCloud from "material-ui/svg-icons/file/cloud";
-
-import LinkedLogo from "../../../images/linkedin-logo.svg";
-import InstagramLogo from "../../../images/instagram-logo.svg";
-import TwitterLogo from "../../../images/twitter-logo.svg";
 
 const styles = {
   svgIcon: {

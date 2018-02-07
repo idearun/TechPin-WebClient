@@ -1,49 +1,48 @@
-import React, { PropTypes } from "react";
-import { browserHistory } from "react-router";
+import React from 'react'
+import { browserHistory } from 'react-router'
 
-import { Toolbar, ToolbarGroup } from "material-ui/Toolbar";
-import IconButton from "material-ui/IconButton";
-import NavigationArrowBack from "material-ui/svg-icons/navigation/arrow-back";
-import EditorModeEdit from "material-ui/svg-icons/editor/mode-edit";
-import Snackbar from "material-ui/Snackbar";
-import FlatButton from "material-ui/FlatButton";
+import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
+import IconButton from 'material-ui/IconButton'
+import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
+import Snackbar from 'material-ui/Snackbar'
+import FlatButton from 'material-ui/FlatButton'
 
 const styles = {
   toolbarHomeIcon: {
-    cursor: "pointer"
+    cursor: 'pointer'
   }
-};
+}
 
 export default class SinglePageToolbar extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       snackBarOpen: false
-    };
+    }
   }
 
   checkAuthAndRedirect = () => {
     if (!this.props.auth) {
-      this.setState({ snackBarOpen: true });
+      this.setState({ snackBarOpen: true })
     } else {
-      browserHistory.push(`/${this.props.slug}/edit`);
+      browserHistory.push(`/${this.props.slug}/edit`)
     }
-  };
+  }
 
   handleSnackBarClose = () => {
-    this.setState({ snackBarOpen: false });
-  };
+    this.setState({ snackBarOpen: false })
+  }
 
   handleBackButton = () => {
     if (this.props.inModal) {
-      this.props.closeModal();
+      this.props.closeModal()
     } else {
-      browserHistory.push(`/`);
+      browserHistory.push(`/`)
     }
-  };
+  }
 
   render() {
-    const { showInvestmentRecord, editAble } = this.props;
+    const { showInvestmentRecord, editAble } = this.props
     return (
       <div>
         <Toolbar className="toolbar">
@@ -54,7 +53,7 @@ export default class SinglePageToolbar extends React.Component {
               onClick={this.handleBackButton}
               style={styles.toolbarHomeIcon}
             >
-              <NavigationArrowBack hoverColor={"#9C27B0"} color="#505050" />
+              <NavigationArrowBack hoverColor={'#9C27B0'} color="#505050" />
             </IconButton>
           </ToolbarGroup>
           {editAble && (
@@ -72,7 +71,7 @@ export default class SinglePageToolbar extends React.Component {
                 key={1}
                 label="Edit"
                 labelPosition="after"
-                style={{ marginRight: "10px", marginLeft: 0 }}
+                style={{ marginRight: '10px', marginLeft: 0 }}
                 onClick={this.checkAuthAndRedirect}
               />
             </ToolbarGroup>
@@ -85,6 +84,6 @@ export default class SinglePageToolbar extends React.Component {
           onRequestClose={this.handleSnackBarClose}
         />
       </div>
-    );
+    )
   }
 }

@@ -105,7 +105,6 @@ class CategoryPage extends React.Component {
   }
 }
 
-CategoryPage.propTypes = {};
 
 function mapStateToProps(state) {
   return {

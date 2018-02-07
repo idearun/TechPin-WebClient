@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card'
+import { Card, CardTitle, CardText } from 'material-ui/Card'
 import animation from '../../../images/Machine.webm'
 const title = 'Make Smart Decisions With Data'
 

@@ -1,5 +1,5 @@
-import * as actionTypes from "./actionTypes"
-import techpinApi from "../api/realApi"
+import * as actionTypes from './actionTypes'
+import techpinApi from '../api/realApi'
 
 //************************// Action Creators and helpers //************************//
 
@@ -37,9 +37,9 @@ function initialLoadTop25ActionCreator(response) {
   return {
     type: actionTypes.INITIAL_TOP25_LOAD,
     topNew: response.top_new,
-    plus10Million: response["10m"],
-    plus100Million: response["100m"],
-    between1And10Million: response["1m"]
+    plus10Million: response['10m'],
+    plus100Million: response['100m'],
+    between1And10Million: response['1m']
   }
 }
 
@@ -71,12 +71,6 @@ function successfulNewRate(response, slug) {
     newRating: response.new_p_rate,
     newRateCount: response.p_rate_count,
     slug
-  }
-}
-
-function successfulContactFormSubmit() {
-  return {
-    type: actionTypes.SUCCESSFUL_CONTACT_FORM_SUBMIT
   }
 }
 
@@ -203,10 +197,10 @@ export function authenticate(username, password) {
       response => {
         if (response.data.success) {
           const authData = {
-            "api-token": response.data["api-token"],
+            'api-token': response.data['api-token'],
             username: response.data.user.username
           }
-          localStorage.setItem("techpin", JSON.stringify(authData))
+          localStorage.setItem('techpin', JSON.stringify(authData))
           dispatch(successfulLogin(response.data))
         }
         return Promise.resolve(response.data)
@@ -265,10 +259,7 @@ export function getProductsByCategory(categorySlug) {
     return techpinApi.getProductsByCategory(categorySlug).then(
       response => {
         dispatch(
-          getProductsByCategoryActionCreator(
-            response.data.products,
-            categorySlug
-          )
+          getProductsByCategoryActionCreator(response.data.products, categorySlug)
         )
         return Promise.resolve(response.data.products)
       },
@@ -395,10 +386,10 @@ export function OAuthLogIn(payLoad) {
     return techpinApi.googleLogin(payLoad.tokenId).then(
       response => {
         const authData = {
-          "api-token": response.data["api-token"],
+          'api-token': response.data['api-token'],
           username: response.data.user.username
         }
-        localStorage.setItem("techpin", JSON.stringify(authData))
+        localStorage.setItem('techpin', JSON.stringify(authData))
         dispatch(successfulLogin(response.data))
         return Promise.resolve(response.data)
       },
@@ -424,7 +415,7 @@ export function contactUs(payLoad) {
 }
 
 export function logOut() {
-  localStorage.removeItem("techpin")
+  localStorage.removeItem('techpin')
   techpinApi.logout()
   return {
     type: actionTypes.LOG_OUT

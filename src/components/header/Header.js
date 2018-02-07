@@ -1,5 +1,5 @@
+import React from "react";
 import { connect } from "react-redux";
-import React, { PropTypes } from "react";
 import { Link, browserHistory } from "react-router";
 import * as actions from "../../actions/actionCreators";
 import { debounce } from "../../helpers/helpers";
@@ -354,7 +354,6 @@ class Header extends React.Component {
   }
 }
 
-Header.propTypes = {};
 function mapStateToProps(state) {
   return {
     authenticated: state.auth.authenticated,

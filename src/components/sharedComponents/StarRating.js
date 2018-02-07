@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../actions/actionCreators';
 
@@ -93,9 +93,6 @@ class StarRating extends React.Component {
 		);
   }
 }
-
-Star.propTypes = {
-};
 
 function mapStateToprops(state) {
 	return {authenticated: state.auth.authenticated}

@@ -1,7 +1,7 @@
-import React, { PropTypes } from "react";
+import React from 'react'
 
-import SocialPerson from "material-ui/svg-icons/social/person";
-import Avatar from "material-ui/Avatar";
+import SocialPerson from 'material-ui/svg-icons/social/person'
+import Avatar from 'material-ui/Avatar'
 
 const CommentRow = ({ comment }) => {
   return (
@@ -11,7 +11,7 @@ const CommentRow = ({ comment }) => {
           <Avatar icon={<SocialPerson />} />
         </div>
         <div>
-          <div className="comment-author">{comment.user || "anonymous"}:</div>
+          <div className="comment-author">{comment.user || 'anonymous'}:</div>
           <span className="comment-text">{comment.text}</span>
           <span className="comment-date">
             {new Date(comment.created_at).toDateString()}
@@ -19,8 +19,7 @@ const CommentRow = ({ comment }) => {
         </div>
       </div>
     </div>
-  );
-};
-CommentRow.propTypes = {};
+  )
+}
 
-export default CommentRow;
+export default CommentRow

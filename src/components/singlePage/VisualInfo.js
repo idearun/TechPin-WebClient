@@ -1,36 +1,36 @@
-import React, { PropTypes } from "react";
-import StarRating from "../sharedComponents/StarRating";
-import RaisedButton from "material-ui/RaisedButton";
-import SocialPeople from "material-ui/svg-icons/social/people";
-import ActionWork from "material-ui/svg-icons/action/work";
-import ActionGrade from "material-ui/svg-icons/action/grade";
-import ActionFlightTakeoff from "material-ui/svg-icons/action/flight-takeoff";
-import { browserHistory } from "react-router";
-import Snackbar from "material-ui/Snackbar";
-import Skeleton from "react-loading-skeleton";
+import React from 'react'
+import StarRating from '../sharedComponents/StarRating'
+import RaisedButton from 'material-ui/RaisedButton'
+import SocialPeople from 'material-ui/svg-icons/social/people'
+import ActionWork from 'material-ui/svg-icons/action/work'
+import ActionGrade from 'material-ui/svg-icons/action/grade'
+import ActionFlightTakeoff from 'material-ui/svg-icons/action/flight-takeoff'
+import { browserHistory } from 'react-router'
+import Snackbar from 'material-ui/Snackbar'
+import Skeleton from 'react-loading-skeleton'
 const styles = {
   svgIcon: {
-    minWidth: "20px",
-    color: "#0D47A1"
+    minWidth: '20px',
+    color: '#0D47A1'
   }
-};
+}
 
 export default class VisualInfo extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       snackBarOpen: false,
       rateCount: null,
       averageRate: null,
       product: {}
-    };
+    }
   }
 
   componentDidMount = () => {
     if (this.props.product) {
-      this.setState({ product: this.props.product });
+      this.setState({ product: this.props.product })
     }
-  };
+  }
 
   componentWillReceiveProps = nextProps => {
     if (nextProps.rating) {
@@ -39,21 +39,21 @@ export default class VisualInfo extends React.Component {
           rate_count: nextProps.rateCount,
           average_p_rate: nextProps.rating
         })
-      });
+      })
     }
-  };
+  }
 
   checkAuthAndRedirect = () => {
     if (!this.props.auth) {
-      this.setState({ snackBarOpen: true });
+      this.setState({ snackBarOpen: true })
     } else {
-      browserHistory.push(`/${this.props.slug}/edit`);
+      browserHistory.push(`/${this.props.slug}/edit`)
     }
-  };
+  }
 
   handleSnackBarClose = () => {
-    this.setState({ snackBarOpen: false });
-  };
+    this.setState({ snackBarOpen: false })
+  }
 
   // refactor to more stateless components 😠
   render() {
@@ -62,7 +62,7 @@ export default class VisualInfo extends React.Component {
         <div className="visual-info-skeleton-wrapper">
           <Skeleton className="react-loading-skeleton" />
         </div>
-      );
+      )
     } else {
       return (
         <div className="visual-info-action-button-wrapper">
@@ -109,9 +109,7 @@ export default class VisualInfo extends React.Component {
                   <span>NPS</span>
                 </div>
               </div>
-              <div className="single-page-visual-widget">
-                {this.props.n_p_score}
-              </div>
+              <div className="single-page-visual-widget">{this.props.n_p_score}</div>
             </div>
             <div className="single-page-visual-parent">
               <div>
@@ -121,7 +119,7 @@ export default class VisualInfo extends React.Component {
                 </div>
               </div>
               <div className="single-page-visual-widget">
-                {this.props.employeesCount || "?"}
+                {this.props.employeesCount || '?'}
               </div>
             </div>
             <div className="single-page-visual-parent">
@@ -132,7 +130,7 @@ export default class VisualInfo extends React.Component {
                 </div>
               </div>
               <div className="single-page-visual-widget">
-                {this.props.year || "?"}
+                {this.props.year || '?'}
               </div>
             </div>
           </div>
@@ -143,7 +141,7 @@ export default class VisualInfo extends React.Component {
             onRequestClose={this.handleSnackBarClose}
           />
         </div>
-      );
+      )
     }
   }
 }

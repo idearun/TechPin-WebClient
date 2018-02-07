@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import contributeText from '../../helpers/contributeText';
 
 import Paper from 'material-ui/Paper';
@@ -41,8 +41,5 @@ const ContributePage = (props) => {
     </div>
   );
 }
-
-ContributePage.propTypes = {
-};
 
 export default ContributePage;

@@ -1,38 +1,29 @@
-import React from "react"
-import { connect } from "react-redux"
-import { browserHistory } from "react-router"
-import * as actions from "../../actions/actionCreators"
-import AutoComplete from "material-ui/AutoComplete"
-import SinglePageToolbar from "./SinglePageToolbar"
-import StartupWidgetMoreInfo from "./StartupWidgetMoreInfo"
-import { appendToFormData, logFormData } from "../../helpers/helpers"
+import React from 'react'
+import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
+import * as actions from '../../actions/actionCreators'
+import SinglePageToolbar from './SinglePageToolbar'
+import StartupWidgetMoreInfo from './StartupWidgetMoreInfo'
+import { appendToFormData } from '../../helpers/helpers'
 
-require("core-js/fn/object/values")
-require("core-js/fn/object/entries")
+require('core-js/fn/object/values')
+require('core-js/fn/object/entries')
 
-import Paper from "material-ui/Paper"
-import TextField from "material-ui/TextField"
-import RaisedButton from "material-ui/RaisedButton"
-import FileFileUpload from "material-ui/svg-icons/file/file-upload"
-import IconButton from "material-ui/IconButton"
-import Snackbar from "material-ui/Snackbar"
-import { PulseLoader } from "halogen"
-import SelectField from "material-ui/SelectField"
-import MenuItem from "material-ui/MenuItem"
+import Paper from 'material-ui/Paper'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import FileFileUpload from 'material-ui/svg-icons/file/file-upload'
+import IconButton from 'material-ui/IconButton'
+import Snackbar from 'material-ui/Snackbar'
+import { PulseLoader } from 'halogen'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 
 const editFormSubmitSuccessFeedbackText =
-  "Thanks, your info will be shown after approval"
-const editFormSubmitFailedFeedbackText = "Oops, please try again"
+  'Thanks, your info will be shown after approval'
+const editFormSubmitFailedFeedbackText = 'Oops, please try again'
 
-const empRange = [
-  "0-5",
-  "5-10",
-  "10-20",
-  "20-50",
-  "50-200",
-  "200-1000",
-  "1000+"
-]
+const empRange = ['0-5', '5-10', '10-20', '20-50', '50-200', '200-1000', '1000+']
 
 const menuItems = empRange.map((item, index) => (
   <MenuItem key={index} value={item} primaryText={item} />
@@ -43,7 +34,7 @@ class EditInfo extends React.Component {
     super(props)
     this.state = {
       snackBarOpen: false,
-      responseText: "",
+      responseText: '',
       formData: {},
       aSyncCall: false,
       selectedLogoFilename: null
@@ -77,8 +68,8 @@ class EditInfo extends React.Component {
 
   isSafari = () => {
     let ua = navigator.userAgent.toLowerCase()
-    if (ua.indexOf("safari") !== -1) {
-      if (ua.indexOf("chrome") > -1) {
+    if (ua.indexOf('safari') !== -1) {
+      if (ua.indexOf('chrome') > -1) {
         return false // Chrome
       } else {
         return true // Safari
@@ -94,11 +85,10 @@ class EditInfo extends React.Component {
 
       const formData = appendToFormData(this.state.formData)
 
-      let slug =
-        this.props.newProductSlug || this.props.params.startUpName || ""
+      let slug = this.props.newProductSlug || this.props.params.startUpName || ''
 
-      if (document.getElementById("logo").files[0]) {
-        formData.append("logo", document.getElementById("logo").files[0])
+      if (document.getElementById('logo').files[0]) {
+        formData.append('logo', document.getElementById('logo').files[0])
       }
 
       // if it is the first version act differently
@@ -147,7 +137,7 @@ class EditInfo extends React.Component {
       this.setState({
         snackBarOpen: true,
         aSyncCall: false,
-        responseText: "please fill at least 1 field",
+        responseText: 'please fill at least 1 field',
         formIsValid: false
       })
     }
@@ -176,14 +166,14 @@ class EditInfo extends React.Component {
       var product = this.props.singleProducts[index]
       var name = product && product.product.name_en
     } else {
-      var product = {}
+      product = {}
       product.product = {}
       product.product.details = {}
     }
 
     return (
       <div className="single-page main-content edit-info">
-        <Paper style={{ width: "100%" }} zDepth={3}>
+        <Paper style={{ width: '100%' }} zDepth={3}>
           <SinglePageToolbar
             editAble={false}
             closeModal={this.props.closeModal}
@@ -191,12 +181,12 @@ class EditInfo extends React.Component {
           />
           {!this.props.newProductSlug && <StartupWidgetMoreInfo {...product} />}
           <div className="share-info">
-            {`Share your info about ${name || "it "} with us!`}
+            {`Share your info about ${name || 'it '} with us!`}
           </div>
           <form className="edit-info-form">
             <TextField
               id="extra_url"
-              defaultValue={product ? product.product.details.extra_url : ""}
+              defaultValue={product ? product.product.details.extra_url : ''}
               className="three-field"
               floatingLabelText="extra url"
               onChange={this.textFieldChangeHandler}
@@ -297,15 +287,10 @@ class EditInfo extends React.Component {
                   className="upload-logo-text"
                   onClick={() => this.uploadButton.click()}
                 >
-                  {this.state.selectedLogoFilename || "upload logo"}
+                  {this.state.selectedLogoFilename || 'upload logo'}
                 </div>
-                <IconButton
-                  style={{ width: "24px", height: "24px", padding: 0 }}
-                >
-                  <label
-                    htmlFor="logo"
-                    ref={node => (this.uploadButton = node)}
-                  >
+                <IconButton style={{ width: '24px', height: '24px', padding: 0 }}>
+                  <label htmlFor="logo" ref={node => (this.uploadButton = node)}>
                     <FileFileUpload />
                   </label>
                   <input
@@ -326,9 +311,7 @@ class EditInfo extends React.Component {
               primary={true}
               onClick={this.handleSubmit}
             >
-              {this.state.aSyncCall && (
-                <PulseLoader color="#FFFFFF" size="6px" />
-              )}
+              {this.state.aSyncCall && <PulseLoader color="#FFFFFF" size="6px" />}
             </RaisedButton>
           </div>
         </Paper>

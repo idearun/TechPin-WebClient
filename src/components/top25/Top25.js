@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 import Modal from 'react-modal'
 import AddForm from './AddForm'
@@ -165,10 +165,7 @@ class Top25 extends React.Component {
             productList={this.state.topProducts.between1And10Million}
             title="$1 Million+"
           />
-          <WidgetColumn
-            productList={this.state.topProducts.topNew}
-            title="New"
-          />
+          <WidgetColumn productList={this.state.topProducts.topNew} title="New" />
         </main>
         <DataAnalysis />
         <DueDiligenceInfo />
