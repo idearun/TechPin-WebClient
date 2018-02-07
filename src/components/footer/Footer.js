@@ -1,16 +1,16 @@
-import React from "react";
-import { Link } from "react-router";
-import telegramBotBanner from "../../../images/Techpin-bot-banner.jpg";
-import { footerText } from "../../helpers/staticText";
-import gitRepo from "../../helpers/links";
+import React from 'react'
+import { Link } from 'react-router'
+import telegramBotBanner from '../../../images/Techpin-bot-banner.png'
+import { footerText } from '../../helpers/staticText'
+import gitRepo from '../../helpers/links'
 
 const TelegramBot = () => (
   <div className="telegram-bot">
-    <a href="https://t.me/techpin_bot" target='_blank'>
+    <a href="https://t.me/techpin_bot" target="_blank">
       <img src={telegramBotBanner} alt="telegram bot" />
     </a>
   </div>
-);
+)
 const Footer = props => {
   return (
     <div className="footer">
@@ -24,8 +24,7 @@ const Footer = props => {
       <section className="copyright">
         <ul>
           <li>
-            TechPin © 2017. &nbsp;{" "}
-            <a href={gitRepo}>TechPin is an Open Source</a>
+            TechPin © 2017. &nbsp; <a href={gitRepo}>TechPin is an Open Source</a>
             , Crowd Sourced Project &nbsp;
             <a href="http://www.mozilla.org/en-US/MPL/2.0/">Under MPL 2.0</a>
           </li>
@@ -43,30 +42,30 @@ const Footer = props => {
         </ul>
         <ul>
           <li>
-            <a href="https://twitter.com/techpinhq/" target='_blank'>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/techpinhq/" target="_blank">
+              <i className="fa fa-twitter" aria-hidden="true" />
             </a>
           </li>
           <li>
-            <a href="https://t.me/techpin/" target='_blank'>
-              <i class="fa fa-telegram" aria-hidden="true"></i>
+            <a href="https://t.me/techpin/" target="_blank">
+              <i className="fa fa-telegram" aria-hidden="true" />
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/company/13283289/" target='_blank'>
-              <i class="fa fa-linkedin" aria-hidden="true"></i>
-          </a>
+            <a href="https://www.linkedin.com/company/13283289/" target="_blank">
+              <i className="fa fa-linkedin" aria-hidden="true" />
+            </a>
           </li>
         </ul>
       </section>
       <section className="passion">
-        Made With Passion & Powered By{" "}
+        Made With Passion & Powered By{' '}
         <a href="http://www.idearun.co" target="_blank">
           Idearun Startup Studio
         </a>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
