@@ -65,23 +65,23 @@ section.copyright {
   border-top: 1px solid #555;
 }
 
-section.copyright ul li a {
+section.copyright ul li a , .contact-us-footer li a {
   color: #777;
   transition: color 0.5s ease-in-out;
 }
 
-section.copyright ul li a:hover {
+section.copyright ul li a:hover, .contact-us-footer li a:hover {
   color: #9C27B0;
 }
 
-.footer .copyright ul {
+.footer .copyright ul, .contact-us-footer {
   color: #777;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.footer .copyright ul li {
+.footer .copyright ul li, .contact-us-footer li {
   display: inline-block;
   margin-right: 30px;
   font-family: 'Dosis';
@@ -115,4 +115,13 @@ section.copyright ul li a:hover {
   .footer {
     padding: 55px 20px 0px 20px;
   }
+}
+
+.contact-us-footer li a {
+  color: white;
+}
+
+.contact-us-footer {
+  color: white;
+  margin-bottom: 10px;
 }

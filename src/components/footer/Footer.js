@@ -18,6 +18,19 @@ const Footer = props => {
         <div>
           <span>TechPin, Dynamic list of startups & accelerators in Iran</span>
           <p>{footerText}</p>
+          <ul className="contact-us-footer">
+          <li>
+            Contact us via:
+          </li>
+          <li>
+            <a href="mailto:support@techpin.ir" target="_top">Send Mail</a>
+          </li>
+          <li>
+            <a href="https://t.me/Techpin_Support" target="_blank">
+              <i className="fa fa-telegram" aria-hidden="true" />
+            </a>
+          </li>
+        </ul>
         </div>
         <TelegramBot />
       </section>
