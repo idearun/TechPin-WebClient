@@ -19,10 +19,11 @@ class DueDiligenceInfo extends Component {
     const { title, text, button_text, sub_title } = this.props;
     return (
       <div className="due-diligence-info" id="contact-form">
-        <Card>
+        <Card className="due-diligence-card">
           <CardTitle
             title={title}
-            subtitle={sub_title ? sub_title : "A Service From TechPin"}
+            subtitle={sub_title ? sub_title : "Are you a VC or an angel investor looking to invest in Iranian Startups?"}
+            titleStyle={{textTransform:'uppercase',fontWeight:'bold'}}
           />
           <CardText style={{ fontSize: "1.1em", color: "#555555" }}>
             <p style={{ fontFamily: "Rubik", whiteSpace: "pre-line" }}>
@@ -33,9 +34,10 @@ class DueDiligenceInfo extends Component {
             {!showContactForm && (
               <RaisedButton
                 label={button_text || " "}
-                fullWidth={true}
-                primary
                 onClick={this.renderForm}
+                backgroundColor="#0d47a1"
+                labelColor="white"
+                labelStyle={{ top: -3, padding: '50px' }}
               />
             )}
           </CardActions>

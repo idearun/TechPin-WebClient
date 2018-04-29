@@ -165,8 +165,13 @@ class DueDiligence extends Component {
     const className = this.props.show ? 'due-diligence show' : 'due-diligence hide'
     return (
       <div className={className}>
-        <Card>
-          <CardTitle title="Contact Us" subtitle="Please fill the form" />
+        <Card className="contact-form-card">
+          <CardTitle
+            title="Contact Us" 
+            subtitle="Please fill the form" 
+            titleStyle={{textTransform: 'uppercase', textAlign: 'left', fontWeight: 'bold'}}
+            subtitleStyle={{textTransform: 'uppercase', textAlign: 'left', fontWeight: 'normal'}}  
+          />
           <CardText className="contact-form-inputs-wrapper">
             {/* <DropDownMenu
               value={this.state.formData.type}
@@ -230,9 +235,11 @@ class DueDiligence extends Component {
           </CardText>
           <CardActions>
             <RaisedButton
-              primary
-              fullWidth
               label="Send"
+              backgroundColor="#0d47a1"
+              labelColor="white"
+              style={{ marginRight: 20 }}
+              labelStyle={{ top: -3 }}
               disabled={this.state.aSyncCall}
               onClick={this.handleSubmit}
             />
