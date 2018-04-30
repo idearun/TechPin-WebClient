@@ -233,13 +233,13 @@ class DueDiligence extends Component {
               onChange={(_, val) => this.updateFormData(val, 'company_description')}
             />
           </CardText>
-          <CardActions>
+          <CardActions style={{padding: 16}}>
             <RaisedButton
               label="Send"
               backgroundColor="#0d47a1"
               labelColor="white"
-              style={{ marginRight: 20 }}
-              labelStyle={{ top: -3 }}
+              style={{ width:150 }}
+              labelStyle={{ display: 'flex', justifyContent: 'center' }}
               disabled={this.state.aSyncCall}
               onClick={this.handleSubmit}
             />

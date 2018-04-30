@@ -37,7 +37,7 @@ const Footer = props => {
       <section className="copyright">
         <ul>
           <li>
-            TechPin © 2017. &nbsp; <a href={gitRepo}>TechPin is an Open Source</a>
+            TechPin © 2018. &nbsp; <a href={gitRepo}>TechPin is an Open Source</a>
             , Crowd Sourced Project &nbsp;
             <a href="http://www.mozilla.org/en-US/MPL/2.0/">Under MPL 2.0</a>
           </li>

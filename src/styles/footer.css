@@ -12,6 +12,7 @@
   font-family: 'Dosis';
   font-size: 24px;
   line-height: 40px;
+  text-transform: uppercase;
 }
 
 .footer-about {
@@ -33,14 +34,9 @@
   width: 350px;
   margin-top: 10px;
   height: auto;
-  border-radius: 5px;
-  box-shadow: 0 0 10px 3px #4B4BF8;
-  transition: all 0.3s linear;
 }
 
 .footer-about .telegram-bot img:hover {
-  /* transform: scale(1.005); */
-  box-shadow: 0 0 20px 3px #7B7BF5;
 }
 
 .footer-about p {
@@ -61,12 +57,14 @@
 }
 
 section.copyright {
+  display: flex;
   padding: 10px 0;
   border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
 }
 
 section.copyright ul li a , .contact-us-footer li a {
-  color: #777;
+  color: #FFFFFF;
   transition: color 0.5s ease-in-out;
 }
 
@@ -75,7 +73,7 @@ section.copyright ul li a:hover, .contact-us-footer li a:hover {
 }
 
 .footer .copyright ul, .contact-us-footer {
-  color: #777;
+  color: #FFFFFF;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -88,13 +86,16 @@ section.copyright ul li a:hover, .contact-us-footer li a:hover {
 }
 
 .footer .passion {
-  padding: 10px 0;
+  font-size: 14px;
+  text-align: center;
+  padding: 30px 0;
   color: silver;
   font-family: "Rubik";
+  text-transform: uppercase;
 }
 
 .footer .passion a {
-  color: white;
+  color: #1ACE2C;
 }
 
 @media screen and (max-width: 1100px) {

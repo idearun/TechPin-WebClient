@@ -16,7 +16,9 @@ const DataAnalysis = () => (
       <CardTitle>
         <h1>{title}</h1>
       </CardTitle>
-      <CardText>
+      <CardText 
+      style = {{display: 'flex', padding: '50px 25px'}}
+      >
         {/* <p className="desc">{desc}</p> */}
         <div className="animation">
           <video loop muted autoPlay>

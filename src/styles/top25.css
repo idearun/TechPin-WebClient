@@ -358,6 +358,7 @@ div.before-top25-title {
   flex-direction: column;
   justify-content: center;
   text-align-last: center;
+  box-shadow: 10px 10px 1px 10px #888888 !important;
 }
 
 .due-diligence {
@@ -387,15 +388,13 @@ div.before-top25-title {
 }
 
 .contact-form-card {
-
+  text-align: left !important;
+  text-align-last: left !important;
 }
 
 @media screen and (max-width: 1170px) {
   .widget {
     height: auto;
-  }
-  .site-desc {
-    /* flex-wrap: wrap; */
   }
   .site-desc p {
     display: none;
@@ -422,6 +421,38 @@ div.before-top25-title {
   .site-desc > .vert-divider {
     display: none;
   }
+}
+
+.input-row input {
+  height: 3em !important;
+}
+
+.input-row input, .contact-form-inputs-wrapper> div> div > textarea {
+  border: 1px solid #0D47A1 !important;
+  border-radius: 4px !important;
+}
+
+.input-row > div > div, .contact-form-inputs-wrapper> div> div:last-child {
+  display: none;
+}
+
+.input-row > div > label, .contact-form-inputs-wrapper> div > label {
+  color: #D5D5D5 !important;
+  text-transform: uppercase;
+  left: 20px !important;
+  top: 30px !important;
+  
+}
+.contact-form-inputs-wrapper> div > label {
+  top: 45px !important;
+}
+
+.contact-form-card > div:last-child {
+  padding: 0 16px !important;
+}
+
+.input-row > div > label:hover, .input-row > div > label:active {
+  transform: scale(0.75) translate(0px, -10px) !important;
 }
 
 @media screen and (max-width: 1000px) {
