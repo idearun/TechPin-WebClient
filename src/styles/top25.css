@@ -44,7 +44,7 @@
 
 .site-desc {
   background-color: white;
-  height: 400px;
+  height: auto;
   padding: 0 7.5%;
   display: flex;
   position: relative;
@@ -390,6 +390,15 @@ div.before-top25-title {
 .contact-form-card {
   text-align: left !important;
   text-align-last: left !important;
+}
+
+.news-row {
+  padding: 50px 25px;
+  display: flex;
+}
+
+.news-card {
+  margin: 0 50px;
 }
 
 @media screen and (max-width: 1170px) {

@@ -1,9 +1,19 @@
 import React from "react";
 import Logo from "../../../images/techpin-logo.svg";
 import RaisedButton from "material-ui/RaisedButton";
-import {Card, CardHeader} from 'material-ui/Card';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 // import scrollTo from "../../helpers/scroll";
 import scrollToComponent from "react-scroll-to-component";
+
+//Adds Table
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 
 const scrollToDueDiligence = () => {
   scrollToComponent(document.getElementById("contact-form"), {
@@ -80,6 +90,60 @@ const SiteDesc = ({ openAddProductModal }) => (
         />
       </Card>
       </div>
+      <div className="news-row">
+      <Card className="news-card">
+        <CardHeader
+          title="NEWS FROM AROUND THE WORLD"
+          className="card-header-style"
+          titleStyle={{ fontSize: '0.7em', textAlign:'left' }}
+          style={{backgroundColor: '#F6F7F9'}}
+          titleColor="#212121"
+        />
+        <CardText>
+        <Table>
+    <TableHeader displaySelectAll={false}>
+      <TableRow>
+        <TableHeaderColumn>SOURCE</TableHeaderColumn>
+        <TableHeaderColumn>TITLE</TableHeaderColumn>
+      </TableRow>
+    </TableHeader>
+    <TableBody displayRowCheckbox={false}>
+      <TableRow>
+        <TableRowColumn>COMING SOON</TableRowColumn>
+        <TableRowColumn>-</TableRowColumn>
+      </TableRow>
+    </TableBody>
+  </Table>
+        </CardText>  
+      </Card>
+
+      <Card className="news-card">
+        <CardHeader
+          title="NEWS FROM IRANIAN SOURCES"
+          className="card-header-style"
+          titleStyle={{ fontSize: '0.7em', textAlign:'left' }}
+          style={{backgroundColor: '#F6F7F9'}}
+          titleColor="#212121"
+        />
+        <CardText>
+        <Table>
+    <TableHeader displaySelectAll={false}>
+      <TableRow>
+        <TableHeaderColumn>SOURCE</TableHeaderColumn>
+        <TableHeaderColumn>TITLE</TableHeaderColumn>
+      </TableRow>
+    </TableHeader>
+    <TableBody displayRowCheckbox={false}>
+      <TableRow>
+        <TableRowColumn>COMING SOON</TableRowColumn>
+        <TableRowColumn>-</TableRowColumn>
+      </TableRow>
+    </TableBody>
+  </Table>
+        </CardText>  
+      </Card>
+
+  </div>
   </div>
 );
 
