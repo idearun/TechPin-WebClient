@@ -7,7 +7,7 @@
 }
 
 .top25 .top25-header + main {
-  background-color: #efefef;
+  background-color: #212121;
 }
 
 .flex-container {
@@ -16,19 +16,16 @@
   display: flex;
   justify-content: space-between;
   padding: 20px 34px 0 34px;
+  flex-direction: column;
 }
 
 .column {
   display: flex;
   flex-direction: column;
   align-content: stretch;
+  margin: 20px 0;
   transition: all 0.4s ease-out;
   flex-basis: 30%;
-  border: 1px solid #dbdbdb;
-  background-color: #dbdbdb;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px,
-    rgba(0, 0, 0, 0.117647) 0px 1px 4px;
 }
 
 .column > * {
@@ -131,34 +128,35 @@
 }
 
 
-.column:hover div.chooser-title > div {
+/* .column:hover div.chooser-title > div {
   color: white;
 }
 
 .column:hover div.sort-menu > button svg {
   fill: white !important;
-}
+} */
 
 .top25-header {
   text-align: center;
+  color: white;
   width: 100%;
   padding: 50px 0 30px 0;
-  background-color: #efefef;
+  background-color: #212121;
 }
 
 .top25-header span {
-  color: #555;
   font-size: 1.7em;
+  text-transform: uppercase;
+  font-weight: bold;
   font-family: 'Raleway';
   font-weight: 600;
 }
 
 .top25-header p {
-  color: grey;
   font-size: 16px;
   font-family: 'Raleway';
   font-weight: 400;
-  line-height: 26px;
+  line-height: 50px;
 }
 
 .chooser-title {
@@ -168,11 +166,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: white !important;
+  align-items: start;
+  padding: 20px;
 }
 
 .chooser-title > div:nth-child(2) {
   flex: 1 0 auto;
-  color: #4f4f4f;
+  color: #0d47a1;
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   font-weight: 600;
@@ -183,8 +184,11 @@
 }
 
 .star-rating {
-  margin-left: 30px;
+  text-align: center;
   font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .star-paper {
@@ -238,22 +242,27 @@
 
 .widget {
   display: flex;
-  padding: 20px 30px;
+  padding: 35px 35px;
+  min-width: 125px;
   min-height: 100px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .widget-title {
   font-family: 'Rubik';
   font-weight: 600;
   font-size: 18px;
-  margin-left: 30px;
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 5px;
   color: #505050;
 }
 
 .widget img {
-  width: 85px;
-  height: auto;
+  height: 80px;
+  padding: 15px 0;
+  width: auto !important;
+  margin: 0 auto;
 }
 
 .widget > .LazyLoad.is-visible {
@@ -285,17 +294,18 @@ div.widget-title {
 
 .widget-text {
   font-family: sans-serif;
-  font-size: 16px;
-  margin-left: 30px;
-  margin-bottom: 10px;
+  font-size: 14px;
   color: #777;
-  height: 40px;
+  height: 85px;
+  padding: 10px 0;
   text-overflow: ellipsis;
   overflow: hidden;
+  text-align: center;
+  line-height: 17px;
 }
 
 i.fa-star {
-  color: red;
+  color: #0d47a1;
 }
 
 i.fa-star-o {
@@ -340,7 +350,7 @@ div.before-top25-title {
 
 .widget-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .due-diligence-info {
