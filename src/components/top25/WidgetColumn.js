@@ -43,7 +43,7 @@ export default class WidgetColumn extends React.Component {
             {<SortingMenu onChange={this.handleSort} />}
           </div>
           {productList.length > 0 ? (
-            productList.map(generateListItem)
+            productList.map(generateListItem).slice(0,5)
           ) : (
             <Skeleton count={10} />
           )}

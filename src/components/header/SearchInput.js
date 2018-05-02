@@ -87,14 +87,14 @@ export default class SearchBar extends Component {
           {aSyncCall && (
             <CircularProgress
               id="search-bar-spinner"
-              color={"white"}
+              color={"rgb(13, 71, 161)"}
               size={20}
             />
           )}
           {!this.props.isDesktop &&
           !this.state.isOpen && (
             <ActionSearch
-              color="white"
+              color="rgb(13, 71, 161)"
               onClick={this.open}
               style={styles.icon}
             />

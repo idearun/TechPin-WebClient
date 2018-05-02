@@ -43,7 +43,7 @@ export default class extends Component {
         />
         {!this.state.searchInputIsFocused && (
           <IconButton onClick={handleDrawerToggle}>
-            <NavigationMoreVert color="white" />
+            <NavigationMoreVert color="rgb(13, 71, 161)" />
           </IconButton>
         )}
       </div>

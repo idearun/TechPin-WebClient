@@ -12,7 +12,6 @@
 
 .flex-container {
   min-height: 100vh;
-  margin-bottom: 55px;
   display: flex;
   justify-content: space-between;
   padding: 20px 34px 0 34px;
@@ -247,6 +246,7 @@
   min-height: 100px;
   flex-direction: column;
   align-items: center;
+  border-right: 0.1em solid #D5D5D5;
 }
 
 .widget-title {
@@ -259,7 +259,6 @@
 }
 
 .widget img {
-  height: 80px;
   padding: 15px 0;
   width: auto !important;
   margin: 0 auto;
@@ -411,6 +410,19 @@ div.before-top25-title {
   margin: 0 50px;
 }
 
+.map {
+  text-align: center;
+}
+
+.map > div {
+  box-shadow: none !important;
+}
+
+.map h1 {
+  font-size: 2em;
+  padding: 30px 0;
+}
+
 @media screen and (max-width: 1170px) {
   .widget {
     height: auto;
@@ -489,9 +501,30 @@ div.before-top25-title {
 }
 
 @media screen and (max-width: 760px) {
+  .stat-cards {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .card-style {
+    width: 50% !important;
+    margin: 20px 0;
+  }
   .column {
     flex-basis: 100%;
     margin-bottom: 27px;
+  }
+  .news-row {
+    flex-direction: column;
+  }
+  .news-card {
+    margin: 20px 0;
+  }
+  .widget-list {
+    flex-direction: column;
+  }
+  .data-analysis-card-text {
+    flex-direction: column;
   }
   .flex-container {
     padding: 0 10px;
@@ -500,11 +533,8 @@ div.before-top25-title {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .due-diligence-info {
-    padding: 0 10px;
-  }
-  .data-analysis {
-    padding: 0 10px !important;
+  .due-diligence-card {
+    padding: 20px 5px !important;
   }
   .animation video {
     width: 100% !important;
@@ -555,6 +585,7 @@ div.before-top25-title {
   text-align: center;
   font-size: 24px;
   margin-top: 20px;
+  padding-top: 20px;
   font-weight: bold;
   text-transform: uppercase;
 }
