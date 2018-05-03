@@ -34,8 +34,8 @@
 .column:hover {
   background-color: #0d47a1;
   border: 1px solid #0d47a1;
-  /*box-shadow: rgba(48, 79, 254, 0.117647) 0px 0px 15px 5px,*/
-    /*rgba(48, 79, 254, 0.117647) 0px 0px 10px 5px;*/
+  box-shadow: rgba(48, 79, 254, 0.117647) 0px 0px 15px 5px,
+    rgba(48, 79, 254, 0.117647) 0px 0px 10px 5px;
 }
 
 .site-desc {
