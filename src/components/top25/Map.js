@@ -12,7 +12,7 @@ const Map = () => (
       <CardText
       style = {{display: 'flex', padding: '20px 0px'}}
       >
-      <img src={mapPhoto} />
+      <img src={mapPhoto} className="map-photo" />
       </CardText>
     </Card>
   </div>

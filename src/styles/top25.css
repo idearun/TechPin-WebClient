@@ -351,6 +351,7 @@ div.before-top25-title {
 .widget-list {
   display: flex;
   flex-direction: row;
+  overflow-x: scroll !important;
 }
 
 .due-diligence-info {
@@ -422,6 +423,11 @@ div.before-top25-title {
 .map h1 {
   font-size: 2em;
   padding: 30px 0;
+}
+
+.map-photo {
+  width: 70% ;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 1170px) {
@@ -523,6 +529,7 @@ div.before-top25-title {
   }
   .widget-list {
     flex-direction: column;
+    overflow-x: hidden !important;
   }
   .data-analysis-card-text {
     flex-direction: column;
