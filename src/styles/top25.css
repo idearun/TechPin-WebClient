@@ -442,6 +442,7 @@ div.before-top25-title {
 .news-row {
   padding: 50px 25px;
   display: flex;
+  width: 100%;
 }
 
 .news-table {
@@ -454,6 +455,20 @@ div.before-top25-title {
 
 .news-card {
   margin: 0 25px;
+  width: 50%;
+}
+
+.ReactTable {
+  border: none !important;
+}
+
+.rt-tr:last-child {
+  padding: 10px 10px !important;
+}
+
+.rt-tr:first-child {
+  width: 65px !important;
+  color: grey !important;
 }
 
 .map {
@@ -588,11 +603,9 @@ div.before-top25-title {
   }
   .news-row {
     flex-direction: column;
-    width: 100% !important;
   }
   .news-card {
     margin: 20px 0;
-    width: 50%;
   }
   .widget-list {
     flex-direction: column;

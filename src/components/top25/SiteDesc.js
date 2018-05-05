@@ -28,8 +28,8 @@ const scrollToDueDiligence = () => {
 };
 
 const data = [{
-  source: 'Coming Soon',
-  title: "-",
+  source: "-",
+  title: "Coming Soon",
 }]
 
 
