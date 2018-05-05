@@ -4,6 +4,11 @@ import RaisedButton from "material-ui/RaisedButton";
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 // import scrollTo from "../../helpers/scroll";
 import scrollToComponent from "react-scroll-to-component";
+import { withStyles } from 'material-ui/styles';
+
+// Import React Table
+import ReactTable from 'react-table';
+import 'react-table/react-table.css';
 
 //Adds Table
 import {
@@ -21,6 +26,21 @@ const scrollToDueDiligence = () => {
     duration: 1500
   });
 };
+
+const data = [{
+  source: 'Coming Soon',
+  title: "-",
+}]
+
+
+const columns = [{
+  Header: 'Source',
+  accessor: 'source' // String-based value accessors!
+}, {
+  Header: 'Title',
+  accessor: 'title',
+  Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+}]
 
 const SiteDesc = ({ openAddProductModal }) => (
   <div className="site-desc">
@@ -99,20 +119,14 @@ const SiteDesc = ({ openAddProductModal }) => (
           titleColor="#212121"
         />
         <CardText>
-        <Table>
-    <TableHeader displaySelectAll={false}>
-      <TableRow>
-        <TableHeaderColumn>SOURCE</TableHeaderColumn>
-        <TableHeaderColumn>TITLE</TableHeaderColumn>
-      </TableRow>
-    </TableHeader>
-    <TableBody displayRowCheckbox={false}>
-      <TableRow>
-        <TableRowColumn>COMING SOON</TableRowColumn>
-        <TableRowColumn>-</TableRowColumn>
-      </TableRow>
-    </TableBody>
-    </Table>
+          <ReactTable
+              style={{height: "auto"}}
+              data={data}
+              columns={columns}
+              showPagination={false}
+              sortable={false}
+              defaultPageSize={5}
+            />
         </CardText>  
       </Card>
 
@@ -125,20 +139,14 @@ const SiteDesc = ({ openAddProductModal }) => (
           titleColor="#212121"
         />
         <CardText>
-        <Table className="news-table">
-    <TableHeader displaySelectAll={false} className="news-table-header">
-      <TableRow selectable={false} style={{height: 20}}>
-        <TableHeaderColumn>SOURCE</TableHeaderColumn>
-        <TableHeaderColumn>TITLE</TableHeaderColumn>
-      </TableRow>
-    </TableHeader>
-    <TableBody displayRowCheckbox={false}>
-      <TableRow>
-        <TableRowColumn>COMING SOON</TableRowColumn>
-        <TableRowColumn>-</TableRowColumn>
-      </TableRow>
-    </TableBody>
-  </Table>
+          <ReactTable
+            style={{height: "auto"}}
+            data={data}
+            columns={columns}
+            showPagination={false}
+            sortable={false}
+            defaultPageSize={5}
+          />
         </CardText>  
       </Card>
 

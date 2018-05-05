@@ -9,6 +9,7 @@ import Snackbar from 'material-ui/Snackbar'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import InputText from './InputText'
+import TextArea from './TextArea'
 
 const selectOptionsValues = [
   'due-diligence',
@@ -199,11 +200,18 @@ class DueDiligence extends Component {
                 style={{ width: 350 }}
                 onChange={(_, val) => this.updateFormData(val, 'name')}
               /> */}
-              <InputText 
+              {/* <InputText 
                 onChange={(event) => this.updateFormData(event.target.value, 'name')}
                 value={this.state.formData.name}
                 placeholder="Your Name"
                 style={{ width: 350 }}
+              /> */}
+              <InputText 
+                onChange={(event) => this.updateFormData(event.target.value, 'name')}
+                value={this.state.formData.name}
+                style={{ width: 350 }}
+                placeholder="Your Name"
+                type="text"
               />
               {/* <TextField
                 value={this.state.formData.email}
@@ -216,8 +224,9 @@ class DueDiligence extends Component {
              <InputText 
                 onChange={(event) => this.updateFormData(event.target.value, 'email')}
                 value={this.state.formData.email}
-                style={{ width: 350, marginLeft: 20 }}
+                style={{ width: 350, marginLeft: 20}}
                 placeholder="Your Email"
+                type="email"
               />
 
             </div>
@@ -235,6 +244,8 @@ class DueDiligence extends Component {
                 value={this.state.formData.phone_number}
                 placeholder="Your Phone number"
                 style={{ width: 350 }}
+                errorText={this.state.formErrors.phone_number}
+                type="tel"
               />
 
               {/* <TextField
@@ -250,16 +261,19 @@ class DueDiligence extends Component {
                 value={this.state.formData.company_name}
                 placeholder="Company Name"
                 style={{ width: 350, marginLeft: 20 }}
+                errorText={this.state.formErrors.company_name}
+                type="text"
               />
 
             </div>
 
-            <InputText 
-                onChange={(event) => this.updateFormData(event.target.value, 'company_description')}
-                value={this.state.formData.company_description}
-                placeholder="Description"
-                style={{width: "100%"}}
-              />
+             <TextArea
+              value={this.state.formData.company_description}
+              errorText={this.state.formErrors.company_description}
+              placeholder="Description"
+              onChange={(event) => this.updateFormData(event.target.value, 'company_description')}
+              style={{width: "100%"}}
+             />
 
             {/* <TextField
               value={this.state.formData.company_description}

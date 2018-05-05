@@ -80,6 +80,7 @@
     "react-scroll": "^1.5.4",
     "react-scroll-to-component": "^1.0.1",
     "react-swipeable-views": "^0.12.8",
+    "react-table": "^6.8.2",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "3.6.0",
     "redux-thunk": "^2.2.0",
