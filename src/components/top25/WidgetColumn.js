@@ -36,6 +36,7 @@ export default class WidgetColumn extends React.Component {
     const { productList } = this.state;
     return (
       <div className="column">
+
         <list className="widget-list">
           <div className="chooser-title">
             <div className="before-top25-title" />
@@ -48,6 +49,9 @@ export default class WidgetColumn extends React.Component {
             <Skeleton count={10} />
           )}
         </list>
+
+        <div className="column-left-arrow">&#8592;</div>
+        <div className="column-right-arrow">&#8594;</div>
       </div>
     );
   }

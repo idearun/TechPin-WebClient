@@ -45,50 +45,49 @@ const SiteDesc = ({ openAddProductModal }) => (
         />
       </div>
       <div className="stat-cards">
+      
       <Card className="card-style">
         <CardHeader
-          title="1200"
+          title= {<span className="card-style-title">1200</span>}
           className="card-header-style"
           titleStyle={{ fontSize: '1.6em' }}
           subtitleStyle={{ fontSize: '0.5em', fontWeight: 'normal' }}
-          subtitle="Startups"
-          titleColor="#0d47a1"
-          subtitleColor="#212121"
+          subtitle= {<span className="card-style-subtitle">Startups</span>}
         />
       </Card>
+
       <Card className="card-style">
         <CardHeader
-          title="140"
+          title= {<span className="card-style-title">140</span>}
           className="card-header-style"
           titleStyle={{ fontSize: '1.6em' }}
           subtitleStyle={{ fontSize: '0.5em', fontWeight: 'normal' }}
-          subtitle="Accelerators & VCs"
-          titleColor="#0d47a1"
-          subtitleColor="#212121"
+          subtitle= {<span className="card-style-subtitle">Accelerators & VCs</span>}
         />
       </Card>
+
+
+
       <Card className="card-style">
         <CardHeader
-          title="5.3B"
+          title= {<span className="card-style-title">5.3B</span>}
           className="card-header-style"
           titleStyle={{ fontSize: '1.6em' }}
           subtitleStyle={{ fontSize: '0.5em', fontWeight: 'normal' }}
-          subtitle="$ Total Fundings"
-          titleColor="#0d47a1"
-          subtitleColor="#212121"
+          subtitle= {<span className="card-style-subtitle">$ Total Fundings</span>}
         />
       </Card>
+
       <Card className="card-style">
         <CardHeader
-          title="116"
+          title= {<span className="card-style-title">116</span>}
           className="card-header-style"
           titleStyle={{ fontSize: '1.6em' }}
           subtitleStyle={{ fontSize: '0.5em', fontWeight: 'normal' }}
-          subtitle="Founding Rounds Announced"
-          titleColor="#0d47a1"
-          subtitleColor="#212121"
+          subtitle= {<span className="card-style-subtitle">Founding Rounds Announced</span>}
         />
       </Card>
+
       </div>
       <div className="news-row">
       <Card className="news-card">
@@ -113,7 +112,7 @@ const SiteDesc = ({ openAddProductModal }) => (
         <TableRowColumn>-</TableRowColumn>
       </TableRow>
     </TableBody>
-  </Table>
+    </Table>
         </CardText>  
       </Card>
 
@@ -126,9 +125,9 @@ const SiteDesc = ({ openAddProductModal }) => (
           titleColor="#212121"
         />
         <CardText>
-        <Table>
-    <TableHeader displaySelectAll={false}>
-      <TableRow>
+        <Table className="news-table">
+    <TableHeader displaySelectAll={false} className="news-table-header">
+      <TableRow selectable={false} style={{height: 20}}>
         <TableHeaderColumn>SOURCE</TableHeaderColumn>
         <TableHeaderColumn>TITLE</TableHeaderColumn>
       </TableRow>
@@ -142,6 +141,16 @@ const SiteDesc = ({ openAddProductModal }) => (
   </Table>
         </CardText>  
       </Card>
+
+      {/* <TableBody
+          >
+            {this.state.data.map((user, i) =>
+              <TableRow key={i} value={user}>
+                <TableRowColumn>{user.id}</TableRowColumn>
+                <TableRowColumn>{user.name}</TableRowColumn>
+              </TableRow>
+            )}
+          </TableBody> */}
 
   </div>
   </div>

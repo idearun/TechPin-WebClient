@@ -27,7 +27,7 @@
 .footer-about .telegram-bot {
   width: 350px;
   display: flex;
-  justify-content: center;
+  justify-content: end;
 }
 
 .footer-about .telegram-bot img {
@@ -61,6 +61,7 @@ section.copyright {
   padding: 10px 0;
   border-top: 1px solid #555;
   border-bottom: 1px solid #555;
+  flex-direction: row;
 }
 
 section.copyright ul li a , .contact-us-footer li a {
@@ -83,6 +84,19 @@ section.copyright ul li a:hover, .contact-us-footer li a:hover {
   display: inline-block;
   margin-right: 30px;
   font-family: 'Dosis';
+}
+
+.copyright ul:first-child {
+  width: 50%;
+}
+
+.footer-social {
+  width: 50%;
+  text-align: right;
+}
+
+.footer-social li:last-child {
+  margin-right: 5px !important;
 }
 
 .footer .passion {

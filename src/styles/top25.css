@@ -19,12 +19,47 @@
 }
 
 .column {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-content: stretch;
   margin: 20px 0;
   transition: all 0.4s ease-out;
   flex-basis: 30%;
+}
+
+.column .column-left-arrow {
+  position: absolute;
+  z-index: 10;
+  left: 20px;
+  transform: translateY(-50%);
+  top: 50%;
+  background: grey;
+  opacity: 0.4;
+  border-radius: 50%;
+  color: black;
+  padding: 18px;
+  height: 15px;
+  width: 15px;
+}
+
+.column .column-right-arrow {
+  position: absolute;
+  z-index: 10;
+  right: 20px;
+  transform: translateY(-50%);
+  top: 50%;
+  background: grey;
+  opacity: 0.4;
+  border-radius: 50%;
+  color: black;
+  padding: 18px;
+  height: 15px;
+  width: 15px;
+}
+
+.floating-action-button button {
+  z-index: 11 !important;
 }
 
 .column > * {
@@ -112,11 +147,19 @@
   margin: 0 25px;
 }
 
+.card-style-title {
+  color: #0d47a1;
+}
+
+.card-style-subtitle {
+  color: #212121;
+}
+
 .card-style:hover {
   background-color: #0d47a1 !important;
 }
 
-.card-style:hover > div > span {
+.card-style:hover .card-style-title, .card-style:hover .card-style-subtitle {
   color: white !important;
 }
 
@@ -408,8 +451,16 @@ div.before-top25-title {
   display: flex;
 }
 
+.news-table {
+  border-collapse: separate;
+}
+
+.news-table-header {
+  padding: 0;
+}
+
 .news-card {
-  margin: 0 50px;
+  margin: 0 25px;
 }
 
 .map {
@@ -427,6 +478,7 @@ div.before-top25-title {
 
 .map-photo {
   width: 70% ;
+  height: 100%;
   margin: 0 auto;
 }
 
@@ -544,6 +596,9 @@ div.before-top25-title {
   .due-diligence-card {
     padding: 20px 5px !important;
   }
+  .animation {
+    width:  100% !important;
+  }
   .animation video {
     width: 100% !important;
   }
@@ -582,10 +637,11 @@ div.before-top25-title {
 .animation {
   display: flex;
   justify-content: center;
+  width: 50%;
 }
 
 .animation video {
-  width: 65vw;
+  width: 50vw;
   height: auto;
 }
 
