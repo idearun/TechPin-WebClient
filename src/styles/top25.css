@@ -606,6 +606,7 @@ div.before-top25-title {
   }
   .news-card {
     margin: 20px 0;
+    width: 100%;
   }
   .widget-list {
     flex-direction: column;
