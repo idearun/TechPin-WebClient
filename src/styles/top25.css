@@ -618,6 +618,10 @@ div.before-top25-title {
   .flex-container {
     padding: 0 10px;
   }
+  .map-photo {
+    width: 100%;
+    padding: 0 10px;
+  }
   .due-diligence .input-row {
     flex-wrap: wrap;
     justify-content: center;
