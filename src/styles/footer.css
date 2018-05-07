@@ -26,8 +26,7 @@
 
 .footer-about .telegram-bot {
   width: 350px;
-  display: flex;
-  justify-content: end;
+  text-align: right;
 }
 
 .footer-about .telegram-bot img {

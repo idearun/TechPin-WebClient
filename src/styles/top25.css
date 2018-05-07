@@ -31,14 +31,14 @@
 .column .column-left-arrow {
   position: absolute;
   z-index: 10;
-  left: 20px;
+  left:155px;
   transform: translateY(-50%);
   top: 50%;
-  background: grey;
-  opacity: 0.4;
+  background: #f1f1f1;
+  opacity: 0.6;
   border-radius: 50%;
   color: black;
-  padding: 18px;
+  padding: 15px;
   height: 15px;
   width: 15px;
 }
@@ -49,11 +49,11 @@
   right: 20px;
   transform: translateY(-50%);
   top: 50%;
-  background: grey;
-  opacity: 0.4;
+  background: #f1f1f1;
+  opacity: 0.6;
   border-radius: 50%;
   color: black;
-  padding: 18px;
+  padding: 15px;
   height: 15px;
   width: 15px;
 }
@@ -75,8 +75,8 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
-    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2); */
   flex-flow: column;
 }
 
@@ -131,11 +131,12 @@
   display: flex;
   flex-direction: row;
   margin-top: 50px;
+  width: 100%;
 }
 
 .card-style {
   display: block !important;
-  width: 14vw !important;
+  width: 20vw !important;
   transition-duration: 0.3s !important;
   margin: 0 25px;
 }
@@ -196,13 +197,13 @@
 
 .chooser-title {
   min-height: 50px;
+  min-width: 130px;
   text-align: center;
   line-height: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: white !important;
-  align-items: start;
   padding: 20px;
 }
 
@@ -405,7 +406,6 @@ div.before-top25-title {
   flex-direction: column;
   justify-content: center;
   text-align-last: center;
-  box-shadow: 10px 10px 1px 10px #888888 !important;
 }
 
 .due-diligence {
@@ -485,7 +485,7 @@ div.before-top25-title {
 }
 
 .map-photo {
-  width: 70% ;
+  width: 100% ;
   height: 100%;
   margin: 0 auto;
 }
@@ -582,6 +582,13 @@ div.before-top25-title {
 }
 
 @media screen and (max-width: 760px) {
+  .due-diligence .input-row {
+    flex-direction: column;
+  }
+  .input-row input {
+    width: 100% !important;
+    margin: 20px 0 !important;
+  }
   .column .column-left-arrow {
     display: none;
   }
@@ -594,7 +601,7 @@ div.before-top25-title {
     width: 100%;
   }
   .card-style {
-    width: 50% !important;
+    width: 80% !important;
     margin: 20px 0;
   }
   .column {
@@ -665,6 +672,12 @@ div.before-top25-title {
   margin-left: auto;
   margin-right: auto;
   width: 100%;  
+  box-shadow: none !important;
+}
+
+.data-analysis-card-text {
+  position: relative;
+  top: -65px;
 }
 
 .animation {
@@ -698,7 +711,7 @@ div.before-top25-title {
 
 .data-analysis .goal { 
   margin-bottom: 20px;
-  margin-top: 30px;
+  margin-top: 10%;
 }
 
 @media screen and (max-width: 565px) {

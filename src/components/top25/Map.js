@@ -10,7 +10,7 @@ const Map = () => (
         <h1>{title}</h1>
       </CardTitle>
       <CardText
-      style = {{display: 'flex', padding: '20px 0px'}}
+      style = {{display: 'flex', padding: '0px 0px'}}
       >
       <img src={mapPhoto} className="map-photo" />
       </CardText>

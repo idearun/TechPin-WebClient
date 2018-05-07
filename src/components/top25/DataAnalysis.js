@@ -18,7 +18,7 @@ const DataAnalysis = () => (
       </CardTitle>
       <CardText
       className = "data-analysis-card-text" 
-      style = {{display: 'flex', padding: '50px 25px'}}
+      style = {{display: 'flex', padding: '0 25px', boxShadow: 'none'}}
       >
         {/* <p className="desc">{desc}</p> */}
         <div className="animation">

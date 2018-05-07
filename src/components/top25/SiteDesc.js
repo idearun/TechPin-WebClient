@@ -70,8 +70,8 @@ const SiteDesc = ({ openAddProductModal }) => (
         <CardHeader
           title= {<span className="card-style-title">1200</span>}
           className="card-header-style"
-          titleStyle={{ fontSize: '1.6em' }}
-          subtitleStyle={{ fontSize: '0.5em', fontWeight: 'normal' }}
+          titleStyle={{ fontSize: '2.2em', fontWeight: 700, padding: '20px 0 10px 0' }}
+          subtitleStyle={{ fontSize: '0.65em', fontWeight: 'normal' }}
           subtitle= {<span className="card-style-subtitle">Startups</span>}
         />
       </Card>
@@ -80,8 +80,8 @@ const SiteDesc = ({ openAddProductModal }) => (
         <CardHeader
           title= {<span className="card-style-title">140</span>}
           className="card-header-style"
-          titleStyle={{ fontSize: '1.6em' }}
-          subtitleStyle={{ fontSize: '0.5em', fontWeight: 'normal' }}
+          titleStyle={{ fontSize: '2.2em', fontWeight: 700, padding: '20px 0 10px 0' }}
+          subtitleStyle={{ fontSize: '0.65em', fontWeight: 'normal' }}
           subtitle= {<span className="card-style-subtitle">Accelerators & VCs</span>}
         />
       </Card>
@@ -92,8 +92,8 @@ const SiteDesc = ({ openAddProductModal }) => (
         <CardHeader
           title= {<span className="card-style-title">5.3B</span>}
           className="card-header-style"
-          titleStyle={{ fontSize: '1.6em' }}
-          subtitleStyle={{ fontSize: '0.5em', fontWeight: 'normal' }}
+          titleStyle={{ fontSize: '2.2em', fontWeight: 700, padding: '20px 0 10px 0' }}
+          subtitleStyle={{ fontSize: '0.65em', fontWeight: 'normal' }}
           subtitle= {<span className="card-style-subtitle">$ Total Fundings</span>}
         />
       </Card>
@@ -102,8 +102,8 @@ const SiteDesc = ({ openAddProductModal }) => (
         <CardHeader
           title= {<span className="card-style-title">116</span>}
           className="card-header-style"
-          titleStyle={{ fontSize: '1.6em' }}
-          subtitleStyle={{ fontSize: '0.5em', fontWeight: 'normal' }}
+          titleStyle={{ fontSize: '2.2em', fontWeight: 700, padding: '20px 0 10px 0' }}
+          subtitleStyle={{ fontSize: '0.65em', fontWeight: 'normal' }}
           subtitle= {<span className="card-style-subtitle">Founding Rounds Announced</span>}
         />
       </Card>
@@ -114,7 +114,7 @@ const SiteDesc = ({ openAddProductModal }) => (
         <CardHeader
           title="NEWS FROM AROUND THE WORLD"
           className="card-header-style"
-          titleStyle={{ fontSize: '0.7em', textAlign:'left' }}
+          titleStyle={{ fontSize: '0.7em', textAlign:'left',fontWeight: 'bold' }}
           style={{backgroundColor: '#F6F7F9'}}
           titleColor="#212121"
         />
@@ -134,7 +134,7 @@ const SiteDesc = ({ openAddProductModal }) => (
         <CardHeader
           title="NEWS FROM IRANIAN SOURCES"
           className="card-header-style"
-          titleStyle={{ fontSize: '0.7em', textAlign:'left' }}
+          titleStyle={{ fontSize: '0.7em', textAlign:'left', fontWeight: 'bold' }}
           style={{backgroundColor: '#F6F7F9'}}
           titleColor="#212121"
         />
