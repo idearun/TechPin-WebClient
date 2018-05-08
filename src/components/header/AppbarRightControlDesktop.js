@@ -74,9 +74,9 @@ class AppbarRightControlDesktop extends Component {
         {!searchInputIsFocused && (
           <FlatButton
             label="Blog"
-            href="http://blog.techpin.ir"
+            href="https://blog.techpin.ir"
             target="_blank"
-            style={{ color: "white" }}
+            style={{ color: "#0d47a1" }}
           />
         )}
       </div>

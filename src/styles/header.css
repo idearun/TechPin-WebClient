@@ -45,6 +45,10 @@ div.app-bar>div:last-child > div{
   display: flex;
 }
 
+.blog-btn a span {
+  color: #0d47a1 !important;
+}
+
 #search-bar-wrapper {
   display: inline-flex;
   position: relative;

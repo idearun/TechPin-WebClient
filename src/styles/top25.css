@@ -10,6 +10,11 @@
   background-color: #212121;
 }
 
+.ReactTable .rt-thead.-header {
+  box-shadow: none;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
 .flex-container {
   min-height: 100vh;
   display: flex;
@@ -101,19 +106,34 @@
   /* text-shadow: -1px 1px 1px rgba(0,0,0,.1) */
 }
 
-.site-desc > h1 {
+.top-information {
+  width: 40%;
+  height: auto;
+  text-align: justify;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 45px 0;
+}
+
+.top-information > h1 {
   font-family: 'Rubik';
-  color: #0d47a1;
+  color: #0d47a1 !important;
   text-transform: uppercase;
   font-size: 1.4em;
   font-weight: bold;
-  margin-bottom: 50px;
+  text-align: justify;
+  text-align-last: justify;
 }
 
-.site-desc > p {
+.top-information > p {
   color: #212121;
   text-transform: uppercase;
-  font-size: 0.8em;
+  font-size: 1.3vw;
+  width: 100%;
+  text-align-last: center;
 }
 
 .site-desc > .vert-divider {
@@ -125,6 +145,8 @@
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 
 .stat-cards {

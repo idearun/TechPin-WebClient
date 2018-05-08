@@ -44,28 +44,30 @@ const columns = [{
 
 const SiteDesc = ({ openAddProductModal }) => (
   <div className="site-desc">
-      <h1>Dynamic list of startups and accelerators in Iran</h1>
-      <p>Discover the best new startups and products.</p>
-      <div className="action-buttons-container">
-        <RaisedButton
-          onClick={openAddProductModal}
-          backgroundColor="#0d47a1"
-          labelColor="white"
-          style={{ marginRight: 20 }}
-          labelStyle={{ top: -3 }}
-          label="add new product or company"
-        />
-        <RaisedButton
-          onClick={scrollToDueDiligence}
-          labelStyle={{ top: -3 }}
-          backgroundColor="black
-          "
-          labelColor="white"
-          label="Due Diligence service"
-        />
+      <div className="top-information">
+        <h1>Dynamic list of startups and accelerators in Iran</h1>
+        <p>Discover the best new startups and products.</p>
+        <div className="action-buttons-container">
+          <RaisedButton
+            onClick={openAddProductModal}
+            backgroundColor="#0d47a1"
+            labelColor="white"
+            style={{ width:'50%'}}
+            labelStyle={{ top: -3,fontSize:11 }}
+            label="add new product or company"
+          />
+          <RaisedButton
+            onClick={scrollToDueDiligence}
+            labelStyle={{ top: -3 }}
+            backgroundColor="black"
+            style={{ width:'45%', textAlign:'center', marginLeft:'5%' }}
+            labelColor="white"
+            label="Due Diligence service"
+          />
+        </div>
       </div>
-      <div className="stat-cards">
       
+      <div className="stat-cards">
       <Card className="card-style">
         <CardHeader
           title= {<span className="card-style-title">1200</span>}
@@ -103,7 +105,7 @@ const SiteDesc = ({ openAddProductModal }) => (
           title= {<span className="card-style-title">116</span>}
           className="card-header-style"
           titleStyle={{ fontSize: '2.2em', fontWeight: 700, padding: '20px 0 10px 0' }}
-          subtitleStyle={{ fontSize: '0.65em', fontWeight: 'normal' }}
+          subtitleStyle={{ fontSize: '0.6em', fontWeight: 'normal' }}
           subtitle= {<span className="card-style-subtitle">Founding Rounds Announced</span>}
         />
       </Card>
@@ -118,7 +120,7 @@ const SiteDesc = ({ openAddProductModal }) => (
           style={{backgroundColor: '#F6F7F9'}}
           titleColor="#212121"
         />
-        <CardText>
+        <CardText style={{padding: 0}}>
           <ReactTable
               style={{height: "auto"}}
               data={data}
@@ -138,7 +140,7 @@ const SiteDesc = ({ openAddProductModal }) => (
           style={{backgroundColor: '#F6F7F9'}}
           titleColor="#212121"
         />
-        <CardText>
+        <CardText style={{padding: 0}}>
           <ReactTable
             style={{height: "auto"}}
             data={data}

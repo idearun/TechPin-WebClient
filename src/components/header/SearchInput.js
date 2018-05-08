@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ActionSearch from "material-ui/svg-icons/action/search";
 import ClickOutHandler from "react-onclickout";
 import CircularProgress from "material-ui/CircularProgress";
+import IconButton from 'material-ui/IconButton';
 
 const styles = {
   icon: {
@@ -73,6 +74,7 @@ export default class SearchBar extends Component {
     return (
       <ClickOutHandler onClickOut={this.close}>
         <div id="search-bar-wrapper">
+          {/* <IconButton color="black" iconClassName="search" /> */}
           <input
             ref={el => {
               this.searchInput = el;
