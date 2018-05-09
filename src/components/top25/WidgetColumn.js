@@ -4,6 +4,7 @@ import SortingMenu from "./SortingMenu";
 import StartUpWidget from "./StartUpWidget";
 
 import sort from "../../helpers/helpers";
+import { WSAEINVALIDPROVIDER } from "constants";
 
 function generateListItem(product, i) {
   return <StartUpWidget product={product} key={product.name_en} i={i} />;
@@ -14,7 +15,8 @@ export default class WidgetColumn extends React.Component {
     super(props);
     this.state = {
       sortBy: "nps",
-      productList: []
+      productList: [],
+      currentStep: 0
     };
     this.handleSort = this.handleSort.bind(this);
   }
@@ -32,12 +34,28 @@ export default class WidgetColumn extends React.Component {
     }
   };
 
+  onArrowClick = () => {
+    const steps = this.container.offsetWidth/window.innerWidth
+
+    this.setState({
+      currentStep: this.state.currentStep+1
+    }, () => {
+      const newScrollLeft = this.state.currentStep*window.innerWidth
+      if (newScrollLeft+window.innerWidth < this.container.offsetWidth) {
+        this.container.scrollLeft = newScrollLeft
+      }
+    })
+
+  }
+
   render() {
     const { productList } = this.state;
     return (
-      <div className="column">
+      <div className="column"> 
 
-        <list className="widget-list">
+        <list className="widget-list" ref={el => {
+        this.container = el
+      }}>
           <div className="chooser-title">
             <div className="before-top25-title" />
             <div>{this.props.title || ""}</div>
@@ -51,7 +69,7 @@ export default class WidgetColumn extends React.Component {
         </list>
 
         <div className="column-left-arrow">&#8592;</div>
-        <div className="column-right-arrow">&#8594;</div>
+        <div className="column-right-arrow" onClick={this.onArrowClick}>&#8594;</div>
       </div>
     );
   }

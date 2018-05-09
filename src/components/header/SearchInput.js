@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ActionSearch from "material-ui/svg-icons/action/search";
 import ClickOutHandler from "react-onclickout";
 import CircularProgress from "material-ui/CircularProgress";
-import IconButton from 'material-ui/IconButton';
+import IconButton from "material-ui/IconButton";
 
 const styles = {
   icon: {
@@ -69,12 +69,19 @@ export default class SearchBar extends Component {
     }
   };
 
+  toggleInput = () => {
+    if (this.state.isOpen) {
+      this.close()
+    } else {
+      this.open()
+    }
+  }
+
   render() {
     const { onChange, aSyncCall } = this.props;
     return (
       <ClickOutHandler onClickOut={this.close}>
         <div id="search-bar-wrapper">
-          {/* <IconButton color="black" iconClassName="search" /> */}
           <input
             ref={el => {
               this.searchInput = el;
@@ -86,6 +93,13 @@ export default class SearchBar extends Component {
             placeholder="Search..."
             className={this.getClassName()}
           />
+          {/* <IconButton iconClassName="muidocs-icon-custom-github" onClick={this.toggleInput}/> */}
+          <IconButton
+            style={{fontSize: 14, color: '#0d47a1'}}
+            onClick={this.toggleInput}
+          >
+              <i className="fa fa-search" aria-hidden="true" />
+          </IconButton>
           {aSyncCall && (
             <CircularProgress
               id="search-bar-spinner"
