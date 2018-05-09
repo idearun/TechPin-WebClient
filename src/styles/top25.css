@@ -126,8 +126,9 @@
   text-transform: uppercase;
   font-size: 1.4em;
   font-weight: bold;
-  text-align: justify;
-  text-align-last: justify;
+  text-align: center;
+  /* text-align: justify;
+  text-align-last: justify; */
 }
 
 .top-information > p {
@@ -480,6 +481,10 @@ div.before-top25-title {
 .news-card {
   margin: 0 25px;
   width: 50%;
+}
+
+.rt-tbody {
+  overflow-y: hidden;
 }
 
 .rt-tr-group {

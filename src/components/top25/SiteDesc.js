@@ -102,11 +102,11 @@ const SiteDesc = ({ openAddProductModal }) => (
 
       <Card className="card-style">
         <CardHeader
-          title= {<span className="card-style-title">116</span>}
+          title= {<span className="card-style-title">146</span>}
           className="card-header-style"
           titleStyle={{ fontSize: '2.2em', fontWeight: 700, padding: '20px 0 10px 0' }}
           subtitleStyle={{ fontSize: '0.6em', fontWeight: 'normal' }}
-          subtitle= {<span className="card-style-subtitle">Founding Rounds Announced</span>}
+          subtitle= {<span className="card-style-subtitle">Funding Rounds Announced</span>}
         />
       </Card>
 

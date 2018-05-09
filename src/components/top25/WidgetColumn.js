@@ -2,6 +2,7 @@ import React from "react";
 import Skeleton from "react-loading-skeleton";
 import SortingMenu from "./SortingMenu";
 import StartUpWidget from "./StartUpWidget";
+import animateScrollTo from 'animated-scroll-to';
 
 import sort from "../../helpers/helpers";
 import { WSAEINVALIDPROVIDER } from "constants";
@@ -9,6 +10,7 @@ import { WSAEINVALIDPROVIDER } from "constants";
 function generateListItem(product, i) {
   return <StartUpWidget product={product} key={product.name_en} i={i} />;
 }
+
 
 export default class WidgetColumn extends React.Component {
   constructor(props) {
@@ -33,17 +35,22 @@ export default class WidgetColumn extends React.Component {
       this.setState({ productList: sortedList, sortBy });
     }
   };
+  
 
   onArrowClickRight = () => {
 
     const steps = this.container.offsetWidth/window.innerWidth
+    const options = { 
+      speed: 500,
+      minDuration: 250,
+      maxDuration: 1500,
+      element: this.container,
+      cancelOnUserAction: true,
+      passive: true,
+      horizontal: true
+    };
 
-    this.setState({
-      currentStep: this.state.currentStep+1
-    }, () => {
-      const newScrollLeft = this.state.currentStep*window.innerWidth
-      this.container.scrollLeft = 350
-    })
+    animateScrollTo(350, options);
 
   }
 
@@ -55,10 +62,17 @@ export default class WidgetColumn extends React.Component {
       currentStep: this.state.currentStep-1
     }, () => {
       const newScrollLeft = this.state.currentStep*window.innerWidth
-      this.container.scrollLeft = newScrollLeft
-      if (newScrollLeft-window.innerWidth < this.container.offsetWidth) {
-        
-      }
+      const options = { 
+        speed: 500,
+        minDuration: 250,
+        maxDuration: 1500,
+        element: this.container,
+        cancelOnUserAction: true,
+        passive: true,
+        horizontal: true
+      };
+  
+      animateScrollTo(newScrollLeft, options);
     })
 
   }
