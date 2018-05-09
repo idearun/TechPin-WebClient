@@ -46,6 +46,7 @@
   padding: 15px;
   height: 15px;
   width: 15px;
+  cursor: pointer;
 }
 
 .column .column-right-arrow {
@@ -61,6 +62,7 @@
   padding: 15px;
   height: 15px;
   width: 15px;
+  cursor: pointer;
 }
 
 .floating-action-button button {
@@ -480,12 +482,21 @@ div.before-top25-title {
   width: 50%;
 }
 
-.ReactTable {
-  border: none !important;
+.rt-tr-group {
+  height: 50px !important;
 }
 
 .rt-tr:last-child {
-  padding: 10px 10px !important;
+  padding: 5px 10px !important;
+}
+
+.ReactTable {
+  border: none !important;
+ 
+}
+
+.rt-table {
+  overflow-y: hidden !important;
 }
 
 .rt-tr:first-child {
@@ -553,6 +564,10 @@ div.before-top25-title {
 .input-row input {
   height: 3em !important;
   padding: 5px;
+}
+
+.contact-form-card hr {
+  display: none;
 }
 
 .contact-form-card textarea {

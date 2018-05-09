@@ -147,7 +147,7 @@ const SiteDesc = ({ openAddProductModal }) => (
             columns={columns}
             showPagination={false}
             sortable={false}
-            defaultPageSize={5}
+            defaultPageSize={4}
           />
         </CardText>  
       </Card>

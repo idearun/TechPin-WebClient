@@ -34,15 +34,30 @@ export default class WidgetColumn extends React.Component {
     }
   };
 
-  onArrowClick = () => {
+  onArrowClickRight = () => {
+
     const steps = this.container.offsetWidth/window.innerWidth
 
     this.setState({
       currentStep: this.state.currentStep+1
     }, () => {
       const newScrollLeft = this.state.currentStep*window.innerWidth
-      if (newScrollLeft+window.innerWidth < this.container.offsetWidth) {
-        this.container.scrollLeft = newScrollLeft
+      this.container.scrollLeft = 350
+    })
+
+  }
+
+
+  onArrowClickLeft = () => {
+    const steps = this.container.offsetWidth/window.innerWidth
+
+    this.setState({
+      currentStep: this.state.currentStep-1
+    }, () => {
+      const newScrollLeft = this.state.currentStep*window.innerWidth
+      this.container.scrollLeft = newScrollLeft
+      if (newScrollLeft-window.innerWidth < this.container.offsetWidth) {
+        
       }
     })
 
@@ -68,8 +83,8 @@ export default class WidgetColumn extends React.Component {
           )}
         </list>
 
-        <div className="column-left-arrow">&#8592;</div>
-        <div className="column-right-arrow" onClick={this.onArrowClick}>&#8594;</div>
+        <div className="column-left-arrow" onClick={this.onArrowClickLeft}>&#8592;</div>
+        <div className="column-right-arrow" onClick={this.onArrowClickRight}>&#8594;</div>
       </div>
     );
   }

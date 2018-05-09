@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardTitle, CardText } from 'material-ui/Card'
 import mapPhoto from '../../../images/map-photo.png'
-const title = 'This is a Placeholder'
+const title = 'The Biggest Network of Startups & VCs in MENA'
 
 const Map = () => (
   <div className="map">

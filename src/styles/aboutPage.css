@@ -2,11 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px;
 }
 .about-content {
   padding: 20px;
   text-align: justify;
-
 }
 div.about-content-wrapper > div > div {
   border-radius: 5px 5px 0 0  !important;

@@ -186,7 +186,7 @@ class DueDiligence extends Component {
             > */}
             <SelectField
               value={this.state.formData.type}
-              style={{ width: 350 }}
+              style={{ width: 350, border:'1px solid #0d47a1', borderRadius:4,padding: '0 10px' }}
               errorText={this.state.formErrors.type}
               onChange={(_, val) => this.updateFormData(val, 'type')}
             >
@@ -266,13 +266,14 @@ class DueDiligence extends Component {
               />
 
             </div>
-
+              
+              
              <TextArea
               value={this.state.formData.company_description}
               errorText={this.state.formErrors.company_description}
               placeholder="Description"
               onChange={(event) => this.updateFormData(event.target.value, 'company_description')}
-              style={{width: "100%"}}
+              style={{width: 720}}
              />
 
             {/* <TextField

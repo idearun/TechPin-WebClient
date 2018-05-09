@@ -183,12 +183,12 @@ class Top25 extends React.Component {
           <p className="sub-header">{text}</p>
         </header>
         <main className="flex-container">
+          <WidgetColumn productList={this.state.topProducts.topNew} title="New" />
           <WidgetColumn productList={Plus10Million} title="$10 Million+" />
           <WidgetColumn
             productList={this.state.topProducts.between1And10Million}
             title="$1 Million+"
           />
-          <WidgetColumn productList={this.state.topProducts.topNew} title="New" />
         </main>
         <DataAnalysis />
         <Map />
