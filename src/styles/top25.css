@@ -624,6 +624,9 @@ div.before-top25-title {
 }
 
 @media screen and (max-width: 760px) {
+  .top-information {
+    width: 90%;
+  }
   .due-diligence .input-row {
     flex-direction: column;
   }
