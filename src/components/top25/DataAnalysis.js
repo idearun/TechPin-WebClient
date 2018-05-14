@@ -27,8 +27,7 @@ const DataAnalysis = () => (
             <source src={animationMP4} type="video/mp4" />
           </video>
         </div>
-        <p className="desc">{desc}</p>
-        <p className="goal">{ourGoal}</p>
+        <p className="desc">{desc}<br/>{ourGoal}</p>
       </CardText>
     </Card>
   </div>
