@@ -30,7 +30,7 @@ const AboutPage = (props) => {
             <p>{aboutText.NPS}</p>
 
             <p><a href="http://www.medallia.com/net-promoter-score/">read more about this rating</a></p>
-            <p>TechPin initial codebase was contributed by <a href="http://www.idearun.co/">idearun Startup Studio</a> in December 2016</p>
+            <p>TechPin initial codebase was contributed by <a href="http://www.idearun.co/">idearun Startup Studio</a>.</p>
           </div>
         </Paper>
     </div>
