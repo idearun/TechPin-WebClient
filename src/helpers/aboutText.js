@@ -1,4 +1,8 @@
-const about = `TechPin is (and will be) simply an Open sourced, Crowd-sourced, Non-profit project. The Main Goal of TechPin is to promote and share Iranian startups and products in global market. With TechPin, you can see what’s the new up and coming startups and products in Iran, what people think about them, how they rate their services and how they are compared with their competitors.
+const about = `With Techpin you can discover the best new startups and products, every day. Its a place for product-loving enthusiasts to share and find out about the latest mobile apps, websites, hardware projects, and tech creations in middle east region. 
+
+Techpin helps VCs and angel investors make the right decisions and invest on the most promising startups in MENA. TechPin is (and will be) simply an Open sourced, Crowd-sourced, Non-profit project. 
+
+The Main Goal of TechPin is to promote and share MENA's startups and products in global market. With TechPin, you can see what’s the new up and coming startups and products in Iran, what people think about them, how they rate their services and how they are compared with their competitors.
 
 TechPin is Open, this means everyone can add new products to it or edit the existing ones. You can rate the services you use and comment on them.`;
 
@@ -32,7 +36,7 @@ The Net Promoter Score (NPS) is determined by subtracting the percentage of cust
 
 const lastPart = `You can read more about this rating here.
 
-TechPin initial codebase was contributed by idearun Startup Studio in December 2016.`;
+TechPin initial codebase was contributed by idearun Startup Studio.`;
 
 export default {
   lastPart,
