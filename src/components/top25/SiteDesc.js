@@ -62,7 +62,7 @@ const SiteDesc = ({ openAddProductModal }) => (
             backgroundColor="black"
             style={{ width:'45%', textAlign:'center', marginLeft:'5%' }}
             labelColor="white"
-            label="Due Diligence service"
+            label="I'm an Investor"
           />
         </div>
       </div>
