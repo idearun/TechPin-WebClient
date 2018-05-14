@@ -5,10 +5,10 @@ import animationMP4 from '../../../images/Machine.mp4'
 const title = 'Make Smart Decisions With Data'
 
 const ourGoal =
-  'TechPin goal is to become the main database of Iran’s most innovative companies, based on true and transparent data, not fake advertisements. We created a powerful and scalable crowdsourcing approach to data collection leveraging a strong community of contributors, VCs and accelerators partner network, and in-house data teams armed with powerful machine learning.'
+  ' TechPin goal is to become the main database of MENA’s most innovative companies, based on true and transparent data, not fake advertisements. We created a powerful and scalable crowdsourcing approach for data collection, leveraging a strong network of contributors, entrepreneurs, VCs and accelerators, and in-house data teams armed with our powerful data-mining solution, to achieve this goal.'
 
 const desc =
-  "TechPin's Data mining machine is the leading tool for VCs and Entrepreneurs to discover industry trends, investments, and information about Iranian companies, from startups to the most established companies."
+  "TechPin's Data mining machine is the leading tool for VCs and Entrepreneurs to discover industry trends, investments, and information about middle east's companies, from startups to the most established companies."
 
 const DataAnalysis = () => (
   <div className="data-analysis">
