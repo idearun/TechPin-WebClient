@@ -46,7 +46,7 @@ const SiteDesc = ({ openAddProductModal }) => (
   <div className="site-desc">
       <div className="top-information">
 <h1>Connect to innovative startups, VCs & Accelerators in MENA</h1>
-+      <p>Discover the best growing and new startups and products in middle east</p>
+ <p>Discover the best growing and new startups and products in middle east</p>
         <div className="action-buttons-container">
           <RaisedButton
             onClick={openAddProductModal}
@@ -114,7 +114,7 @@ const SiteDesc = ({ openAddProductModal }) => (
       <div className="news-row">
       <Card className="news-card">
         <CardHeader
-          title="NEWS FROM AROUND THE WORLD"
+          title="News From around The World"
           className="card-header-style"
           titleStyle={{ fontSize: '0.7em', textAlign:'left',fontWeight: 'bold' }}
           style={{backgroundColor: '#F6F7F9'}}
@@ -134,7 +134,7 @@ const SiteDesc = ({ openAddProductModal }) => (
 
       <Card className="news-card">
         <CardHeader
-          title="NEWS FROM IRANIAN SOURCES"
+          title="Non-English News Sources"
           className="card-header-style"
           titleStyle={{ fontSize: '0.7em', textAlign:'left', fontWeight: 'bold' }}
           style={{backgroundColor: '#F6F7F9'}}
