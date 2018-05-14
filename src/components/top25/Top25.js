@@ -174,7 +174,7 @@ class Top25 extends React.Component {
     return (
       <div className="top25 main-content">
         <Helmet>
-          <title>TechPin - Discover Best and New Startups and Products In Iran</title>
+          <title>TechPin - Discover & Connect to startups, VCs and accelerators in MENA</title>
         </Helmet>
 
         <SiteDesc openAddProductModal={this.handleAddProductModalOpen} />
