@@ -18,8 +18,8 @@ const SiteDesc = ({ openAddProductModal }) => (
     </div>
     <div className="vert-divider" />
     <div>
-      <h1>Dynamic list of startups and accelerators in Iran</h1>
-      <p>Discover the best new startups and products.</p>
+      <h1>Connect to innovative startups, VCs & Accelerators in MENA</h1>
+      <p>Discover the best growing and new startups and products in middle east</p>
       <div className="action-buttons-container">
         <RaisedButton
           primary
