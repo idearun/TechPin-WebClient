@@ -44,59 +44,21 @@ const columns = [{
 
 const SiteDesc = ({ openAddProductModal }) => (
   <div className="site-desc">
-      <div className="top-information">
-<h1>Connect to innovative startups, VCs & Accelerators in MENA</h1>
- <p>Discover the best growing and new startups and products in middle east</p>
-        <div className="action-buttons-container">
-          <RaisedButton
-            onClick={openAddProductModal}
-            backgroundColor="#0d47a1"
-            labelColor="white"
-            style={{ width:'50%'}}
-            labelStyle={{ top: -3,fontSize:11 }}
-            label="add new product or company"
-          />
-          <RaisedButton
-            onClick={scrollToDueDiligence}
-            labelStyle={{ top: -3 }}
-            backgroundColor="black"
-            style={{ width:'45%', textAlign:'center', marginLeft:'5%' }}
-            labelColor="white"
-            label="I'm an Investor"
-          />
-        </div>
-      </div>
-      
-      <div className="stat-cards">
-      <Card className="card-style">
-        <CardHeader
-          title= {<span className="card-style-title">1200</span>}
-          className="card-header-style"
-          titleStyle={{ fontSize: '2.2em', fontWeight: 700, padding: '20px 0 10px 0' }}
-          subtitleStyle={{ fontSize: '0.65em', fontWeight: 'normal' }}
-          subtitle= {<span className="card-style-subtitle">Startups</span>}
-        />
-      </Card>
 
-      <Card className="card-style">
-        <CardHeader
-          title= {<span className="card-style-title">140</span>}
-          className="card-header-style"
-          titleStyle={{ fontSize: '2.2em', fontWeight: 700, padding: '20px 0 10px 0' }}
-          subtitleStyle={{ fontSize: '0.65em', fontWeight: 'normal' }}
-          subtitle= {<span className="card-style-subtitle">Accelerators & VCs</span>}
-        />
-      </Card>
-
-
-
-      <Card className="card-style">
-        <CardHeader
-          title= {<span className="card-style-title">5.3B</span>}
-          className="card-header-style"
-          titleStyle={{ fontSize: '2.2em', fontWeight: 700, padding: '20px 0 10px 0' }}
-          subtitleStyle={{ fontSize: '0.65em', fontWeight: 'normal' }}
-          subtitle= {<span className="card-style-subtitle">$ Total Fundings</span>}
+    <div>
+      <img src={Logo} alt="techpin logo" />
+    </div>
+    <div className="vert-divider" />
+    <div>
+      <h1>Connect to innovative startups, VCs & Accelerators in MENA</h1>
+      <p>Discover the best growing and new startups and products in middle east</p>
+      <div className="action-buttons-container">
+        <RaisedButton
+          primary
+          onClick={openAddProductModal}
+          style={{ marginRight: 20 }}
+          labelStyle={{ top: -3 }}
+          label="add new product or company"
         />
       </Card>
 

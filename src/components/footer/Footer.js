@@ -16,21 +16,8 @@ const Footer = props => {
     <div className="footer">
       <section className="footer-about">
         <div>
-          <span>Discover & Connect to startups, VCs and accelerators in MENA</span>
-          <p>With Techpin you can discover the best new startups and products, every day. Its a place for product-loving enthusiasts to share and find out about the latest mobile apps, websites, hardware projects, and tech creations in middle east region. <br />Techpin helps VCs and angel investors make the right decisions and invest on the most promising startups in MENA.</p>
-          <ul className="contact-us-footer">
-          <li>
-            Contact us via:
-          </li>
-          <li>
-            <a href="mailto:support@techpin.ir" target="_top">Send Mail</a>
-          </li>
-          <li>
-            <a href="https://t.me/Techpin_Support" target="_blank">
-              <i className="fa fa-telegram" aria-hidden="true" />
-            </a>
-          </li>
-        </ul>
+          <span>TechPin, Discover & Connect to startups, VCs and accelerators in MENA</span>
+          <p>{footerText}</p>
         </div>
         <TelegramBot />
       </section>
