@@ -1,0 +1,8 @@
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.dashboard-container > * {
+  padding: 15px;
+}

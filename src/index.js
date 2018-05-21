@@ -24,6 +24,7 @@ import "./styles/modals.css";
 import "./styles/header.css";
 import "./styles/editInfo.css";
 import "./styles/allProducts.css";
+import "./styles/dashboard.css";
 
 render(
   <Provider store={store}>

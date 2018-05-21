@@ -9,12 +9,13 @@ import CircularProgress from 'material-ui/CircularProgress'
 
 const toolbarStyles = {
   color: '#555555',
-  fontFamily: 'Rubik'
+  fontFamily: 'Rubik',
 }
 
 const logger = e => {
   const searchInput = document.getElementById('search')
   const mainSearchBar = document.getElementById('main-search')
+
   if (document.activeElement !== searchInput) {
     const pressedKey = String.fromCharCode(e.keyCode)
     if (/[a-zA-Z0-9-_ ]/.test(pressedKey)) {
@@ -34,7 +35,7 @@ class AllProducts extends React.Component {
     this.state = {
       searchTerm: '',
       products: { charecter: [] },
-      aSyncCall: false
+      aSyncCall: false,
     }
   }
 
@@ -43,9 +44,7 @@ class AllProducts extends React.Component {
       this.setState({ aSyncCall: true })
       this.props
         .getAllProducts()
-        .then(allProducts =>
-          this.setState({ products: allProducts, aSyncCall: false })
-        )
+        .then(allProducts => this.setState({ products: allProducts, aSyncCall: false }))
     } else {
       this.setState({ products: this.props.allProducts })
     }
@@ -80,7 +79,7 @@ class AllProducts extends React.Component {
 
   searchHandler = (event, value) => {
     this.setState({
-      searchTerm: event.target.value
+      searchTerm: event.target.value,
     })
   }
 
@@ -154,4 +153,8 @@ class AllProducts extends React.Component {
   }
 }
 
-export default connect(null, actions)(AllProducts)
+const mapStateToProps = state => ({
+  allProducts: state.allProducts,
+})
+
+export default connect(mapStateToProps, actions)(AllProducts)

@@ -15,6 +15,7 @@ import { connect } from 'react-redux'
 import DataAnalysis from './DataAnalysis'
 import Map from './Map'
 import { Helmet } from 'react-helmet'
+import * as actions from '../../actions/actionCreators'
 
 const modalStyle = {
   overlay: {
@@ -24,8 +25,8 @@ const modalStyle = {
     right: 0,
     bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    overflow: 'auto'
-  }
+    overflow: 'auto',
+  },
 }
 
 const editModalStyle = {
@@ -36,11 +37,11 @@ const editModalStyle = {
     right: 0,
     bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    overflow: 'auto'
+    overflow: 'auto',
   },
   content: {
-    minHeight: 800
-  }
+    minHeight: 800,
+  },
 }
 
 class Top25 extends React.Component {
@@ -56,8 +57,8 @@ class Top25 extends React.Component {
         topNew: [],
         between1And10Million: [],
         plus10Million: [],
-        plus100Million: []
-      }
+        plus100Million: [],
+      },
     }
   }
 
@@ -83,12 +84,9 @@ class Top25 extends React.Component {
         topProducts: {
           topNew: nextProps.topProducts.topNew,
           plus10Million: sort(nextProps.topProducts.plus10Million, 'nps'),
-          between1And10Million: sort(
-            nextProps.topProducts.between1And10Million,
-            'nps'
-          ),
-          plus100Million: sort(nextProps.topProducts.plus100Million, 'nps')
-        }
+          between1And10Million: sort(nextProps.topProducts.between1And10Million, 'nps'),
+          plus100Million: sort(nextProps.topProducts.plus100Million, 'nps'),
+        },
       })
     }
   }
@@ -101,8 +99,8 @@ class Top25 extends React.Component {
           topNew: topProducts.topNew,
           between1And10Million: sort(topProducts.between1And10Million, 'nps'),
           plus10Million: sort(topProducts.plus10Million, 'nps'),
-          plus100Million: sort(topProducts.plus100Million, 'nps')
-        }
+          plus100Million: sort(topProducts.plus100Million, 'nps'),
+        },
       })
     }
   }
@@ -118,9 +116,7 @@ class Top25 extends React.Component {
     const floatingButton = document.querySelector('.floating-action-button')
     const shortDesc = document.querySelector('.site-desc')
     floatingButton.style.top =
-      shortDesc.getBoundingClientRect().bottom -
-      floatingButton.offsetHeight / 2 +
-      'px'
+      shortDesc.getBoundingClientRect().bottom - floatingButton.offsetHeight / 2 + 'px'
     window.addEventListener(
       'scroll',
       debounce(() => {
@@ -136,7 +132,7 @@ class Top25 extends React.Component {
         }
       }, 10),
       {
-        passive: true
+        passive: true,
       }
     )
   }
@@ -145,7 +141,7 @@ class Top25 extends React.Component {
     this.setState({
       newProductSlug: slug,
       addProductModalIsOpen: false,
-      addVersionModalIsOpen: true
+      addVersionModalIsOpen: true,
     })
   }
 
@@ -154,27 +150,29 @@ class Top25 extends React.Component {
       newProductSlug: null,
       addVersionModalIsOpen: false,
       snackbarIsOpen: true,
-      snackbarText: 'Thank you! We will review and publish your submission.'
+      snackbarText: 'Thank you! We will review and publish your submission.',
     })
   }
 
   handleSnackbarRequestClose = () => {
     this.setState({
-      snackbarIsOpen: false
+      snackbarIsOpen: false,
     })
   }
 
   render() {
     const Plus10Million = [
       ...this.state.topProducts.plus100Million,
-      ...this.state.topProducts.plus10Million
+      ...this.state.topProducts.plus10Million,
     ]
     const { title, text } = this.props
 
     return (
       <div className="top25 main-content">
         <Helmet>
-          <title>TechPin - Discover & Connect to startups, VCs and accelerators in MENA</title>
+          <title>
+            TechPin - Discover & Connect to startups, VCs and accelerators in MENA
+          </title>
         </Helmet>
 
         <SiteDesc openAddProductModal={this.handleAddProductModalOpen} />
@@ -240,6 +238,11 @@ class Top25 extends React.Component {
   }
 }
 
-export default connect(state => ({
-  ...state.dynamicTextContents.main_section
-}))(Top25)
+function mapStateToProps(state) {
+  return {
+    topProducts: state.topProducts,
+    ...state.dynamicTextContents.main_section,
+  }
+}
+
+export default connect(mapStateToProps, actions)(Top25)

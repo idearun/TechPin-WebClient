@@ -12,11 +12,11 @@ import CircularProgress from 'material-ui/CircularProgress'
 const styles = {
   toolbarBackArrow: {
     marginLeft: 27,
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   editModeIcon: {
-    cursor: 'pointer'
-  }
+    cursor: 'pointer',
+  },
 }
 
 class CategoryPage extends React.Component {
@@ -24,15 +24,13 @@ class CategoryPage extends React.Component {
     super(props)
     this.state = {
       aSyncCall: false,
-      products: []
+      products: [],
     }
   }
 
   filterByCategory = arr => {
     return arr.filter(item => {
-      return item.categories.some(
-        category => category === this.props.params.category
-      )
+      return item.categories.some(category => category === this.props.params.category)
     })
   }
 
@@ -44,6 +42,26 @@ class CategoryPage extends React.Component {
 
   componentDidMount = () => {
     const categorySlug = this.props.params.category
+    if (!categorySlug) return
+    this.getProductsInCategory(categorySlug)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const categorySlug = nextProps.params.category
+    if (!categorySlug) return
+    this.getProductsInCategory(categorySlug)
+  }
+
+  getCategoryNameBySlug = slug => {
+    const { categories = [] } = this.props
+    if (categories.length > 0) {
+      return categories.find(category => category.slug === slug).name_en
+    } else {
+      return slug
+    }
+  }
+
+  getProductsInCategory(categorySlug) {
     if (
       Object.keys(this.props.byCategory).length > 0 &&
       this.props.byCategory[categorySlug]
@@ -55,18 +73,9 @@ class CategoryPage extends React.Component {
         let filteredList = this.filterByCategory(products)
         this.setState({
           aSyncCall: false,
-          products: this.filterDuplicate(filteredList)
+          products: this.filterDuplicate(filteredList),
         })
       })
-    }
-  }
-
-  getCategoryNameBySlug = slug => {
-    const { categories = [] } = this.props
-    if (categories.length > 0) {
-      return categories.find(category => category.slug === slug).name_en
-    } else {
-      return slug
     }
   }
 
@@ -113,7 +122,7 @@ class CategoryPage extends React.Component {
 function mapStateToProps(state) {
   return {
     byCategory: state.byCategory,
-    categories: state.categories
+    categories: state.categories,
   }
 }
 

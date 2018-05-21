@@ -1,9 +1,14 @@
-import {createStore, compose, applyMiddleware} from 'redux';
-import {syncHistoryWithStore} from 'react-router-redux';
-import {browserHistory} from 'react-router';
-import rootReducer from '../reducers/index';
-import {loadIntialCategories, loadIntialProductTypes, initialLoadTop25} from '../actions/actionCreators';
-import thunk from 'redux-thunk';
+import { createStore, compose, applyMiddleware } from 'redux'
+import { syncHistoryWithStore } from 'react-router-redux'
+import { browserHistory } from 'react-router'
+import rootReducer from '../reducers/index'
+import thunk from 'redux-thunk'
+
+import {
+  loadIntialCategories,
+  loadIntialProductTypes,
+  initialLoadTop25,
+} from '../actions/actionCreators'
 
 // laod initial state
 const defaultState = {
@@ -11,26 +16,25 @@ const defaultState = {
   allProducts: {},
   categories: [],
   dynamicTextContents: {},
-  auth: {authenticated: false},
-};
+  auth: { authenticated: false },
+}
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
   rootReducer,
   defaultState,
   composeEnhancers(applyMiddleware(thunk))
-);
+)
 
 //load categories
-store.dispatch(loadIntialCategories());
+store.dispatch(loadIntialCategories())
 
 //load product types
-store.dispatch(loadIntialProductTypes());
+store.dispatch(loadIntialProductTypes())
 
 //load top25, remove depricated api call
-store.dispatch(initialLoadTop25());
+store.dispatch(initialLoadTop25())
 
-
-export const history = syncHistoryWithStore(browserHistory, store);
-export default store;
+export const history = syncHistoryWithStore(browserHistory, store)
+export default store

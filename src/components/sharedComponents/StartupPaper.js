@@ -8,8 +8,8 @@ const styles = {
   paper: {
     width: '150px',
     minHeight: '150px',
-    padding: '10px 10px'
-  }
+    padding: '10px 10px',
+  },
 }
 
 const CategoryPaper = ({ product, WrapperClassName }) => {
@@ -18,14 +18,18 @@ const CategoryPaper = ({ product, WrapperClassName }) => {
       <Paper style={styles.paper} className={`category-paper ${WrapperClassName}`}>
         <div
           className="category-image"
-          style={{ backgroundImage: `url(${baseApiUrl}${product.details.logo})` }}
+          style={{
+            backgroundImage: `url(${baseApiUrl}${
+              product.details ? product.details.logo : ''
+            })`,
+          }}
         />
         <span style={{ marginTop: 10, maxWidth: '100%' }}>
           <h3
             style={{
               whiteSpace: 'nowrap',
               textOverflow: 'ellipsis',
-              overflow: 'hidden'
+              overflow: 'hidden',
             }}
           >
             {product.name_en}
