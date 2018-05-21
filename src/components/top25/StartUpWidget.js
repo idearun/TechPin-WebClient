@@ -7,7 +7,7 @@ import Divider from 'material-ui/Divider'
 
 const styles = {
   logo: {
-    width: 85
+    width: '100%'
   },
   container: {
     backgroundColor: 'white'
@@ -28,7 +28,7 @@ const generateShortDesc = desc => {
 }
 
 const LzLoImage = ({ img }) => (
-  <LazyLoad width={85} offsetVertical={300}>
+  <LazyLoad width={85} height={85} offsetVertical={300}>
     <img src={img} style={styles.logo} alt="" />
   </LazyLoad>
 )
@@ -54,7 +54,7 @@ const StartUpWidget = ({ product, i }) => {
           </div>
         </div>
 
-        {i < 24 ? <Divider inset={true} /> : ''}
+        {/* {i < 24 ? <Divider inset={true} /> : ''} */}
       </Link>
     </div>
   ) : null

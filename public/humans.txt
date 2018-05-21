@@ -1,7 +1,7 @@
 /* PROJECT */
 
 	Site Name:   TechPin
-	Site URL:    http://techpin.ir/
+	Site URL:    https://techpin.org/
 	Created:     2016/11
 	
 /* TEAM */

@@ -16,15 +16,18 @@ const DataAnalysis = () => (
       <CardTitle>
         <h1>{title}</h1>
       </CardTitle>
-      <CardText>
-        <p className="desc">{desc}</p>
+      <CardText
+      className = "data-analysis-card-text" 
+      style = {{display: 'flex', padding: '0 25px', boxShadow: 'none'}}
+      >
+        {/* <p className="desc">{desc}</p> */}
         <div className="animation">
           <video loop muted autoPlay>
             <source src={animationWebM} type="video/webm" />
             <source src={animationMP4} type="video/mp4" />
           </video>
         </div>
-        <p className="goal">{ourGoal}</p>
+        <p className="desc">{desc}<br/>{ourGoal}</p>
       </CardText>
     </Card>
   </div>

@@ -1,5 +1,5 @@
-import gClientId from './googleClientId'
+//import gClientId from './googleClientId'
 
-const googleClientId = "" || gClientId;
+const googleClientId = "tadeh19";
 
 export default googleClientId;

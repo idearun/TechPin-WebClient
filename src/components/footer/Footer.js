@@ -28,6 +28,8 @@ const Footer = props => {
             , Crowd Sourced Project &nbsp;
             <a href="http://www.mozilla.org/en-US/MPL/2.0/">Under MPL 2.0</a>
           </li>
+        </ul>
+        <ul className="footer-social">
           <li>
             <Link to="about">About</Link>
           </li>
@@ -39,8 +41,6 @@ const Footer = props => {
               Blog
             </a>
           </li>
-        </ul>
-        <ul>
           <li>
             <a href="https://twitter.com/techpinhq/" target="_blank">
               <i className="fa fa-twitter" aria-hidden="true" />

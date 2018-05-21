@@ -8,6 +8,8 @@ import Snackbar from 'material-ui/Snackbar'
 // import DropDownMenu from "material-ui/DropDownMenu";
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
+import InputText from './InputText'
+import TextArea from './TextArea'
 
 const selectOptionsValues = [
   'due-diligence',
@@ -165,8 +167,13 @@ class DueDiligence extends Component {
     const className = this.props.show ? 'due-diligence show' : 'due-diligence hide'
     return (
       <div className={className}>
-        <Card>
-          <CardTitle title="Contact Us" subtitle="Please fill the form" />
+        <Card className="contact-form-card">
+          <CardTitle
+            title="Contact Us" 
+            subtitle="Please fill the form" 
+            titleStyle={{textTransform: 'uppercase', textAlign: 'left', fontWeight: 'bold'}}
+            subtitleStyle={{textTransform: 'uppercase', textAlign: 'left', fontWeight: 'normal'}}  
+          />
           <CardText className="contact-form-inputs-wrapper">
             {/* <DropDownMenu
               value={this.state.formData.type}
@@ -179,46 +186,97 @@ class DueDiligence extends Component {
             > */}
             <SelectField
               value={this.state.formData.type}
-              style={{ width: 350 }}
+              style={{ width: 350, border:'1px solid #0d47a1', borderRadius:4,padding: '0 10px' }}
               errorText={this.state.formErrors.type}
               onChange={(_, val) => this.updateFormData(val, 'type')}
             >
               {this.renderSelectMenuItems()}
             </SelectField>
             <div className="input-row">
-              <TextField
+              {/* <TextField
                 value={this.state.formData.name}
                 errorText={this.state.formErrors.name}
                 floatingLabelText="Your Name"
                 style={{ width: 350 }}
                 onChange={(_, val) => this.updateFormData(val, 'name')}
+              /> */}
+              {/* <InputText 
+                onChange={(event) => this.updateFormData(event.target.value, 'name')}
+                value={this.state.formData.name}
+                placeholder="Your Name"
+                style={{ width: 350 }}
+              /> */}
+              <InputText 
+                onChange={(event) => this.updateFormData(event.target.value, 'name')}
+                value={this.state.formData.name}
+                style={{ width: 350 }}
+                placeholder="Your Name"
+                type="text"
               />
-              <TextField
+              {/* <TextField
                 value={this.state.formData.email}
                 errorText={this.state.formErrors.email}
                 floatingLabelText="Your Email"
                 style={{ width: 350, marginLeft: 20 }}
                 type="email"
                 onChange={(_, val) => this.updateFormData(val, 'email')}
+              /> */}
+             <InputText 
+                onChange={(event) => this.updateFormData(event.target.value, 'email')}
+                value={this.state.formData.email}
+                style={{ width: 350, marginLeft: 20}}
+                placeholder="Your Email"
+                type="email"
               />
+
             </div>
             <div className="input-row">
-              <TextField
+              {/* <TextField
                 value={this.state.formData.phone_number}
                 errorText={this.state.formErrors.phone_number}
                 style={{ width: 350 }}
                 floatingLabelText="Your Phone number"
                 onChange={(_, val) => this.updateFormData(val, 'phone_number')}
+              /> */}
+
+              <InputText 
+                onChange={(event) => this.updateFormData(event.target.value, 'phone_number')}
+                value={this.state.formData.phone_number}
+                placeholder="Your Phone number"
+                style={{ width: 350 }}
+                errorText={this.state.formErrors.phone_number}
+                type="tel"
               />
-              <TextField
+
+              {/* <TextField
                 value={this.state.formData.company_name}
                 errorText={this.state.formErrors.company_name}
                 style={{ width: 350, marginLeft: 20 }}
                 floatingLabelText="Company Name"
                 onChange={(_, val) => this.updateFormData(val, 'company_name')}
+              /> */}
+
+              <InputText 
+                onChange={(event) => this.updateFormData(event.target.value, 'company_name')}
+                value={this.state.formData.company_name}
+                placeholder="Company Name"
+                style={{ width: 350, marginLeft: 20 }}
+                errorText={this.state.formErrors.company_name}
+                type="text"
               />
+
             </div>
-            <TextField
+              
+              
+             <TextArea
+              value={this.state.formData.company_description}
+              errorText={this.state.formErrors.company_description}
+              placeholder="Description"
+              onChange={(event) => this.updateFormData(event.target.value, 'company_description')}
+              style={{width: 720}}
+             />
+
+            {/* <TextField
               value={this.state.formData.company_description}
               errorText={this.state.formErrors.company_description}
               floatingLabelText="Description"
@@ -226,13 +284,15 @@ class DueDiligence extends Component {
               multiLine
               rows={3}
               onChange={(_, val) => this.updateFormData(val, 'company_description')}
-            />
+            /> */}
           </CardText>
-          <CardActions>
+          <CardActions style={{padding: 16}}>
             <RaisedButton
-              primary
-              fullWidth
               label="Send"
+              backgroundColor="#0d47a1"
+              labelColor="white"
+              style={{ width:150 }}
+              labelStyle={{ display: 'flex', justifyContent: 'center' }}
               disabled={this.state.aSyncCall}
               onClick={this.handleSubmit}
             />

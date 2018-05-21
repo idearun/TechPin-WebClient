@@ -18,7 +18,7 @@ import Subheader from "material-ui/Subheader";
 
 import { List, ListItem } from "material-ui/List";
 
-import Logo from "../../../images/techpin-white.svg";
+import Logo from "../../../images/techpin-logo.svg";
 
 const modalStyle = {
   overlay: {
@@ -318,10 +318,11 @@ class Header extends React.Component {
             )}
             {this.state.windowWidth < headerBreakPoint && (
               <ListItem
+                className="blog-btn"
                 primaryText="Blog"
-                href="http://blog.techpin.ir"
+                href="https://blog.techpin.ir"
                 target="_blank"
-                style={{ textAlign: "center" }}
+                style={{ textAlign: "center"}}
                 innerDivStyle={{ fontWeight: "inherit" }}
               />
             )}
