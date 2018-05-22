@@ -1,0 +1,12 @@
+.profile-stats-container {
+  padding: 15px 15px 15px 5%;
+  background: white;
+}
+
+.profile-stats-container ul {
+  list-style-type: none;
+}
+
+.profile-stats-container ul > li {
+  padding: 10px;
+}

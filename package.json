@@ -58,6 +58,7 @@
     "axios": "^0.15.3",
     "babel-polyfill": "^6.20.0",
     "core-js": "^2.4.1",
+    "faker": "^4.1.0",
     "formdata-polyfill": "^1.0.7",
     "halogen": "^0.2.0",
     "json-markup": "^1.1.0",

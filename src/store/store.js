@@ -18,7 +18,7 @@ const defaultState = {
   categories: [],
   dynamicTextContents: {},
   auth: { authenticated: false },
-  profile: { isLoading: false, profileData: {} },
+  profile: { isLoading: false, profileData: null },
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

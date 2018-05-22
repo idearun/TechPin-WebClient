@@ -1,0 +1,67 @@
+.challenges-container {
+  padding: 15px 15px 15px 15px;
+  /* background: white; */
+}
+
+.challenges-title {
+  padding: 10px;
+  background: white;
+  margin: 0 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+}
+
+.challenges-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.challenges-list > * {
+  margin: 10px;
+}
+
+.challenge-card {
+  width: 200px;
+  height: 250px;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.challenge-card:hover {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.challenge-title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.challenge-description {
+  height: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #444;
+  word-break: normal;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.challenge-has-answered-before {
+  color: green;
+
+}
+
+.already-answered {
+  font-size: 14px;
+}
+
+.already-answered > * {
+  margin: 5px;
+}
+
