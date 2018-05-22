@@ -3,6 +3,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import { browserHistory } from 'react-router'
 import rootReducer from '../reducers/index'
 import thunk from 'redux-thunk'
+import { wasAuthed } from '../actions/actionCreators'
 
 import {
   loadIntialCategories,
@@ -10,13 +11,14 @@ import {
   initialLoadTop25,
 } from '../actions/actionCreators'
 
-// laod initial state
+// load initial state
 const defaultState = {
   userRates: {},
   allProducts: {},
   categories: [],
   dynamicTextContents: {},
   auth: { authenticated: false },
+  profile: { isLoading: false, profileData: {} },
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -26,6 +28,15 @@ const store = createStore(
   defaultState,
   composeEnhancers(applyMiddleware(thunk))
 )
+
+const authed = JSON.parse(localStorage.getItem('techpin'))
+try {
+  if (authed['api-token']) {
+    store.dispatch(wasAuthed(authed))
+  }
+} catch (e) {
+  // no-op
+}
 
 //load categories
 store.dispatch(loadIntialCategories())

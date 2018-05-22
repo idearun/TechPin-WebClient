@@ -1,8 +1,30 @@
 .dashboard-container {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 220px 1fr;
+  font-family: Rubik;
 }
 
-.dashboard-container > * {
+.dashboard-sidebar {
   padding: 15px;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.sidebar-item {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  min-height: 40px;
+}
+
+.sidebar-item:hover {
+  color: steelblue;
+}
+
+.sidebar-item__icon {
+  margin-right: 10px;
+}
+
+.sidebar-item__title {
+  font-size: 16px;
 }

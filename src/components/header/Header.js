@@ -164,6 +164,7 @@ class Header extends React.Component {
 
   handleLogOut = () => {
     this.props.logOut();
+    this.props.router.push('/')
     this.setState({ responseText: "You signed out", snackBarOpen: true });
   };
 

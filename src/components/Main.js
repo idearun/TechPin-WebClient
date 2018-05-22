@@ -15,17 +15,6 @@ class Main extends React.Component {
     injectTapEventPlugin()
   }
 
-  componentDidMount = () => {
-    const authed = JSON.parse(localStorage.getItem('techpin'))
-    try {
-      if (authed['api-token']) {
-        this.props.wasAuthed(authed)
-      }
-    } catch (e) {
-      // no-op
-    }
-  }
-
   componentWillMount = () => {
     this.props.loadDynamicTextContents()
   }
@@ -36,7 +25,7 @@ class Main extends React.Component {
         <Favicon url={TechpinFavIcon} />
         <div className="app-wrapper">
           <nav className="header" id="header">
-            <Header />
+            <Header router={this.props.router}/>
           </nav>
 
           {/* routes under "/" */}

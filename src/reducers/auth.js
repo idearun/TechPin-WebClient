@@ -6,18 +6,21 @@ export default function auth(state = [], action) {
       return {
         authenticated: true,
         token: action.response['api-token'],
-        username: action.response.user.username
+        ...action.response.user,
       }
 
     case actionTypes.WAS_LOGGED_IN:
       return {
         authenticated: true,
         token: action.response['api-token'],
-        username: action.response.username
+        ...action.response.user,
       }
 
     case actionTypes.LOG_OUT:
-      return { authenticated: false, token: null, username: null }
+      return Object.keys(state).reduce((acc, current) => {
+        acc[current] = null
+        return acc
+      }, {})
 
     default:
       return state

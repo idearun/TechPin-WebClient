@@ -1,12 +1,27 @@
 import * as actionTypes from './actionTypes'
 import techpinApi from '../api/realApi'
+import store from '../store/store'
 
-//************************// Action Creators and helpers //************************//
+function getAccessToken() {
+  const currentState = store.getState()
+
+  if (!currentState.auth.authenticated) {
+    return null
+  }
+
+  return currentState.auth.token
+}
+
+const NO_AUTH_ERROR = {
+  message: 'not authenticated',
+}
+
+//************************ Action Creators and helpers ************************//
 
 function singleProductActionCreator(product) {
   return {
     type: actionTypes.SINGLE_PAGE_LOAD,
-    product
+    product,
   }
 }
 
@@ -14,14 +29,14 @@ function getProductsByCategoryActionCreator(products, categorySlug) {
   return {
     type: actionTypes.CATEGORY_ITEMS_FETCH_SUCCESS,
     products,
-    categorySlug
+    categorySlug,
   }
 }
 
 function allProductsActionCreator(allProducts) {
   return {
     type: actionTypes.LOAD_ALL_PRODUCTS,
-    allProducts
+    allProducts,
   }
 }
 
@@ -29,7 +44,7 @@ function successfulFetchUserRates(res, slug) {
   return {
     type: actionTypes.USER_RATES_FETCH_SUCCESS,
     userRates: res,
-    slug
+    slug,
   }
 }
 
@@ -39,21 +54,21 @@ function initialLoadTop25ActionCreator(response) {
     topNew: response.top_new,
     plus10Million: response['10m'],
     plus100Million: response['100m'],
-    between1And10Million: response['1m']
+    between1And10Million: response['1m'],
   }
 }
 
 function successfulLogin(response) {
   return {
     type: actionTypes.SUCCESSFUL_LOGIN,
-    response
+    response,
   }
 }
 
 function failedLogin(response) {
   return {
     type: actionTypes.FAILED_LOGIN,
-    response
+    response,
   }
 }
 
@@ -61,7 +76,7 @@ function successfulNewComment(commentData, slug) {
   return {
     type: actionTypes.POST_NEW_COMMENT,
     commentData,
-    slug
+    slug,
   }
 }
 
@@ -70,11 +85,11 @@ function successfulNewRate(response, slug) {
     type: actionTypes.SUCCESSFUL_NEW_RATE_SUBMIT,
     newRating: response.new_p_rate,
     newRateCount: response.p_rate_count,
-    slug
+    slug,
   }
 }
 
-//************************//  Async Actions //************************//
+//************************  Async Actions ***********************//
 
 //******** PART 1: Initial Loadings ********//
 
@@ -85,7 +100,7 @@ export function loadIntialCategories() {
       response => {
         dispatch({
           type: actionTypes.INITIAL_CATEGORIES_LOAD,
-          categories: response.data.categories
+          categories: response.data.categories,
         })
         return Promise.resolve()
       },
@@ -103,7 +118,7 @@ export function loadIntialProductTypes() {
       response => {
         dispatch({
           type: actionTypes.INITIAL_PRODUCT_TYPES_LOAD,
-          productTypes: response.data.product_types
+          productTypes: response.data.product_types,
         })
         return Promise.resolve()
       },
@@ -120,7 +135,7 @@ export function loadDynamicTextContents() {
     return techpinApi.getDynamicTextContents().then(response => {
       dispatch({
         type: actionTypes.LOAD_DYNAMIC_CONTENT_SUCCESS,
-        items: response.data.items
+        items: response.data.items,
       })
     })
   }
@@ -185,7 +200,7 @@ export function search(searchTerm) {
             return Promise.reject()
           }
         ),
-        onCancel
+        onCancel,
       }
     )
   }
@@ -198,9 +213,11 @@ export function authenticate(username, password) {
         if (response.data.success) {
           const authData = {
             'api-token': response.data['api-token'],
-            username: response.data.user.username
+            ...response.data.user,
           }
+
           localStorage.setItem('techpin', JSON.stringify(authData))
+
           dispatch(successfulLogin(response.data))
         }
         return Promise.resolve(response.data)
@@ -258,9 +275,7 @@ export function getProductsByCategory(categorySlug) {
   return dispatch => {
     return techpinApi.getProductsByCategory(categorySlug).then(
       response => {
-        dispatch(
-          getProductsByCategoryActionCreator(response.data.products, categorySlug)
-        )
+        dispatch(getProductsByCategoryActionCreator(response.data.products, categorySlug))
         return Promise.resolve(response.data.products)
       },
       error => {
@@ -387,7 +402,7 @@ export function OAuthLogIn(payLoad) {
       response => {
         const authData = {
           'api-token': response.data['api-token'],
-          username: response.data.user.username
+          username: response.data.user.username,
         }
         localStorage.setItem('techpin', JSON.stringify(authData))
         dispatch(successfulLogin(response.data))
@@ -418,13 +433,93 @@ export function logOut() {
   localStorage.removeItem('techpin')
   techpinApi.logout()
   return {
-    type: actionTypes.LOG_OUT
+    type: actionTypes.LOG_OUT,
   }
 }
 
 export function wasAuthed(authObject) {
   return {
     type: actionTypes.WAS_LOGGED_IN,
-    response: authObject
+    response: authObject,
+  }
+}
+
+// Profile actions
+
+export function fetchProfileStart(profile) {
+  return {
+    type: actionTypes.FETCH_PROFILE_REQUEST,
+  }
+}
+
+export function fetchProfileSuccess(profile) {
+  return {
+    type: actionTypes.FETCH_PROFILE_SUCCESS,
+    profile,
+  }
+}
+
+export function fetchProfileFail() {
+  return {
+    type: actionTypes.FETCH_PROFILE_FAIL,
+  }
+}
+
+export function fetchUserProfile(payLoad) {
+  return dispatch => {
+    const token = getAccessToken()
+    if (!token) return Promise.reject(NO_AUTH_ERROR)
+
+    const onSuccess = response => {
+      dispatch(fetchProfileSuccess(response.data))
+      return Promise.resolve(response.data)
+    }
+
+    const onFail = error => {
+      dispatch(fetchProfileFail())
+      return Promise.reject(error)
+    }
+
+    dispatch(fetchProfileStart())
+    return techpinApi.getUserProfile(token).then(onSuccess, onFail)
+  }
+}
+
+export function updateProfileStart(profile) {
+  return {
+    type: actionTypes.UPDATE_PROFILE_REQUEST,
+  }
+}
+
+export function updateUserProfileSuccess(profile) {
+  return {
+    type: actionTypes.UPDATE_PROFILE_SUCCESS,
+    profile,
+  }
+}
+
+export function updateUserProfileFail() {
+  return {
+    type: actionTypes.UPDATE_PROFILE_FAIL,
+  }
+}
+
+export function updateUserProfile(formValues) {
+  return dispatch => {
+    const token = getAccessToken()
+    if (!token) return Promise.reject(NO_AUTH_ERROR)
+
+    const onSuccess = response => {
+      dispatch(updateUserProfileSuccess(response.data))
+      return Promise.resolve(response.data)
+    }
+
+    const onFail = error => {
+      dispatch(updateUserProfileFail())
+      return Promise.reject(error)
+    }
+
+    dispatch(updateProfileStart())
+    return techpinApi.updateUserProfile(formValues, token).then(onSuccess, onFail)
   }
 }

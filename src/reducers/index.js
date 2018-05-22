@@ -10,9 +10,12 @@ import singleProducts from './singleProducts'
 import userRates from './userRates'
 import byCategory from './byCategory'
 import dynamicTextContents from './dynamicTextContents'
+import profile from './profile'
 import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({
+  routing: routerReducer,
+  form: formReducer,
   auth,
   userRates,
   allProducts,
@@ -22,8 +25,7 @@ const rootReducer = combineReducers({
   topProducts,
   singleProducts,
   dynamicTextContents,
-  routing: routerReducer,
-  form: formReducer,
+  profile,
 })
 
 export default rootReducer

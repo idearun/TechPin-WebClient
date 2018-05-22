@@ -14,6 +14,7 @@ import DashboardContainer from '../components/dashboard/DashboardContainer'
 
 import ProfileContainer from '../components/dashboard/Profile/ProfileContainer'
 import ChallengesContainer from '../components/dashboard/Challenges/ChallengesContainer'
+import UserStatsContainer from '../components/dashboard/UserStats/UserStatsContainer'
 
 export default (
   <Route path="/" component={Main}>
@@ -24,7 +25,7 @@ export default (
     <Route path="all-entries" component={AllProducts} />
 
     <Route path="dashboard" component={DashboardContainer}>
-      <IndexRoute component={ProfileContainer} />
+      <IndexRoute component={UserStatsContainer} />
       <Route path="profile" component={ProfileContainer} />
       <Route path="challenge" component={ChallengesContainer} />
     </Route>
